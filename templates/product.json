@@ -404,7 +404,6 @@
         "text_zJa4tJ",
         "image_NWp9La"
       ],
-      "disabled": true,
       "custom_css": [
         "h2 {font-size: 46px; margin-bottom: 40px; margin-top: 30px; letter-spacing: 0.02em;}",
         "@media (max-width: 600px) {h2 {font-size: 24px; margin-top: 30px; } img {margin-top: 30px; }}"
@@ -417,8 +416,8 @@
         "paddingRight": 20,
         "paddingBottom": 80,
         "paddingLeft": 20,
-        "text_color": "#5E5D5E",
-        "full_bkg_color": "#ECEBE7",
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ecebe7",
         "text_alignment": "center",
         "heading_size": "medium"
       }
