@@ -1,0 +1,120 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "t-page",
+      "disabled": true,
+      "settings": {
+        "pageType": "col-2",
+        "showHeading": true
+      }
+    },
+    "gs_hero_b36UCW": {
+      "type": "gs-hero",
+      "blocks": {
+        "image_NehaAL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/offers.png",
+            "imageMobile": "shopify://shop_images/offers-mobile.png",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_NehaAL"
+      ],
+      "custom_css": [],
+      "settings": {
+        "block_id": "",
+        "heroHeight": "uncropped",
+        "cropVideo": false,
+        "subtitle": "",
+        "title": "Special Offers",
+        "content": "",
+        "cta": "",
+        "url": "",
+        "contentPosition": "center",
+        "contentDirection": "row",
+        "textAlignment": "left",
+        "contentPositionMob": "top center",
+        "contentDirectionMob": "column",
+        "textAlignmentMob": "center",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#5d5e5d",
+        "heroMetaH1hasBg": false
+      }
+    },
+    "offer_blocks_c8EKbV": {
+      "type": "offer-blocks",
+      "blocks": {
+        "offer_twWyby": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "offer_image": "shopify://shop_images/offers-4_10dca135-f01e-4ed8-a5d7-3fb477b10810.png",
+            "offer_title": "20% off Mothers Day Sale",
+            "offer_description": "USE CODE:  LOVEMOM",
+            "offer_button_text": "SHOP NOW",
+            "offer_button_url": "shopify://collections/all"
+          }
+        },
+        "offer_j6A8yg": {
+          "type": "offer",
+          "settings": {
+            "offer_image": "shopify://shop_images/offers-1_192befae-d6f7-4b0e-811d-ff2f2121605a.png",
+            "offer_title": "Free US Shipping on orders over $100",
+            "offer_description": "No code needed.",
+            "offer_button_text": "SHOP NOW",
+            "offer_button_url": "shopify://collections/all"
+          }
+        },
+        "offer_immkGt": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "offer_image": "shopify://shop_images/offers-2_576d523c-9340-4e84-a3e9-76b1bf5ce779.png",
+            "offer_title": "Buy 2, get 14% off(two Masks or two Bodys)",
+            "offer_description": "No code needed.",
+            "offer_button_text": "SHOP NOW",
+            "offer_button_url": "shopify://collections/all-products"
+          }
+        },
+        "offer_zH9iGa": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "offer_image": "shopify://shop_images/offers-3_74eaab53-0592-4179-91a2-9d91648520c0.png",
+            "offer_title": "Bundle and Save $Mask and Body",
+            "offer_description": "No code needed.",
+            "offer_button_text": "SHOP NOW",
+            "offer_button_url": "shopify://collections/all-products"
+          }
+        }
+      },
+      "block_order": [
+        "offer_twWyby",
+        "offer_j6A8yg",
+        "offer_immkGt",
+        "offer_zH9iGa"
+      ],
+      "custom_css": [
+        "{padding: 0px 20px 60px 20px;}"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "gs_hero_b36UCW",
+    "offer_blocks_c8EKbV"
+  ]
+}

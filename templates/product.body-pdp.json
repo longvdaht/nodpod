@@ -1,0 +1,691 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "yotpo_product_reviews_star_rating_DhKeUU": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "fsa_hsa_badge_EDLPy4": {
+          "type": "fsa_hsa_badge",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_liquid_wQ4TRW": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p class=\"subtitle\">{{ product.metafields.descriptors.subtitle }}</p>"
+          }
+        },
+        "divider_cLMHCN": {
+          "type": "divider",
+          "settings": {
+            "space": 16,
+            "color": "#d9d9d9"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "divider_7FnXyt": {
+          "type": "divider",
+          "settings": {
+            "space": 12,
+            "color": "#d9d9d9"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "text_i43CGF": {
+          "type": "text",
+          "settings": {
+            "text": "30-Day Money Back Guarantee",
+            "text_style": "body"
+          }
+        },
+        "divider_qRaJAm": {
+          "type": "divider",
+          "settings": {
+            "space": 16,
+            "color": "#d9d9d9"
+          }
+        },
+        "icon_with_text_dhMfjM": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/Group_374.svg",
+            "heading_1": "Clinically tested to eliminate acne-causing bacteria by over 99%",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/Group_375.svg",
+            "heading_2": "Stays fresher 3–5x longer between washes",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/Layer_1_1.svg",
+            "heading_3": "Promotes skin wellness while reducing hair friction"
+          }
+        },
+        "divider_H9xhmp": {
+          "type": "divider",
+          "disabled": true,
+          "settings": {
+            "space": 8,
+            "color": "#d9d9d9"
+          }
+        },
+        "tolstoy_shoppable_video_quiz_carousel_block_VhtDCa": {
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "1f2d8osnp99h6"
+          }
+        },
+        "tabs_RCq6T9": {
+          "type": "tabs",
+          "settings": {}
+        },
+        "product_tab_ixfDAL": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Details",
+            "content": "{{ product.description }}",
+            "page": ""
+          }
+        },
+        "product_tab_zymyec": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Materials",
+            "content": "<p>{{ product.metafields.custom.pdp_materials | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "product_tab_QRJWpQ": {
+          "type": "product_tab",
+          "disabled": true,
+          "settings": {
+            "title": "Size",
+            "content": "<p>{{ product.metafields.custom.pdp_size | metafield_tag }}Measures: 25\" x 30\"</p>",
+            "page": ""
+          }
+        },
+        "product_tab_CPPT6F": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Shipping + Returns",
+            "content": "<p>{{ product.metafields.custom.pdp_shipping | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "custom_liquid_ydG7Qh": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<img width=\"100%\" style=\"margin: 20px 0 0 0 !important;\" src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/pdp-icons-text.svg?v=1758741235\" />"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_star_rating_DhKeUU",
+        "fsa_hsa_badge_EDLPy4",
+        "title",
+        "price",
+        "custom_liquid_wQ4TRW",
+        "divider_cLMHCN",
+        "variant_picker",
+        "divider_7FnXyt",
+        "buy_buttons",
+        "text_i43CGF",
+        "divider_qRaJAm",
+        "icon_with_text_dhMfjM",
+        "divider_H9xhmp",
+        "tolstoy_shoppable_video_quiz_carousel_block_VhtDCa",
+        "tabs_RCq6T9",
+        "product_tab_ixfDAL",
+        "product_tab_zymyec",
+        "product_tab_QRJWpQ",
+        "product_tab_CPPT6F",
+        "custom_liquid_ydG7Qh"
+      ],
+      "custom_css": [
+        "ul.icon-with-text.icon-with-text--horizontal {background: #fafaf9; padding: 15px 20px 10px; border: 1px solid #d9d9d9; border-radius: 6px;}",
+        ".shopify-app-block {margin: 0 !important;}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 60,
+        "tabs_indicator_color": "#111111",
+        "tabs_line_color": "#e5e5e5"
+      }
+    },
+    "np_image_with_text_dXgRgJ": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_bMG8kN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Thoughtfully Designed for Better Sleep"
+          }
+        },
+        "liquid_ikwznA": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"np-points\">\n  <div class=\"product-highlight-points\">\n    <div class=\"product-point-img\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/Group_316.svg?v=1756227332\">\n    </div>\n    <div class=\"product-point-text\">\n      <h3>NATURALLY CALMING</h3>\n      <p>Perfect for overactive minds to help you fall asleep faster.</p>\n    </div>\n  </div>\n\n  <div class=\"product-highlight-points\">\n    <div class=\"product-point-img\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/Group_315.svg?v=1756227332\">\n    </div>\n    <div class=\"product-point-text\">\n      <h3>3 MINUTE MAGIC</h3>\n      <p>Feel the Deep Touch Pressure magic within minutes.</p>\n    </div>\n  </div>\n\n  <div class=\"product-highlight-points\">\n    <div class=\"product-point-img\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/Group_314.svg?v=1756227332\">\n    </div>\n    <div class=\"product-point-text\">\n      <h3>EASILY PORTABLE</h3>\n      <p>Nodpod’s compact size makes stress and anxiety relief on the go possible.</p>\n    </div>\n  </div>\n</div>"
+          }
+        },
+        "liquid_VKTJXK": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"mask-features\">\n  <div class=\"mask-feature\">\n    Weighted Comfort\n  </div>\n\n  <div class=\"feature-sep\">\n    |\n  </div>\n  \n  <div class=\"mask-feature\">\n    Full Body Calm\n  </div>\n\n  <div class=\"feature-sep\">\n    |\n  </div> \n  \n  <div class=\"mask-feature\">\n     Machine Washable\n  </div>\n\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bMG8kN",
+        "liquid_ikwznA",
+        "liquid_VKTJXK"
+      ],
+      "custom_css": [],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "pdp_product_highlight",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/Body_bone_pod_1.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "bottom",
+        "full_bkg_color": "#fafaf9",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "np_customer_reviews_XGJH6h": {
+      "type": "np-customer-reviews",
+      "custom_css": [
+        ".section-subheading,.section-main-heading,.section-main-text {text-align: center;}",
+        " {padding: 40px 20px 20px 20px; background: #ecebe7;}"
+      ],
+      "name": "Customer Review Section",
+      "settings": {
+        "subheading": "I Finally Sleep Through the Night",
+        "review_text": "\"The moment I lay it across me, I feel grounded. It’s like a hug for my whole body — instant peace.\"",
+        "reviewer_name": "Alyssa",
+        "background_color": "#ecebe7",
+        "border_color": "rgba(0,0,0,0)",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "wrapper_padding": 0
+      }
+    },
+    "custom_liquid_8p9yX7": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "h2 {font-weight: 300;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'pdp-videos-body.liquid' %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "scrolling_logo_list_WyAEy4": {
+      "type": "scrolling-logo-list",
+      "blocks": {
+        "logo_image_WXxiiB": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/al-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_xJAyUJ": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/nb-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_cbkVfN": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/wh-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_M3VhPB": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/fb-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_jFMm4z": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/gp-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_ACeF9B": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/wsj-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_dBfb3T": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/pp-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_WXxiiB",
+        "logo_image_xJAyUJ",
+        "logo_image_cbkVfN",
+        "logo_image_M3VhPB",
+        "logo_image_jFMm4z",
+        "logo_image_ACeF9B",
+        "logo_image_dBfb3T"
+      ],
+      "name": "Scrolling logo list",
+      "settings": {
+        "heading": "",
+        "headingAlignment": "start",
+        "logoVH_desktop": 5,
+        "logoVH_mobile": 3.5,
+        "logoPadding": 30,
+        "marqueeDirection": "false",
+        "marqueeSpeeds": 30,
+        "marqueePause": true,
+        "headingBg": "#a2b0a5",
+        "headingColor": "#000000",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "np_header_block_t9NWhT": {
+      "type": "np-header-block",
+      "blocks": {
+        "subheading_cFMjXn": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "NODPOD BODY"
+          }
+        },
+        "heading_R6yeaJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Frequently Asked Questions"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_cFMjXn",
+        "heading_R6yeaJ"
+      ],
+      "custom_css": [
+        ".main-title-block {max-width: 1700px; margin: 0 auto; padding: 0 20px;}",
+        "h1 {margin-top: 0;}",
+        "h4 {margin-bottom: 0; text-align: left !important;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 40,
+        "paddingLeft": 20,
+        "text_color": "#5d5e5d",
+        "full_bkg_color": "#ebeae6",
+        "text_alignment": "left",
+        "heading_size": "large"
+      }
+    },
+    "np_faqs_LFwaVc": {
+      "type": "np-faqs",
+      "blocks": {
+        "heading_BAXRTA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nodpod BODY"
+          }
+        },
+        "question_9TXFMG": {
+          "type": "question",
+          "settings": {
+            "title": "How do I wash my Nodpod BODY?",
+            "answer": "<p>To avoid stress on the seams, it is important to wash your Nodpod BODY with a full load of laundry. The best would be to wash it with a fluffy blanket or other large soft items. This will preserve the life of your Nodpod BODY.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_XD6xRU": {
+          "type": "question",
+          "settings": {
+            "title": "What makes this different from a full size weighted blanket?",
+            "answer": "<p>You do not need a full size weighted blanket in order to received the benefits of Deep Touch Pressure. Nodpod BODY's design offers concentrated weight to hug the areas that need it most.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_hHcnFf": {
+          "type": "question",
+          "settings": {
+            "title": "What is Nodpod BODY filled with?",
+            "answer": "<p>Nodpod BODY is filled with small, sand-like glass beads.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_4Fymnp": {
+          "type": "question",
+          "settings": {
+            "title": "Can my small child use my Nodpod BODY?",
+            "answer": "<p>No, we do not recommend using Nodpod BODY as the concentrated weighted could pose a suffocation hazard.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_wrgbHp": {
+          "type": "question",
+          "settings": {
+            "title": "Can I Microwave my Nodpod BODY?",
+            "answer": "<p>No. You can not microwave your Nodpod BODY.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_t8KEFt": {
+          "type": "question",
+          "settings": {
+            "title": "Is Nodpod BODY TSA approved?",
+            "answer": "<p>Yes!</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_pHWbAj": {
+          "type": "question",
+          "settings": {
+            "title": "What are the beads in Nodpod BODY made of? Are they safe?",
+            "answer": "<p>Yes, they are safe. The beads are smooth, round, sand-like glass beads.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_LiGA6x": {
+          "type": "question",
+          "settings": {
+            "title": "Who should not use a weighted blanket?",
+            "answer": "<p>Using a weighted blanket may not be suitable for individuals who have difficulty removing it from their body due to its weight. Furthermore, people with certain medical conditions such as sleep apnea, breathing difficulties like asthma, sleep disorders, or claustrophobia, should either refrain from using a weighted blanket or consult with a physician before doing so.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_fd8tBM": {
+          "type": "question",
+          "settings": {
+            "title": "Do your materials contain dangerous chemicals?",
+            "answer": "<p>All of Nodpod's materials meet and exceed the most stringent state and federal agencies' guidelines for safe materials.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_JAx63J": {
+          "type": "question",
+          "settings": {
+            "title": "Does 3-minute magic mean I'll be asleep in 3 minutes?",
+            "answer": "<p>Most people describe a feeling of relaxation, which is attributed to the science of Deep Touch Pressure within minutes. Not everyone experiences the same feeling as quickly. If you are not fully satisfied with your Nodpod we would be happy to refund you. </p>",
+            "expandAnswer": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_BAXRTA",
+        "question_9TXFMG",
+        "question_XD6xRU",
+        "question_hHcnFf",
+        "question_4Fymnp",
+        "question_wrgbHp",
+        "question_t8KEFt",
+        "question_pHWbAj",
+        "question_LiGA6x",
+        "question_fd8tBM",
+        "question_JAx63J"
+      ],
+      "custom_css": [
+        "{background: #ebeae6;}",
+        "section {max-width: 1700px; margin: 0 auto !important; padding: 20px 20px !important;}"
+      ],
+      "name": "NP FAQs",
+      "settings": {
+        "summary": false,
+        "summary_heading": "Topics",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "np_header_block_At6fRW": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_LcJcVP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Skeptical? So Were They."
+          }
+        }
+      },
+      "block_order": [
+        "heading_LcJcVP"
+      ],
+      "custom_css": [
+        "@media (max-width: 989px) {.main-page-heading {margin: 0; }}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#fafaf9",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "1758516193a0ad4d56": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_reviews_reviews_KgzwGn": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_reviews_KgzwGn"
+      ],
+      "custom_css": [
+        ".yotpo-head {display: none !important;}",
+        "#yotpo-app {background: #fafaf9;}"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "np_header_block_4NaeLR": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_yMVjVK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Complete Your Sleep Routine"
+          }
+        }
+      },
+      "block_order": [
+        "heading_yMVjVK"
+      ],
+      "custom_css": [
+        "@media (max-width: 989px) {.main-page-heading {margin: 0; }}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 50,
+        "paddingRight": 20,
+        "paddingBottom": 30,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "featured_products_feydpK": {
+      "type": "featured-products",
+      "blocks": {
+        "product_rbrTiK": {
+          "type": "product",
+          "settings": {
+            "product": "nodpod"
+          }
+        },
+        "product_7dzfwr": {
+          "type": "product",
+          "settings": {
+            "product": "nodpod-silk"
+          }
+        },
+        "product_ihzRhL": {
+          "type": "product",
+          "settings": {
+            "product": "nodpod-body-surprise"
+          }
+        }
+      },
+      "block_order": [
+        "product_rbrTiK",
+        "product_7dzfwr",
+        "product_ihzRhL"
+      ],
+      "custom_css": [
+        ".collection {max-width: 1400px; margin: auto;}"
+      ],
+      "name": "Featured products",
+      "settings": {
+        "products_to_show": 3,
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-size: 5rem; text-align: center; line-height: 1; margin-bottom: 60px; font-weight: 300;}"
+      ],
+      "settings": {
+        "heading": "Complete Your Sleep Routine",
+        "heading_size": "h2",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-4",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "np_image_with_text_dXgRgJ",
+    "np_customer_reviews_XGJH6h",
+    "custom_liquid_8p9yX7",
+    "scrolling_logo_list_WyAEy4",
+    "np_header_block_t9NWhT",
+    "np_faqs_LFwaVc",
+    "np_header_block_At6fRW",
+    "1758516193a0ad4d56",
+    "np_header_block_4NaeLR",
+    "featured_products_feydpK",
+    "related-products"
+  ]
+}

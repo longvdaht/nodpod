@@ -1,0 +1,325 @@
+{% comment %}
+  Custom Bundle Product Section
+  Creates a fake bundle with multiple product selections
+{% endcomment %}
+
+<div class="bundle-product section-{{ section.id }}-padding">
+  {{ 'bundle-product.css' | asset_url | stylesheet_tag }}
+  
+  <div class="page-width">
+    <div class="bundle-product__container">
+      
+      <!-- Bundle Header -->
+      <div class="bundle-product__header">
+        <h1 class="bundle-product__title">{{ section.settings.bundle_title }}</h1>
+        <div class="bundle-product__description">
+          {{ section.settings.bundle_description }}
+        </div>
+        <div class="bundle-product__savings">
+          <span class="bundle-product__savings-text">Bundle & Save 14%</span>
+        </div>
+      </div>
+
+      <!-- Bundle Form -->
+      <form id="bundle-form" class="bundle-product__form">
+        
+        <!-- Step 1: Mask Selection -->
+        <div class="bundle-step" data-step="mask">
+          <h3 class="bundle-step__title">Step 1: Choose Your Mask Color</h3>
+          <div class="bundle-options">
+            <label class="bundle-option">
+              <input type="radio" name="mask" value="45341214179498" data-price="6800" data-title="Mineralized Silk Mask - Petal" required>
+              <div class="bundle-option__content">
+                <img src="{{ '45341214179498.jpg' | asset_url }}" alt="Petal Mask" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Petal</h4>
+                  <p class="price">$68.00</p>
+                </div>
+              </div>
+            </label>
+            
+            <label class="bundle-option">
+              <input type="radio" name="mask" value="45341214146730" data-price="6800" data-title="Mineralized Silk Mask - Pearl" required>
+              <div class="bundle-option__content">
+                <img src="{{ '45341214146730.jpg' | asset_url }}" alt="Pearl Mask" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Pearl</h4>
+                  <p class="price">$68.00</p>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 2: Pillowcase Selection -->
+        <div class="bundle-step" data-step="pillowcase">
+          <h3 class="bundle-step__title">Step 2: Choose Your Pillowcase</h3>
+          <div class="bundle-options">
+            <label class="bundle-option">
+              <input type="radio" name="pillowcase" value="47411628769450" data-price="10200" data-title="Mineralized Silk Pillowcase - Petal Queen" required>
+              <div class="bundle-option__content">
+                <img src="{{ '47411628769450.jpg' | asset_url }}" alt="Petal Queen Pillowcase" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Petal - Queen</h4>
+                  <p class="price">$102.00</p>
+                </div>
+              </div>
+            </label>
+            
+            <label class="bundle-option">
+              <input type="radio" name="pillowcase" value="47451340210346" data-price="11200" data-title="Mineralized Silk Pillowcase - Petal King" required>
+              <div class="bundle-option__content">
+                <img src="{{ '47451340210346.jpg' | asset_url }}" alt="Petal King Pillowcase" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Petal - King</h4>
+                  <p class="price">$112.00</p>
+                </div>
+              </div>
+            </label>
+            
+            <label class="bundle-option">
+              <input type="radio" name="pillowcase" value="47411628736682" data-price="10200" data-title="Mineralized Silk Pillowcase - Pearl Standard" required>
+              <div class="bundle-option__content">
+                <img src="{{ '47411628736682.jpg' | asset_url }}" alt="Pearl Standard Pillowcase" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Pearl - Standard</h4>
+                  <p class="price">$102.00</p>
+                </div>
+              </div>
+            </label>
+            
+            <label class="bundle-option">
+              <input type="radio" name="pillowcase" value="47451340177578" data-price="11200" data-title="Mineralized Silk Pillowcase - Pearl King" required>
+              <div class="bundle-option__content">
+                <img src="{{ '47451340177578.jpg' | asset_url }}" alt="Pearl King Pillowcase" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Pearl - King</h4>
+                  <p class="price">$112.00</p>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 3: Scrunchie Selection -->
+        <div class="bundle-step" data-step="scrunchie">
+          <h3 class="bundle-step__title">Step 3: Choose Your Scrunchie</h3>
+          <div class="bundle-options">
+            <label class="bundle-option">
+              <input type="radio" name="scrunchie" value="47447561371818" data-price="3500" data-title="Mineralized Silk Scrunchie - Petal Skinny" required>
+              <div class="bundle-option__content">
+                <img src="{{ '47447561371818.jpg' | asset_url }}" alt="Petal Skinny Scrunchie" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Petal - Skinny</h4>
+                  <p class="price">$35.00</p>
+                </div>
+              </div>
+            </label>
+            
+            <label class="bundle-option">
+              <input type="radio" name="scrunchie" value="47451366817962" data-price="4500" data-title="Mineralized Silk Scrunchie - Petal Large" required>
+              <div class="bundle-option__content">
+                <img src="{{ '47451366817962.jpg' | asset_url }}" alt="Petal Large Scrunchie" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Petal - Large</h4>
+                  <p class="price">$45.00</p>
+                </div>
+              </div>
+            </label>
+            
+            <label class="bundle-option">
+              <input type="radio" name="scrunchie" value="47447561339050" data-price="3500" data-title="Mineralized Silk Scrunchie - Pearl Skinny" required>
+              <div class="bundle-option__content">
+                <img src="{{ '47447561339050.jpg' | asset_url }}" alt="Pearl Skinny Scrunchie" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Pearl - Skinny</h4>
+                  <p class="price">$35.00</p>
+                </div>
+              </div>
+            </label>
+            
+            <label class="bundle-option">
+              <input type="radio" name="scrunchie" value="47451366785194" data-price="4500" data-title="Mineralized Silk Scrunchie - Pearl Large" required>
+              <div class="bundle-option__content">
+                <img src="{{ '47451366785194.jpg' | asset_url }}" alt="Pearl Large Scrunchie" class="bundle-option__image">
+                <div class="bundle-option__details">
+                  <h4>Pearl - Large</h4>
+                  <p class="price">$45.00</p>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Bundle Summary -->
+        <div class="bundle-summary">
+          <div class="bundle-summary__content">
+            <div class="bundle-summary__pricing">
+              <div class="bundle-summary__row">
+                <span>Retail Price:</span>
+                <span class="bundle-retail-price">$0.00</span>
+              </div>
+              <div class="bundle-summary__row bundle-summary__savings">
+                <span>Bundle Discount (14%):</span>
+                <span class="bundle-discount">-$0.00</span>
+              </div>
+              <div class="bundle-summary__row bundle-summary__total">
+                <span>Bundle Price:</span>
+                <span class="bundle-total-price">$0.00</span>
+              </div>
+            </div>
+            
+            <button type="submit" class="bundle-add-to-cart button button--primary" disabled>
+              Add Bundle to Cart
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const bundleForm = document.getElementById('bundle-form');
+  const retailPriceEl = document.querySelector('.bundle-retail-price');
+  const discountEl = document.querySelector('.bundle-discount');
+  const totalPriceEl = document.querySelector('.bundle-total-price');
+  const addToCartBtn = document.querySelector('.bundle-add-to-cart');
+
+  function formatPrice(cents) {
+    return '$' + (cents / 100).toFixed(2);
+  }
+
+  function updatePricing() {
+    const maskInput = document.querySelector('input[name="mask"]:checked');
+    const pillowcaseInput = document.querySelector('input[name="pillowcase"]:checked');
+    const scrunchieInput = document.querySelector('input[name="scrunchie"]:checked');
+
+    if (!maskInput || !pillowcaseInput || !scrunchieInput) {
+      retailPriceEl.textContent = '$0.00';
+      discountEl.textContent = '-$0.00';
+      totalPriceEl.textContent = '$0.00';
+      addToCartBtn.disabled = true;
+      return;
+    }
+
+    const retailTotal = parseInt(maskInput.dataset.price) + 
+                       parseInt(pillowcaseInput.dataset.price) + 
+                       parseInt(scrunchieInput.dataset.price);
+    
+    const discountAmount = Math.round(retailTotal * 0.14);
+    const bundleTotal = retailTotal - discountAmount;
+
+    retailPriceEl.textContent = formatPrice(retailTotal);
+    discountEl.textContent = '-' + formatPrice(discountAmount);
+    totalPriceEl.textContent = formatPrice(bundleTotal);
+    addToCartBtn.disabled = false;
+  }
+
+  // Listen for radio button changes
+  bundleForm.addEventListener('change', updatePricing);
+
+  // Handle form submission
+  bundleForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const maskInput = document.querySelector('input[name="mask"]:checked');
+    const pillowcaseInput = document.querySelector('input[name="pillowcase"]:checked');
+    const scrunchieInput = document.querySelector('input[name="scrunchie"]:checked');
+
+    if (!maskInput || !pillowcaseInput || !scrunchieInput) {
+      alert('Please select all bundle items');
+      return;
+    }
+
+    addToCartBtn.textContent = 'Adding to Cart...';
+    addToCartBtn.disabled = true;
+
+    try {
+      // Add items to cart with bundle attributes
+      const items = [
+        {
+          id: parseInt(maskInput.value),
+          quantity: 1,
+          properties: {
+            '_bundled': 'silk_bundle',
+            '_bundle_item': 'mask',
+            '_bundle_title': maskInput.dataset.title
+          }
+        },
+        {
+          id: parseInt(pillowcaseInput.value),
+          quantity: 1,
+          properties: {
+            '_bundled': 'silk_bundle',
+            '_bundle_item': 'pillowcase',
+            '_bundle_title': pillowcaseInput.dataset.title
+          }
+        },
+        {
+          id: parseInt(scrunchieInput.value),
+          quantity: 1,
+          properties: {
+            '_bundled': 'silk_bundle',
+            '_bundle_item': 'scrunchie',
+            '_bundle_title': scrunchieInput.dataset.title
+          }
+        }
+      ];
+
+      const response = await fetch('/cart/add.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ items })
+      });
+
+      if (response.ok) {
+        // Trigger cart drawer/notification
+        document.dispatchEvent(new CustomEvent('cart:add', {
+          detail: { items: items }
+        }));
+        
+        // Redirect to cart or show success message
+        window.location.href = '/cart';
+      } else {
+        throw new Error('Failed to add items to cart');
+      }
+    } catch (error) {
+      console.error('Error adding bundle to cart:', error);
+      alert('There was an error adding the bundle to cart. Please try again.');
+    } finally {
+      addToCartBtn.textContent = 'Add Bundle to Cart';
+      addToCartBtn.disabled = false;
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Bundle Product",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bundle_title",
+      "label": "Bundle Title",
+      "default": "Silk Bundle"
+    },
+    {
+      "type": "richtext",
+      "id": "bundle_description",
+      "label": "Bundle Description",
+      "default": "<p>Create your perfect silk collection with our curated bundle.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Product"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,72 @@
+{%- comment -%}
+  Nodpod Mega Menu for Dawn
+  - Matches a top-level menu item by title (block.settings.linkTitle)
+  - Left column: heading + linked sub-menu
+  - Right column: up to two promo images with headings/CTA
+{%- endcomment -%}
+
+{%- assign top_menu = section.settings.menu -%}
+{%- if top_menu and linklists[top_menu] -%}
+<nav class="nodpod-mega header__inline-menu" aria-label="{{ 'sections.header.menu' | t }}">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in linklists[top_menu].links -%}
+      <li class="megamenu-wrapper">
+        <a
+          class="list-menu__item list-menu__item--link link focus-inset"
+          href="{{ link.url }}"
+          data-menu-link="{{ link.title | downcase }}"
+        >
+          {{- link.title -}}
+        </a>
+
+        {%- for block in section.blocks -%}
+          {%- assign link_title = link.title | downcase -%}
+          {%- assign block_title = block.settings.linkTitle | downcase -%}
+
+          {%- if block.type == 'megamenu' and block_title == link_title -%}
+            <div class="megamenu-area" {{ block.shopify_attributes }} aria-label="{{ link.title }}">
+              <div class="megamenu-menu-links">
+                <h2>{{ block.settings.linkTitle }}</h2>
+                {%- assign sub_menu = block.settings.linkedMenu -%}
+                {%- if sub_menu and linklists[sub_menu] -%}
+                  {%- for sublink in linklists[sub_menu].links -%}
+                    <a href="{{ sublink.url }}" class="megamenu-lv2-links">{{ sublink.title }}</a>
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+
+              <div class="megamenu-menu-images">
+                {%- if block.settings.megamenu_image_1 != blank -%}
+                  <div class="megamenu-menu-image" style="background-image:url('{{ block.settings.megamenu_image_1 | image_url }}')">
+                    <a href="{{ block.settings.megamenu_image_1_link | default: '#' }}">
+                      <div class="megamenu-image-text">
+                        <p style="color: {{ block.settings.link_1_text_color }}">{{ block.settings.megamenu_image_1_link_heading }}</p>
+                      </div>
+                      <div class="megamenu-image-link">
+                        <p style="color: {{ block.settings.link_1_text_color }}">{{ block.settings.megamenu_image_1_link_text }}</p>
+                      </div>
+                    </a>
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.megamenu_image_2 != blank -%}
+                  <div class="megamenu-menu-image" style="background-image:url('{{ block.settings.megamenu_image_2 | image_url }}')">
+                    <a href="{{ block.settings.megamenu_image_2_link | default: '#' }}">
+                      <div class="megamenu-image-text">
+                        <p style="color: {{ block.settings.link_2_text_color }}">{{ block.settings.megamenu_image_2_link_heading }}</p>
+                      </div>
+                      <div class="megamenu-image-link">
+                        <p style="color: {{ block.settings.link_2_text_color }}">{{ block.settings.megamenu_image_2_link_text }}</p>
+                      </div>
+                    </a>
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+{%- endif -%}

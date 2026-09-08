@@ -1,0 +1,248 @@
+{% comment %}
+  Scrolling Logo List — Dawn compatible
+  - Infinite marquee using pure CSS
+  - Direction, speed, pause-on-hover supported
+{% endcomment %}
+
+<section
+  id="logo-list-{{ section.id }}"
+  class="logo-list-scroller"
+>
+  <style>
+  /* ── Scrolling Logo List (fixed to use viewport-height sliders) ───────────── */
+  /* Scoped to this section instance */
+  #logo-list-{{ section.id }}{
+    --gap: {{ section.settings.logoPadding | default: 30 }}px;
+    --logo-w: {{ section.settings.logoWidth | default: 60 }}px; /* legacy, not used for sizing */
+    /* speed knob maps: duration = 1200 / speed (20..200 -> 60s..6s) */
+    --spd: {{ section.settings.marqueeSpeeds | default: 100 }};
+    --duration: calc(1200s / var(--spd));
+
+    --bg: {{ section.settings.headingBg }};
+    --title: {{ section.settings.headingColor }};
+    --align: {{ section.settings.headingAlignment }};
+    --pt: {{ section.settings.padding_top | default: 20 }}px;
+    --pb: {{ section.settings.padding_bottom | default: 20 }}px;
+
+    /* NEW: vh-controlled logo heights (mobile first, desktop override below) */
+    --logo-h-m: {{ section.settings.logoVH_mobile  | default: 5 }}vh;
+    --logo-h-d: {{ section.settings.logoVH_desktop | default: 5 }}vh;
+
+    background: var(--bg);
+    padding-block: var(--pt) var(--pb);
+  }
+
+  #logo-list-{{ section.id }} .logo-list__title{
+    color: var(--title);
+    text-align: var(--align);
+    margin: 0 0 1.2rem 0;
+  }
+
+  #logo-list-{{ section.id }} .marquee{
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Track = two equal rows next to each other, we animate the combined strip */
+  #logo-list-{{ section.id }} .marquee__track{
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: logo-scroll-{{ section.id }} var(--duration) linear infinite;
+  }
+
+  /* Reverse direction if requested */
+  {% if section.settings.marqueeDirection == 'true' %}
+    #logo-list-{{ section.id }} .marquee__track{ animation-direction: reverse; }
+  {% endif %}
+
+  /* Pause-on-hover (optional) */
+  {% if section.settings.marqueePause %}
+    #logo-list-{{ section.id }} .marquee:hover .marquee__track{ animation-play-state: paused; }
+  {% endif %}
+
+  #logo-list-{{ section.id }} .marquee__row{
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap);
+    /* Some padding so first/last logos aren’t glued to the edges */
+    padding-inline: var(--gap);
+  }
+
+  #logo-list-{{ section.id }} .logo{
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #logo-list-{{ section.id }} .logo a{ display: inline-block; }
+
+  /* ── Logo sizing: driven by viewport height ───────────────────────────────── */
+  #logo-list-{{ section.id }} .logo img,
+  #logo-list-{{ section.id }} .logo svg{
+    height: var(--logo-h-m);          /* mobile default */
+    width: auto !important;           /* preserve aspect ratio */
+    max-width: none !important;       /* prevent width from clamping height */
+    display: block;
+  }
+
+  /* Desktop height override */
+  @media (min-width: 750px){
+    #logo-list-{{ section.id }} .logo img,
+    #logo-list-{{ section.id }} .logo svg{
+      height: var(--logo-h-d);
+    }
+  }
+
+  /* Optional spacing overrides retained from legacy */
+  #logo-list-{{ section.id }} .marquee__row {
+    gap: 60px !important;
+    padding: 0px 30px !important;
+  }
+
+  /* Desktop “static row” mode (matches legacy behavior) */
+  @media (min-width: 1275px){
+    #logo-list-{{ section.id }} { --gap: 0px !important; }
+    #logo-list-{{ section.id }} .marquee { display:flex; justify-content:center; width:100%; }
+    #logo-list-{{ section.id }} .marquee__track { animation:none !important; transform:none !important; width:100%; }
+    #logo-list-{{ section.id }} .marquee__row { width:100%; justify-content:space-evenly; flex-wrap:nowrap; padding: 0px 12px !important; gap: 30px !important; }
+    #logo-list-{{ section.id }} .marquee__row[aria-hidden="true"] { display:none; }
+
+    /* height on desktop still controlled by the desktop slider */
+    #logo-list-{{ section.id }} .logo img,
+    #logo-list-{{ section.id }} .logo svg{
+      height: var(--logo-h-d);
+    }
+  }
+
+  /* Respect user reduced-motion preference */
+  @media (prefers-reduced-motion: reduce){
+    #logo-list-{{ section.id }} .marquee__track{ animation: none !important; transform: none !important; }
+  }
+
+  @keyframes logo-scroll-{{ section.id }}{
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); } /* because we render two equal rows */
+  }
+</style>
+
+  {% if section.settings.heading != blank %}
+    <h3 class="logo-list__title h3">{{ section.settings.heading }}</h3>
+  {% endif %}
+
+  <div class="marquee" aria-live="polite">
+    <div class="marquee__track">
+      <!-- Row A -->
+      <div class="marquee__row">
+        {% for block in section.blocks %}
+          <span class="logo" {{ block.shopify_attributes }}>
+            {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" {% if block.settings.newTab %}target="_blank" rel="nofollow noopener noreferrer"{% endif %}>{% endif %}
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 600
+                  | image_tag:
+                      class: 'logo-img',
+                      widths: '120,160,240,320,480,600',
+                      loading: 'lazy',
+                      alt: block.settings.image.alt | default: 'Logo' | escape
+                }}
+              {% else %}
+                {{ 'image' | placeholder_svg_tag }}
+              {% endif %}
+            {% if block.settings.link != blank %}</a>{% endif %}
+          </span>
+        {% endfor %}
+      </div>
+
+      <!-- Row B (duplicate of A, aria-hidden for accessibility) -->
+      <div class="marquee__row" aria-hidden="true">
+        {% for block in section.blocks %}
+          <span class="logo">
+            {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" {% if block.settings.newTab %}target="_blank" rel="nofollow noopener noreferrer"{% endif %}>{% endif %}
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 600
+                  | image_tag:
+                      class: 'logo-img',
+                      widths: '120,160,240,320,480,600',
+                      loading: 'lazy',
+                      alt: ''
+                }}
+              {% else %}
+                {{ 'image' | placeholder_svg_tag }}
+              {% endif %}
+            {% if block.settings.link != blank %}</a>{% endif %}
+          </span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Scrolling logo list",
+  "disabled_on": { "groups": ["header", "aside"] },
+  "presets": [
+    {
+      "name": "Scrolling logo list",
+      "category": "Image",
+      "blocks": [
+        { "type": "logo_image" },
+        { "type": "logo_image" },
+        { "type": "logo_image" },
+        { "type": "logo_image" },
+        { "type": "logo_image" },
+        { "type": "logo_image" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Leave blank to remove heading." },
+    {
+      "type": "select", "id": "headingAlignment", "label": "Heading alignment", "default": "start",
+      "options": [
+        { "value": "start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Right" }
+      ]
+    },
+    { "type": "range", "id": "logoVH_desktop", "label": "Logo height (desktop, vh)", "min": 2, "max": 20, "step": 0.5, "default": 5 },
+    { "type": "range",  "id": "logoVH_mobile",  "label": "Logo height (mobile, vh)",  "min": 2, "max": 20, "step": 0.5, "default": 5 },
+
+    { "type": "range", "label": "Space between logos", "id": "logoPadding", "min": 0, "max": 100, "step": 5, "default": 30 },
+    {
+      "type": "select", "id": "marqueeDirection", "label": "Scroll direction", "default": "false",
+      "options": [
+        { "value": "false", "label": "Right to left" },
+        { "value": "true", "label": "Left to right" }
+      ]
+    },
+    { "type": "range", "label": "Scrolling speed", "id": "marqueeSpeeds", "min": 20, "max": 200, "step": 5, "default": 100 },
+    { "type": "checkbox", "id": "marqueePause", "label": "Pause scrolling on hover", "default": true },
+
+    { "type": "header", "content": "Appearance" },
+    { "type": "color", "id": "headingBg", "label": "Background color", "default": "rgba(0,0,0,0)" },
+    { "type": "color", "id": "headingColor", "label": "Heading color", "default": "#000000" },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 2, "default": 20 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 2, "default": 20 }
+  ],
+  "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "newTab", "label": "Open link in tab", "default": false }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,357 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+
+{%- comment -%} Staff view: Theme Editor OR unpublished preview link {%- endcomment -%}
+{% assign staff_view = false %}
+{% if request.design_mode %}
+  {% assign staff_view = true %}
+{% else %}
+  {%- assign cf = content_for_header | downcase -%}
+  {% if cf contains 'preview_theme_id' or cf contains 'previewbarinjector' or cf contains 'shopify.preview' %}
+    {% assign staff_view = true %}
+  {% endif %}
+{% endif %}
+
+{%- assign swatch_grouping_enabled = false -%}
+{%- assign swatch_grouping_setting = product.metafields.custom.enable_swatch_grouping.value
+  | default: product.metafields.custom.enable_swatch_grouping
+-%}
+{%- if swatch_grouping_setting == true
+  or swatch_grouping_setting == 'true'
+  or swatch_grouping_setting == 1
+  or swatch_grouping_setting == '1'
+-%}
+  {%- assign swatch_grouping_enabled = true -%}
+{%- endif -%}
+
+{%- unless product.has_only_default_variant -%}
+  <variant-selects
+    id="variant-selects-{{ section.id }}"
+    data-section="{{ section.id }}"
+    {{ block.shopify_attributes }}
+  >
+    {%- for option in product.options_with_values -%}
+      {%- liquid
+        assign swatch_count = option.values | map: 'swatch' | compact | size
+        assign picker_type = block.settings.picker_type
+
+        if swatch_count > 0 and block.settings.swatch_shape != 'none'
+          if block.settings.picker_type == 'dropdown'
+            assign picker_type = 'swatch_dropdown'
+          else
+            assign picker_type = 'swatch'
+          endif
+        endif
+
+        assign opt_name = option.name | downcase | strip
+        if opt_name == 'color'
+          assign picker_type = 'swatch'
+        elsif opt_name == 'size'
+          assign picker_type = 'button'
+        endif
+      -%}
+      {%- if picker_type == 'swatch' -%}
+        <fieldset class="js product-form__input product-form__input--swatch">
+          {%- unless swatch_grouping_enabled -%}
+            <legend class="form__label">
+              {{ option.name }}:
+              <span data-selected-value>
+                {{- option.selected_value -}}
+              </span>
+            </legend>
+          {%- endunless -%}
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type,
+            staff_view: staff_view,
+            swatch_grouping_enabled: swatch_grouping_enabled
+          %}
+        </fieldset>
+      {%- elsif picker_type == 'button' -%}
+        <fieldset
+          class="js product-form__input product-form__input--pill"
+          data-option-name="{{ option.name | downcase }}"
+        >
+          <legend class="form__label">
+            {{ option.name }}:
+            <span data-selected-value>{{- option.selected_value -}}</span>
+          </legend>
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type,
+            staff_view: staff_view,
+            swatch_grouping_enabled: swatch_grouping_enabled
+          %}
+        </fieldset>
+      {%- else -%}
+        <div class="product-form__input product-form__input--dropdown">
+          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+            {{ option.name }}
+          </label>
+          <div class="select">
+            {%- if picker_type == 'swatch_dropdown' -%}
+              <span
+                data-selected-value
+                class="dropdown-swatch"
+              >
+                {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape %}
+              </span>
+            {%- endif -%}
+            <select
+              id="Option-{{ section.id }}-{{ forloop.index0 }}"
+              class="select__select"
+              name="options[{{ option.name | escape }}]"
+              form="{{ product_form_id }}"
+            >
+              {% render 'product-variant-options',
+                product: product,
+                option: option,
+                block: block,
+                picker_type: picker_type,
+                staff_view: staff_view,
+                swatch_grouping_enabled: swatch_grouping_enabled
+              %}
+            </select>
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- comment -%} Choose the initial variant correctly (prefer URL/selected) {%- endcomment -%}
+    {%- assign initial_variant = product.selected_variant | default: product.selected_or_first_available_variant -%}
+
+    {%- assign initial_ready = false -%}
+    {%- if initial_variant -%}
+      {%- assign rr1 = initial_variant.metafields.release.ready.value -%}
+      {%- assign rr2 = initial_variant.metafields.custom.release_ready.value -%}
+      {%- if rr1 == true
+        or rr1 == 'true'
+        or rr1 == 1
+        or rr1 == '1'
+        or rr2 == true
+        or rr2 == 'true'
+        or rr2 == 1
+        or rr2 == '1'
+      -%}
+        {%- assign initial_ready = true -%}
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- assign visible_variant = null -%}
+    {%- if staff_view or initial_ready -%}
+      {%- assign visible_variant = initial_variant -%}
+    {%- endif -%}
+
+    {%- unless visible_variant -%}
+      {%- for v in product.variants -%}
+        {%- assign rr1 = v.metafields.release.ready.value -%}
+        {%- assign rr2 = v.metafields.custom.release_ready.value -%}
+        {%- if rr1 == true
+          or rr1 == 'true'
+          or rr1 == 1
+          or rr1 == '1'
+          or rr2 == true
+          or rr2 == 'true'
+          or rr2 == 1
+          or rr2 == '1'
+        -%}
+          {%- assign visible_variant = v -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endunless -%}
+
+    <script type="application/json" data-selected-variant>
+      {{ visible_variant | default: product.selected_variant | default: product.selected_or_first_available_variant | json }}
+    </script>
+
+    <script type="application/json" data-product>
+      {{ product | json }}
+    </script>
+    <script type="application/json" data-url>
+      {{ product.url | json }}
+    </script>
+
+    <script>
+      (function () {
+        // Initialize variant picker and swatch grouping functionality
+        const picker = document.getElementById('variant-selects-{{ section.id }}');
+        if (!picker) return;
+
+        const form = document.getElementById('{{ product_form_id }}');
+        const idInput = form && form.querySelector('input[name="id"]');
+        const hasGroupedSwatches = picker.querySelector('.swatch-groups');
+        // Helper: Update collection label with selected color
+        function updateCollectionLabel(swatch) {
+          if (!swatch || !swatch.dataset.collectionIndex) return;
+          
+          const {collectionIndex, collectionName} = swatch.dataset;
+          const selectedValue = swatch.value;
+          
+          // Update the selected collection's label
+          const label = document.getElementById(`collection-label-{{ section.id }}-${collectionIndex}`);
+          if (label) {
+            label.innerHTML = `${collectionName}: <span>${selectedValue || ''}</span>`;
+          }
+          
+          // Reset other collection labels - keep span but empty
+          picker.querySelectorAll('[id^="collection-label-{{ section.id }}-"]').forEach((lbl) => {
+            if (lbl.id !== `collection-label-{{ section.id }}-${collectionIndex}`) {
+              const colName = lbl.getAttribute('data-collection-name') || '';
+              lbl.innerHTML = `${colName}: <span></span>`;
+            }
+          });
+        }
+        
+        // If grouped swatches exist but form isn't ready, initialize labels
+        if (!form || !idInput) {
+          if (hasGroupedSwatches) {
+            const checkedSwatch = picker.querySelector('input.pdp-color__input:checked');
+            if (checkedSwatch && checkedSwatch.dataset.collectionIndex) {
+              updateCollectionLabel(checkedSwatch);
+            }
+          }
+          return;
+        }
+
+        // Prefer local product JSON under the picker; else fall back to global (if present)
+        const productScript =
+          picker.querySelector('script[type="application/json"][data-product]') ||
+          document.querySelector('script[type="application/json"][data-product]');
+        const urlScript =
+          picker.querySelector('script[type="application/json"][data-url]') ||
+          document.querySelector('script[type="application/json"][data-url]');
+
+        let productData = null;
+        let baseUrl = null;
+        try {
+          productData = productScript ? JSON.parse(productScript.textContent) : null;
+        } catch {}
+        try {
+          baseUrl = urlScript ? JSON.parse(urlScript.textContent) : null;
+        } catch {}
+
+        if (!productData || !Array.isArray(productData.variants)) return;
+
+        function currentOptions() {
+          // collects radios & selects in order of option position
+          const fields = Array.from(
+            picker.querySelectorAll('input[type="radio"][name^="options["]:checked, select[name^="options["]')
+          );
+          // Sort by Option index to ensure correct order (Option1, Option2, Option3)
+          fields.sort((a, b) => {
+            const ai = (a.name.match(/\[(.*?)\]/)?.[1] || '').toLowerCase();
+            const bi = (b.name.match(/\[(.*?)\]/)?.[1] || '').toLowerCase();
+            const rank = { option1: 0, 'option 1': 0, option2: 1, 'option 2': 1, option3: 2, 'option 3': 2 };
+            // Fall back: color/size/etc – keep original order if unknown
+            const ra = rank[ai] ?? fields.indexOf(a);
+            const rb = rank[bi] ?? fields.indexOf(b);
+            return ra - rb;
+          });
+          return fields.map((el) => el.value);
+        }
+
+        function findVariantByOptions(opts) {
+          // Match by Shopify’s option1/2/3
+          return (
+            productData.variants.find((v) => {
+              const vox = [v.option1, v.option2, v.option3].filter((x) => x != null);
+              return vox.every((val, i) => val === opts[i]);
+            }) || null
+          );
+        }
+
+        function applyVariant(variant) {
+          if (!variant) return;
+          // 1) Update hidden variant id input used by Add to Cart
+          idInput.value = String(variant.id);
+
+          // 2) Update the URL if this section opted in
+          const productInfo = document.querySelector('product-info[data-update-url="true"]');
+          if (productInfo) {
+            try {
+              const url = new URL(window.location.href);
+              url.searchParams.set('variant', variant.id);
+              history.replaceState({}, '', url.toString());
+            } catch {}
+          }
+
+          // 3) Announce to theme scripts (price/media/inventory handlers)
+          document.dispatchEvent(
+            new CustomEvent('variant:change', {
+              detail: { variant: variant, sectionId: '{{ section.id }}' },
+            })
+          );
+        }
+
+        function onChange() {
+          const opts = currentOptions();
+          const variant = findVariantByOptions(opts);
+          applyVariant(variant);
+        }
+
+        // Listen to variant option changes
+        picker.addEventListener('change', (e) => {
+          const target = e.target;
+          if (!target || !target.name || !target.name.startsWith('options[')) return;
+          
+          // Update collection label for grouped swatches
+          if (target.classList.contains('pdp-color__input') && target.dataset.collectionIndex) {
+            updateCollectionLabel(target);
+          }
+          
+          onChange();
+        }, true);
+
+        // Initialize collection labels on page load
+        function initializeCollectionLabel() {
+          let checkedSwatch = picker.querySelector('input.pdp-color__input:checked');
+          
+          // Auto-select first available swatch if none selected
+          if (!checkedSwatch) {
+            const firstGroup = picker.querySelector('.swatch-group__row');
+            if (firstGroup) {
+              const firstAvailableSwatch = firstGroup.querySelector('input.pdp-color__input:not(.sold-out)') 
+                || firstGroup.querySelector('input.pdp-color__input');
+              
+              if (firstAvailableSwatch) {
+                firstAvailableSwatch.checked = true;
+                checkedSwatch = firstAvailableSwatch;
+                firstAvailableSwatch.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+            }
+          }
+          
+          // Update the collection label
+          if (checkedSwatch && checkedSwatch.dataset.collectionIndex) {
+            updateCollectionLabel(checkedSwatch);
+          }
+        }
+        
+        // Initial variant sync
+        onChange();
+        
+        // Initialize collection labels for grouped swatches immediately
+        if (hasGroupedSwatches) {
+          initializeCollectionLabel();
+        }
+      })();
+    </script>
+  </variant-selects>
+{%- endunless -%}

@@ -1,0 +1,258 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "np_hero_banner_UHM6pc": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_xriz33": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cloud_photo_1_1.png",
+            "imageMobile": "shopify://shop_images/cloud_photo_2.png",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_xriz33"
+      ],
+      "custom_css": [
+        "p {padding-top: 20px;}",
+        "@media (max-width: 989px) {h2 {font-size: 4rem; } p {font-size: 1.55rem !important; padding-top: 15px; }}"
+      ],
+      "name": "Hero banner (Dawn)",
+      "settings": {
+        "block_id": "sustainability",
+        "overlay_position": "middle_center",
+        "overlay_max_width": 60,
+        "overlay_position_mobile": "middle",
+        "overlay_align_mobile": "same_as_desktop",
+        "subtitle": "OUR COMMITMENT TO SUSTAINABILITY",
+        "title": "The choices we make every day are directly linked to our planet’s health.",
+        "content": "As a global brand, we’re acutely aware of the impact that our actions can have on the environment, and so we are committed to an ambitious new Healthy Planet initiative.",
+        "cta": "Shop more",
+        "url": "",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#75787b",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "var(--heroHeight-l)",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": false,
+        "mobile_full_height_max_px": 700
+      }
+    },
+    "custom_liquid_TBwmRF": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "{padding: 15px 20px; background: #ffffff; border-top: 1px solid; border-bottom: 1px solid;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"about-menu-page\">\n<a href=\"/pages/our-story\" class=\"about-menu-link\">Our Story</a>\n<a href=\"/pages/sustainability\" class=\"about-menu-link active\">Sustainability</a>\n<a href=\"/pages/our-impact\" class=\"about-menu-link\">Our Impact</a>\n</div>\n\n<style>\n.about-menu-page {\n  display: flex;\n  justify-content: center;\n  gap: 20px;\n  flex-wrap: wrap;\n}\n.about-menu-link {\n  font-family: \"larken\";\n  font-size: 2rem;\n  text-decoration: none;\n  font-weight: 300;\n  color: #75787b;\n}\n.about-menu-link.active {\n  text-decoration: underline;\n  font-weight: 400;\n  font-style: italic;\n  text-underline-offset: 5px;\n  text-decoration-thickness: 1.5px;\n  color: #75787b;\n}\n</style>",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "np_image_with_text_JVEWkq": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_HU9WPg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Environmental Impact"
+          }
+        },
+        "text_jbwJTF": {
+          "type": "text",
+          "settings": {
+            "text": "At Nodpod, we believe small, thoughtful choices can lead to meaningful change. That’s why all of our packaging is fully recyclable, and why we donate gently used Nodpods through our partnership with TerraCycle. We’ve made a conscious effort to limit waste wherever possible (more on that below!), but we know we have a long way to go."
+          }
+        }
+      },
+      "block_order": [
+        "heading_HU9WPg",
+        "text_jbwJTF"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/Jordan_Taylor_x_Nodpod_0818_1_1.png",
+        "image_position": "right",
+        "mobile_image_position": "bottom",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "np_image_with_text_cGEijY": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_HFMpr3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Materials"
+          }
+        },
+        "text_gJmwkt": {
+          "type": "text",
+          "settings": {
+            "text": "At Nodpod, protecting our planet is a top priority. That’s why our products are OEKO-TEX® certified. Our 100% recyclable tubes are made from responsibly sourced, FSC-certified materials and printed with water-based ink."
+          }
+        }
+      },
+      "block_order": [
+        "heading_HFMpr3",
+        "text_gJmwkt"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/Ellipse_69_3.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": true,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "np_header_block_PekLYA": {
+      "type": "np-header-block",
+      "blocks": {
+        "subheading_QFcPic": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "FOUNDER'S QUOTE"
+          }
+        },
+        "heading_wRWbR8": {
+          "type": "heading",
+          "settings": {
+            "heading": "“I wanted to create a brand that was thoughtfully made, inside and out. From the products to the packaging, and even the suppliers we partner with... we’re constantly learning and improving to make everything better for you, and the environment.”"
+          }
+        },
+        "image_VqdVQE": {
+          "type": "image",
+          "settings": {
+            "logoImage": "shopify://shop_images/melissa-sig.svg",
+            "logoWidth": 200
+          }
+        }
+      },
+      "block_order": [
+        "subheading_QFcPic",
+        "heading_wRWbR8",
+        "image_VqdVQE"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "np_image_with_text_QhUtqC": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_rMDmMy": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shipping Boxes & Everything Inside"
+          }
+        },
+        "text_P9Qgw6": {
+          "type": "text",
+          "settings": {
+            "text": "We’ve partnered with TerraCycle to upcycle damaged Nodpod’s into raw materials that can be used to manufacture new household items."
+          }
+        }
+      },
+      "block_order": [
+        "heading_rMDmMy",
+        "text_P9Qgw6"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/Jordan_Taylor_x_Nodpod_0818_2.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 30,
+        "paddingRight": 20,
+        "paddingBottom": 30,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#fafaf9",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "np_hero_banner_UHM6pc",
+    "custom_liquid_TBwmRF",
+    "np_image_with_text_JVEWkq",
+    "np_image_with_text_cGEijY",
+    "np_header_block_PekLYA",
+    "np_image_with_text_QhUtqC"
+  ]
+}

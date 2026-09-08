@@ -1,0 +1,357 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "np_hero_banner_UHM6pc": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_xriz33": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cloud_photo_1.png",
+            "imageMobile": "shopify://shop_images/cloud_photo_1_b0e7b965-40c8-4996-a116-97d3cf5cc9a1.png",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_xriz33"
+      ],
+      "custom_css": [
+        "p {padding-top: 20px;}",
+        "@media (max-width: 989px) {h2 {font-size: 4rem; } p {font-size: 1.55rem !important; padding-top: 15px; }}"
+      ],
+      "name": "Hero banner (Dawn)",
+      "settings": {
+        "block_id": "our_story",
+        "overlay_position": "middle_center",
+        "overlay_max_width": 60,
+        "overlay_position_mobile": "middle",
+        "overlay_align_mobile": "same_as_desktop",
+        "subtitle": "THE NODPOD STORY",
+        "title": "We’re on a mission to revolutionize the way people sleep.",
+        "content": "We believe everyone deserves quality sleep, and that’s why we’re dedicated to creating innovative weighted sleep products to enhance relaxation and encourage deep, restful sleep.",
+        "cta": "Shop more",
+        "url": "",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#75787b",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "var(--heroHeight-l)",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": false,
+        "mobile_full_height_max_px": 700
+      }
+    },
+    "custom_liquid_TBwmRF": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "{padding: 15px 20px; background: #ffffff; border-top: 1px solid; border-bottom: 1px solid;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"about-menu-page\">\n<a href=\"/pages/our-story\" class=\"about-menu-link active\">Our Story</a>\n<a href=\"/pages/sustainability\" class=\"about-menu-link\">Sustainability</a>\n<a href=\"/pages/our-impact\" class=\"about-menu-link\">Our Impact</a>\n</div>\n\n<style>\n.about-menu-page {\n  display: flex;\n  justify-content: center;\n  gap: 20px;\n  flex-wrap: wrap;\n}\n.about-menu-link {\n  font-family: \"larken\";\n  font-size: 2rem;\n  text-decoration: none;\n  font-weight: 300;\n  color: #75787b;\n}\n.about-menu-link.active {\n  text-decoration: underline;\n  font-weight: 400;\n  font-style: italic;\n  text-underline-offset: 5px;\n  text-decoration-thickness: 1.5px;\n  color: #75787b;\n}\n</style>",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "np_header_block_4YykyP": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_dqkDxX": {
+          "type": "heading",
+          "settings": {
+            "heading": "Watch Our Story"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dqkDxX"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 50,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "custom_liquid_LhPHUW": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".video-player {max-width: 850px; width: 90%; border: 1px solid #eeeeee;}",
+        ".custom-html {text-align: center;}",
+        " {z-index: 1; position: relative; background: #fafaf9; padding: 0 0 20px 0; text-align: center;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"video-container\">\n    <video class=\"video-player\" loop>\n        <source src=\"https://cdn.shopify.com/videos/c/o/v/4b29512835814efda85f1846c19e982a.mp4\" type=\"video/mp4\">\n        Your browser does not support the video tag.\n    </video>\n    <div class=\"play-button\"><i class=\"fa-solid fa-play\"></i></div>\n</div>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    document.querySelectorAll(\".video-container\").forEach(container => {\n        const video = container.querySelector(\".video-player\");\n        const playButton = container.querySelector(\".play-button\");\n\n        function togglePlay() {\n            if (video.paused) {\n                video.play();\n                playButton.style.opacity = \"0\"; // Hide play button\n            } else {\n                video.pause();\n                playButton.style.opacity = \"1\"; // Show play button\n            }\n        }\n\n        video.addEventListener(\"click\", togglePlay);\n        playButton.addEventListener(\"click\", togglePlay);\n\n        video.addEventListener(\"play\", () => playButton.style.opacity = \"0\");\n        video.addEventListener(\"pause\", () => playButton.style.opacity = \"1\");\n    });\n});\n</script>",
+        "color_scheme": "scheme-2",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_A4X669": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "{width: 100%; overflow: hidden;}",
+        "h2 {padding-top: 40px; font-size: 6rem; line-height: 1.1;}",
+        "@media (max-width: 777px) {h2 {font-size: 4rem; } .timeline-wrapper {padding: 0px 10px 0 10px; }}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'timeline' %}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "np_image_with_text_JVEWkq": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_HU9WPg": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Us"
+          }
+        },
+        "text_jbwJTF": {
+          "type": "text",
+          "settings": {
+            "text": "Nodpod is a female-founded and owned sleep-wellness brand out of California offering award-winning weighted sleep products. A good night’s sleep is essential to overall health and well-being and Nodpod’s products are not just products, they’re a lifestyle."
+          }
+        },
+        "button_FYHxzh": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_type": "full",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HU9WPg",
+        "text_jbwJTF",
+        "button_FYHxzh"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/about-us-our-story.png",
+        "image_position": "right",
+        "mobile_image_position": "bottom",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "np_image_with_text_cGEijY": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_HFMpr3": {
+          "type": "heading",
+          "settings": {
+            "heading": "A Note From Our Founder"
+          }
+        },
+        "text_gJmwkt": {
+          "type": "text",
+          "settings": {
+            "text": "Give us 3 minutes, and you’ll start to feel the Deep Touch Pressure magic start to sink in. Cheers to a good night’s sleep and the magical possibilities of what tomorrow brings."
+          }
+        },
+        "image_3cVrnG": {
+          "type": "image",
+          "settings": {
+            "logoImage": "shopify://shop_images/women-owned-logo.svg",
+            "logoWidth": 150
+          }
+        }
+      },
+      "block_order": [
+        "heading_HFMpr3",
+        "text_gJmwkt",
+        "image_3cVrnG"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/founder.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": true,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "np_header_block_PekLYA": {
+      "type": "np-header-block",
+      "blocks": {
+        "subheading_QFcPic": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "FOUNDER'S QUOTE"
+          }
+        },
+        "heading_wRWbR8": {
+          "type": "heading",
+          "settings": {
+            "heading": "“We can all use less stress and better sleep in our lives.”"
+          }
+        },
+        "image_VqdVQE": {
+          "type": "image",
+          "settings": {
+            "logoImage": "shopify://shop_images/melissa-sig.svg",
+            "logoWidth": 200
+          }
+        }
+      },
+      "block_order": [
+        "subheading_QFcPic",
+        "heading_wRWbR8",
+        "image_VqdVQE"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "multicolumn_aqgcgx": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_weqthY": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Nodpod_Webpage_v3-03.png",
+            "title": "Peace of Mind",
+            "text": "<p>Soft, breathable fabric that’s <a href=\"https://www.oeko-tex.com/en/detail?number=23.HCN.49596\" target=\"_blank\">OEKO-TEX® </a>certified which means they’re free from harmful chemicals.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_gphjd6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Nodpod_Webpage_v3-02.png",
+            "title": "Our Impact",
+            "text": "<p>Nodpod donates 1% of all online sales to mental health support, partnering with The Art Therapy Project and To Write Love On Her Arms.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ddRki9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Nodpod_Webpage_v3-01.png",
+            "title": "Doing Our Part",
+            "text": "<p>We donate gently used and excess nodpods to GiveNKind, giving our products a second life while helping people in need. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_weqthY",
+        "column_gphjd6",
+        "column_ddRki9"
+      ],
+      "custom_css": [
+        "{padding: 80px 0;}",
+        "h3 {font-size: 3.75rem; font-weight: 300;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "reverse_content": false,
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main",
+    "np_hero_banner_UHM6pc",
+    "custom_liquid_TBwmRF",
+    "np_header_block_4YykyP",
+    "custom_liquid_LhPHUW",
+    "custom_liquid_A4X669",
+    "np_image_with_text_JVEWkq",
+    "np_image_with_text_cGEijY",
+    "np_header_block_PekLYA",
+    "multicolumn_aqgcgx"
+  ]
+}

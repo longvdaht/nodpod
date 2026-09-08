@@ -1,0 +1,631 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "np_header_block_zwTKM4": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_dDXMpG": {
+          "type": "heading",
+          "settings": {
+            "heading": "How can we help you today?"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dDXMpG"
+      ],
+      "custom_css": [
+        "{padding: 120px 0;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 100,
+        "paddingRight": 20,
+        "paddingBottom": 100,
+        "paddingLeft": 20,
+        "text_color": "#ffffff",
+        "full_bkg_color": "#ffffff",
+        "background_image": "shopify://shop_images/faq-banner-desktop.png",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "np_faqs_BW8jXf": {
+      "type": "np-faqs",
+      "blocks": {
+        "heading_RqVyrh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nodpod"
+          }
+        },
+        "question_Q9cxXr": {
+          "type": "question",
+          "settings": {
+            "title": "Can I use Nodpod for side sleeping?",
+            "answer": "<p>Yes. It works incredibly for side sleeping. Be sure to use the last two pods over your eyes and rest your head on the hollow end.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_xiR4qj": {
+          "type": "question",
+          "settings": {
+            "title": "Will it stay on all night?",
+            "answer": "<p>The purpose of nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_4QpTca": {
+          "type": "question",
+          "settings": {
+            "title": "Does nodpod come in different weight options?",
+            "answer": "<p>Nodpod was designed with the comfort in mind. We've experimented with every weight down to the bead, and found that 9 ounces, evenly distributed, was the perfect weight for all sleeping positions.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_UzptjW": {
+          "type": "question",
+          "settings": {
+            "title": "How does the cool-side, warm-side work?",
+            "answer": "<p>It's simply how the air passes through the two different materials. One side is made of a cooling jersey cotton and the other side a warmer, microfiber fleece.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_Wt8RE4": {
+          "type": "question",
+          "settings": {
+            "title": "Isn’t organic material fill better than plastic beads?",
+            "answer": "<p>Although that may sound like the better option, organic fill material over time produces mold spores and cannot be washed. Our fill material, made of small, round plastic beads, does not promote the surface growth of bacteria.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_VVtKF6": {
+          "type": "question",
+          "settings": {
+            "title": "What are the benefits of weighted product?",
+            "answer": "<p>Deep Touch Pressure Stimulation is known for its ability to calm and relax the central nervous system and has been used in clinical practice for decades. It's simply the practice of applying gently pressure to the body. This has been shown to increase serotonin levels (the feel-good hormone) while decreasing cortisol (the stress hormone). Just the kind of thing you need for a good night's sleep.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_QHyqiV": {
+          "type": "question",
+          "settings": {
+            "title": "I have an eye condition. Is your mask safe to use?",
+            "answer": "<p>Nodpod is not aware of any studies that have evaluated patients with conditions related to ocular hypertension, like glaucoma or other eye conditions, using weighted sleep masks.  Therefore, we recommend that you consult with your physician before using Nodpod.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_cayAYq": {
+          "type": "question",
+          "settings": {
+            "title": "Can I wash and dry my Nodpod?",
+            "answer": "<p>Nodpod is easy to care for. It can be washed on a normal setting with a full load inside a garment bag. We recommend washing your Nodpod before first use. Although Nodpod is dryer safe, we recommend that you air dry for longevity.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_w8RwGY": {
+          "type": "question",
+          "settings": {
+            "title": "Can I freeze my nodpod?",
+            "answer": "<p>Yes, it feels amazing this way. It stays soft and flexible.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_kbjRn3": {
+          "type": "question",
+          "settings": {
+            "title": "What are the beads in the nodpod made of? Are they safe?",
+            "answer": "<p>Yes, very safe. The microbeads are made of 100% Polyethylene (PE) plastic pellets, which is the most common plastic in use today. It's used in medical equipment, food containers, and children's stuffed animals. These beads are nontoxic, BPA free and hypoallergenic.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_e9Rp3F": {
+          "type": "question",
+          "settings": {
+            "title": "Is Nodpod scented?",
+            "answer": "<p>Nodpod is scent-free.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_JQf7W9": {
+          "type": "question",
+          "settings": {
+            "title": "Who can use Nodpod?",
+            "answer": "<p>We recommend the nodpod for those 12 and older who are able to independently and correctly place and remove the nodpod themselves. Never use the nodpod, or any weighted product, on or near an infant or impaired person.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_JRfwKq": {
+          "type": "question",
+          "settings": {
+            "title": "Is Nodpod completely light blocking?",
+            "answer": "<p>The microbeads settle into the contours around your eyes and nose, closing the gaps where light usually sneaks in. How close you get to total darkness depends on the color. Our darkest shades come nearest to full blackout; lighter shades like Bone let a small amount of light through. If a pitch-black room is your priority, we suggest choosing a dark color.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_mmdUA4": {
+          "type": "question",
+          "settings": {
+            "title": "Do your materials contain dangerous chemicals?",
+            "answer": "<p>All of Nodpod's materials meet and exceed the most stringent state and federal agencies' guidelines for safe materials.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_reH6jg": {
+          "type": "question",
+          "settings": {
+            "title": "How do I use Nodpod upright?",
+            "answer": "<p>Nodpod has hollow end tabs by design. One end has a slit, one without. Feed the end without the slit through the slit and adjust for head size. </p>",
+            "expandAnswer": false
+          }
+        },
+        "question_PLUHGY": {
+          "type": "question",
+          "settings": {
+            "title": "How should I use my Nodpod?",
+            "answer": "<p>Nodpod was designed to be worn freely in any horizontal sleeping position. It's designed to get you to sleep, not to stay on all night. For seated and upright use we've designed a pull-through slit to fasten Nodpod in place.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_CMjEin": {
+          "type": "question",
+          "settings": {
+            "title": "How do I use Nodpod upright?",
+            "answer": "<p>Nodpod has hollow end tabs by design. One end has a slit, one without. Feed the end without the slit through the slit and adjust for head size. </p>",
+            "expandAnswer": false
+          }
+        },
+        "question_FMTMfE": {
+          "type": "question",
+          "settings": {
+            "title": "How should I use my Nodpod?",
+            "answer": "<p>Nodpod was designed to be worn freely in any horizontal sleeping position. It's designed to get you to sleep, not to stay on all night. For seated and upright use we've designed a pull-through slit to fasten Nodpod in place.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_EWKy4c": {
+          "type": "question",
+          "settings": {
+            "title": "Does 3-minute magic mean I'll be asleep in 3 minutes?",
+            "answer": "<p>Most people describe a feeling of relaxation, which is attributed to the science of Deep Touch Pressure within minutes. Not everyone experiences the same feeling as quickly. If you are not fully satisfied with your Nodpod we would be happy to refund you. </p>",
+            "expandAnswer": false
+          }
+        },
+        "heading_b4t9HF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nodpod Silk"
+          }
+        },
+        "question_W6qzPK": {
+          "type": "question",
+          "settings": {
+            "title": "Can I use nodpod for side sleeping?",
+            "answer": "<p>Yes. It works incredibly for side sleeping. Be sure to use the last two pods over your eyes and rest your head on the hollow end.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_F8mQWb": {
+          "type": "question",
+          "settings": {
+            "title": "Will it stay on all night?",
+            "answer": "<p>The purpose of nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
+            "expandAnswer": false
+          }
+        },
+        "heading_XTGwKR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nodpod BODY"
+          }
+        },
+        "question_iHVmKr": {
+          "type": "question",
+          "settings": {
+            "title": "Is Nodpod BODY TSA Approved?",
+            "answer": "<p>Due to the weighted microbead filling inside Nodpod BODY, airport security screening experiences may vary by airport and country. While many travelers successfully fly with Nodpod BODY, some domestic and international security agencies may require additional inspection or, in rare cases, may prohibit weighted items from carry-on baggage at their discretion. For the smoothest travel experience, we strongly recommend packing your Nodpod BODY in checked luggage whenever possible. Please note that security screening policies are determined by individual airports and governing agencies and may change without notice.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_mWA49F": {
+          "type": "question",
+          "settings": {
+            "title": "How do I wash my Nodpod BODY?",
+            "answer": "<p>To avoid stress on the seams, it is important to wash your Nodpod BODY with a full load of laundry. The best would be to wash it with a fluffy blanket or other large soft items. This will preserve the life of your Nodpod BODY.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_3KCwCt": {
+          "type": "question",
+          "settings": {
+            "title": "What makes this different from a full size weighted blanket?",
+            "answer": "<p>You do not need a full size weighted blanket in order to received the benefits of Deep Touch Pressure. Nodpod BODY's design offers concentrated weight to hug the areas that need it most.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_tHCqG9": {
+          "type": "question",
+          "settings": {
+            "title": "What is Nodpod BODY filled with?",
+            "answer": "<p>Nodpod BODY is filled with small, sand-like glass beads.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_Tj3tjp": {
+          "type": "question",
+          "settings": {
+            "title": "Can my small child use my Nodpod BODY?",
+            "answer": "<p>No, we do not recommend using Nodpod BODY as the concentrated weighted could pose a suffocation hazard.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_fYnGpT": {
+          "type": "question",
+          "settings": {
+            "title": "Can I Microwave my Nodpod BODY?",
+            "answer": "<p>No. You can not microwave your Nodpod BODY.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_BcGrTF": {
+          "type": "question",
+          "settings": {
+            "title": "Can I freeze my Nodpod BODY?",
+            "answer": "<p>For extra cooling relief, yes, you can put your Nodpod BODY in the freezer.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_ajEpWA": {
+          "type": "question",
+          "settings": {
+            "title": "Who should not use a weighted blanket?",
+            "answer": "<p>Using a weighted blanket may not be suitable for individuals who have difficulty removing it from their body due to its weight. Furthermore, people with certain medical conditions such as sleep apnea, breathing difficulties like asthma, sleep disorders, or claustrophobia, should either refrain from using a weighted blanket or consult with a physician before doing so.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_gUMgBN": {
+          "type": "question",
+          "settings": {
+            "title": "Do your materials contain dangerous chemicals?",
+            "answer": "<p>All of Nodpod's materials meet and exceed the most stringent state and federal agencies' guidelines for safe materials.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_Cair8M": {
+          "type": "question",
+          "settings": {
+            "title": "Does 3-minute magic mean I'll be asleep in 3 minutes?",
+            "answer": "<p>Most people describe a feeling of relaxation, which is attributed to the science of Deep Touch Pressure within minutes. Not everyone experiences the same feeling as quickly. If you are not fully satisfied with your Nodpod we would be happy to refund you. </p>",
+            "expandAnswer": false
+          }
+        },
+        "heading_CCAcht": {
+          "type": "heading",
+          "settings": {
+            "heading": "HSA/FSA"
+          }
+        },
+        "question_8pp6FE": {
+          "type": "question",
+          "settings": {
+            "title": "Can I use my HSA or FSA to pay for Nodpod products?",
+            "answer": "<p>Yes. Nodpod products may qualify for HSA/FSA reimbursement when purchased with a Letter of Medical Necessity (LMN) through our partner, Truemed. Truemed determines eligibility at checkout in real time.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_yEUyAz": {
+          "type": "question",
+          "settings": {
+            "title": "How does it work?",
+            "answer": "<p>At checkout, select the Truemed HSA/FSA payment option. You'll answer a few quick health-related questions, and Truemed's clinical team will confirm eligibility. If approved, you can pay directly with your HSA/FSA card — no separate reimbursement claim needed.</p><p><em>Note: If you have a Shop account, you'll need to check out as a guest for the Truemed option to appear.</em></p>",
+            "expandAnswer": false
+          }
+        },
+        "question_Y6LYB7": {
+          "type": "question",
+          "settings": {
+            "title": "Do I need a doctor's note?",
+            "answer": "<p>No separate visit is required. Truemed's LMN process happens online in minutes as part of checkout.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_VLiA68": {
+          "type": "question",
+          "settings": {
+            "title": "What if I don't have an HSA/FSA card handy at checkout?",
+            "answer": "<p>You can still complete your purchase with a regular payment method and submit for reimbursement separately, though using Truemed at checkout is faster and doesn't require you to file a claim yourself.</p>",
+            "expandAnswer": false
+          }
+        },
+        "heading_9dNfKH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Returns"
+          }
+        },
+        "question_wKkket": {
+          "type": "question",
+          "settings": {
+            "title": "Return Policy",
+            "answer": "<p>Any order purchased from nodpod.com* can be returned within 30 days. If not completely satisfied, simply return the product for a prompt refund. </p><p>For easy returns use our Easy Returns Portal <a href=\"https://nodpod.loopreturns.com/#/\" target=\"_blank\" title=\"Nodpod Loop Returns\">here.</a></p><p>*Products purchased from any other retailer or website (Amazon, Anthropologie, Nordstrom, etc.) must be returned to the original seller.</p>",
+            "expandAnswer": false
+          }
+        },
+        "heading_8yaec6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shipping"
+          }
+        },
+        "question_jANxwn": {
+          "type": "question",
+          "settings": {
+            "title": "Shipping Policy",
+            "answer": "<p>Nodpod products can be shipped to anywhere that has a physical address within the USA. We ship to PO Boxes.</p><p>There is a 2-5 business day process time for all orders. While we strive to ship an order within 3 working days, we can’t directly control the delivery times beyond our end.</p><p>As a general rule, assume that your shipment will take 6–8 working days. APO addresses will be shipped via USPS and cannot be rush shipped.</p><p>Orders that do not qualify for free shipping are $6.99 flat rate. Free shipping threshold applies to subtotal. (cart amount after discounts and before tax)</p><p>Any free shipping promotions only qualify for addresses within the contiguous United States.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_eQagTW": {
+          "type": "question",
+          "settings": {
+            "title": "Lost & Stolen Package Policy",
+            "answer": "<p>We want you to receive your order safely. If your package is confirmed lost in transit by the carrier, we'll replace it at no cost to you. For packages marked as delivered but reported missing or stolen, coverage depends on whether shipping protection was purchased at checkout:</p><ul><li><strong>With shipping protection:</strong> We'll replace your order at no additional cost.</li><li><strong>Without shipping protection:</strong> We're unable to guarantee a free replacement, but we're happy to offer a discounted replacement.</li></ul><p>We recommend adding shipping protection at checkout for peace of mind on every order.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_AGTw7H": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "title": "Will I get my order by Christmas?",
+            "answer": "<p>Any orders placed by December 11, 2025 by 11:59PM are guaranteed to arrive by Christmas barring any delays from shipping carriers. Any orders placed after December 11th are not guaranteed to arrive by Christmas but still may. </p>",
+            "expandAnswer": false
+          }
+        },
+        "question_bMNtkr": {
+          "type": "question",
+          "settings": {
+            "title": "Can I cancel my order or change my shipping address?",
+            "answer": "<p><strong>We're unable to make any changes to an order once it has been placed. </strong></p><p>Our fulfillment process begins quickly so your items arrive as soon as possible. Please double-check that your order details are correct before completing your purchase.</p>",
+            "expandAnswer": false
+          }
+        },
+        "heading_RKCAe6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sale Policy"
+          }
+        },
+        "question_87WgEW": {
+          "type": "question",
+          "settings": {
+            "title": "Sale Policy",
+            "answer": "<p><strong>Sale Duration</strong></p><p>LIMITED TIME ONLY. Sale dates use Pacific Time (PT) as a standard and end on the date indicated. If no end time is specified, the end time is assumed to be 11:59 PM. If no end date is specified, the sale may end at any time without prior warning.</p><p><strong>Exclusions</strong></p><p>Online price reflects discount. Offer available for select styles only. No substitutions will be allowed. Advertised sale prices cannot be combined with any other offer, discount, or coupon. No adjustments on previous purchases will be permitted. Only orders completed within the defined sales period qualify for sales price. Nodpod® reserves the right to cancel any order for any reason. Offers subject to change without notice.</p><p><strong>Price Matching</strong></p><p>Nodpod.com does not price match any retailer (online or brick and mortar).</p>",
+            "expandAnswer": false
+          }
+        },
+        "heading_C3JdAy": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Guarantee Policy"
+          }
+        },
+        "question_EREbNG": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "title": "Guarantee Policy",
+            "answer": "<p>We proudly stand behind all of our products. Nodpod® has a 30 day money back guarantee, but, if for any reason you’re not satisfied, send it back for a full product refund, no questions asked. Products purchased from any other retailer or website (Amazon, Nordstrom, etc.) must be returned to the original seller.</p><p>The return will only be accepted if you have contacted us prior to returning. Please email us at hello@nodpod.com or call us toll free at 888.486.4224.</p><p>The shipping cost of a returned item is at your expense. We recommend using a method of shipping that allows you to track your package, as we are not responsible for items lost in transit.</p><p>Your return will be processed within 7-10 business days.</p>",
+            "expandAnswer": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RqVyrh",
+        "question_Q9cxXr",
+        "question_xiR4qj",
+        "question_4QpTca",
+        "question_UzptjW",
+        "question_Wt8RE4",
+        "question_VVtKF6",
+        "question_QHyqiV",
+        "question_cayAYq",
+        "question_w8RwGY",
+        "question_kbjRn3",
+        "question_e9Rp3F",
+        "question_JQf7W9",
+        "question_JRfwKq",
+        "question_mmdUA4",
+        "question_reH6jg",
+        "question_PLUHGY",
+        "question_CMjEin",
+        "question_FMTMfE",
+        "question_EWKy4c",
+        "heading_b4t9HF",
+        "question_W6qzPK",
+        "question_F8mQWb",
+        "heading_XTGwKR",
+        "question_iHVmKr",
+        "question_mWA49F",
+        "question_3KCwCt",
+        "question_tHCqG9",
+        "question_Tj3tjp",
+        "question_fYnGpT",
+        "question_BcGrTF",
+        "question_ajEpWA",
+        "question_gUMgBN",
+        "question_Cair8M",
+        "heading_CCAcht",
+        "question_8pp6FE",
+        "question_yEUyAz",
+        "question_Y6LYB7",
+        "question_VLiA68",
+        "heading_9dNfKH",
+        "question_wKkket",
+        "heading_8yaec6",
+        "question_jANxwn",
+        "question_eQagTW",
+        "question_AGTw7H",
+        "question_bMNtkr",
+        "heading_RKCAe6",
+        "question_87WgEW",
+        "heading_C3JdAy",
+        "question_EREbNG"
+      ],
+      "custom_css": [
+        ".faq {padding: 60px 10px;}"
+      ],
+      "name": "NP FAQs",
+      "settings": {
+        "summary": true,
+        "summary_heading": "Topics",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "dynamic_form_GnAYfP": {
+      "type": "dynamic-form",
+      "blocks": {
+        "liquid_Bci9g8": {
+          "type": "liquid",
+          "settings": {
+            "custom_liquid": "",
+            "full_width": true
+          }
+        },
+        "info_text_rKwiJf": {
+          "type": "info_text",
+          "settings": {
+            "heading": "EMAIL",
+            "text": "<p><a href=\"mailto:hello@nodpod.com\" target=\"_blank\" title=\"mailto:hello@nodpod.com\">hello@nodpod.com</a></p>"
+          }
+        },
+        "info_text_MdJ4ht": {
+          "type": "info_text",
+          "settings": {
+            "heading": "PHONE",
+            "text": "<p>1-888-486-4224</p>"
+          }
+        },
+        "info_text_izEn3G": {
+          "type": "info_text",
+          "settings": {
+            "heading": "OUR HOURS:",
+            "text": "<p>MONDAY - FRIDAY</p><p>9:00AM - 4:00 PM PST</p>"
+          }
+        },
+        "dropdown_fYWiRK": {
+          "type": "dropdown",
+          "settings": {
+            "label": "Reason For Contact *",
+            "placeholder": "Select One",
+            "required": true,
+            "options": "General Question, Order Status, Wholesale, Retail, Other",
+            "full_width": true
+          }
+        },
+        "text_input_KHR3by": {
+          "type": "text_input",
+          "settings": {
+            "label": "First Name *",
+            "placeholder": "",
+            "required": true,
+            "full_width": false
+          }
+        },
+        "text_input_7eWJ6Q": {
+          "type": "text_input",
+          "settings": {
+            "label": "Last Name *",
+            "placeholder": "",
+            "required": true,
+            "full_width": false
+          }
+        },
+        "email_input_XTHQED": {
+          "type": "email_input",
+          "settings": {
+            "label": "Email Address *",
+            "placeholder": "",
+            "required": true,
+            "full_width": false
+          }
+        },
+        "text_input_U7mCYn": {
+          "type": "text_input",
+          "settings": {
+            "label": "Order Number",
+            "placeholder": "",
+            "required": false,
+            "full_width": false
+          }
+        },
+        "textarea_QNqJAE": {
+          "type": "textarea",
+          "settings": {
+            "label": "Message *",
+            "placeholder": "",
+            "required": true,
+            "full_width": true
+          }
+        }
+      },
+      "block_order": [
+        "liquid_Bci9g8",
+        "info_text_rKwiJf",
+        "info_text_MdJ4ht",
+        "info_text_izEn3G",
+        "dropdown_fYWiRK",
+        "text_input_KHR3by",
+        "text_input_7eWJ6Q",
+        "email_input_XTHQED",
+        "text_input_U7mCYn",
+        "textarea_QNqJAE"
+      ],
+      "name": "Dynamic Form",
+      "settings": {
+        "show_info": true,
+        "header_text": "We’d Love to Hear From You",
+        "subheader_text": "",
+        "success_title": "Thank you, your request has been sent!",
+        "success_subtext": "We will reply shortly."
+      }
+    },
+    "custom_liquid_Cm9taH": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<script defer src=\"https://contact.gorgias.help/api/contact-forms/loader.js?v=3\" data-gorgias-loader-contact-form data-gorgias-contact-form-uid=\"89en56l9\"></script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "np_header_block_zwTKM4",
+    "np_faqs_BW8jXf",
+    "dynamic_form_GnAYfP",
+    "custom_liquid_Cm9taH"
+  ]
+}

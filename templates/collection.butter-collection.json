@@ -1,0 +1,335 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "custom_liquid_bqCfAn": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "h3 {margin: 0 !important;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'butter-banner' %}\n\n<style>\n  section[data-block-id=\"butter-guarantee\"]{\n    background: url(\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/Frame_274_c366bc11-20e5-4745-bcee-d0036ad11e75.png?v=1756314408\");\n    background-size: cover;\n    padding: 100px 20px;\n  }\n  section[data-block-id=\"butter-guarantee\"] h3 {\n    text-align: center !important;\n    font-size: 3.5rem;\n    font-family: \"Cowboy\";\n    color: #439cd6 !important;\n  }\n  section[data-block-id=\"butter-guarantee\"] x-cell {\n    align-items: center;\n  }\n  section[data-block-id=\"butter-guarantee\"] h2 {\n    font-family: \"Cowboy\";\n    color: #439cd6;\n    font-size: 22px;\n    margin-top: 15px;\n  }\n  section[data-block-id=\"butter-guarantee\"] p {\n    font-family: \"Poppins\";\n    color: #439cd6;\n    font-size: 16px;\n    text-align: center;\n  }\n  section[data-block-id=\"butter-guarantee\"] x-grid > x-cell {\n    gap: 5px;\n  }\n  section[data-block-id=\"butter-guarantee\"] img {\n    width: 70px;\n  }\n  section[data-block-id=\"butter-guarantee\"] x-grid {\n    max-width: 1600px;\n    margin: auto;\n  }\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".product-grid-container {background: url(https://cdn.shopify.com/s/files/1/0253/2982/7939/files/butter-bkg.png?v=1756312436) !important; background-size: cover; background-position: center;}",
+        ".grid {justify-content: center;}",
+        "h1 {font-size: 3.5rem; font-family: \"Cowboy\" !important; text-align: left !important; max-width: 600px; color: #429cd6 !important; margin: 0px; line-height: 1.45; padding: 60px 0;}",
+        ".np-badge-override {background: #429cd6;}"
+      ],
+      "settings": {
+        "show_section_title": true,
+        "section_title": "The perfect recipe for better rest",
+        "section_title_tag": "h1",
+        "section_title_align": "center",
+        "products_per_page": 16,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "enable_custom_filters": false,
+        "show_sleepmask_filter": true,
+        "sleepmask_filter_text": "",
+        "show_silk_filter": true,
+        "silk_filter_text": "",
+        "show_body_filter": true,
+        "body_filter_text": "",
+        "show_extras_filter": true,
+        "extras_filter_text": "extras",
+        "all_filter_text": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "np_image_with_text_TxQUgP": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_iTrCV6": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Because Rest Should Feel Indulgent"
+          }
+        },
+        "heading_pWWa3b": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Butter Collection blends cloud-soft cotton, gentle weight, and a sunny, kitchen-inspired charm that’s good enough to eat (but please don’t)."
+          }
+        },
+        "button_GxQGQi": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP THE COLLECTION",
+            "button_link": "#",
+            "button_type": "full",
+            "buttonBg": "#f5e3a3",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#429cd6",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_iTrCV6",
+        "heading_pWWa3b",
+        "button_GxQGQi"
+      ],
+      "custom_css": [
+        "h2 {font-family: \"Cowboy\" !important; color: #429cd6; font-size: 3rem; line-height: 1.65; margin-bottom: 30px;}",
+        "h4 {color: #429cd6;}",
+        "img {border-radius: 20px; border: 1.5px solid #75787b;}",
+        "a {font-weight: 500; color: #429cd6 !important;}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "image": "shopify://shop_images/Group_326.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#429cd6"
+      }
+    },
+    "np_guarantees_G9AnWx": {
+      "type": "np-guarantees",
+      "blocks": {
+        "logo_image_BqkwBk": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_226.svg",
+            "heading": "Fluffy as butter",
+            "content": "<p>Velvety, high-pile fabric for a plush, touchable feel.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_WVxAFy": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_326.svg",
+            "heading": "Evenly spread",
+            "content": "<p>Microbeads apply gentle,calming pressure.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_dmpjc6": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_327.svg",
+            "heading": "Comfort to Savor",
+            "content": "<p>Blocks light comfortably, no elastic needed.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_k4pbpm": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_235.svg",
+            "heading": "Fresh Baked",
+            "content": "<p>Soft, sculpted shape that elevates rest.</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_BqkwBk",
+        "logo_image_WVxAFy",
+        "logo_image_dmpjc6",
+        "logo_image_k4pbpm"
+      ],
+      "custom_css": [
+        "{background: url(https://cdn.shopify.com/s/files/1/0253/2982/7939/files/Frame_274_c366bc11-20e5-4745-bcee-d0036ad11e75.png?v=1756314408); background-size: cover; padding: 40px 0;}",
+        "h3 {font-family: \"cowboy\"; color: #429cd6 !important; font-size: 3.5rem; line-height: 1; margin-bottom: 80px; margin-top: 0 !important;}",
+        "h2 {font-family: \"cowboy\"; color: #429cd6 !important; font-size: 2rem; line-height: 1;}",
+        "p {line-height: 1.5;}"
+      ],
+      "name": "NP Guarantees",
+      "settings": {
+        "heading": "The Details",
+        "headingAlignment": "center",
+        "textAlignment": "center",
+        "section_bg": "rgba(0,0,0,0)",
+        "headingBg": "rgba(0,0,0,0)",
+        "headingColor": "#429cd6"
+      }
+    },
+    "np_image_with_text_jV8rng": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_fGVP3A": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "FOUNDER’S NOTE"
+          }
+        },
+        "heading_kMtyQX": {
+          "type": "heading",
+          "settings": {
+            "heading": "“We wanted Butter to feel like home — warm, cozy, and instantly comforting. The kind of comfort that melts all your stress away.”"
+          }
+        },
+        "image_6jCrXP": {
+          "type": "image",
+          "settings": {
+            "logoImage": "shopify://shop_images/Layer_1.svg",
+            "logoWidth": 180
+          }
+        }
+      },
+      "block_order": [
+        "subheading_fGVP3A",
+        "heading_kMtyQX",
+        "image_6jCrXP"
+      ],
+      "custom_css": [
+        "h2 {font-family: \"Cowboy\"; font-size: 3.5rem;}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "image": "shopify://shop_images/Group_328.png",
+        "image_position": "right",
+        "mobile_image_position": "bottom",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": true,
+        "partial_bkg_color": "#f8edc3",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#429cd6"
+      }
+    },
+    "np_header_block_akDqQW": {
+      "type": "np-header-block",
+      "blocks": {
+        "image_FY69mr": {
+          "type": "image",
+          "settings": {
+            "logoImage": "shopify://shop_images/stars.svg",
+            "logoWidth": 180
+          }
+        },
+        "heading_8YHPMR": {
+          "type": "heading",
+          "settings": {
+            "heading": "“I didn’t know a sleep mask could make me smile… but this sunny Butter color makes my bedroom feel brighter and my naps even cozier.”"
+          }
+        },
+        "text_nibReY": {
+          "type": "text",
+          "settings": {
+            "text": "- Michele H."
+          }
+        },
+        "button_p3EemC": {
+          "type": "button",
+          "settings": {
+            "button_label": "READ THE REVIEWS",
+            "button_link": "shopify://products/nodpod",
+            "button_type": "full",
+            "buttonBg": "#f5e3a3",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#429cd6",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "image_FY69mr",
+        "heading_8YHPMR",
+        "text_nibReY",
+        "button_p3EemC"
+      ],
+      "custom_css": [
+        "h1 {font-family: \"Cowboy\" !important; color: #429cd6; font-size: 3rem; line-height: 1.65; margin-bottom: 30px; text-align: center;}",
+        "p {color: #429cd6; font-size: 2rem; font-weight: 600; margin-bottom: 40px;}",
+        "img {margin-bottom: 40px;}",
+        "a {font-weight: 500; color: #429cd6 !important;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "text_color": "#429cd6",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "custom_liquid_jL78yC": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".footer-butter {height: 300px; width: 100%; background: url(\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/AdobeStock_180087729_1.png?v=1756316456\"); background-size: auto 400px; background-repeat: no-repeat; background-position: left bottom; margin-top: -130px;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"footer-butter\">\n</div>\n<script>\n(function () {\n  // Prefer these variants when present & available\n  const NP_PREFERRED_VARIANTS = new Set([\n    '47367482146986', // Sleep Mask — Butter Yellow\n    '47368430452906'  // BODY — Butter Yellow\n  ]);\n\n  function setBadgeOverride(cardEl, text) {\n    cardEl.querySelectorAll('.card__badge').forEach(function (wrap) {\n      const def = wrap.querySelector('.badge:not(.np-badge-override)');\n      const ov  = wrap.querySelector('.np-badge-override');\n      if (!ov) return;\n      if (text && text.trim()) {\n        ov.textContent = text.trim();\n        ov.hidden = false;\n        if (def) def.style.display = 'none';\n      } else {\n        ov.hidden = true;\n        if (def) def.style.display = '';\n      }\n    });\n  }\n\n  // Targets the new anchor-wrapped images first\n  function updateImages(cardEl, urls) {\n    let imgs = cardEl.querySelectorAll('.media-thumb > img');\n    if (!imgs.length) imgs = cardEl.querySelectorAll('.card__media .media > img'); // fallback\n    if (!imgs.length) return;\n\n    imgs.forEach(function (img) {\n      if (!img.dataset.defaultSrc) {\n        img.dataset.defaultSrc    = img.getAttribute('src')    || '';\n        img.dataset.defaultSrcset = img.getAttribute('srcset') || '';\n      }\n    });\n\n    if (urls && urls.length) {\n      if (imgs[0]) { imgs[0].src = urls[0]; imgs[0].srcset = urls[0]; }\n      if (imgs[1]) {\n        const u = urls[1] || urls[0];\n        imgs[1].src = u; imgs[1].srcset = u;\n      }\n    } else {\n      imgs.forEach(function (img) {\n        if (img.dataset.defaultSrc)    img.src    = img.dataset.defaultSrc;\n        if (img.dataset.defaultSrcset) img.srcset = img.dataset.defaultSrcset;\n      });\n    }\n  }\n\n  function setActiveSwatch(btn) {\n    const list = btn.closest('.np-swatch-list');\n    if (!list) return;\n    list.querySelectorAll('.np-swatch').forEach(function (b) {\n      b.classList.remove('is-active');\n      b.setAttribute('aria-checked', 'false');\n    });\n    btn.classList.add('is-active');\n    btn.setAttribute('aria-checked', 'true');\n  }\n\n  function syncQuickAdd(wrapper, variantId) {\n    const hidden = wrapper.querySelector('input.product-variant-id');\n    if (hidden) hidden.value = variantId;\n  }\n\n  /* ---------- Tippy boot ---------- */\n  function ensureTippy(cb) {\n    if (window.tippy) return cb && cb();\n    var s = document.createElement('script');\n    s.src = 'https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.min.js';\n    s.async = true;\n    s.onload = function () { cb && cb(); };\n    document.head.appendChild(s);\n  }\n\n  function initTippyFor(container) {\n    if (!window.tippy || !container) return;\n    container.querySelectorAll('.np-swatch[data-tippy-content]').forEach(function (el) {\n      if (el._tippy) return;\n      window.tippy(el, {\n        content: el.getAttribute('data-tippy-content') || '',\n        theme: 'np',\n        placement: 'top',\n        arrow: true,\n        duration: [120, 80],\n        offset: [0, 10],\n        interactive: false,\n        allowHTML: false,\n        trigger: 'mouseenter focus',\n        appendTo: function () { return document.body; },\n        touch: ['hold', 300],\n      });\n    });\n  }\n\n  // Try to apply preferred selection; returns true if it clicked/updated something\n  function applyPreferred(wrapper) {\n    const picker = wrapper.querySelector('.np-card-variants');\n    const card   = wrapper.querySelector('.card');\n    if (!picker || !card) return false;\n\n    let preferredBtn = null;\n    NP_PREFERRED_VARIANTS.forEach(function (vid) {\n      if (!preferredBtn) {\n        const cand = picker.querySelector(`.np-swatch[data-variant-id=\"${vid}\"]:not(.is-disabled)`);\n        if (cand) preferredBtn = cand;\n      }\n    });\n    if (!preferredBtn) return false;\n\n    if (!preferredBtn.classList.contains('is-active')) {\n      // Use the same path as user interaction so everything syncs\n      preferredBtn.click();\n      return true;\n    } else {\n      // Already active — still ensure dependent UI is in sync\n      const urls  = (preferredBtn.dataset.images || '').split('|').filter(Boolean);\n      updateImages(wrapper, urls.length ? urls : null);\n      const vBadge = (preferredBtn.dataset.badgeOverride || '').trim();\n      const pBadge = (card.dataset.npInitialBadge || '').trim();\n      setBadgeOverride(card, vBadge || pBadge);\n      const vid = preferredBtn.dataset.variantId;\n      if (vid) syncQuickAdd(wrapper, vid);\n      return true;\n    }\n  }\n\n  function bindSwatchHandlers(wrapper) {\n    const card   = wrapper.querySelector('.card');\n    const picker = wrapper.querySelector('.np-card-variants');\n    if (!card || !picker) return;\n\n    // Click interactions\n    picker.addEventListener('click', function (e) {\n      const btn = e.target.closest('.np-swatch');\n      if (!btn || btn.classList.contains('is-disabled')) return;\n      e.preventDefault();\n\n      setActiveSwatch(btn);\n      const urls = (btn.dataset.images || '').split('|').filter(Boolean);\n      updateImages(wrapper, urls.length ? urls : null);\n\n      const vBadge = (btn.dataset.badgeOverride || '').trim();\n      const pBadge = (card.dataset.npInitialBadge || '').trim();\n      setBadgeOverride(card, vBadge || pBadge);\n\n      const vid = btn.dataset.variantId;\n      if (vid) syncQuickAdd(wrapper, vid);\n    }, { capture: true });\n\n    // Keyboard support\n    picker.addEventListener('keydown', function (e) {\n      const btn = e.target.closest('.np-swatch');\n      if (!btn || btn.classList.contains('is-disabled')) return;\n      if (e.key === 'Enter' || e.key === ' ') {\n        e.preventDefault();\n        btn.click();\n      }\n    }, { capture: true });\n  }\n\n  function initCard(wrapper) {\n    if (!wrapper) return;\n\n    // Avoid rebinding listeners; still allow re-applying preferred selection\n    const firstInit = wrapper.dataset.npScriptInit !== '1';\n    if (firstInit) {\n      wrapper.dataset.npScriptInit = '1';\n      bindSwatchHandlers(wrapper);\n      ensureTippy(function () { initTippyFor(wrapper); });\n    }\n\n    // 1) Try to apply preferred selection (Butter) first\n    const appliedPreferred = applyPreferred(wrapper);\n\n    // 2) If nothing preferred was applied, ensure initial active state sync\n    if (!appliedPreferred) {\n      const card   = wrapper.querySelector('.card');\n      const picker = wrapper.querySelector('.np-card-variants');\n      if (!card || !picker) return;\n\n      const active = picker.querySelector('.np-swatch.is-active') || picker.querySelector('.np-swatch:not(.is-disabled)');\n      if (active) {\n        const urls = (active.dataset.images || '').split('|').filter(Boolean);\n        updateImages(wrapper, urls.length ? urls : null);\n        const vBadge = (active.dataset.badgeOverride || '').trim();\n        const pBadge = (card.dataset.npInitialBadge || '').trim();\n        setBadgeOverride(card, vBadge || pBadge);\n        const vid = active.dataset.variantId;\n        if (vid) syncQuickAdd(wrapper, vid);\n      }\n    }\n  }\n\n  function initAll() {\n    document.querySelectorAll('.product-card-wrapper').forEach(initCard);\n\n    // Re-init when cards are added/updated (filters/AJAX)\n    new MutationObserver(function (muts) {\n      muts.forEach(function (m) {\n        m.addedNodes.forEach(function (n) {\n          if (n.nodeType !== 1) return;\n          if (n.matches && n.matches('.product-card-wrapper')) initCard(n);\n          n.querySelectorAll && n.querySelectorAll('.product-card-wrapper').forEach(initCard);\n          if (n.querySelectorAll) {\n            ensureTippy(function () {\n              document.querySelectorAll('.product-card-wrapper').forEach(initTippyFor);\n            });\n          }\n        });\n      });\n    }).observe(document.documentElement, { childList: true, subtree: true });\n\n    // If tippy loads later, bind once globally\n    ensureTippy(function () {\n      document.querySelectorAll('.product-card-wrapper').forEach(initTippyFor);\n    });\n  }\n\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', initAll, { once: true });\n  } else {\n    initAll();\n  }\n})();\n</script>",
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "custom_liquid_bqCfAn",
+    "product-grid",
+    "np_image_with_text_TxQUgP",
+    "np_guarantees_G9AnWx",
+    "np_image_with_text_jV8rng",
+    "np_header_block_akDqQW",
+    "custom_liquid_jL78yC"
+  ]
+}

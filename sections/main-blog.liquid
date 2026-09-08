@@ -1,0 +1,313 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .blog-filters-wrapper{
+    display:flex; flex-wrap:wrap; gap:.5rem; margin:1rem 0 1.25rem;
+  }
+  .blog-filter{
+    padding:.45rem .75rem; border:1px solid #d9d9d9; border-radius:999px;
+    font-size:.9rem; line-height:1; cursor:pointer; user-select:none;
+  }
+  .blog-filter.is-active{
+    border-color: #111; background:#111; color:#fff;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- assign per_page = section.settings.articles_per_page | default: 9 | plus: 0 -%}
+{%- paginate blog.articles by per_page -%}
+  <div class="main-blog page-width section-{{ section.id }}-padding">
+    <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {{ blog.title | escape }}
+    </h1>
+
+    {%- assign page_tags = blog.all_tags | sort -%}
+
+    <section class="blog-filters-wrapper" aria-label="Filter articles by tag">
+      <div
+        class="blog-filter{% if current_tags == blank %} is-active{% endif %}"
+        data-blog-tag="all"
+        data-url="{{ blog.url }}"
+      >
+        All
+      </div>
+
+      {%- for t in page_tags -%}
+        {%- if t != blank -%}
+          <div
+            class="blog-filter{% if current_tags contains t %} is-active{% endif %}"
+            data-blog-tag="{{ t | downcase | escape }}"
+            data-url="{{ blog.url }}/tagged/{{ t | handle }}"
+          >
+            {{ t }}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </section>
+
+    <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+      {%- for article in blog.articles -%}
+        <div
+          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade style="--animation-order: {{ forloop.index }};"
+          {% endif %}
+          data-blog-tag="{{ article.tags | join: '|' | downcase | escape }}"
+        >
+          {%- render 'article-card',
+            article: article,
+            media_height: section.settings.image_height,
+            media_aspect_ratio: article.image.aspect_ratio,
+            show_image: section.settings.show_image,
+            show_date: section.settings.show_date,
+            show_author: section.settings.show_author,
+            show_excerpt: true
+          -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+<script>
+(function () {
+  const SECTION_ID = '{{ section.id }}';
+  const root = document.querySelector('.main-blog');
+  if (!root) return;
+
+  const ARTICLES_SEL = '.blog-articles';
+  const PAGER_SEL = '.pagination, .pagination-wrapper';
+
+  const getCards = () => Array.from(root.querySelectorAll('.blog-articles__article'));
+  const getChips = () => Array.from(root.querySelectorAll('.blog-filters-wrapper .blog-filter'));
+
+  function getCardTags(card) {
+    const raw = (card.getAttribute('data-blog-tag') || '').toLowerCase();
+    return raw.split('|').map(s => s.trim()).filter(Boolean);
+  }
+
+  function normalizePath(u) {
+    const url = new URL(u, location.origin);
+    return url.pathname.replace(/\/+$/, '');
+  }
+
+  // Determine which chip matches a URL by comparing its data-url (best for hyphens vs spaces)
+  function tagFromURL(url) {
+    const path = normalizePath(url || location.href);
+    const match = getChips().find(c => normalizePath(c.getAttribute('data-url') || '') === path);
+    return (match?.getAttribute('data-blog-tag') || 'all').toLowerCase();
+  }
+
+  // Visual filter for current page (instant feedback)
+  function instantFilter(tagKey) {
+    const key = (tagKey || 'all').toLowerCase().trim();
+    // chip state
+    getChips().forEach(c => {
+      const ck = (c.getAttribute('data-blog-tag') || '').toLowerCase().trim();
+      c.classList.toggle('is-active', ck === key);
+    });
+    // card visibility
+    getCards().forEach(card => {
+      const tags = getCardTags(card);
+      const show = key === 'all' || tags.includes(key);
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  async function fetchAndSwap(url) {
+    root.setAttribute('aria-busy', 'true');
+    const target = url + (url.includes('?') ? '&' : '?') + 'sections=' + encodeURIComponent(SECTION_ID);
+
+    try {
+      const res = await fetch(target, { headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+      const json = await res.json();
+      const html = json[SECTION_ID];
+      if (!html) return;
+
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      const next = tmp.querySelector('.main-blog') || tmp;
+
+      // Replace ONLY articles + pagination (keep filters so they never reset)
+      const newList = next.querySelector(ARTICLES_SEL);
+      const curList = root.querySelector(ARTICLES_SEL);
+      if (newList && curList) curList.replaceWith(newList);
+
+      const newPager = next.querySelector(PAGER_SEL);
+      const curPager = root.querySelector(PAGER_SEL);
+      if (curPager && newPager) curPager.replaceWith(newPager);
+      else if (curPager && !newPager) curPager.remove();
+      else if (!curPager && newPager) root.appendChild(newPager);
+
+      // Ensure active state reflects the URL we navigated to
+      instantFilter(tagFromURL(url));
+    } finally {
+      root.removeAttribute('aria-busy');
+    }
+  }
+
+  // a11y decoration once
+  function decorateChips() {
+    getChips().forEach(c => {
+      c.setAttribute('role', 'button');
+      c.setAttribute('tabindex', '0');
+    });
+  }
+
+  function handleChip(chip) {
+    const tag = chip?.getAttribute('data-blog-tag') || 'all';
+    const url = chip?.getAttribute('data-url') || location.pathname;
+    instantFilter(tag);            // quick visual response
+    history.pushState({}, '', url);
+    fetchAndSwap(url);             // load server-paginated results
+  }
+
+  // Event delegation for filters (works after DOM swaps)
+  root.addEventListener('click', (e) => {
+    const chip = e.target.closest('.blog-filter');
+    if (!chip) return;
+    e.preventDefault();
+    handleChip(chip);
+  });
+
+  root.addEventListener('keydown', (e) => {
+    const chip = e.target.closest('.blog-filter');
+    if (!chip) return;
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleChip(chip); }
+  });
+
+  // Event delegation for pagination (AJAX)
+  root.addEventListener('click', (e) => {
+    const a = e.target.closest('.pagination a');
+    if (!a) return;
+    e.preventDefault();
+    history.pushState({}, '', a.href);
+    fetchAndSwap(a.href);
+  }, true);
+
+  // Back/forward support
+  window.addEventListener('popstate', () => fetchAndSwap(location.href));
+
+  // Initial paint
+  decorateChips();
+  instantFilter(tagFromURL(location.href));
+})();
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.main-blog.settings.layout.options__1.label"
+        },
+        {
+          "value": "collage",
+          "label": "t:sections.main-blog.settings.layout.options__2.label"
+        }
+      ],
+      "default": "collage",
+      "label": "t:sections.main-blog.settings.layout.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-blog.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-blog.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-blog.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-blog.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.main-blog.settings.image_height.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "label": "Articles per page",
+      "min": 3,
+      "max": 24,
+      "step": 3,
+      "default": 9
+    }
+  ]
+}
+{% endschema %}

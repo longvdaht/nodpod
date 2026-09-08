@@ -1,0 +1,555 @@
+{% comment %}
+  Renders a header drawer menu for mobile and desktop.
+
+  Usage:
+  {% render 'header-drawer' %}
+{% endcomment %}
+
+<header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+    <summary
+      class="header__icon header__icon--menu header__icon--summary link focus-inset"
+      aria-label="{{ 'sections.header.menu' | t }}"
+    >
+      <span>
+        {{- 'icon-hamburger.svg' | inline_asset_content -}}
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </span>
+    </summary>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      <div class="menu-drawer__inner-container">
+        <div class="menu-drawer__navigation-container">
+          <nav class="menu-drawer__navigation nodpod-mobnav" role="navigation" aria-label="Mobile">
+            <!-- Sections (accordion via <details>) -->
+            <div id="MobileAccordion" class="mobnav-accordion">
+              <!-- Shop -->
+              <details class="mobacc" open>
+                <summary class="mobacc__summary">Shop</summary>
+                <div class="mobacc__panel">
+                  <div class="mobnav-listings">
+                    <div class="mobnav-listings-wrapper">
+                      {% assign collection = collections['shop-nav'] %}
+                      {% if collection and collection.products_count > 0 %}
+                        {% for product in collection.products %}
+                          <a href="{{ product.url }}" class="main-listing">
+                            <div class="mobnav-listing-img">
+                              {%- liquid
+                                assign img = product.featured_image
+                                assign alt = img.alt | escape
+                                assign width = 1280
+                                assign widths = '450,550,750,950,1100,1280'
+                                assign sizes = '(max-width:777px) 92vw, (min-width:778px) 92vw, 100vw'
+                                echo img | image_url: width: width | image_tag: widths: widths, sizes: sizes, loading: 'lazy', alt: alt, class: 'main-product-image', data-product-id: product.id
+                              -%}
+                            </div>
+                            <div class="mobnav-listing-details">
+                              <div class="star-rating-area">
+                                <div
+                                  class="yotpo bottomLine"
+                                  data-appkey="FmakX6dYDeuQeVXarAbIu68kQo6iRkhGuOg0qIxi"
+                                  data-domain="{{ shop.permanent_domain | escape }}"
+                                  data-product-id="{{ product.id }}"
+                                  data-product-models="{{ product.id }}"
+                                  data-name="{{ product.title | escape }}"
+                                  data-url="{{ shop.url }}{{ product.url }}"
+                                  data-image-url="{{ product.featured_image | image_url: width: 480, height: 480 | replace: '?', '%3F' | replace: '&','%26' }}"
+                                  data-description="{{ product.description | escape }}"
+                                  data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}"
+                                ></div>
+                              </div>
+                              <div class="mobnav-listing-product-title">
+                                <div class="product-title-txt">{{ product.title }}</div>
+                              </div>
+                              <div class="mobnav-listing-product-subtitle">
+                                {{ product.metafields.descriptors.subtitle }}
+                              </div>
+                            </div>
+                            <div class="mobnav-listing-price">
+                              <div class="product-price-txt">{{ product.price | money_without_trailing_zeros }}</div>
+                            </div>
+                          </a>
+                        {% endfor %}
+                      {% endif %}
+                      <a href="{{ routes.all_products_collection_url }}/all-products" class="mobile-menu-btn">Shop All</a>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              {% comment %}
+              <!-- Bundle -->
+              <details class="mobacc">
+                <summary class="mobacc__summary">Bundle</summary>
+                <div class="mobacc__panel">
+                  <div class="mobnav-listings">
+                    <div class="mobnav-listings-wrapper">
+                      <a href="/products/the-better-sleep-bundle" class="main-listing">
+                        <div class="mobnav-listing-img">
+                          <img
+                            width="100%"
+                            height="auto"
+                            class="main-product-image"
+                            alt="The Better Sleep Bundle"
+                            loading="lazy"
+                            src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/better-sleep-bundle-1.png?v=1743624364"
+                          >
+                        </div>
+                        <div class="mobnav-listing-details">
+                          <div class="mobnav-listing-product-title">
+                            <div class="product-title-txt">The Better Sleep Bundle</div>
+                          </div>
+                          <div class="mobnav-listing-product-subtitle">
+                            Customize a bundle of 2 or more to save up to 15%
+                          </div>
+                          <div class="customize-now">Build Your Bedtime Ritual</div>
+                        </div>
+                        <div class="mobnav-listing-price"></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </details>
+              {% endcomment %}
+
+              <!-- About -->
+              <details class="mobacc">
+                <summary class="mobacc__summary">About</summary>
+                <div class="mobacc__panel">
+                  <div class="submenu-mobnav">
+                    <ul class="submenu-mobnav-links">
+                      {% for link in linklists['about-v2'].links -%}
+                        <li>
+                          <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                      {%- endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <!-- Press quote -->
+            <div class="mobnav-press">
+              <div class="mobnav-press-quote">
+                <div class="quote-text">
+                  “The effect of the Nodpod is less like being backed into a corner of sleep and more like a gentle,
+                  barely perceptible nudge.”
+                </div>
+                <div class="quote-logo">
+                  <img
+                    width="100%"
+                    height="auto"
+                    alt="New York Magazine"
+                    loading="lazy"
+                    src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/new-york-mag-logo.svg?v=1727230418"
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick links + CTA (show account link only if accounts enabled) -->
+            <div class="mobnav-quick">
+              <div class="mobnav-quick-grid">
+                {% if shop.customer_accounts_enabled %}
+                  <a href="/account/login" class="mobnav-btn-links n-account">Account</a>
+                {% endif %}
+                <a href="/pages/faq" class="mobnav-btn-links n-faqs">FAQs</a>
+                <a href="/pages/faq#contact-form" class="mobnav-btn-links n-support">Support</a>
+              </div>
+              <div class="mobnav-header-btn"><a href="/products/nodpod">GET MY NODPOD</a></div>
+            </div>
+          </nav>
+          <div class="menu-drawer__utility-links">
+            {%- if shop.customer_accounts_enabled -%}
+              <a
+                href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                class="menu-drawer__account link focus-inset h5 medium-hide large-up-hide"
+                rel="nofollow"
+              >
+                {%- if section.settings.enable_customer_avatar -%}
+                  <account-icon>
+                    {%- if customer and customer.has_avatar? -%}
+                      {{ customer | avatar }}
+                    {%- else -%}
+                      <span class="svg-wrapper">
+                        {{- 'icon-account.svg' | inline_asset_content -}}
+                      </span>
+                    {%- endif -%}
+                  </account-icon>
+                {%- else -%}
+                  <span class="svg-wrapper">
+                    {{- 'icon-account.svg' | inline_asset_content -}}
+                  </span>
+                {%- endif -%}
+                {%- liquid
+                  if customer
+                    echo 'customer.account_fallback' | t
+                  else
+                    echo 'customer.log_in' | t
+                  endif
+                -%}
+              </a>
+            {%- endif -%}
+            {%- if localization.available_countries or localization.available_languages -%}
+              <div class="menu-drawer__localization header-localization">
+                {%- if localization.available_countries and localization.available_countries.size > 1 -%}
+                  <localization-form>
+                    {%- form 'localization', id: 'HeaderCountryMobileForm', class: 'localization-form' -%}
+                      <div>
+                        <h2 class="visually-hidden" id="HeaderCountryMobileLabel">
+                          {{ 'localization.country_label' | t }}
+                        </h2>
+                        {%- render 'country-localization', localPosition: 'HeaderCountryMobile' -%}
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {% endif %}
+
+                {%- if localization.available_languages and localization.available_languages.size > 1 -%}
+                  <localization-form>
+                    {%- form 'localization', id: 'HeaderLanguageMobileForm', class: 'localization-form' -%}
+                      <div>
+                        <h2 class="visually-hidden" id="HeaderLanguageMobileLabel">
+                          {{ 'localization.language_label' | t }}
+                        </h2>
+                        {%- render 'language-localization', localPosition: 'HeaderLanguageMobile' -%}
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+            <ul class="list list-social list-unstyled" role="list">
+              {%- if settings.social_twitter_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-twitter.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_facebook_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-facebook.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_pinterest_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-pinterest.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_instagram_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-instagram.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_tiktok_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-tiktok.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_tumblr_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-tumblr.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_snapchat_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-snapchat.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_youtube_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-youtube.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_vimeo_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-vimeo.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</header-drawer>
+
+<style>
+  /* === Nodpod drawer (scoped) === */
+  .nodpod-mobnav { padding: 1.2rem; }
+  .nodpod-mobnav .mobnav-top {
+    display:flex; align-items:center; justify-content:space-between; margin-bottom: 1rem;
+  }
+  .nodpod-mobnav .mobnav-logo img { display:block; height:auto; }
+
+  .nodpod-mobnav .mobnav-close {
+    display:inline-flex; align-items:center; justify-content:center;
+    background:none; border:0; padding:.4rem; cursor:pointer;
+  }
+
+  .mobnav-accordion .mobacc { border-top: 1px solid rgba(0,0,0,.08); }
+  .mobnav-accordion .mobacc:last-of-type { border-bottom: 1px solid rgba(0,0,0,.08); }
+
+  .mobacc__summary {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 1rem 0; font-size: 1.1rem; cursor: pointer; list-style: none;
+  }
+  .mobacc__summary::-webkit-details-marker { display:none; }
+
+  .mobacc[open] .mobacc__summary { font-weight: 600; }
+  .mobacc__panel { padding-bottom: 1rem; }
+
+  .mobnav-listings-wrapper { display:grid; gap: 12px; }
+  .main-listing {
+    display:grid; grid-template-columns: 92px 1fr auto; gap:10px;
+    text-decoration:none; color: inherit; align-items:center; padding:.5rem 0;
+  }
+  .mobnav-listing-img img { width:92px; height:auto; border-radius:8px; display:block; }
+  .mobnav-listing-product-title .product-title-txt { font-weight:600; line-height:1.2; }
+  .mobnav-listing-product-subtitle { font-size:.9rem; opacity:.8; }
+  .mobnav-listing-price { font-weight:600; }
+
+  .mobile-menu-btn {
+    display:block; text-align:center; margin-top:.5rem; padding:.7rem 1rem;
+    border:1px solid currentColor; border-radius:999px; text-decoration:none;
+  }
+
+  .submenu-mobnav-links { list-style:none; padding:0; margin:0; display:grid; gap:.6rem; }
+  .submenu-mobnav-links a { text-decoration:none; }
+
+  .mobnav-press { margin: 1.2rem 0; }
+  .mobnav-press-quote { text-align:center; }
+  .mobnav-press-quote .quote-text { font-style:italic; margin-bottom:.6rem; }
+
+  .mobnav-quick { margin-top: 1rem; }
+  .mobnav-quick-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:.6rem; }
+  .mobnav-btn-links { display:block; text-align:center; padding:.7rem .8rem; border:1px solid currentColor; border-radius:999px; text-decoration:none; }
+  .mobnav-header-btn { margin-top:.8rem; }
+  .mobnav-header-btn a { display:block; text-align:center; padding:.9rem 1rem; border-radius:999px; background: currentColor; color: var(--color-background); text-decoration:none; }
+  nav.menu-drawer__navigation.nodpod-mobnav {
+    padding-top: 0;
+    background: #fafaf9;
+  }
+  .nodpod-mobnav .mobacc__summary {
+    font-family: var(--font-heading-family);
+    font-weight: 300 !important;
+    font-size: 3rem;
+  }
+  .nodpod-mobnav .main-listing {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #e3e3e3;
+      padding: 10px;
+      align-items: center;
+  }
+  .nodpod-mobnav .mobnav-listing-img img {
+      border: 1px solid #e3e3e3;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+  }
+  .nodpod-mobnav .mobnav-listing-product-title .product-title-txt {
+      font-family: var(--font-heading-family);
+      font-weight: 300;
+      letter-spacing: 0;
+      font-size: 2rem;
+      line-height: 1;
+      margin-top: -7px;
+      margin-bottom: 3px;
+  }
+  .nodpod-mobnav .mobnav-listing-product-subtitle {
+      font-size: 1.55rem;
+      line-height: 1;
+      font-family: var(--font-heading-family);
+      font-weight: 300;
+      font-style: italic;
+      margin-top: 8px;
+  }
+  .nodpod-mobnav span.yotpo-sr-bottom-line-text {
+      display: none;
+  }
+  .nodpod-mobnav .product-price-txt {
+      font-family: var(--font-heading-family);
+      font-weight: 300;
+      letter-spacing: 0;
+      font-size: 1.75rem;
+      padding-right: 5px;
+  }
+  .nodpod-mobnav svg.star-container {
+      width: 12px;
+      height: 12px;
+  }
+  .nodpod-mobnav .mobile-menu-btn {
+    border-radius: 0;
+    color: #fff;
+    background: #75787b;
+    font-size: 1.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .nodpod-mobnav .customize-now {
+      font-size: 1.75rem;
+      font-family: var(--font-heading-family);
+      font-style: italic;
+      letter-spacing: 0;
+      text-decoration: underline;
+      line-height: 1;
+      margin-top: 7px;
+  }
+  .nodpod-mobnav .submenu-mobnav-links li a {
+    color: currentColor !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+  }
+  .nodpod-mobnav .quote-logo img {
+      width: 280px;
+      margin-top: 10px;
+  }
+  .nodpod-mobnav .mobnav-press-quote {
+      padding: 20px;
+      border: 1px solid currentColor;
+      border-radius: 10px;
+      background: #fff;
+  }
+  .nodpod-mobnav .quote-text {
+      font-family: var(--font-heading-family);
+      font-style: normal !important;
+      letter-spacing: 0;
+      font-weight: 400;
+      font-size: 1.95rem;
+      line-height: 1.35;
+  }
+  .nodpod-mobnav .mobnav-btn-links {
+      border-radius: 0;
+      border: 0;
+  }
+  .nodpod-mobnav .mobnav-quick-grid {
+      gap: 0;
+      border: 1px solid currentColor;
+  }
+  .nodpod-mobnav .mobnav-btn-links {
+      color: #75787b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px
+  }
+  .nodpod-mobnav .mobnav-btn-links:nth-of-type(1) {
+      border-right: 1px solid rgb(117 120 123);
+  }
+  .nodpod-mobnav .mobnav-btn-links:nth-of-type(3) {
+      border-left: 1px solid rgb(117 120 123);
+  }
+  .nodpod-mobnav .mobnav-header-btn {
+    margin-top: 12px;
+  }
+  .nodpod-mobnav .mobnav-header-btn a {
+    border-radius: 0;
+    color: #fff !important;
+    background: #75787b;
+    font-size: 1.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 0 !important;
+    margin-bottom: 40px;
+  }
+  .menu-drawer__utility-links {
+    display: none;
+  }
+  .mobnav-accordion .mobacc {
+    border-top: 0;
+    border-bottom: 1px solid currentColor;
+  }
+  .mobnav-accordion .mobacc:last-of-type {
+      border-bottom: 1px solid currentColor;
+  }
+  .mobacc__summary {
+    position: relative;
+    padding-right: 2.25rem;
+  }
+
+  .mobacc__summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    line-height: 1;
+    color: currentColor;
+    font-size: 3.5rem;
+    padding-right: 10px;
+  }
+
+  .mobacc[open] > .mobacc__summary::after {
+    content: '−';
+  }
+</style>
+
+<script>
+  (function () {
+    const details = document.getElementById('Details-menu-drawer-container');
+    if (!details) return;
+
+    // Close button inside the drawer
+    document.querySelectorAll('[data-close-drawer]').forEach(btn => {
+      btn.addEventListener('click', () => { details.removeAttribute('open'); });
+    });
+
+    // Simple accordion: only one <details> open at a time
+    const accRoot = document.getElementById('MobileAccordion');
+    if (!accRoot) return;
+    const items = Array.from(accRoot.querySelectorAll('details.mobacc'));
+
+    items.forEach(d => {
+      d.addEventListener('toggle', () => {
+        if (d.open) items.forEach(o => { if (o !== d) o.removeAttribute('open'); });
+      });
+    });
+  })();
+</script>

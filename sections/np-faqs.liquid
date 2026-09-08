@@ -1,0 +1,458 @@
+{% comment %}
+  Dawn 15.4 – FAQ with Topics (uses old section styles verbatim)
+  - Keeps old markup semantics (x-grid / x-cell) for style parity
+  - Uses original CSS values and class names
+  - Schema.org (Question/Answer)
+{% endcomment %}
+
+<section id="faq-{{ section.id }}" class="faq color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="general-page faq-page">
+    <section class="faq" data-block-id="faqs">
+      <x-grid>
+        {%- if section.settings.summary -%}
+          <x-cell class="faq-nav-column">
+            <div class="faq-nav">
+              <h1>{{ section.settings.summary_heading | default: 'Topics' }}</h1>
+              {%- if page.content != blank -%}
+                <br>
+                <div class="rte">{{ page.content }}</div>
+              {%- endif -%}
+
+              <!-- Keep #summary id like the old section -->
+              <nav id="summary" class="sticky">
+                <ul class="no-style text-end text-start-s">
+                  {% for block in section.blocks %}
+                    {%- case block.type -%}
+                      {%- when 'heading' -%}
+                        <li>
+                          {%- assign link_id = block.settings.heading
+                            | escape | strip_html | strip_newlines
+                            | replace: ' ', '-' | replace: '+', '' | downcase
+                          -%}
+                          <a
+                            href="###"
+                            data-url-nav="#faq-{{ link_id }}"
+                            class="no-style text-uppercase"
+                          >
+                            {{- block.settings.heading -}}
+                          </a>
+                        </li>
+                    {%- endcase -%}
+                  {% endfor %}
+                </ul>
+              </nav>
+            </div>
+          </x-cell>
+        {%- endif -%}
+
+        <x-cell class="faqs">
+          {% for block in section.blocks %}
+            {%- case block.type -%}
+              {%- when 'question' -%}
+                <details
+                  {% if block.settings.expandAnswer == true %}
+                    open
+                  {% endif %}
+                  itemscope
+                  itemprop="mainEntity"
+                  itemtype="https://schema.org/Question"
+                  {{ block.shopify_attributes }}
+                >
+                  <summary data-question="Question" itemprop="name">
+                    {{ block.settings.title | escape }}
+                  </summary>
+                  <div
+                    data-answer="Answer"
+                    itemscope
+                    itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer"
+                  >
+                    <div itemprop="text" class="rte">{{ block.settings.answer }}</div>
+                  </div>
+                </details>
+
+              {%- when 'heading' -%}
+                {%- assign heading_id = block.settings.heading
+                  | escape | strip_html | strip_newlines
+                  | replace: ' ', '-' | replace: '+', '' | downcase
+                -%}
+                <h2
+                  class="h1"
+                  id="faq-{{ heading_id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.heading }}
+                </h2>
+            {%- endcase -%}
+          {% endfor %}
+        </x-cell>
+      </x-grid>
+    </section>
+  </div>
+
+  {%- if section.settings.summary -%}
+    <script>
+      (function() {
+        const root = document.getElementById('faq-{{ section.id }}');
+        if (!root) return;
+
+        // Compute header offset for sticky + smooth scroll (Dawn-safe)
+        const headerEl =
+          document.querySelector('.shopify-section-header-sticky') ||
+          document.querySelector('.header-wrapper') ||
+          document.querySelector('sticky-header');
+
+        const stickyTop = ((headerEl && headerEl.getBoundingClientRect().height) || 120);
+        const summary = root.querySelector('#summary');
+        if (summary) summary.style.top = stickyTop + 'px';
+
+        // Old behavior: underline current hash
+        function updateLinkStyles() {
+          const currentFragment = window.location.hash;
+          root.querySelectorAll('a[href^="#"]').forEach((link) => {
+            link.style.textDecoration = link.getAttribute('href') === currentFragment ? 'underline' : 'none';
+          });
+        }
+        updateLinkStyles();
+        window.addEventListener('hashchange', updateLinkStyles);
+
+        // Active nav bullet & smooth scroll (ported from old)
+        function cleanId(id) {
+          return id.trim();
+        }
+
+        function updateActiveNav() {
+          const headers = root.querySelectorAll('.faqs h2[id]');
+          const summaryLinks = root.querySelectorAll('#summary a[data-url-nav]');
+          const offsetTop = stickyTop + 10; // matches scroll offset with header
+
+          let closestHeader = null;
+          let minDistance = Infinity;
+
+          headers.forEach((header) => {
+            const headerRect = header.getBoundingClientRect();
+            const headerTop = headerRect.top + window.scrollY - offsetTop;
+            const distance = Math.abs(headerTop - window.scrollY);
+
+            if (headerTop < window.scrollY && distance < minDistance) {
+              minDistance = distance;
+              closestHeader = header;
+            }
+          });
+
+          if (closestHeader) {
+            const activeId = `#${cleanId(closestHeader.id)}`;
+            summaryLinks.forEach((link) => {
+              if (cleanId(link.getAttribute('data-url-nav')) === activeId) {
+                summaryLinks.forEach((el) => el.classList.remove('nav-active'));
+                link.classList.add('nav-active');
+              }
+            });
+          }
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+
+        const firstLink = root.querySelector('#summary a[data-url-nav]');
+        if (firstLink) {
+          root.querySelectorAll('#summary a').forEach((el) => el.classList.remove('nav-active'));
+          firstLink.classList.add('nav-active');
+        }
+        updateActiveNav();
+
+        root.querySelectorAll('a[data-url-nav]').forEach((link) => {
+          link.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            let targetSelector = cleanId(this.getAttribute('data-url-nav'));
+            let targetElement = root.querySelector(targetSelector);
+
+            if (targetElement) {
+              let targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - (stickyTop + 10);
+              window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+              history.replaceState(null, '', targetSelector);
+            }
+          });
+        });
+      })();
+    </script>
+  {%- endif -%}
+
+  <style>
+  #faq-{{ section.id }} .faq x-grid{
+    display:flex; flex-direction:row; margin:auto; justify-content:space-evenly;
+  }
+  #faq-{{ section.id }} .faqs{ 
+    width:80%; 
+    max-width:80%; 
+  }
+  #faq-{{ section.id }} .faq .faqs details{ 
+    margin-bottom:30px !important; 
+  }
+  #faq-{{ section.id }} h2{ 
+    font-size: 4rem;
+    margin: 20px 0;
+    font-weight: 300;
+    letter-spacing: 0;
+  }
+  #faq-{{ section.id }} .faq h1{ 
+    font-family:var(--font-body-family),sans-serif; 
+    text-transform:uppercase; 
+    font-weight:600; 
+    margin:0 0 6px; 
+    font-size: 2rem;
+  }
+  #faq-{{ section.id }} nav#summary{ 
+    position:sticky; 
+    padding-top:0 !important; 
+    margin-top:0 !important; 
+  }
+  #faq-{{ section.id }} nav#summary ul{ 
+    list-style:none; 
+    padding:0; 
+    margin:8px 0 0; 
+  }
+  #faq-{{ section.id }} nav#summary li{ 
+    text-align:left; 
+    margin:6px 0; 
+  }
+  #faq-{{ section.id }} nav#summary a.no-style{
+    display:block;
+    padding:4px 10px 4px 28px;
+    text-decoration:none !important;
+    color:inherit;
+    font-size: 1.25rem;
+  }
+  #faq-{{ section.id }} nav#summary a.no-style:visited{ 
+    color:inherit; 
+  }
+  #faq-{{ section.id }} .text-uppercase{ 
+    text-transform:uppercase; 
+    letter-spacing:.08em; 
+    font-size:.875rem; 
+    font-weight:600; 
+  }
+  #faq-{{ section.id }} a.no-style.text-uppercase.nav-active{
+    background:none; 
+    color:inherit; 
+    position:relative; 
+    text-decoration:underline;
+  }
+  #faq-{{ section.id }} a.no-style.text-uppercase.nav-active::before{
+    content:""; 
+    position:absolute; 
+    left:10px; 
+    top:50%; 
+    transform:translateY(-50%);
+    width:10px; 
+    height:10px; 
+    border-radius:50%; 
+    background:currentColor;
+  }
+
+  #faq-{{ section.id }} details summary::-webkit-details-marker{ 
+    display:none; 
+  }
+  #faq-{{ section.id }} details summary::marker{ 
+    content:""; 
+  }
+  #faq-{{ section.id }} .faq .faqs details>summary{
+    list-style:none; position:relative; display:block; cursor:pointer;
+    text-align:center; font-family:var(--font-body-family),sans-serif;
+    font-weight:500; font-size:clamp(18px,2.2vw,28px); line-height:1.5;
+    padding:24px 56px 24px 0 !important; color:inherit;
+  }
+  #faq-{{ section.id }} .faq .faqs details>summary::after{
+    content:"+"; 
+    position:absolute; 
+    right:0; 
+    top:50%; 
+    transform:translateY(-50%);
+    width:36px; 
+    height:36px; 
+    border-radius:50%; 
+    border:1px solid currentColor;
+    display:grid; 
+    place-items:center; 
+    line-height:1; 
+    font-size:22px; 
+    font-weight:300;
+  }
+  #faq-{{ section.id }} .faq .faqs details[open]>summary{ 
+    border-bottom:none; 
+  }
+  #faq-{{ section.id }} .faq .faqs details[open]>summary::after{ 
+    content:"×"; 
+    font-size:23px; 
+  }
+  #faq-{{ section.id }} .faq .faqs details [itemprop="acceptedAnswer"] .rte {
+    margin: 10px 50px 40px 10px !important;
+    font-weight: 400 !important;
+    max-width: 100% !important;
+    font-size: 1.55rem;
+    line-height: 1.5;
+  }
+  #faq-{{ section.id }} .faq .faqs details{ 
+    border-bottom:1px solid currentColor;  
+  }
+  #faq-{{ section.id }} .faq .faqs details:last-child{ 
+    border-bottom:none; 
+  }
+  #faq-{{ section.id }} .faq-nav a{ 
+    text-decoration:none !important; 
+    line-height:2; 
+    padding:10px; 
+    color:inherit; 
+  }
+  .faqs summary {
+    text-align: left !important;
+    font-weight: 500 !important;
+    font-size: 1.8rem !important;
+    letter-spacing: 0;
+    padding: 20px 0px !important;
+  }
+  .faq-nav {
+    position: sticky;
+    top: 190px;
+  }
+  .faqs details {
+      margin-top: 0;
+  }
+  .faq .faqs details {
+      display: block !important;
+  }
+  .faq .faqs h2 {
+      margin: 40px 0px 20px 0px;
+  }
+  .faq .faqs h2:nth-of-type(1)  {
+      margin-top: 0 !important;
+  }
+  .faq h2 {
+      font-size: 2rem;
+  }
+  a[data-url-nav="#faq-heading-separator"] {
+      font-size: 1.25rem !important;
+  }
+  .faq .faqs details>summary::after {
+      line-height: 1.6 !important;
+      font-weight: 400 !important;
+      border: 1px solid !important;
+  }
+  a.no-style.text-uppercase.nav-active::before {
+      width: 8px !important;
+      height: 8px !important;
+  }
+  @media (max-width:777px){
+    #faq-{{ section.id }} .faq x-grid{ 
+      flex-direction:column; 
+    }
+    #faq-{{ section.id }} x-cell.faqs{ 
+      padding:0 !important; 
+      max-width:100% !important; 
+      width:100% !important; 
+    }
+    #faq-{{ section.id }} .faq-nav-column{ 
+      width:100%; 
+      background:#fafaf9; 
+      margin-bottom:20px; 
+    }
+    #faq-{{ section.id }} .faq .faqs details[open]>summary::after {
+      font-size: 20px !important;
+    }
+    #faq-{{ section.id }} section.faq{ 
+      margin-top:0; 
+      padding-top:40px; 
+    }
+    #faq-{{ section.id }} x-cell.faq-nav-column {
+      display: none;
+    }
+    section.faq {
+        padding: 10px;
+    }
+    #faq-{{ section.id }} .faq .faqs details { 
+      margin-bottom: 0 !important;
+    }
+    #faq-{{ section.id }} .faq .faqs details>summary{ 
+      padding:20px 48px 20px 0; 
+    }
+    #faq-{{ section.id }} .faq .faqs details>summary::after{ 
+      width:32px; 
+      height:32px; 
+      font-size:20px; 
+    }
+    #faq-{{ section.id }} .faq .faqs details [itemprop="acceptedAnswer"] .rte {
+      margin: 10px 40px 40px 10px !important;
+      font-weight: 400 !important;
+      max-width: 100% !important;
+      font-size: 1.35rem;
+      line-height: 1.25;
+    }
+    .faqs h2 {
+      margin-bottom: 0 !important;
+    }
+  }
+</style>
+
+</section>
+
+{% schema %}
+{
+  "name": "NP FAQs",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "summary",
+      "label": "Enable summary",
+      "default": true,
+      "info": "Shows a summary link list for quick FAQ group navigation."
+    },
+    {
+      "type": "text",
+      "id": "summary_heading",
+      "label": "Topics heading",
+      "default": "Topics"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-3", "label": "Scheme 3" },
+        { "value": "scheme-4", "label": "Scheme 4" },
+        { "value": "scheme-5", "label": "Scheme 5" },
+        { "value": "scheme-6", "label": "Scheme 6" },
+        { "value": "scheme-7", "label": "Scheme 7" },
+        { "value": "scheme-9", "label": "Scheme 8" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Heading separator" }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Question", "default": "The question" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>The answer</p>" },
+        { "type": "checkbox", "id": "expandAnswer", "label": "Expand answer by default", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NP FAQs",
+      "category": "Nodpod"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,292 @@
+{% comment %}
+  Section: np-header-block
+  Usage: Add to sections/np-header-block.liquid and add in Theme Editor.
+{% endcomment %}
+
+{% style %}
+  /* Wrapper spacing + background */
+  div[id="shopify-section-{{ section.id }}"] {
+    margin: {{ section.settings.marginTop }}px 0 {{ section.settings.marginBottom }}px 0;
+    padding: {{ section.settings.paddingTop }}px {{ section.settings.paddingRight }}px {{ section.settings.paddingBottom }}px {{ section.settings.paddingLeft }}px;
+    background-color: {{ section.settings.full_bkg_color }};
+    text-align: {{ section.settings.text_alignment }};
+    {% if section.settings.background_image != blank %}
+      background-image: url({{ section.settings.background_image | image_url }});
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    {% endif %}
+  }
+
+  /* Content container */
+  div[id="shopify-section-{{ section.id }}"] .main-title-block {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  /* Global text color */
+  div[id="shopify-section-{{ section.id }}"] .main-title-block h4,
+  div[id="shopify-section-{{ section.id }}"] .main-title-block h1,
+  div[id="shopify-section-{{ section.id }}"] .main-title-block h2,
+  div[id="shopify-section-{{ section.id }}"] .main-title-block p,
+  div[id="shopify-section-{{ section.id }}"] .main-title-block a {
+    color: {{ section.settings.text_color }};
+  }
+
+  /* ---- Typography / component styles (as provided) ---- */
+  .section-main-heading-hero {
+    font-family: var(--font-heading-family);
+    font-weight: 300;
+    font-size: 7.5rem;
+    line-height: 1.15;
+    margin-bottom: 30px;
+  }
+  .main-page-heading {
+    font-family: var(--font-heading-family);
+    font-weight: 300;
+    font-size: 6rem;
+    line-height: 1.15;
+    margin-bottom: 30px;
+  }
+  .section-subheading {
+    font-family: var(--font-body-family);
+    font-weight: 300;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .section-main-heading {
+    font-family: var(--font-heading-family);
+    font-weight: 300;
+    font-size: 5rem;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-main-text {
+    font-family: var(--font-body-family);
+    font-weight: 300;
+    font-size: 1.8rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    display: block;
+  }
+  .section-main-link {
+    font-family: var(--font-heading-family);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 2.25rem;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1.5px;
+    display: inline-block;
+  }
+  .section-main-button {
+    font-family: var(--font-body-family);
+    font-size: 1.75rem;
+    width: max-content;
+    padding: 18px 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: 2px;
+    display: inline-block;
+  }
+  .section-main-outline-btn {
+    font-family: var(--font-heading-family);
+    font-size: 2.25rem;
+    width: max-content;
+    padding: 15px 40px;
+    text-transform: capitalize;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: 0px;
+    font-style: italic;
+    display: inline-block;
+  }
+  .section-main-text-logo {
+    display: inline-block;
+  }
+
+  @media (max-width: 750px) {
+    .main-page-heading { font-size: 4.35rem; }
+    .section-subheading,
+    .section-main-heading,
+    .section-main-text,
+    .section-main-link { text-align: center; }
+    .section-main-button,
+    .section-main-outline-btn,
+    .section-main-text-logo { margin: 0 auto; }
+  }
+{% endstyle %}
+
+<div class="main-title-block">
+  {%- for block in section.blocks -%}
+    {% case block.type %}
+      {% when 'subheading' %}
+        <h4 class="section-subheading">{{ block.settings.subheading }}</h4>
+
+      {% when 'heading' %}
+        {% if section.settings.heading_size == 'large' %}
+          <h1 class="main-page-heading">{{ block.settings.heading }}</h1>
+        {% else %}
+          <h2 class="section-main-heading">{{ block.settings.heading }}</h2>
+        {% endif %}
+
+      {% when 'text' %}
+        <p class="section-main-text">{{ block.settings.text }}</p>
+
+      {% when 'button' %}
+        {% assign type = block.settings.button_type %}
+        {% if block.settings.button_label != blank %}
+          <a
+            href="{{ block.settings.button_link }}"
+            class="{% if type == 'full' %}section-main-button{% elsif type == 'outline' %}section-main-outline-btn{% else %}section-main-link{% endif %}"
+            style="
+              {% if type == 'full' %}
+                background-color: {{ block.settings.buttonBg }};
+                color: {{ block.settings.buttonColor }};
+              {% elsif type == 'outline' %}
+                border: 1px solid {{ block.settings.buttonOutline }};
+                color: {{ block.settings.buttonColor }};
+                background-color: transparent;
+              {% else %}
+                color: {{ block.settings.linkColor }};
+              {% endif %}"
+          >
+            {{ block.settings.button_label }}
+          </a>
+        {% endif %}
+
+      {% when 'image' %}
+        {% if block.settings.logoImage != blank %}
+          <img
+            class="section-main-text-logo"
+            src="{{ block.settings.logoImage | image_url }}"
+            width="{{ block.settings.logoWidth }}px"
+            height="auto"
+            alt="{{ block.settings.logoImage.alt | escape }}"
+            loading="lazy"
+          >
+        {% endif %}
+    {% endcase %}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "NP Header Block",
+  "settings": [
+    { "type": "header", "content": "Section Margin" },
+    {
+      "type": "range", "id": "marginTop", "label": "Margin Top",
+      "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0
+    },
+    {
+      "type": "range", "id": "marginBottom", "label": "Margin Bottom",
+      "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0
+    },
+
+    { "type": "header", "content": "Section Padding" },
+    {
+      "type": "range", "id": "paddingTop", "label": "Padding Top",
+      "min": 0, "max": 100, "step": 1, "unit": "px", "default": 20
+    },
+    {
+      "type": "range", "id": "paddingRight", "label": "Padding Right",
+      "min": 0, "max": 100, "step": 1, "unit": "px", "default": 20
+    },
+    {
+      "type": "range", "id": "paddingBottom", "label": "Padding Bottom",
+      "min": 0, "max": 100, "step": 1, "unit": "px", "default": 20
+    },
+    {
+      "type": "range", "id": "paddingLeft", "label": "Padding Left",
+      "min": 0, "max": 100, "step": 1, "unit": "px", "default": 20
+    },
+
+    { "type": "header", "content": "Background + Text" },
+    { "type": "color", "id": "text_color", "label": "Text Color", "default": "#5e5d5e" },
+    { "type": "color", "id": "full_bkg_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "image_picker", "id": "background_image", "label": "Background Image" },
+    {
+      "type": "select", "id": "text_alignment", "label": "Text Alignment", "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select", "id": "heading_size", "label": "Heading Size", "default": "large",
+      "options": [
+        { "value": "large", "label": "Large (h1)" },
+        { "value": "medium", "label": "Medium (h2)" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subheading", "name": "Subheading",
+      "settings": [
+        { "type": "text", "id": "subheading", "label": "Subheading", "default": "Subheading" }
+      ]
+    },
+    {
+      "type": "heading", "name": "Heading",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Main Heading" }
+      ]
+    },
+    {
+      "type": "text", "name": "Text",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "This is a supporting paragraph." }
+      ]
+    },
+    {
+      "type": "button", "name": "Button",
+      "settings": [
+        { "type": "text", "id": "button_label", "label": "Button Label", "default": "Click Here" },
+        { "type": "url", "id": "button_link", "label": "Button Link" },
+        {
+          "type": "select", "id": "button_type", "label": "Button Type", "default": "full",
+          "options": [
+            { "value": "full", "label": "Full" },
+            { "value": "outline", "label": "Outline" },
+            { "value": "link", "label": "Link" }
+          ]
+        },
+        { "type": "color", "id": "buttonBg", "label": "Button Background", "default": "#5e5d5e" },
+        { "type": "color", "id": "buttonOutline", "label": "Outline Color", "default": "#5e5d5e" },
+        { "type": "color", "id": "buttonColor", "label": "Button Text", "default": "#ffffff" },
+        { "type": "color", "id": "linkColor", "label": "Link Color", "default": "#5e5d5e" }
+      ]
+    },
+    {
+      "type": "image", "name": "Logo Image",
+      "settings": [
+        { "type": "image_picker", "id": "logoImage", "label": "Logo Image" },
+        {
+          "type": "range", "id": "logoWidth", "label": "Logo Image Width",
+          "min": 0, "max": 400, "step": 10, "default": 150
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NP Header Block",
+      "category": "Nodpod",
+      "blocks": [
+        { "type": "subheading" },
+        { "type": "heading" },
+        { "type": "text" },
+        { "type": "button" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,770 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "yotpo_product_reviews_star_rating_DhKeUU": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "fsa_hsa_badge_AqY76k": {
+          "type": "fsa_hsa_badge",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_liquid_wQ4TRW": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p class=\"subtitle\">{{ product.metafields.custom.product_tagline_text }}</p>"
+          }
+        },
+        "divider_cLMHCN": {
+          "type": "divider",
+          "settings": {
+            "space": 16,
+            "color": "#d9d9d9"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "divider_7FnXyt": {
+          "type": "divider",
+          "settings": {
+            "space": 12,
+            "color": "#d9d9d9"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "text_i43CGF": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Shop by 12/11 to get your order by Christmas with standard shipping.",
+            "text_style": "body"
+          }
+        },
+        "complementary_NEakd4": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Also available in:",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 1,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false,
+            "show_card_subtitle": true
+          }
+        },
+        "divider_qRaJAm": {
+          "type": "divider",
+          "settings": {
+            "space": 16,
+            "color": "#d9d9d9"
+          }
+        },
+        "icon_with_text_dhMfjM": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/Group_374.svg",
+            "heading_1": "Clinically tested to eliminate acne-causing bacteria by over 99%",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/Group_375.svg",
+            "heading_2": "Stays fresher 3–5x longer between washes",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/Layer_1_1.svg",
+            "heading_3": "Promotes skin wellness while reducing hair friction"
+          }
+        },
+        "divider_H9xhmp": {
+          "type": "divider",
+          "settings": {
+            "space": 8,
+            "color": "#d9d9d9"
+          }
+        },
+        "tolstoy_shoppable_video_quiz_carousel_block_XJa69R": {
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "cfwh2qe66cx45"
+          }
+        },
+        "tabs_RCq6T9": {
+          "type": "tabs",
+          "settings": {}
+        },
+        "product_tab_ixfDAL": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Details",
+            "content": "{{ product.description }}",
+            "page": ""
+          }
+        },
+        "product_tab_zymyec": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Materials",
+            "content": "<p>{{ product.metafields.custom.pdp_materials | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "product_tab_QRJWpQ": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Size",
+            "content": "<p>{{ product.metafields.custom.pdp_size | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "product_tab_CPPT6F": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Shipping + Returns",
+            "content": "<p>{{ product.metafields.custom.pdp_shipping | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "custom_liquid_aTwrw9": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<img width=\"100%\" style=\"margin: 20px 0 0 0 !important;\" src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/pdp-icons-text.svg?v=1758741235\" />"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_star_rating_DhKeUU",
+        "fsa_hsa_badge_AqY76k",
+        "title",
+        "price",
+        "custom_liquid_wQ4TRW",
+        "divider_cLMHCN",
+        "variant_picker",
+        "divider_7FnXyt",
+        "buy_buttons",
+        "text_i43CGF",
+        "complementary_NEakd4",
+        "divider_qRaJAm",
+        "icon_with_text_dhMfjM",
+        "divider_H9xhmp",
+        "tolstoy_shoppable_video_quiz_carousel_block_XJa69R",
+        "tabs_RCq6T9",
+        "product_tab_ixfDAL",
+        "product_tab_zymyec",
+        "product_tab_QRJWpQ",
+        "product_tab_CPPT6F",
+        "custom_liquid_aTwrw9"
+      ],
+      "custom_css": [
+        "ul.icon-with-text.icon-with-text--horizontal {background: #fafaf9; padding: 15px 20px 10px; border: 1px solid #d9d9d9; border-radius: 6px;}",
+        ".shopify-app-block {margin: 0 !important;}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 32,
+        "padding_bottom": 56,
+        "tabs_indicator_color": "#111111",
+        "tabs_line_color": "#e5e5e5"
+      }
+    },
+    "np_image_with_text_dXgRgJ": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_bMG8kN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Thoughtfully Designed for Better Sleep"
+          }
+        },
+        "liquid_ikwznA": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- comment -%} HTML {%- endcomment -%}\n<div class=\"np-points\">\n  <div class=\"product-highlight-points\">\n    <div class=\"product-point-img\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/PDP_4_1.png?v=1732647914\"\n        alt=\"Naturally calming\"\n        loading=\"lazy\"\n        decoding=\"async\">\n    </div>\n    <div class=\"product-point-text\">\n      <h3>NATURALLY CALMING</h3>\n      <p>Perfect for overactive minds to help you fall asleep faster.</p>\n    </div>\n  </div>\n\n  <div class=\"product-highlight-points\">\n    <div class=\"product-point-img\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/PDP_4_1_1.png?v=1732647914\"\n        alt=\"3 Minute Magic\"\n        loading=\"lazy\"\n        decoding=\"async\">\n    </div>\n    <div class=\"product-point-text\">\n      <h3>3 MINUTE MAGIC</h3>\n      <p>Feel the Deep Touch Pressure magic within minutes.</p>\n    </div>\n  </div>\n\n  <div class=\"product-highlight-points\">\n    <div class=\"product-point-img\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/PDP_4_1_2.png?v=1732647914\"\n        alt=\"Targets key pressure points\"\n        loading=\"lazy\"\n        decoding=\"async\">\n    </div>\n    <div class=\"product-point-text\">\n      <h3>TARGETS KEY PRESSURE POINTS</h3>\n      <p>Four pod design targets key pressure points for optimal relaxation.</p>\n    </div>\n  </div>\n</div>"
+          }
+        },
+        "liquid_VKTJXK": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"mask-features\">\n  <div class=\"mask-feature\">\n    Strap Free\n  </div>\n\n  <div class=\"feature-sep\">\n    |\n  </div>\n  \n  <div class=\"mask-feature\">\n    Scent Free\n  </div>\n\n  <div class=\"feature-sep\">\n    |\n  </div> \n  \n  <div class=\"mask-feature\">\n     Freezer Friendly\n  </div>\n\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bMG8kN",
+        "liquid_ikwznA",
+        "liquid_VKTJXK"
+      ],
+      "custom_css": [],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "pdp_product_highlight",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/silk-mask-1.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 0,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#fafaf9",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "custom_liquid_Jhrqjm": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".gradient {margin-bottom: -10px;}",
+        "#promo-mobile {display: none;}",
+        "@media (max-width: 989px) {#promo-mobile {display: block; } #promo-desktop {display: none; }}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<img id=\"promo-desktop\" width=\"100%\" src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/silk-banner-mid-desktop_3896dc9c-bc6d-47b3-a994-69d9a46aa07e.png?v=1758666263\" />\n\n<img id=\"promo-mobile\" width=\"100%\" src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/silk-banner-mid-mobile_c0f0c31b-fee2-4c76-bee2-fd78f4fb6f30.png?v=1758653554\" />",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "np_customer_reviews_XGJH6h": {
+      "type": "np-customer-reviews",
+      "custom_css": [
+        ".section-subheading,.section-main-heading,.section-main-text {text-align: center;}",
+        " {padding: 60px 20px 60px 20px; background: #ecebe7;}",
+        ".np-customer-review {padding: 0;}"
+      ],
+      "name": "Customer Review Section",
+      "settings": {
+        "subheading": "Where has this been all my life",
+        "review_text": "“Love. I was skeptical but this has helped me have the best nights of sleep in a long time. So happy with this purchase.”",
+        "reviewer_name": "Dawn",
+        "background_color": "#ecebe7",
+        "border_color": "rgba(0,0,0,0)",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "wrapper_padding": 0
+      }
+    },
+    "np_image_with_text_br7XPe": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_eHzxxB": {
+          "type": "heading",
+          "settings": {
+            "heading": "What makes Mineralized Silk™ <em>different?</em>"
+          }
+        },
+        "liquid_QM79Bm": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<ul class=\"min-silk-list\">\n<li>\nClinically tested silver-ions fight acne-causing bacteria.\n</li>\n<li>\nKeeps your silk fresher between washes.\n</li>\n<li>\nCombines the time-honored beauty benefits of silk with the power of science.\n</li>\n</ul>\n\n<style>\n.min-silk-list {\n  margin: 0;\n  padding: 0 0 0 20px;\n  margin: 20px 0 20px 0;\n}\n.min-silk-list li {\n  position: relative;\n  padding-left: 5px;\n  font-size: 1.85rem;\n  padding-bottom: 10px;\n  font-weight: 300 !important;\n  line-height: 1.5;\n}\n</style>"
+          }
+        },
+        "button_hMxxYQ": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP MINERALIZED SILK",
+            "button_link": "",
+            "button_type": "full",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "heading_eHzxxB",
+        "liquid_QM79Bm",
+        "button_hMxxYQ"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/silk.png",
+        "image_position": "left",
+        "mobile_image_position": "bottom",
+        "mobile_gap": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 50,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "scrolling_logo_list_WyAEy4": {
+      "type": "scrolling-logo-list",
+      "blocks": {
+        "logo_image_WXxiiB": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/al-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_xJAyUJ": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/nb-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_cbkVfN": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/wh-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_M3VhPB": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/fb-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_jFMm4z": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/gp-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_ACeF9B": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/wsj-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_dBfb3T": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/pp-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_WXxiiB",
+        "logo_image_xJAyUJ",
+        "logo_image_cbkVfN",
+        "logo_image_M3VhPB",
+        "logo_image_jFMm4z",
+        "logo_image_ACeF9B",
+        "logo_image_dBfb3T"
+      ],
+      "name": "Scrolling logo list",
+      "settings": {
+        "heading": "",
+        "headingAlignment": "start",
+        "logoVH_desktop": 5,
+        "logoVH_mobile": 5,
+        "logoPadding": 25,
+        "marqueeDirection": "false",
+        "marqueeSpeeds": 30,
+        "marqueePause": true,
+        "headingBg": "#a2b0a5",
+        "headingColor": "#000000",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "custom_liquid_8p9yX7": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "h2 {font-weight: 300;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'pdp-videos.liquid' %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "np_header_block_t9NWhT": {
+      "type": "np-header-block",
+      "blocks": {
+        "subheading_cFMjXn": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "NODPOD SILK MASK"
+          }
+        },
+        "heading_R6yeaJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Frequently Asked Questions"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_cFMjXn",
+        "heading_R6yeaJ"
+      ],
+      "custom_css": [
+        ".main-title-block {max-width: 1700px; margin: 0 auto; padding: 0 20px;}",
+        "h1 {margin-top: 0;}",
+        "h4 {margin-bottom: 0; text-align: left !important;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 80,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ebeae6",
+        "text_alignment": "left",
+        "heading_size": "large"
+      }
+    },
+    "np_faqs_LFwaVc": {
+      "type": "np-faqs",
+      "blocks": {
+        "heading_34ny3B": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nodpod Silk"
+          }
+        },
+        "question_FNT9KU": {
+          "type": "question",
+          "settings": {
+            "title": "What exactly is a silver ion?",
+            "answer": "<p>A silver ion is simply a charged particle of silver that we’ve bonded to our silk. You can’t see it or feel it, but it works at the microscopic level to naturally help fight bacteria. Silver has been trusted for centuries in wellness and medicine. This isn’t new science, just a smarter way to pair it with the beauty benefits of silk.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_8wNnXY": {
+          "type": "question",
+          "settings": {
+            "title": "How long can I go between washes?",
+            "answer": "<p> Because silver ions naturally resist bacteria, your Nodpod Silk can stay fresher up to 3–5 times longer than traditional sleep masks. Of course, things like makeup, hair products, and natural oils still build up, so we recommend washing when it feels right for you<em>.</em></p>",
+            "expandAnswer": false
+          }
+        },
+        "question_Qf8qJX": {
+          "type": "question",
+          "settings": {
+            "title": "How do I care for Mineralized Silk™?",
+            "answer": "<p>For the longevity and preservation of Mineralized Silk™, hand wash in cold water with a pH-neutral detergent. If you prefer machine washing, use the delicate cycle in a silk-only load. Avoid bleach or fabric softeners, and dry flat or hang in the shade out of direct sunlight.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_rw4gH9": {
+          "type": "question",
+          "settings": {
+            "title": "Will the silver ions last forever?",
+            "answer": "<p>Our Mineralized Silk™ is treated with silver ions, they aren’t woven into the fabric itself. </p><p>That treatment is designed to last for years of normal use. Because the fabric stays fresher 3–5 times longer between washes, most people enjoy the benefits for well over a year or two. </p><p>Over time, with repeated washing, the treatment naturally begins to fade, but you’ll always have the timeless beauty benefits of premium silk, which inherently has skin and hair soothing properties.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_dpBWTM": {
+          "type": "question",
+          "settings": {
+            "title": "Can I use nodpod for side sleeping?",
+            "answer": "<p>Yes. It works incredibly for side sleeping. Be sure to use the last two pods over your eyes and rest your head on the hollow end.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_PQpfyW": {
+          "type": "question",
+          "settings": {
+            "title": "Will it stay on all night?",
+            "answer": "<p>The purpose of nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_mxnEep": {
+          "type": "question",
+          "settings": {
+            "title": "What are the beads in the nodpod made of? Are they safe?",
+            "answer": "<p>Yes, very safe. The microbeads are made of 100% Polyethylene (PE) plastic pellets, which is the most common plastic in use today. It's used in medical equipment, food containers, and children's stuffed animals. These beads are nontoxic, BPA free and hypoallergenic.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_kK7Dx9": {
+          "type": "question",
+          "settings": {
+            "title": "How should I use my Nodpod?",
+            "answer": "<p>Nodpod was designed to be worn freely in any horizontal sleeping position. It's designed to get you to sleep, not to stay on all night. For seated and upright use we've designed a pull-through slit to fasten Nodpod in place.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_dgiarY": {
+          "type": "question",
+          "settings": {
+            "title": "Does 3-minute magic mean I'll be asleep in 3 minutes?",
+            "answer": "<p>Most people describe a feeling of relaxation, which is attributed to the science of Deep Touch Pressure within minutes. Not everyone experiences the same feeling as quickly. If you are not fully satisfied with your Nodpod we would be happy to refund you.</p>",
+            "expandAnswer": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_34ny3B",
+        "question_FNT9KU",
+        "question_8wNnXY",
+        "question_Qf8qJX",
+        "question_rw4gH9",
+        "question_dpBWTM",
+        "question_PQpfyW",
+        "question_mxnEep",
+        "question_kK7Dx9",
+        "question_dgiarY"
+      ],
+      "custom_css": [
+        "{background: #ebeae6;}",
+        "section {max-width: 1700px; margin: 0 auto !important; padding: 20px 20px !important;}"
+      ],
+      "name": "NP FAQs",
+      "settings": {
+        "summary": false,
+        "summary_heading": "Topics",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "np_header_block_At6fRW": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_LcJcVP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Skeptical? So Were They."
+          }
+        }
+      },
+      "block_order": [
+        "heading_LcJcVP"
+      ],
+      "custom_css": [
+        "@media (max-width: 989px) {.main-page-heading {margin: 0; }}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 80,
+        "paddingRight": 20,
+        "paddingBottom": 40,
+        "paddingLeft": 20,
+        "text_color": "#5d5e5d",
+        "full_bkg_color": "#fafaf9",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "1758516193a0ad4d56": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_reviews_reviews_KgzwGn": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_reviews_KgzwGn"
+      ],
+      "custom_css": [
+        ".yotpo-head {display: none !important;}",
+        ".yotpo-main-widget-layout {background: #fafaf9 !important;}"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "np_header_block_4CX8eM": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_GQEQaV": {
+          "type": "heading",
+          "settings": {
+            "heading": "Complete Your Sleep Routine"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GQEQaV"
+      ],
+      "custom_css": [
+        "@media (max-width: 989px) {.main-page-heading {margin: 0; }}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 50,
+        "paddingRight": 20,
+        "paddingBottom": 30,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "featured_products_fxVQXV": {
+      "type": "featured-products",
+      "blocks": {
+        "product_G8qNDH": {
+          "type": "product",
+          "settings": {
+            "product": "nodpod"
+          }
+        },
+        "product_4WBBxA": {
+          "type": "product",
+          "settings": {
+            "product": "nodpod-body"
+          }
+        },
+        "product_B6TLKD": {
+          "type": "product",
+          "settings": {
+            "product": "nodpod-silk"
+          }
+        }
+      },
+      "block_order": [
+        "product_G8qNDH",
+        "product_4WBBxA",
+        "product_B6TLKD"
+      ],
+      "custom_css": [
+        ".collection {max-width: 1400px; margin: auto;}"
+      ],
+      "name": "Featured products",
+      "settings": {
+        "products_to_show": 3,
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-size: 5rem; text-align: center; line-height: 1; margin-bottom: 60px; font-weight: 300;}"
+      ],
+      "settings": {
+        "heading": "Complete Your Sleep Routine",
+        "heading_size": "h2",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "np_image_with_text_dXgRgJ",
+    "custom_liquid_Jhrqjm",
+    "np_customer_reviews_XGJH6h",
+    "np_image_with_text_br7XPe",
+    "scrolling_logo_list_WyAEy4",
+    "custom_liquid_8p9yX7",
+    "np_header_block_t9NWhT",
+    "np_faqs_LFwaVc",
+    "np_header_block_At6fRW",
+    "1758516193a0ad4d56",
+    "np_header_block_4CX8eM",
+    "featured_products_fxVQXV",
+    "related-products"
+  ]
+}

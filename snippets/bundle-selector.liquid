@@ -1,0 +1,1082 @@
+{%- liquid
+  assign core_product = all_products.nodpod
+  assign silk_product = all_products['nodpod-silk']
+  assign body_product = all_products['nodpod-body']
+-%}
+
+{%- capture bundle_variant_images -%}
+{
+  "mask": {
+    {%- for v in core_product.variants -%}
+      "{{ v.id }}": [
+        {%- assign imgs = v.metafields.custom.variant_images -%}
+        {%- if imgs != blank -%}
+          {%- assign files = imgs.value | default: imgs -%}
+          {%- for f in files -%}
+            {%- assign full  = f | image_url: width: 2048 -%}
+            {%- assign thumb = f | image_url: width: 416  -%}
+            {%- assign alt   = f.alt | default: v.title -%}
+            {%- assign ratio = f.aspect_ratio | default: 1.0 -%}
+            {"full": {{ full | json }}, "thumb": {{ thumb | json }}, "alt": {{ alt | json }}, "ratio": {{ ratio }}}
+            {%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- if v.featured_image -%}
+            {"full": {{ v.featured_image | img_url: '2048x' | json }}, "thumb": {{ v.featured_image | img_url: '416x' | json }}, "alt": {{ v.title | json }}, "ratio": {{ v.featured_image.aspect_ratio | default: 1.0 }}}
+          {%- else -%}
+            {"full": {{ core_product.featured_image | img_url: '2048x' | json }}, "thumb": {{ core_product.featured_image | img_url: '416x' | json }}, "alt": {{ core_product.title | json }}, "ratio": {{ core_product.featured_image.aspect_ratio | default: 1.0 }}}
+          {%- endif -%}
+        {%- endif -%}
+      ]{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  },
+  "silk": {
+    {%- for v in silk_product.variants -%}
+      "{{ v.id }}": [
+        {%- assign imgs = v.metafields.custom.variant_images -%}
+        {%- if imgs != blank -%}
+          {%- assign files = imgs.value | default: imgs -%}
+          {%- for f in files -%}
+            {%- assign full  = f | image_url: width: 2048 -%}
+            {%- assign thumb = f | image_url: width: 416  -%}
+            {%- assign alt   = f.alt | default: v.title -%}
+            {%- assign ratio = f.aspect_ratio | default: 1.0 -%}
+            {"full": {{ full | json }}, "thumb": {{ thumb | json }}, "alt": {{ alt | json }}, "ratio": {{ ratio }}}
+            {%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- if v.featured_image -%}
+            {"full": {{ v.featured_image | img_url: '2048x' | json }}, "thumb": {{ v.featured_image | img_url: '416x' | json }}, "alt": {{ v.title | json }}, "ratio": {{ v.featured_image.aspect_ratio | default: 1.0 }}}
+          {%- else -%}
+            {"full": {{ silk_product.featured_image | img_url: '2048x' | json }}, "thumb": {{ silk_product.featured_image | img_url: '416x' | json }}, "alt": {{ silk_product.title | json }}, "ratio": {{ silk_product.featured_image.aspect_ratio | default: 1.0 }}}
+          {%- endif -%}
+        {%- endif -%}
+      ]{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  },
+  "body": {
+    {%- for v in body_product.variants -%}
+      "{{ v.id }}": [
+        {%- assign imgs = v.metafields.custom.variant_images -%}
+        {%- if imgs != blank -%}
+          {%- assign files = imgs.value | default: imgs -%}
+          {%- for f in files -%}
+            {%- assign full  = f | image_url: width: 2048 -%}
+            {%- assign thumb = f | image_url: width: 416  -%}
+            {%- assign alt   = f.alt | default: v.title -%}
+            {%- assign ratio = f.aspect_ratio | default: 1.0 -%}
+            {"full": {{ full | json }}, "thumb": {{ thumb | json }}, "alt": {{ alt | json }}, "ratio": {{ ratio }}}
+            {%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- if v.featured_image -%}
+            {"full": {{ v.featured_image | img_url: '2048x' | json }}, "thumb": {{ v.featured_image | img_url: '416x' | json }}, "alt": {{ v.title | json }}, "ratio": {{ v.featured_image.aspect_ratio | default: 1.0 }}}
+          {%- else -%}
+            {"full": {{ body_product.featured_image | img_url: '2048x' | json }}, "thumb": {{ body_product.featured_image | img_url: '416x' | json }}, "alt": {{ body_product.title | json }}, "ratio": {{ body_product.featured_image.aspect_ratio | default: 1.0 }}}
+          {%- endif -%}
+        {%- endif -%}
+      ]{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  }
+}
+{%- endcapture -%}
+
+<script type="application/json" id="BundleVariantImages">
+  {{ bundle_variant_images | strip_newlines }}
+</script>
+
+<div class="bundle-builder">
+  <div class="bundle-title">
+    <h1 class="bundle-main-title">The Better Sleep Bundle</h1>
+  </div>
+
+  <div class="bundle-price-wrap">
+    <span class="bundle-price-final" data-bundle-price>$0.00</span>
+    <span class="bundle-price-original" data-bundle-original></span>
+    <span class="bundle-price-badge" data-bundle-badge></span>
+  </div>
+
+  <p class="bundle-headline">
+    Includes a weighted eye mask and BODY, in your choice of premium fabric: cozy cotton or cooling mineral-infused
+    silk.
+  </p>
+
+  <!-- ─────────  STEP 1  – mask choice  ───────── -->
+  <div class="bundle-step">
+    <h3>1. Choose your Nodpod</h3>
+
+    <!-- ─────────  CORE MASK ROW  ───────── -->
+    <div class="bundle-row">
+      <img
+        class="row-img"
+        data-product-image="mask"
+        src="{{ core_product.featured_image | img_url: '160x160' }}"
+        width="60"
+        height="60"
+        alt="{{ core_product.title }}"
+      >
+
+      <div class="row-options">
+        <p
+          class="collection-label"
+          data-selected-output="mask"
+          data-base-label="Core Collection:"
+        >
+          Core Collection:
+        </p>
+
+        <div class="swatch-group" data-product="mask">
+          {% for v in core_product.variants %}
+            {% liquid
+              assign hex = v.metafields.custom.variant_color | default: '#D1D1D1'
+            %}
+            <button
+              type="button"
+              class="color-swatch-pdp bundle-swatches pdp-color__label{% unless v.available %} is-disabled{% endunless %}"
+              data-collection="Core Collection"
+              data-tippy-content="{{ v.title }}"
+              data-images="{{ v.metafields.custom.variant_images.value | json }}"
+              data-variant-id="{{ v.id }}"
+              data-price="{{ v.price }}"
+              data-img="{{ v.featured_image | img_url: '300x300' }}"
+              data-color="{{ hex }}"
+              aria-label="{{ v.title }}"
+              {% unless v.available %}
+                aria-disabled="true" data-disabled="true"
+              {% else %}
+                aria-disabled="false"
+              {% endunless %}
+            >
+              <span class="pdp-color__chip" style="background: {{ hex }};"></span>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────  SILK MASK ROW  ───────── -->
+    <div class="bundle-row">
+      <img
+        class="row-img"
+        data-product-image="silk"
+        src="{{ silk_product.featured_image | img_url: '160x160' }}"
+        width="60"
+        height="60"
+        alt="{{ silk_product.title }}"
+      >
+
+      <div class="row-options">
+        <div class="silk-label-wrapper">
+          <p
+            class="collection-label"
+            data-selected-output="silk"
+            data-base-label="Silk Collection (+ $25):"
+          >
+            Silk Collection (+ $25):
+          </p>
+          <a href="javascript:void(0)" class="why-silk-link" data-open-modal="why-silk">Why Silk?</a>
+
+        </div>
+
+        <div class="swatch-group" data-product="silk">
+          {% for v in silk_product.variants %}
+            {% liquid
+              assign hex = v.metafields.custom.variant_color | default: '#D1D1D1'
+            %}
+            <button
+              type="button"
+              class="color-swatch-pdp bundle-swatches pdp-color__label{% unless v.available %} is-disabled{% endunless %}"
+              data-collection="Core Collection"
+              data-tippy-content="{{ v.title }}"
+              data-images="{{ v.metafields.custom.variant_images.value | json }}"
+              data-variant-id="{{ v.id }}"
+              data-price="{{ v.price }}"
+              data-img="{{ v.featured_image | img_url: '300x300' }}"
+              data-color="{{ hex }}"
+              aria-label="{{ v.title }}"
+              {% unless v.available %}
+                aria-disabled="true" data-disabled="true"
+              {% else %}
+                aria-disabled="false"
+              {% endunless %}
+            >
+              <span class="pdp-color__chip" style="background: {{ hex }};"></span>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────  STEP 2  – body blanket  ───────── -->
+    <div class="bundle-step">
+      <h3>2. Choose your Nodpod BODY</h3>
+
+      <div class="bundle-row">
+        <img
+          class="row-img"
+          data-product-image="body"
+          src="{{ body_product.featured_image | img_url: '160x160' }}"
+          width="60"
+          height="60"
+          alt="{{ body_product.title }}"
+        >
+
+        <div class="row-options">
+          <p
+            class="collection-label"
+            data-selected-output="body"
+            data-base-label="Core Collection:"
+          >
+            Core Collection:
+          </p>
+
+          <div class="swatch-group" data-product="body">
+            {% for v in body_product.variants %}
+              {% assign col = v.metafields.custom.collection_name.value | default: 'Collection' %}
+              {% liquid
+                assign hex = v.metafields.custom.variant_color | default: '#D1D1D1'
+              %}
+              <button
+                type="button"
+                class="color-swatch-pdp bundle-swatches pdp-color__label{% unless v.available %} is-disabled{% endunless %}"
+                data-collection="Core Collection"
+                data-tippy-content="{{ v.title }}"
+                data-images="{{ v.metafields.custom.variant_images.value | json }}"
+                data-variant-id="{{ v.id }}"
+                data-price="{{ v.price }}"
+                data-img="{{ v.featured_image | img_url: '300x300' }}"
+                data-color="{{ hex }}"
+                aria-label="{{ v.title }}"
+                {% unless v.available %}
+                  aria-disabled="true" data-disabled="true"
+                {% else %}
+                  aria-disabled="false"
+                {% endunless %}
+              >
+                <span class="pdp-color__chip" style="background: {{ hex }};"></span>
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────  ADD-TO-CART  ───────── -->
+    <button id="bundle-add-btn" class="bundle-add">ADD TO CART — <span data-bundle-price-inline>$0.00</span></button>
+
+    <div id="why-silk-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="why-silk-title">
+      <div class="modal__backdrop" data-close-modal></div>
+      <div class="modal__dialog" tabindex="-1">
+        <button class="modal__close" type="button" aria-label="Close" data-close-modal>×</button>
+
+        <div class="modal__content">
+          <div class="modal__media">
+            <!-- optional: swap to a theme asset if you want -->
+            <img
+              width="100%"
+              height="auto"
+              src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/Rectangle_126.png?v=1755100573"
+              alt="Why Mineralized Silk"
+              loading="lazy"
+            >
+          </div>
+          <div class="modal__copy">
+            <h3 id="why-silk-title">Why Mineralized Silk?</h3>
+            <div class="modal-list">
+              <div class="modal-list-row">
+                <div class="modal-list-img">
+                  <img
+                    width="100%"
+                    height="auto"
+                    src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/silver_ion.png?v=1754700326"
+                  >
+                </div>
+                <div class="modal-list-txt">
+                  <p>Clinically Proven to Reduce Acne-Causing Bacteria by 99%</p>
+                </div>
+              </div>
+              <div class="modal-list-row">
+                <div class="modal-list-img">
+                  <img
+                    width="100%"
+                    height="auto"
+                    src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/supports_skin_health.png?v=1754700326"
+                  >
+                </div>
+                <div class="modal-list-txt">
+                  <p>Naturally Antimicrobial &amp; Gentle on Skin</p>
+                </div>
+              </div>
+              <div class="modal-list-row">
+                <div class="modal-list-img">
+                  <img
+                    width="100%"
+                    height="auto"
+                    src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/smoother_hair.png?v=1754700326"
+                  >
+                </div>
+                <div class="modal-list-txt">
+                  <p>Cooling, Breathable, and Frictionless</p>
+                </div>
+              </div>
+            </div>
+            <a class="modal__cta" href="/pages/why-silk">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== STYLES ========== -->
+<style>
+    product-info { padding: 0 20px; }
+
+    .bundle-builder{ margin:0 auto; font-family:inherit; }
+
+    .bundle-price { margin: 0 0 1.25rem; font-size: 24px; font-weight: 300; text-align: left; }
+
+    .bundle-step{ margin:2.5rem 0; }
+    .bundle-step h3 {
+      font-size: 16px; font-family: 'poppins'; margin-bottom: 30px;
+      color: #5d5e5d !important; font-weight: 400;
+    }
+
+    .bundle-row { display: flex; gap: 20px; align-items: center; margin-bottom: 1rem; }
+
+    .row-options { flex:1; position: relative; display: flex; flex-wrap: wrap; flex-direction: column; }
+
+    .silk-label-wrapper { display: flex; column-gap: 10px; flex-wrap: wrap; row-gap: 0px; }
+
+    .row-img{ object-fit: cover; width: 90px; height: 90px; border-radius: 10px; border: 1px solid #dddddd; }
+    .row-img.grayed { filter: grayscale(100%) opacity(.35); }
+
+    .collection-label { font-weight: 600; font-size: 14px; letter-spacing: 0; text-transform: uppercase; display: inline-block; }
+    .collection-label span { font-weight: 400; margin-left: 5px; }
+
+    .swatch-group { display:flex; gap:10px; flex-wrap:wrap; margin: 0; padding: 0; }
+    button.color-swatch-pdp { margin: 0; }
+
+    .bundle-add {
+      width: 100%;
+      padding: 20px;
+      background: #a2b0a5;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-family: var(--font-body-family);
+      font-weight: 600;
+    }
+
+    .bundle-price-wrap {
+      display: flex; align-items: center; gap: 12px; font-size: 24px;
+      margin-bottom: 1.5rem; font-family: 'poppins';
+    }
+    .bundle-price-final { font-weight: 300; color: #2d2d2d; font-family: 'larken'; }
+    .bundle-price-original { text-decoration: line-through; font-weight: 300; color: #999; font-size: 18px; font-family: 'larken'; }
+    .bundle-price-badge {
+      background-color: #A2B0A5; color: white; font-size: 14px; font-weight: 600;
+      padding: 7px 20px 5px 20px; border-radius: 30px; text-transform: uppercase;
+    }
+
+    .bundle-headline { font-size: 18px; line-height: 1.25; margin-bottom: 20px; font-family: 'larken'; font-weight: 300; }
+    .bundle-main-title { font-size: 4rem; margin-bottom: 10px; line-height: 1; font-weight: 300 !important; font-family: 'larken'; letter-spacing: -1px; }
+
+    .swiper2 { width: 120px; }
+    .swiper2 .swiper-slide { height: 88px !important; }
+    .swiper .swiper-slide img:not(.press-tag) { object-fit: cover !important; height: 100% !important; }
+    .swiper-product-gallery-wrapper { position: sticky; top: 120px; }
+
+    .why-silk-link {
+      display: inline-block; font-size: 16px; text-decoration: underline !important;
+      color: #77937D !important; font-weight: 300; font-style: italic; font-family: 'larken';
+      margin-bottom: 10px; line-height: 1; margin-top: 16px;
+      cursor: pointer; pointer-events: auto; position: relative; z-index: 1;
+    }
+
+    .row-option-wrapper { display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start; }
+
+    /* --- Modal --- */
+    .modal { 
+      position: fixed !important; 
+      inset: 0; 
+      z-index: 9999; 
+      display: none; 
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.is-open,
+    .modal.is-open,
+    .modal[aria-hidden="false"] { 
+      display: block !important; 
+      display: flex; 
+    }
+    .modal :is(a, ul, dl, div, section, article, p, h1, h2, h3, h4, h5, h6):empty {
+      display: block !important;
+    }
+    .modal__backdrop { display: block !important; position: absolute; inset: 0; background: rgba(0,0,0,.45); }
+    .modal__dialog {
+      inset: 0; 
+      margin: auto; 
+      max-width: 980px; 
+      height: fit-content;
+      position: relative;         /* no absolute/inset centering */
+      width: min(92vw, 980px);
+      max-height: calc(100vh - 40px); /* cap height to viewport with some breathing room */
+      overflow: auto;             /* scroll inside if content is tall */
+      background: #fafafa;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.45);
+    }
+    .modal__close {
+      position: absolute; top: 6px; left: 2px; border: 0; background: transparent;
+      font-size: 34px; line-height: 1; cursor: pointer; width: 56px;
+      font-family: 'poppins'; font-weight: 300; color: #838383;
+    }
+    .modal__content { display: grid; grid-template-columns: 1.2fr 1fr; gap: 0; }
+    .modal__media img { 
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover; 
+    }
+    @media (max-width: 760px) {
+      .modal__content { grid-template-columns: 1fr; }
+    }
+    .modal__copy {
+      display: flex; flex-direction: column; padding: 20px; max-width: 380px; margin: 0 auto;
+      gap: 30px; justify-content: center;
+    }
+    .modal__copy h3 {
+      font-family: 'larken'; font-size: 36px; font-weight: 300; color: #636666 !important;
+      text-align: center; border: 0; padding: 0; margin: 0 0 20px 0; line-height: 1;
+    }
+    .modal__bullets { list-style: none; padding: 0; margin: 0 0 20px; }
+    .modal__bullets li { margin: 10px 0; font-size: 16px; line-height: 1.4; }
+    .modal__cta {
+      display: inline-block; padding: 12px 20px; text-transform: uppercase; font-weight: 600;
+      background: #CEADB1; color: #fff !important; text-decoration: none !important; text-align: center; font-size: 18px;
+    }
+    .modal-list-row { display: flex; align-items: center; flex-direction: row; gap: 20px; }
+    .modal-list-img {
+      width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-width: 80px; max-width: 80px;
+    }
+    .modal-list { display: flex; flex-direction: column; gap: 20px; height: auto; }
+    .modal-list-txt p { font-family: 'poppins'; font-size: 16px; line-height: 1.25; font-weight: 300; }
+
+    .pdp-upsell-text { display: flex; flex-direction: column; gap: 10px; text-align: left; margin-top: 20px; }
+    .pdp-upsell-card {
+      display: flex; gap: 20px; background: #fafaf9; align-items: center; max-width: 100%;
+      padding: 20px 0; justify-content: center; flex-wrap: wrap;
+    }
+    .thumbnail-list {
+      max-height: 520px;
+      overflow: scroll;
+  }
+
+    /* --- Mobile --- */
+    @media (max-width: 760px) {
+      .modal__content { grid-template-columns: 1fr; }
+      .modal__dialog { width: 96%; }
+      #nodpod-pdp-upsell-card { padding: 0 10px 10px 10px; }
+      .pdp-upsell-img { width: 140px !important; }
+      .bundle-upsell-title { font-size: 40px !important; line-height: 1.2 !important; text-align: center !important; }
+      .bundle-pdp-bottom .bundle-pdp-bottom-col:nth-of-type(1) { display: none; }
+      .bundle-pdp-bottom-col:nth-of-type(2) { margin-top: 0 !important; }
+      x-cell.faq-nav-column { display: none; }
+      section.faq { padding-top: 0; }
+      .main-title-block { padding: 0 !important; text-align: center; }
+      #shopify-section-template--17202522718378__main .itsapp:first-child { display: block !important; }
+      .product-page { padding: 10px 0 0 0; }
+      .swiper { padding: 0 6vw 0 3vw; }
+    }
+
+    /* === Bundle swatches use PDP classes === */
+    .bundle-builder { --bundle-swatch-slash: #333; }
+
+    .bundle-builder .pdp-color__label{
+      width: 24px; height: 24px; border-radius: 999px;
+      display: grid; place-items: center;
+      padding: 0; border: 0; background: transparent;
+      outline: 2px solid transparent; outline-offset: 3px;
+      position: relative; cursor: pointer;
+      transition: outline-color .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+    .bundle-builder .pdp-color__label:focus-visible { outline-color: var(--np-outline, #636666); }
+
+    .bundle-builder .pdp-color__chip{
+      width: 100%; height: 100%; border-radius: inherit; position: relative;
+    }
+
+    /* selected ring (same as PDP) */
+    .bundle-builder .pdp-color__label.selected .pdp-color__chip{
+      box-shadow: 0 0 0 4px #fff, 0 0 0 5px var(--np-outline, currentColor);
+    }
+
+    /* disabled + diagonal slash (works even when selected) */
+    .bundle-builder .pdp-color__label[aria-disabled="true"],
+    .bundle-builder .pdp-color__label.is-disabled { opacity: .45; cursor: not-allowed; }
+
+    .bundle-builder .pdp-color__label[aria-disabled="true"] .pdp-color__chip::after,
+    .bundle-builder .pdp-color__label.is-disabled .pdp-color__chip::after{
+      content: "";
+      position: absolute; inset: 0; border-radius: inherit; z-index: 1; pointer-events: none;
+      background-image: linear-gradient(
+        -45deg,
+        transparent 44%,
+        var(--bundle-swatch-slash) 44%,
+        var(--bundle-swatch-slash) 56%,
+        transparent 56%
+      );
+    }
+
+    /* ensure any legacy thin strike is suppressed */
+    .bundle-builder .color-swatch-pdp.is-disabled:before { content: none !important; }
+</style>
+
+<!-- ========== SCRIPT ========== -->
+<script>
+  (() => {
+    const money = (c) => (c / 100).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+    /* ===== Variant image map (like PDP). Optional but preferred. ===== */
+    const IMG_MAP = (() => {
+      try {
+        const el = document.getElementById('BundleVariantImages');
+        return el ? JSON.parse(el.textContent) : {};
+      } catch {
+        return {};
+      }
+    })();
+
+    /* Normalize images for a given group + variant id from the map */
+    function imagesFromMap(group, variantId) {
+      const g = String(group || '');
+      const id = String(variantId || '');
+      const arr = IMG_MAP?.[g]?.[id];
+      return Array.isArray(arr) ? arr : [];
+    }
+
+    // reset the group's single label back to its base text (e.g., "Color:")
+    const resetLabels = (group) => {
+      document.querySelectorAll('.collection-label[data-selected-output="' + group + '"]').forEach((el) => {
+        const base = el.getAttribute('data-base-label') || '';
+        el.textContent = base; // plain text (no span) when cleared
+      });
+    };
+
+    // write "Color: <span>Variant</span>" on the group's single label
+    const updateSelectedLabel = (group, btn) => {
+      resetLabels(group);
+
+      const name = (btn.getAttribute('aria-label') || btn.dataset.tippyContent || '').trim();
+      const target = document.querySelector('.collection-label[data-selected-output="' + group + '"]');
+
+      if (target && name) {
+        const base = (target.getAttribute('data-base-label') || 'Color:').trim();
+        target.innerHTML = base + ' <span>' + name + '</span>';
+      }
+    };
+
+    /* update bundle price */
+    const refreshPrice = () => {
+      let total = 0;
+      ['mask', 'silk', 'body'].forEach((g) => {
+        const sel = document.querySelector(`.swatch-group[data-product="${g}"] .color-swatch-pdp.selected`);
+        if (sel) total += +sel.dataset.price;
+      });
+
+      const discounted = Math.round(total * 0.86); // 14% off
+      const discountPct = 14;
+
+      const priceFinal = document.querySelector('[data-bundle-price]');
+      const priceOrig = document.querySelector('[data-bundle-original]');
+      const priceBadge = document.querySelector('[data-bundle-badge]');
+      const priceInline = document.querySelector('[data-bundle-price-inline]');
+
+      if (priceFinal) priceFinal.textContent = money(discounted);
+      if (priceOrig) priceOrig.textContent = money(total);
+      if (priceBadge) priceBadge.textContent = `SAVE ${discountPct}%`;
+      if (priceInline) priceInline.textContent = money(discounted);
+    };
+
+    /* ----------  GALLERY ADAPTER (Dawn)  ---------- */
+    // Works if a Dawn gallery exists on the page. If not, it just no-ops.
+    function getDawnNodes() {
+      const wrapper =
+        document.querySelector('.product__media-wrapper') ||
+        document.querySelector('[id^="MediaGallery-"]') ||
+        document.querySelector('media-gallery');
+      const viewer =
+        document.querySelector('[id^="Slider-Gallery-"]') || wrapper?.querySelector?.('[id^="Slider-Gallery-"]');
+      const thumbs =
+        document.querySelector('[id^="Slider-Thumbnails-"]') || wrapper?.querySelector?.('[id^="Slider-Thumbnails-"]');
+      return { wrapper, viewer, thumbs };
+    }
+
+    function setActiveIndex(i = 0) {
+      const { viewer, thumbs } = getDawnNodes();
+      if (!viewer) return;
+
+      const slides = Array.from(viewer.querySelectorAll('.slider__slide'));
+      slides.forEach((s) => s.classList.remove('is-active'));
+      const target = slides[i] || slides[0];
+      if (target) target.classList.add('is-active');
+
+      const cur = document.querySelector('.slider-counter--current');
+      if (cur) cur.textContent = String((i || 0) + 1);
+
+      if (thumbs) {
+        thumbs.querySelectorAll('.thumbnail[aria-current]').forEach((t) => t.removeAttribute('aria-current'));
+        const li = thumbs.querySelectorAll('.thumbnail-list__item')[i];
+        const btn = li?.querySelector?.('.thumbnail');
+        if (btn) btn.setAttribute('aria-current', 'true');
+      }
+    }
+
+    function onGalleryReady(cb, timeout = 6000) {
+      const ready = () => !!document.querySelector('[id^="Slider-Gallery-"]');
+      if (ready()) return void cb();
+
+      const obs = new MutationObserver(() => {
+        if (ready()) {
+          obs.disconnect();
+          cb();
+        }
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+
+      setTimeout(() => {
+        if (ready()) cb();
+        obs.disconnect();
+      }, timeout);
+    }
+
+    /* Replace the current gallery (if present) with new images. */
+    function loadGallery(items = []) {
+      const { viewer, thumbs } = getDawnNodes();
+
+      // If there's no Dawn gallery on the page, just notify and exit
+      if (!viewer) {
+        document.dispatchEvent(new CustomEvent('bundle:gallery:changed', { detail: { count: items.length } }));
+        return;
+      }
+
+      const makeId = (idx) => `bundle-${idx}`;
+
+      const seenFirst = {}; // e.g. { mask: true, body: true }
+
+      viewer.innerHTML = items
+        .map((it, i) => {
+          const full = (it && (it.full || it.url || it.src)) || it || '';
+          const alt = (it && it.alt) || '';
+          const ratio = Number(it && it.ratio) > 0 ? Number(it.ratio) : 1;
+          const group = (it && it._group) || ''; // "mask" | "body" | ""
+          const isFirst = group && !seenFirst[group]; // first image of that group?
+          if (isFirst) seenFirst[group] = true;
+
+          return `
+          <li id="Slide-bundle-${i}"
+              class="product__media-item grid__item slider__slide${i === 0 ? ' is-active' : ''}"
+              data-media-id="bundle-${i}"
+              data-media-position="${i + 1}"
+              ${group ? `data-group="${group}"` : ''}
+              data-first-of-group="${isFirst ? 'true' : 'false'}">
+            <div class="product-media-container media" style="aspect-ratio:${ratio}">
+              <img src="${full}" alt="${alt}" loading="${i === 0 ? 'eager' : 'lazy'}" class="global-media-settings"/>
+            </div>
+          </li>`;
+        })
+        .join('');
+
+      // Thumbnails (if present)
+      if (thumbs) {
+        thumbs.innerHTML = items
+          .map((it, i) => {
+            const full = (it && (it.full || it.url || it.src)) || it || '';
+            const thumb = (it && (it.thumb || it.url || it.src)) || full;
+            const alt = (it && it.alt) || '';
+            return `
+          <li class="thumbnail-list__item slider__slide" data-target="${makeId(i)}" data-media-position="${i + 1}">
+            <button type="button"
+              class="thumbnail global-media-settings global-media-settings--no-shadow"
+              ${i === 0 ? 'aria-current="true"' : ''}>
+              <img src="${thumb}" alt="${alt}" loading="lazy">
+            </button>
+          </li>`;
+          })
+          .join('');
+      }
+
+      // Counters
+      const total = document.querySelector('.slider-counter--total');
+      if (total) total.textContent = String(items.length || 0);
+      const cur = document.querySelector('.slider-counter--current');
+      if (cur) cur.textContent = items.length ? '1' : '0';
+
+      document.dispatchEvent(new CustomEvent('bundle:gallery:changed', { detail: { count: items.length } }));
+    }
+
+    // Delegated handler for all thumbnail clicks (initial Dawn + our rebuilt markup)
+    document.addEventListener(
+      'click',
+      function (e) {
+        const li = e.target.closest('.thumbnail-list__item');
+        const list = li && li.closest('[id^="Slider-Thumbnails-"]');
+        if (!li || !list) return;
+
+        const items = Array.from(list.querySelectorAll('.thumbnail-list__item'));
+        const idx = items.indexOf(li);
+        if (idx < 0) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+        setActiveIndex(idx);
+        document.dispatchEvent(new CustomEvent('bundle:gallery:changed'));
+      },
+      true
+    );
+
+    /* Prefer JSON map; fallback to button's data-images (JSON/CSV) */
+    function getImages(btn) {
+      const group = btn.closest('.swatch-group')?.dataset.product;
+      const vid = btn.getAttribute('data-variant-id');
+
+      // 1) Map lookup (best)
+      const mapped = imagesFromMap(group, vid);
+      if (mapped.length) return mapped;
+
+      // 2) Fallback: parse data-images
+      const raw = btn.dataset.images || '[]';
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          return parsed.map((it) =>
+            typeof it === 'string'
+              ? { full: it, thumb: it, alt: '', ratio: 1 }
+              : {
+                  full: it.full || it.url || it.src || '',
+                  thumb: it.thumb || it.url || it.src || it.full || '',
+                  alt: it.alt || '',
+                  ratio: +it.ratio || 1,
+                }
+          );
+        }
+      } catch {}
+
+      return raw
+        .split(',')
+        .map((s) => s.trim())
+        .filter(Boolean)
+        .map((u) => ({ full: u, thumb: u, alt: '', ratio: 1 }));
+    }
+
+    function getSelectedBtn(group) {
+      return document.querySelector(`.swatch-group[data-product="${group}"] .color-swatch-pdp.selected`);
+    }
+    function getSelectedMaskBtn() {
+      // prefer Silk if chosen, otherwise Core
+      return getSelectedBtn('silk') || getSelectedBtn('mask');
+    }
+    function getSelectedBodyBtn() {
+      return getSelectedBtn('body');
+    }
+    function interleave(a = [], b = []) {
+      const out = [];
+      const max = Math.max(a.length, b.length);
+      for (let i = 0; i < max; i++) {
+        if (a[i]) out.push({ ...a[i], _group: 'mask' }); // mask (core or silk)
+        if (b[i]) out.push({ ...b[i], _group: 'body' });
+      }
+      return out;
+    }
+    function refreshGalleryCombined() {
+      const maskBtn = getSelectedMaskBtn();
+      const bodyBtn = getSelectedBodyBtn();
+      const maskImgs = maskBtn ? getImages(maskBtn) : [];
+      const bodyImgs = bodyBtn ? getImages(bodyBtn) : [];
+
+      const items =
+        maskImgs.length && bodyImgs.length
+          ? interleave(maskImgs, bodyImgs) // mask, body, mask, body...
+          : maskImgs.length
+          ? maskImgs.map((it) => ({ ...it, _group: 'mask' }))
+          : bodyImgs.map((it) => ({ ...it, _group: 'body' }));
+
+      loadGallery(items);
+    }
+
+    /* handle swatch clicks */
+    document.querySelectorAll('.color-swatch-pdp').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        // block disabled
+        if (
+          btn.disabled ||
+          btn.classList.contains('is-disabled') ||
+          btn.getAttribute('aria-disabled') === 'true' ||
+          btn.dataset.disabled === 'true'
+        ) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+
+        const group = btn.closest('.swatch-group').dataset.product;
+
+        // ============  CLEAR OLD SELECTIONS  ============
+        if (group === 'mask' || group === 'silk') {
+          document
+            .querySelectorAll(
+              '.swatch-group[data-product="mask"] .color-swatch-pdp.selected, ' +
+                '.swatch-group[data-product="silk"] .color-swatch-pdp.selected'
+            )
+            .forEach((b) => {
+              b.classList.remove('selected');
+              b.style.boxShadow = '';
+            });
+          const other = group === 'mask' ? 'silk' : 'mask';
+          resetLabels(other);
+        } else if (group === 'body') {
+          document.querySelectorAll('.swatch-group[data-product="body"] .color-swatch-pdp.selected').forEach((b) => {
+            b.classList.remove('selected');
+            b.style.removeProperty('--np-outline');
+            b.style.boxShadow = '';
+          });
+          resetLabels('body');
+        }
+
+        // ============  MARK SELECTED  ============
+        btn.classList.add('selected');
+        const selectedColor = btn.dataset.color || '#647D70';
+        btn.style.setProperty('--np-outline', selectedColor);
+        btn.style.boxShadow = '';
+
+        // ============  UPDATE LABEL  ============
+        updateSelectedLabel(group, btn);
+
+        // ============  SWAP ROW IMAGE  ============
+        const rowImg = document.querySelector('img[data-product-image="' + group + '"]');
+        if (rowImg) rowImg.src = btn.dataset.img;
+
+        // ============  GREY-OUT LOGIC  ============
+        const maskImg = document.querySelector('img[data-product-image="mask"]');
+        const silkImg = document.querySelector('img[data-product-image="silk"]');
+        if (group === 'silk') {
+          if (maskImg) maskImg.classList.add('grayed');
+          if (silkImg) silkImg.classList.remove('grayed');
+        } else if (group === 'mask') {
+          if (silkImg) silkImg.classList.add('grayed');
+          if (maskImg) maskImg.classList.remove('grayed');
+        }
+
+        // ============  GALLERY  ============
+        refreshPrice();
+        refreshGalleryCombined();
+      });
+    });
+
+    /* add to cart handler — sequential adds with `_bundled` property + UpCart */
+    document.getElementById('bundle-add-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Collect chosen items
+      const items = [];
+      const silkSel = document.querySelector('.swatch-group[data-product="silk"] .color-swatch-pdp.selected');
+      const maskSel = document.querySelector('.swatch-group[data-product="mask"] .color-swatch-pdp.selected');
+      const bodySel = document.querySelector('.swatch-group[data-product="body"] .color-swatch-pdp.selected');
+
+      if (silkSel) items.push({ id: parseInt(silkSel.dataset.variantId, 10), quantity: 1 });
+      else if (maskSel) items.push({ id: parseInt(maskSel.dataset.variantId, 10), quantity: 1 });
+
+      if (bodySel) items.push({ id: parseInt(bodySel.dataset.variantId, 10), quantity: 1 });
+
+      if (items.length !== 2) {
+        alert('Select one mask (Core OR Silk) and one BODY.');
+        return;
+      }
+
+      const bundleKey = 'bundle-' + Date.now();
+
+      function addSequentially(queue, done) {
+        if (!queue.length) return done();
+        const item = queue[0];
+
+        const payload = new URLSearchParams();
+        payload.set('id', item.id);
+        payload.set('quantity', item.quantity);
+        payload.set('properties[_bundled]', 'true');
+        payload.set('properties[_bundle_key]', bundleKey);
+
+        fetch('/cart/add.js?upcart=1&opens_cart=maybe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+          body: payload.toString(),
+        })
+          .then((res) => {
+            if (!res.ok) throw new Error('Add failed');
+            return res.json();
+          })
+          .then(() => addSequentially(queue.slice(1), done))
+          .catch((err) => done(err));
+      }
+
+      addSequentially(items, (err) => {
+        if (err) {
+          console.error('❌ Error adding bundle:', err);
+          alert('There was an error adding your bundle to the cart. Please try again.');
+          return;
+        }
+        if (typeof window.upcartRegisterAddToCart === 'function') window.upcartRegisterAddToCart();
+        if (typeof window.upcartOpenCart === 'function') window.upcartOpenCart();
+      });
+    });
+
+    // Preselect first available variants
+    const preselect = (group) => {
+      const firstBtn = document.querySelector(
+        `.swatch-group[data-product="${group}"] .color-swatch-pdp:not([aria-disabled="true"])`
+      );
+      if (firstBtn) firstBtn.click();
+    };
+
+    preselect('mask');
+    preselect('body');
+
+    // Ensure initial gallery shows mask images (or silk if you preselect silk)
+    onGalleryReady(refreshGalleryCombined);
+
+    // Silk modal open/close (portal to <body> so it can't be clipped by product wrappers)
+    (function () {
+      let modal = document.getElementById('why-silk-modal');
+      if (!modal) return;
+
+      // ---- PORTAL: move the modal to <body> if it's not already there ----
+      try {
+        if (modal.parentElement !== document.body) {
+          document.body.appendChild(modal);
+        }
+      } catch (e) {}
+
+      const dialog = modal.querySelector('.modal__dialog');
+
+      function openModal(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => dialog && dialog.focus());
+      }
+
+      function closeModal(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      // Bind directly to triggers so theme delegation can’t swallow it
+      document.querySelectorAll('[data-open-modal="why-silk"]').forEach((btn) => {
+        btn.addEventListener('click', openModal, true);
+        btn.addEventListener(
+          'keydown',
+          (ev) => {
+            if (ev.key === 'Enter' || ev.key === ' ') openModal(ev);
+          },
+          true
+        );
+      });
+
+      // Backdrop / outside click / close button
+      modal.addEventListener('click', (e) => {
+        if (
+          e.target.classList.contains('modal__backdrop') ||
+          e.target.hasAttribute('data-close-modal') ||
+          !e.target.closest('.modal__dialog')
+        ) {
+          closeModal(e);
+        }
+      });
+
+      // ESC to close
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(e);
+      });
+
+      // Optional: quick console helpers
+      window.openWhySilkModal = openModal;
+      window.closeWhySilkModal = closeModal;
+    })();
+
+    (function () {
+      function removePressTags() {
+        document.querySelectorAll('.press-tag-wrapper').forEach((el) => el.remove());
+      }
+
+      function insertPressTag() {
+        var activeSlide = document.querySelector('[id^="Slider-Gallery-"] .slider__slide.is-active');
+        if (!activeSlide) return;
+
+        // Always clean up first
+        removePressTags();
+
+        // Only tag if this is the first slide of its group (mask/body)
+        var shouldTag = activeSlide.getAttribute('data-first-of-group') === 'true';
+        if (!shouldTag) return;
+
+        var wrap = document.createElement('div');
+        wrap.className = 'press-tag-wrapper';
+        wrap.style.position = 'absolute';
+        wrap.style.left = '0';
+        wrap.style.bottom = '0';
+        wrap.style.width = '100%';
+        wrap.style.display = 'flex';
+        wrap.style.justifyContent = 'center';
+        wrap.style.pointerEvents = 'none';
+        wrap.style.zIndex = '5';
+
+        var img = document.createElement('img');
+        img.className = 'press-tag';
+        img.src = 'https://cdn.shopify.com/s/files/1/0253/2982/7939/files/press-tag.svg?v=1754703053';
+        img.style.maxWidth = '380px';
+        img.style.width = '100%';
+        img.style.height = '60px';
+
+        wrap.appendChild(img);
+        activeSlide.insertBefore(wrap, activeSlide.firstChild);
+      }
+
+      insertPressTag();
+      document.addEventListener('bundle:gallery:changed', insertPressTag);
+      document.addEventListener(
+        'click',
+        function (e) {
+          if (e.target.closest('.thumbnail')) setTimeout(insertPressTag, 0);
+        },
+        true
+      );
+    })();
+
+    if (window.tippy) {
+      tippy('.color-swatch-pdp', {
+        content(reference) {
+          return reference.getAttribute('data-tippy-content') || '';
+        },
+        allowHTML: true,
+        interactive: false,
+        placement: 'top',
+        delay: [50, 0],
+      });
+    }
+  })();
+</script>

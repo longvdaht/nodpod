@@ -1,0 +1,644 @@
+{% comment %}
+  File: sections/hero-banner-dawn.liquid
+  Hero banner for Dawn:
+  - image/video-first logic
+  - mobile/desktop media
+  - click-to-play
+  - Desktop: 9-point overlay (TL/TC/TR/ML/MC/MR/BL/BC/BR)
+  - Mobile: full-width overlay; position {top|middle|bottom}; alignment {left|center|right}
+  - Optional cap for "Full" height on mobile in px (100px increments)
+{% endcomment %}
+
+{%- liquid
+  assign firstBlock = section.blocks | first
+  assign isImageFirst = false
+  assign isVideoFirst = false
+  assign videoHeight = null
+
+  if firstBlock
+    case firstBlock.type
+      when 'image'
+        assign isImageFirst = true
+      when 'video'
+        assign isVideoFirst = true
+        if section.settings.cropVideo
+          assign videoHeight = '--vidCropO:hidden;--vidCropH:var(--heroHeight);'
+        endif
+    endcase
+  endif
+
+  assign hasImage = false
+  assign hasVideo = false
+  for b in section.blocks
+    if b.type == 'image'
+      assign hasImage = true
+    endif
+    if b.type == 'video'
+      assign hasVideo = true
+    endif
+  endfor
+
+  if isImageFirst == false and isVideoFirst == false
+    if hasImage
+      assign isImageFirst = true
+    elsif hasVideo
+      assign isVideoFirst = true
+    endif
+  endif
+-%}
+
+{%- liquid
+  capture style
+    echo section.settings.heroMetaH1Bg | prepend: '--heroMetaH1Bg:' | append: ';'
+    echo section.settings.heroMetaH1Color | prepend: '--heroMetaH1Color:' | append: ';'
+
+    assign heroHeight = section.settings.heroHeight
+    if section.settings.heroHeight == 'uncropped'
+      assign heroHeight = 'var(--heroHeight-f)'
+    endif
+    echo heroHeight | prepend: '--heroHeight:' | append: ';'
+
+    assign heroHeightMob = heroHeight
+    if section.settings.enable_mobile_full_height_cap and heroHeight == 'var(--heroHeight-f)'
+      assign heroHeightMob = 'min(var(--heroHeight-f), ' | append: section.settings.mobile_full_height_max_px | append: 'px)'
+    endif
+    echo heroHeightMob | prepend: '--heroHeightMob:' | append: ';'
+
+    echo videoHeight
+  endcapture
+-%}
+
+{%- liquid
+  assign overlay_class = 'pos-mc align-center'
+  case section.settings.overlay_position
+    when 'top_left'      then assign overlay_class = 'pos-tl align-left'
+
+    when 'top_center'    then assign overlay_class = 'pos-tc align-center'
+
+    when 'top_right'     then assign overlay_class = 'pos-tr align-right'
+
+    when 'middle_left'   then assign overlay_class = 'pos-ml align-left'
+
+    when 'middle_center' then assign overlay_class = 'pos-mc align-center'
+
+    when 'middle_right'  then assign overlay_class = 'pos-mr align-right'
+
+    when 'bottom_left'   then assign overlay_class = 'pos-bl align-left'
+
+    when 'bottom_center' then assign overlay_class = 'pos-bc align-center'
+
+    when 'bottom_right'  then assign overlay_class = 'pos-br align-right'
+
+  endcase
+
+  assign mobile_pos_class = ''
+  case section.settings.overlay_position_mobile
+    when 'top'    then assign mobile_pos_class = 'mpos-top'
+
+    when 'middle' then assign mobile_pos_class = 'mpos-middle'
+
+    when 'bottom' then assign mobile_pos_class = 'mpos-bottom'
+
+    else
+      if overlay_class contains 'pos-t'
+        assign mobile_pos_class = 'mpos-top'
+      elsif overlay_class contains 'pos-b'
+        assign mobile_pos_class = 'mpos-bottom'
+      else
+        assign mobile_pos_class = 'mpos-middle'
+      endif
+  endcase
+
+  assign mobile_align_class = ''
+  case section.settings.overlay_align_mobile
+    when 'left'   then assign mobile_align_class = 'malign-left'
+
+    when 'center' then assign mobile_align_class = 'malign-center'
+
+    when 'right'  then assign mobile_align_class = 'malign-right'
+
+    else
+      if overlay_class contains 'align-left'
+        assign mobile_align_class = 'malign-left'
+      elsif overlay_class contains 'align-right'
+        assign mobile_align_class = 'malign-right'
+      else
+        assign mobile_align_class = 'malign-center'
+      endif
+  endcase
+-%}
+
+{%- if section.settings.heroHeight == 'uncropped' -%}
+  <style>
+    @media (min-width: 778px){
+      #hero-{{ section.id }} .hero-media picture img,
+      #hero-{{ section.id }} .hero-media video{ height:auto !important; object-fit:contain; }
+      #hero-{{ section.id }}{ --heroHeight-f:auto!important; aspect-ratio:initial; overflow:visible }
+    }
+  </style>
+{%- endif -%}
+
+<section
+  id="hero-{{ section.id }}"
+  class="np-hero hero color-{{ section.settings.color_scheme }} gradient"
+  style="{{ style }}"
+  data-block-id="{{ section.settings.block_id }}"
+  aria-label="{{ section.settings.title | default: 'Hero banner' | escape }}"
+>
+  <style>
+    /* Height fallbacks */
+    #hero-{{ section.id }}{
+      --heroHeight-s: 45vh; --heroHeight-m: 60vh; --heroHeight-l: 75vh; --heroHeight-f: 100vh;
+    }
+
+    /* Media */
+    #hero-{{ section.id }}{ position:relative; }
+    #hero-{{ section.id }} .hero-media{ position:relative; }
+    #hero-{{ section.id }} .hero-media picture,
+    #hero-{{ section.id }} .hero-media img,
+    #hero-{{ section.id }} .hero-media video{
+      display:block; width:100%; height:var(--heroHeight); object-fit:cover;
+    }
+    #hero-{{ section.id }} .hero-media video{ overflow:var(--vidCropO); max-height:var(--vidCropH); }
+
+    /* Overlay (desktop absolute, sized) */
+    #hero-{{ section.id }} .hero-meta{
+      position:absolute; z-index:2; inset:auto;
+      display:flex; flex-direction:column; gap:10px;
+      max-inline-size: var(--overlay-max, 90vw);
+      padding:min(5vw,48px);
+    }
+
+    /* Our Story hero: fixed 7.5rem heading overflows on narrower desktop
+       windows (778-1300px). Scale down only for this page's banner. */
+    @media (min-width: 778px) and (max-width: 1300px){
+      section.np-hero[data-block-id="our_story"] .section-main-heading-hero{
+        font-size: clamp(3.5rem, 7vw, 7.5rem) !important;
+      }
+    }
+    #hero-{{ section.id }} .align-left   { text-align:left;   align-items:flex-start; }
+    #hero-{{ section.id }} .align-center { text-align:center; align-items:center; }
+    #hero-{{ section.id }} .align-right  { text-align:right;  align-items:flex-end; }
+
+    /* 9-point grid (desktop) */
+    #hero-{{ section.id }} .pos-tl{ top:4vh; left:4vw; }
+    #hero-{{ section.id }} .pos-tc{ top:4vh; left:50%; transform:translateX(-50%); }
+    #hero-{{ section.id }} .pos-tr{ top:4vh; right:4vw; }
+    #hero-{{ section.id }} .pos-ml{ top:50%; left:4vw; transform:translateY(-50%); }
+    #hero-{{ section.id }} .pos-mc{ top:50%; left:50%; transform:translate(-50%,-50%); }
+    #hero-{{ section.id }} .pos-mr{ top:50%; right:4vw; transform:translateY(-50%); }
+    #hero-{{ section.id }} .pos-bl{ bottom:4vh; left:4vw; }
+    #hero-{{ section.id }} .pos-bc{ bottom:4vh; left:50%; transform:translateX(-50%); }
+    #hero-{{ section.id }} .pos-br{ bottom:4vh; right:4vw; }
+
+    /* Typography */
+    #hero-{{ section.id }} .section-subheading,
+    #hero-{{ section.id }} .section-main-heading-hero,
+    #hero-{{ section.id }} .section-main-text{ color:var(--heroMetaH1Color); margin:0; }
+    #hero-{{ section.id }} .hasBg{ background:var(--heroMetaH1Bg); padding:.25em .5em; border-radius:.5rem; }
+
+    /* MOBILE ONLY — force full-width overlay and hard-set vertical anchors */
+    @media (max-width: 777px){
+      /* use the capped height on mobile */
+      #hero-{{ section.id }}{ --heroHeight: var(--heroHeightMob) !important; }
+
+      #hero-{{ section.id }} .hero-media picture,
+      #hero-{{ section.id }} .hero-media img,
+      #hero-{{ section.id }} .hero-media video{
+        height: var(--heroHeightMob);
+      }
+
+      /* overlay fills the banner; position with flex (no top/bottom) */
+      #hero-{{ section.id }} .hero-meta{
+        position:absolute !important; inset:0 !important;
+        left:0 !important; right:0 !important; /* belt & suspenders */
+        display:flex !important; flex-direction:column !important;
+        width:100% !important; max-width:100% !important; max-inline-size:none !important;
+        padding:16px !important; box-sizing:border-box !important;
+        transform:none !important; z-index:3 !important;
+      }
+
+      /* neutralize desktop transforms, but don't touch inset */
+      #hero-{{ section.id }} .hero-meta[class*="pos-"]{ transform:none !important; }
+
+      /* vertical position (Top / Middle / Bottom) via flex */
+      #hero-{{ section.id }} .hero-meta[data-mpos*="mpos-top"],
+      #hero-{{ section.id }} .hero-meta.mpos-top{
+        justify-content:flex-start !important;
+        padding-top:4vh !important;
+      }
+
+      #hero-{{ section.id }} .hero-meta[data-mpos*="mpos-middle"],
+      #hero-{{ section.id }} .hero-meta.mpos-middle{
+        justify-content:center !important;
+      }
+
+      #hero-{{ section.id }} .hero-meta[data-mpos*="mpos-bottom"],
+      #hero-{{ section.id }} .hero-meta.mpos-bottom{
+        justify-content:flex-end !important;
+        padding-bottom:4vh !important;
+      }
+
+      /* horizontal text alignment (Left / Center / Right) */
+      #hero-{{ section.id }} .hero-meta[data-malign*="malign-left"],
+      #hero-{{ section.id }} .hero-meta.malign-left{
+        align-items:flex-start !important;
+        text-align:left !important;
+      }
+
+      #hero-{{ section.id }} .hero-meta[data-malign*="malign-center"],
+      #hero-{{ section.id }} .hero-meta.malign-center{
+        align-items:center !important;
+        text-align:center !important;
+      }
+
+      #hero-{{ section.id }} .hero-meta[data-malign*="malign-right"],
+      #hero-{{ section.id }} .hero-meta.malign-right{
+        align-items:flex-end !important;
+        text-align:right !important;
+      }
+
+
+    /* Video UI (global, not inside the mobile block) */
+    #hero-{{ section.id }} .video-container{ position:relative; display:inline-block; width:100%; }
+    #hero-{{ section.id }} .play-button{
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      font-size:25px; color:#5e5e5d; background:#ffffffc9;
+      padding:12px 20px 12px 25px; border-radius:100%; cursor:pointer; transition:opacity .3s;
+      border:1px solid #d1d1d1; text-align:center;
+    }
+    #hero-{{ section.id }} .video-player{ cursor:pointer; }
+
+    /* Custom overrides (global) */
+    section.np-hero[data-block-id="our-story"] .hero-meta{ justify-content:center !important; align-items:center !important; }
+    section.np-hero[data-block-id="our-story"] .hero-meta .section-main-heading-hero,
+    section.np-hero[data-block-id="our-story"] .hero-meta .section-subheading,
+    section.np-hero[data-block-id="our-story"] .hero-meta .section-main-text{ text-align:center !important; }
+    section.np-hero[data-block-id="our-story-founder"]{ max-width:1680px; margin:auto; padding:60px 20px; }
+    section.np-hero[data-block-id="our-story-founder"] h2{ font-size:5rem !important; line-height:1.1 !important; }
+
+    @media (max-width: 777px){
+      section.np-hero[data-block-id="our-story"] .section-main-text{ font-size:1.5rem !important; }
+      section.np-hero[data-block-id="our-story"] .section-main-heading-hero{ font-size:4rem !important; }
+      section.np-hero[data-block-id="our-story-founder"] h2{ text-align:center; }
+    }
+  </style>
+  <div class="hero-media">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'image' %}
+          {% if isImageFirst %}
+            {% assign imgMobile = block.settings.imageMobile %}
+            {% assign imgDesktop = block.settings.image %}
+            {% if block.settings.imgClickable and section.settings.url != blank -%}
+              <a href="{{ section.settings.url }}" class="no-style" tabindex="-1">
+            {%- endif %}
+            <picture>
+              {% if imgMobile %}
+                <source
+                  srcset="{{ imgMobile | image_url: width: 970 }} 1x, {{ imgMobile | image_url: width: 1280 }} 2x"
+                  media="(max-width:777px)"
+                >
+              {% endif %}
+              {% if imgDesktop %}
+                <img
+                  width="100%"
+                  height="auto"
+                  src="{{ imgDesktop | image_url: width: 1500 }}"
+                  srcset="
+                    {{ imgDesktop | image_url: width: 750 }} 750w,
+                    {{ imgDesktop | image_url: width: 1000 }} 1000w,
+                    {{ imgDesktop | image_url: width: 1280 }} 1280w,
+                    {{ imgDesktop | image_url: width: 1500 }} 1500w,
+                    {{ imgDesktop | image_url: width: 1750 }} 1750w,
+                    {{ imgDesktop | image_url: width: 2000 }} 2000w,
+                    {{ imgDesktop | image_url: width: 2500 }} 2500w,
+                    {{ imgDesktop | image_url: width: 2750 }} 2750w
+                  "
+                  sizes="100vw"
+                  alt="{{ section.settings.title | escape }}"
+                  loading="eager"
+                >
+              {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'svg-placeholder' }}
+              {% endif %}
+            </picture>
+            {% if block.settings.imgClickable and section.settings.url != blank %}</a>{% endif %}
+          {% endif %}
+
+        {% when 'video' %}
+          {% if isVideoFirst %}
+            {% assign loop = block.settings.videoLoop %}
+            {% assign autoplay = block.settings.videoAutoplay %}
+            {% assign muted = block.settings.videoMute %}
+            {% assign clickToPlay = block.settings.clickToPlay %}
+            {% assign controls = block.settings.playPause %}
+
+            <div class="video-container" data-click="{{ clickToPlay }}" data-autoplay="{{ autoplay }}">
+              {% if block.settings.videoMobile %}
+                <video
+                  class="video-player hero-video only-mobile"
+                  {% if autoplay %}
+                    autoplay
+                  {% endif %}
+                  {% if loop %}
+                    loop
+                  {% endif %}
+                  {% if muted %}
+                    muted
+                  {% endif %}
+                  playsinline
+                  {% if controls %}
+                    controls
+                  {% endif %}
+                  style="display:none"
+                >
+                  {% for src in block.settings.videoMobile.sources %}
+                    <source src="{{ src.url }}" type="{{ src.mime_type }}">
+                  {% endfor %}
+                  {% if block.settings.videoMobile.preview_image -%}
+                    <img
+                      width="100%"
+                      height="auto"
+                      src="{{ block.settings.videoMobile.preview_image | image_url: width: 1200 }}"
+                      alt=""
+                    >
+                  {%- endif %}
+                </video>
+              {% endif %}
+
+              {% if block.settings.video %}
+                <video
+                  class="video-player hero-video only-desktop"
+                  {% if autoplay %}
+                    autoplay
+                  {% endif %}
+                  {% if loop %}
+                    loop
+                  {% endif %}
+                  {% if muted %}
+                    muted
+                  {% endif %}
+                  playsinline
+                  {% if controls %}
+                    controls
+                  {% endif %}
+                >
+                  {% for src in block.settings.video.sources %}
+                    <source src="{{ src.url }}" type="{{ src.mime_type }}">
+                  {% endfor %}
+                  {% if block.settings.video.preview_image -%}
+                    <img
+                      width="100%"
+                      height="auto"
+                      src="{{ block.settings.video.preview_image | image_url: width: 2000 }}"
+                      alt=""
+                    >
+                  {%- endif %}
+                </video>
+              {% endif %}
+
+              {% unless autoplay %}
+                <button type="button" class="play-button" aria-label="Play">▶</button>
+              {% endunless %}
+            </div>
+
+            <style>
+              @media (max-width: 777px){
+                #hero-{{ section.id }} .only-mobile{ display:block !important; }
+                #hero-{{ section.id }} .only-desktop{ display:none !important; }
+              }
+              @media (min-width: 778px){
+                #hero-{{ section.id }} .only-mobile{ display:none !important; }
+                #hero-{{ section.id }} .only-desktop{ display:block !important; }
+              }
+            </style>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+  <div
+  class="hero-meta {{ overlay_class }} {% if mobile_pos_class != '' %}{{ mobile_pos_class }}{% endif %} {{ mobile_align_class }}" data-mpos="{{ mobile_pos_class }}" data-malign="{{ mobile_align_class }}"
+    style="
+      --overlay-max: {{ section.settings.overlay_max_width }}vw;
+      {% if isImageFirst and firstBlock and firstBlock.settings and firstBlock.settings.imgClickable and section.settings.url != blank %}pointer-events:none;{% endif %}
+    "
+  >
+    {% if section.settings.subtitle != blank %}
+      <p class="section-subheading{% if section.settings.heroMetaH1hasBg %} hasBg{% endif %}">
+        {{ section.settings.subtitle }}
+      </p>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="section-main-heading-hero{% if section.settings.heroMetaH1hasBg %} hasBg{% endif %}">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+    {% if section.settings.content != blank %}
+      <p class="section-main-text{% if section.settings.heroMetaH1hasBg %} hasBg{% endif %}">
+        {{ section.settings.content }}
+      </p>
+    {% endif %}
+    {% if section.settings.cta != blank and section.settings.url != blank %}
+      <a href="{{ section.settings.url }}" class="button button--primary">{{ section.settings.cta }}</a>
+    {% endif %}
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById('hero-{{ section.id }}');
+      if (!root) return;
+      const vc = root.querySelector('.video-container');
+      if (!vc) return;
+
+      const clickToPlay = vc.getAttribute('data-click') === 'true';
+      const autoplay = vc.getAttribute('data-autoplay') === 'true';
+      const isMobile = window.matchMedia('(max-width: 777px)').matches;
+      const video = root.querySelector('video.hero-video' + (isMobile ? '.only-mobile' : '.only-desktop'));
+      const btn = root.querySelector('.play-button');
+
+      function showBtn(show) {
+        if (!btn) return;
+        btn.style.opacity = show ? '1' : '0';
+        btn.style.pointerEvents = show ? 'auto' : 'none';
+      }
+
+      if (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (video && video.paused) {
+            video.play();
+            showBtn(false);
+          } else if (video) {
+            video.pause();
+            showBtn(true);
+          }
+        });
+      }
+
+      if (clickToPlay && video) {
+        video.addEventListener('click', function () {
+          if (video.paused) {
+            video.play();
+            showBtn(false);
+          } else {
+            video.pause();
+            showBtn(true);
+          }
+        });
+        if (!autoplay) showBtn(true);
+      }
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Hero banner (Dawn)",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 2,
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "text", "id": "block_id", "label": "Block ID" },
+
+    { "type": "header", "content": "Overlay (desktop)" },
+    {
+      "type": "select",
+      "id": "overlay_position",
+      "label": "Desktop position",
+      "default": "middle_center",
+      "options": [
+        { "value": "top_left", "label": "Top • Left" },
+        { "value": "top_center", "label": "Top • Center" },
+        { "value": "top_right", "label": "Top • Right" },
+        { "value": "middle_left", "label": "Middle • Left" },
+        { "value": "middle_center", "label": "Middle • Center" },
+        { "value": "middle_right", "label": "Middle • Right" },
+        { "value": "bottom_left", "label": "Bottom • Left" },
+        { "value": "bottom_center", "label": "Bottom • Center" },
+        { "value": "bottom_right", "label": "Bottom • Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "overlay_max_width",
+      "label": "Overlay max width (vw) – desktop",
+      "min": 10,
+      "max": 95,
+      "step": 1,
+      "default": 60
+    },
+
+    { "type": "header", "content": "Overlay (mobile)" },
+    {
+      "type": "select",
+      "id": "overlay_position_mobile",
+      "label": "Vertical position (mobile)",
+      "default": "middle",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "middle", "label": "Middle" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "overlay_align_mobile",
+      "label": "Text alignment (mobile)",
+      "default": "same_as_desktop",
+      "options": [
+        { "value": "same_as_desktop", "label": "Same as desktop" },
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Hero heading subtitle" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Hero heading" },
+    { "type": "textarea", "id": "content", "label": "Subheading" },
+    { "type": "text", "id": "cta", "label": "Button label", "default": "Shop more" },
+    { "type": "url", "id": "url", "label": "Button link" },
+
+    { "type": "header", "content": "Appearance" },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-3", "label": "Scheme 3" },
+        { "value": "scheme-4", "label": "Scheme 4" },
+        { "value": "scheme-5", "label": "Scheme 5" }
+      ]
+    },
+    { "type": "color", "id": "heroMetaH1Bg", "label": "Heading background", "default": "#FFFFFF" },
+    { "type": "color", "id": "heroMetaH1Color", "label": "Text color", "default": "#000000" },
+    { "type": "checkbox", "id": "heroMetaH1hasBg", "label": "Enable heading background", "default": false },
+
+    { "type": "header", "content": "Height" },
+    {
+      "type": "select",
+      "id": "heroHeight",
+      "label": "Banner height",
+      "default": "var(--heroHeight-f)",
+      "options": [
+        { "value": "var(--heroHeight-s)", "label": "Small" },
+        { "value": "var(--heroHeight-m)", "label": "Medium" },
+        { "value": "var(--heroHeight-l)", "label": "Large" },
+        { "value": "var(--heroHeight-f)", "label": "Full" },
+        { "value": "uncropped", "label": "Full uncropped" }
+      ]
+    },
+    { "type": "checkbox", "id": "cropVideo", "label": "Crop video height", "default": false },
+
+    { "type": "header", "content": "Mobile full height cap" },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_full_height_cap",
+      "label": "Limit full height on mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "mobile_full_height_max_px",
+      "label": "Max height (px, mobile; applies when banner height = Full)",
+      "min": 300,
+      "max": 1400,
+      "step": 100,
+      "default": 700
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Desktop", "info": "2000 × 1110px recommended" },
+        { "type": "image_picker", "id": "imageMobile", "label": "Mobile", "info": "970 × 1110px recommended" },
+        { "type": "checkbox", "id": "imgClickable", "label": "Clickable image", "default": false }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "limit": 1,
+      "settings": [
+        { "type": "video", "id": "video", "label": "Desktop", "info": "16:9 aspect ratio recommended." },
+        { "type": "video", "id": "videoMobile", "label": "Mobile", "info": "9:16 aspect ratio recommended." },
+        { "type": "checkbox", "id": "videoLoop", "label": "Loop", "default": false },
+        { "type": "checkbox", "id": "videoMute", "label": "Mute", "default": true },
+        { "type": "checkbox", "id": "videoAutoplay", "label": "Autoplay", "default": false },
+        { "type": "checkbox", "id": "clickToPlay", "label": "Enable click to play/pause", "default": true },
+        { "type": "checkbox", "id": "playPause", "label": "Show native controls", "default": true }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Hero banner (Dawn)", "category": "Image", "blocks": [{ "type": "image" }] }]
+}
+{% endschema %}

@@ -1,0 +1,265 @@
+<div class="bday-page">
+  <div class="hero-banner-desktop">
+    <div class="hero-banner-desktop-wrapper">
+      <p class="bday-subheading">INTRODUCING OUR NEWEST COLLECTION:</p>
+      <h3 class="bday-heading">
+        Birthday Blue
+      </h3>
+      <div class="bday-body-p">
+        <p>
+          Ten years ago, Nodpod was just a dream—today, we celebrate a decade of better sleep with a limited edition collection inspired by our original logo.
+        </p>
+        <a href="/products/nodpod" class="bday-banner-btn">SHOP NOW</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-banner-desktop {
+    width: 100%;
+    background: url(https://cdn.shopify.com/s/files/1/0253/2982/7939/files/bday-banner.png?v=1738339912);
+    background-size: cover;
+    background-position: center;
+  }
+  .bday-banner {
+    position: absolute;
+    top: 0;
+    z-index: 0;
+  }
+  .bday-banner-mobile {
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    display: none;
+  }
+  a.bday-banner-btn {
+    background: #ffffff;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-family: 'Poppins';
+    text-decoration: none;
+    color: #7699b4 !important;
+    font-weight: 600;
+    margin-top: 20px;
+    display: inline-block;
+    letter-spacing: 0;
+  }
+  .hero-banner-desktop-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    padding: 80px 20px;
+    position: relative;
+    text-align: center;
+    min-height: 530px;
+    max-width: 750px;
+    margin: auto;
+  }
+  .bday-subheading {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-align: center;
+    z-index: 1;
+  }
+  .bday-heading {
+    text-align: center;
+    color: #ffffff !important;
+    font-family: "The-Seasons" !important;
+    letter-spacing: 0;
+    font-size: 8rem;
+    line-height: 1;
+    z-index: 1;
+  }
+  .bday-body-p {
+    max-width: 900px;
+    z-index: 1;
+  }
+  .bday-body-p p {
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.5;
+    z-index: 1;
+  }
+  .product-item.grid__item {
+    background: #fff !important;
+    padding: 20px;
+  }
+  .new-featured-collection .product-item img {
+    border: 1px solid #EBEAE6;
+    border-radius: 6px;
+  }
+  .collection_variant_new .color-swatch::after {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .collection_variant_new .color-swatch {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 6px 8px 0 !important;
+  }
+  .product-info {
+    align-items: flex-start !important;
+    flex-direction: column;
+  }
+  span.price span {
+    font-size: 1.85rem !important;
+    color: #75787B;
+    letter-spacing: 0;
+    margin-top: 5px;
+  }
+  .product-item .product-tag {
+    border-radius: 20px !important;
+    padding: 10px 18px !important;
+    top: 30px !important;
+    left: 30px !important;
+    font-size: 1rem !important;
+  }
+  .border_bottom_space {
+    margin-bottom: 20px !important;
+    min-height: unset !important;
+  }
+  .new-collection button span {
+    font-size: 1.75rem !important;
+  }
+  .image-with-text .grid {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .image-with-text .container {
+    max-width: 1500px !important;
+  }
+  .image-with-text__content {
+    max-width: 550px;
+    margin: auto;
+  }
+  .shop-list-main {
+    max-width: 1300px !important;
+  }
+  @media (max-width: 777px) {
+    .hero-banner-desktop {
+      background: url(https://cdn.shopify.com/s/files/1/0253/2982/7939/files/bday-banner-mobile.png?v=1738343872);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .product-item.grid__item {
+      width: 100% !important;
+    }
+    .hero-banner-desktop-wrapper {
+      height: 100%;
+      min-height: 90vh;
+      padding: 40px 20px;
+      justify-content: flex-start;
+    }
+    .bday-subheading {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .product-info {
+      margin-top: 20px !important;
+    }
+    .new-featured-collection .short-desc p {
+      font-size: 1.85rem !important;
+      margin-bottom: 0 !important;
+    }
+    .price-rating--main.mobile {
+      margin-top: 0 !important;
+    }
+    .new-featured-collection .shop-now {
+      font-size: 3rem !important;
+    }
+    .bday-heading {
+      font-size: 6rem;
+    }
+    .bday-body-p p {
+      margin-top: 0px;
+    }
+    .bday-banner {
+      display: none;
+    }
+    .bday-banner-mobile {
+      display: block;
+    }
+    .hero-banner-desktop-wrapper {
+      padding: 40px 20px;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Dawn theme selectors - adjust these based on your actual Dawn structure
+  const productCards = document.querySelectorAll('.card-wrapper, .product-card-wrapper, .grid__item');
+  
+  productCards.forEach(card => {
+    // Look for variant selectors within each product card
+    const variantSwatches = card.querySelectorAll(
+      '.product-form__buttons input[type="radio"], ' +
+      '.variant-picker input[type="radio"], ' +
+      '.product-option input[type="radio"], ' +
+      '[data-variant-id]'
+    );
+    
+    let birthdayBlueVariant = null;
+    
+    // Find the birthday blue variant
+    variantSwatches.forEach(swatch => {
+      const label = swatch.nextElementSibling || swatch.closest('label') || swatch.parentElement;
+      const variantName = (label?.textContent || swatch.value || '').toLowerCase();
+      
+      // Look for birthday blue in various formats
+      if (variantName.includes('birthday blue') || 
+          variantName.includes('birthdayblue') || 
+          variantName.includes('birthday-blue') ||
+          swatch.getAttribute('data-variant-name')?.toLowerCase().includes('birthday blue')) {
+        birthdayBlueVariant = swatch;
+      }
+    });
+    
+    // If birthday blue variant found, select it
+    if (birthdayBlueVariant) {
+      // Select the variant
+      birthdayBlueVariant.checked = true;
+      birthdayBlueVariant.click();
+      
+      // Update hidden form input if it exists
+      const hiddenInput = card.querySelector('input[name="id"]');
+      const variantId = birthdayBlueVariant.value || birthdayBlueVariant.getAttribute('data-variant-id');
+      
+      if (hiddenInput && variantId) {
+        hiddenInput.value = variantId;
+      }
+      
+      // Update product image if there's a data attribute
+      const productImage = card.querySelector('.card__media img, .product-card__image img, .media img');
+      const variantImageSrc = birthdayBlueVariant.getAttribute('data-variant-image') || 
+                             birthdayBlueVariant.getAttribute('data-src');
+      
+      if (productImage && variantImageSrc) {
+        productImage.src = variantImageSrc;
+        productImage.srcset = ''; // Clear srcset to force new image
+      }
+      
+      // Trigger change event for any listeners
+      birthdayBlueVariant.dispatchEvent(new Event('change', { bubbles: true }));
+      
+      // Remove active class from other swatches and add to selected
+      card.querySelectorAll('.variant-picker__option, .color-swatch, .product-option').forEach(option => {
+        option.classList.remove('active', 'selected');
+      });
+      
+      const selectedOption = birthdayBlueVariant.closest('.variant-picker__option, .color-swatch, .product-option');
+      if (selectedOption) {
+        selectedOption.classList.add('active', 'selected');
+      }
+    }
+  });
+});
+</script>

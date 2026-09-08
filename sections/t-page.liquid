@@ -1,0 +1,66 @@
+{%- liquid
+    if section.settings.pageType == "col-1"
+        assign pageType = 'one-column'
+        assign pageCol = 1
+    elsif section.settings.pageType == "col-1-center"
+        assign pageType = 'one-column-central'
+        assign pageCol = 1
+    else 
+        assign pageType = 'default'
+        assign pageCol = 2
+    endif
+-%}
+
+<style>
+  /* Layout utilities for this section */
+  :where(x-grid,[x-grid]) {
+    display: grid;
+    gap: var(--gap, 1rem);
+  }
+  
+  x-grid[columns="1"] { grid-template-columns: 1fr; }
+  x-grid[columns="2"] { grid-template-columns: repeat(2, 1fr); }
+  
+  @media (max-width: 777px) {
+    x-grid[columns-s="1"] { grid-template-columns: 1fr; }
+  }
+  
+  main, main .shopify-section, [class*="one-column"] {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+</style>
+
+<section class="general-page {{ pageType }}">
+    <x-grid columns="{{ pageCol }}" columns-s="1">
+        <x-cell data-heading="{{ section.settings.showHeading }}"><h1>{{ page.title }}</h1></x-cell>
+        <x-cell><div class="rte">{{ page.content }}</div></x-cell>
+    </x-grid>
+</section>
+
+{% schema %}
+{
+  "name": "General page",
+  "settings": [
+    {
+        "type": "select",
+        "id": "pageType",
+        "label": "Desktop page layout",
+        "default": "col-2",
+        "options": [
+            { "value": "col-2", "label": "Two columns" },
+            { "value": "col-1", "label": "One column full width" },
+            { "value": "col-1-center", "label": "One column center" }
+        ]
+    },
+        {
+            "type": "checkbox",
+            "id": "showHeading",
+            "label": "Show heading",
+            "default": true,
+            "info": "Does not apply to \"Two columns\" page layout."
+        }
+  ]
+}
+{% endschema %}

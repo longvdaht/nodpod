@@ -1,0 +1,216 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "np_hero_banner_UHM6pc": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_xriz33": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate-desktop.png",
+            "imageMobile": "shopify://shop_images/affiliate-mobile.png",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_xriz33"
+      ],
+      "custom_css": [
+        "p {padding-top: 20px;}",
+        "h2 {line-height: 1; font-size: 6rem;}",
+        "@media (max-width: 777px) {h2 {font-size: 4.5rem; line-height: 1.1; max-width: 500px; text-align: center; margin-bottom: 20px; } p {font-size: 1.5rem; margin-bottom: 10px; }}"
+      ],
+      "name": "Hero banner (Dawn)",
+      "settings": {
+        "block_id": "sustainability",
+        "overlay_position": "middle_center",
+        "overlay_max_width": 95,
+        "overlay_position_mobile": "top",
+        "overlay_align_mobile": "center",
+        "subtitle": "",
+        "title": "Become a Nodpod Ambassador",
+        "content": "",
+        "cta": "Shop more",
+        "url": "",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#5d5e5d",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "uncropped",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": true,
+        "mobile_full_height_max_px": 500
+      }
+    },
+    "np_header_block_b6yrmm": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_PhXb3d": {
+          "type": "heading",
+          "settings": {
+            "heading": "Thank you for your interest in Nodpod's Ambassador Program."
+          }
+        },
+        "text_dycqGT": {
+          "type": "text",
+          "settings": {
+            "text": "At Nodpod we believe in a good night's sleep and the version of you that makes you happy. Join the Nodpod affiliate program and start earning today!"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PhXb3d",
+        "text_dycqGT"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 80,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "multicolumn_PQ8R3q": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_3q4EUq": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group_114.png",
+            "title": "10% Commission",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_YFgqXg": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group_115.png",
+            "title": "Personalized Shop Page",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_3q4EUq",
+        "column_YFgqXg"
+      ],
+      "custom_css": [
+        ".multicolumn {padding: 40px 0;}",
+        "img {width: 120px; height: 120px; margin: auto;}",
+        ".media {text-align: center;}",
+        ".media--square {padding-bottom: 120px; padding-right: 0 !important; padding-left: 0 !important; height: 120px; width: 120px; margin: auto;}",
+        "h3 {font-size: 3.5rem; line-height: 1.2; font-weight: 300; margin-bottom: 20px;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "np_image_with_text_rEHjNn": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_F6Umhn": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nodpod Ambassador"
+          }
+        },
+        "text_UqdUpx": {
+          "type": "text",
+          "settings": {
+            "text": "Ambassadors earn commissions by promoting Nodpod and our mission of weighted wellness."
+          }
+        },
+        "button_Lh6tPT": {
+          "type": "button",
+          "settings": {
+            "button_label": "APPLY",
+            "button_link": "https://nodpodambassador.superfiliate.com/portal/signUp",
+            "button_type": "full",
+            "buttonBg": "rgba(0,0,0,0)",
+            "buttonOutline": "#ffffff",
+            "buttonColor": "#ffffff",
+            "linkColor": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_F6Umhn",
+        "text_UqdUpx",
+        "button_Lh6tPT"
+      ],
+      "custom_css": [
+        "h2 {font-weight: 300 !important;}",
+        "a {color: #fff !important; border: 1px solid #fff;}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "image": "shopify://shop_images/Rectangle_14.png",
+        "image_position": "right",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#5d5e5d",
+        "full_bkg_gradient": "",
+        "text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "np_hero_banner_UHM6pc",
+    "np_header_block_b6yrmm",
+    "multicolumn_PQ8R3q",
+    "np_image_with_text_rEHjNn"
+  ]
+}

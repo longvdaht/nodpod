@@ -1,0 +1,226 @@
+{% comment %}
+  Section: np-guarantees
+  Save as sections/np-guarantees.liquid
+{% endcomment %}
+
+{% style %}
+  /* Scoped to this section instance */
+  div[id="shopify-section-{{ section.id }}"] .np-guarantees__bg {
+    /* Background spans full width */
+    background-color: {{ section.settings.section_bg | default: section.settings.headingBg }};
+  }
+
+  div[id="shopify-section-{{ section.id }}"] .np-guarantees__inner {
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 60px 20px 40px 20px;
+  }
+
+  div[id="shopify-section-{{ section.id }}"] .np-guarantees__inner img {
+    width: 70px;
+    height: auto;
+  }
+
+  div[id="shopify-section-{{ section.id }}"] .np-guarantees__inner h2 {
+    font-family: "var(--font-body-family)";
+    text-transform: capitalize;
+    font-weight: 500;
+    margin: 30px 0 10px;
+    font-size: 2rem;
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+
+  /* Grid + items */
+  div[id="shopify-section-{{ section.id }}"] .np-guarantees__grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  div[id="shopify-section-{{ section.id }}"] .np-guarantees__grid > div {
+    max-width: 300px;
+    margin: 0 auto;
+    gap: 0px;
+    padding: 0;
+  }
+
+  @media (max-width: 777px) {
+    div[id="shopify-section-{{ section.id }}"] .np-guarantees__inner {
+      padding: 40px 20px;
+    }
+    div[id="shopify-section-{{ section.id }}"] .np-guarantees__grid > div {
+      max-width: 45%;
+      margin: 0 auto;
+      gap: 0px;
+      padding: 0;
+    }
+    div[id="shopify-section-{{ section.id }}"] .np-guarantees__inner h2 {
+      font-size: 2rem;
+    }
+  }
+{% endstyle %}
+
+<div class="np-guarantees__bg">
+  <section
+    class="guarantee np-guarantees__inner"
+    style="--guaranteeTextAlignment:{{ section.settings.headingAlignment | replace: 'left', 'start' | replace: 'right', 'end' }}"
+  >
+    {%- if section.settings.heading != blank -%}
+      <h3 class="gs-title"
+          style="
+            color: {{ section.settings.headingColor }};
+            text-align: {{ section.settings.headingAlignment | replace: 'left', 'start' | replace: 'right', 'end' }};
+          ">
+        {{ section.settings.heading }}
+      </h3>
+    {%- endif -%}
+
+    <x-grid
+      columns="fit"
+      class="np-guarantees__grid"
+      style="text-align:{{ section.settings.textAlignment | replace: 'left', 'start' | replace: 'right', 'end' }}"
+    >
+      {% for block in section.blocks %}
+        <div
+          x-flex
+          direction="column"
+          ai="{{ section.settings.textAlignment | replace: 'left', 'start' | replace: 'right', 'end' }}"
+          {{ block.shopify_attributes }}
+        >
+          <picture>
+            {%- liquid
+              assign img = block.settings.image
+              assign alt = img.alt | default: block.settings.heading | escape
+              assign width = 400
+              assign widths = '200,300,400'
+              assign sizes = '(max-width:777px) 100vw, (min-width:778px) 33vw, 100vw'
+
+              if img != null
+                echo img | image_url: width: width | image_tag: sizes: sizes, widths: widths, alt: alt, loading: 'lazy'
+              else
+                echo 'image' | placeholder_svg_tag: 'svg-placeholder'
+              endif
+            -%}
+          </picture>
+
+          {%- if block.settings.link != blank -%}
+            <a
+              href="{{ block.settings.link }}"
+              x-flex
+              direction="column"
+              class="no-style"
+              rel="nofollow noopener noreferrer"
+              target="_blank"
+            >
+          {%- endif -%}
+
+          {%- if block.settings.heading != blank -%}
+            <h2 class="h3">{{ block.settings.heading }}</h2>
+          {%- endif -%}
+
+          {%- if block.settings.link != blank -%}</a>{%- endif -%}
+
+          {%- if block.settings.content != blank -%}
+            <div>{{ block.settings.content }}</div>
+          {%- endif -%}
+        </div>
+      {% endfor %}
+    </x-grid>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "NP Guarantees",
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Leave blank to remove heading.",
+      "default": "Heading"
+    },
+    {
+      "type": "text_alignment",
+      "id": "headingAlignment",
+      "label": "Heading alignment",
+      "default": "center"
+    },
+    {
+      "type": "text_alignment",
+      "id": "textAlignment",
+      "label": "Content alignment",
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "headingBg",
+      "label": "Legacy background color (fallback)",
+      "default": "#FFFFFF",
+      "info": "Used only if Section background color is not set."
+    },
+    {
+      "type": "color",
+      "id": "headingColor",
+      "label": "Heading color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "300 x 300 px recommended"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "info": "Leave blank to remove heading.",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "info": "Leave blank to remove text.",
+          "default": "<p>Content goes here.</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "(Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NP Guarantees",
+      "category": "Nodpod",
+      "blocks": [
+        { "type": "logo_image" },
+        { "type": "logo_image" },
+        { "type": "logo_image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

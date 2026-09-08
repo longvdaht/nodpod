@@ -1,0 +1,387 @@
+<div class="video-column-section">
+  <div class="text-area">
+    <div class="text-wrapper">
+      {% if section.settings.heading != blank %}
+        <h2 class="video-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      
+      {% for block in section.blocks %}
+        {% if block.type == 'step' %}
+          <div class="text-step {% if forloop.first %}active{% endif %}" data-video-link="{{ forloop.index }}" {{ block.shopify_attributes }}>
+            <div class="num-col">
+              <div class="step-number">{{ forloop.index }}</div>
+            </div>
+            <div class="text-col">
+              {% if block.settings.step_heading != blank %}
+                <div class="step-heading">{{ block.settings.step_heading }}</div>
+              {% endif %}
+              {% if block.settings.step_description != blank %}
+                <div class="step-p">{{ block.settings.step_description }}</div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  
+  <div class="video-area">
+    {% for block in section.blocks %}
+      {% if block.type == 'step' and block.settings.video_url != blank %}
+        <video
+          class="how-to-video {% if forloop.first %}active{% endif %}"
+          data-video-src="{{ forloop.index }}"
+          src="{{ block.settings.video_url }}"
+          style="object-position: {{ block.settings.object_position | default: 'center' }};"
+          autoplay
+          loop
+          playsinline
+          muted
+        ></video>
+      {% endif %}
+    {% endfor %}
+    
+    <div class="video-loading">
+      {% if section.settings.loading_image != blank %}
+        <img width="100%" height="auto" src="{{ section.settings.loading_image | image_url }}" alt="Loading">
+      {% else %}
+        <img width="100%" height="auto" src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/video-loading.png?v=1734714451" alt="Loading">
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .video-column-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 100%;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+  .text-area {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+  .text-wrapper {
+    max-width: 500px;
+    margin: auto;
+  }
+  .video-area {
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-step {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    color: #5d5e5d;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: .6s;
+    margin-bottom: 40px;
+  }
+  video.how-to-video.active {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  .text-step.active {
+    opacity: 1;
+    transition: .6s;
+  }
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: #ffffff;
+    color: #aab7ad;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+    font-weight: 400;
+    font-family: var(--font-body-family);
+    line-height: 1;
+    border: 1px solid #828081;
+    font-size: 2rem;
+  }
+  .text-step.active .step-number {
+    background: #aab7ad;
+    color: #ffffff;
+    border: 0;
+  }
+  .step-heading {
+    font-size: 16px !important;
+    letter-spacing: 1px;
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .step-p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: var(--font-heading-family);
+    font-weight: 300;
+  }
+  .text-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+  }
+  .video-heading {
+    font-size: 5rem;
+    color: #5d5e5d;
+    margin-bottom: 40px;
+    line-height: 1;
+  }
+  .how-to-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .how-to-video.active {
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+  }
+  .video-area {
+    position: relative;
+    aspect-ratio: 1/1;
+  }
+  .video-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width:996px) {
+    .text-area {
+      width: 100%;
+    }
+    .video-area {
+      width: 100%;
+    }
+    .video-heading {
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Apply to each video column section independently
+    document.querySelectorAll('.video-column-section').forEach(section => {
+      const area = section.querySelector('.video-area');
+      const videos = Array.from(section.querySelectorAll('video.how-to-video'));
+      if (!area || !videos.length) return;
+
+      // Ensure mobile-friendly autoplay
+      videos.forEach(v => {
+        v.muted = true;
+        v.autoplay = true;
+        v.playsInline = true;
+        v.setAttribute('muted', '');
+        v.setAttribute('playsinline', '');
+        v.setAttribute('webkit-playsinline', '');
+        v.preload = v.preload || 'auto';
+      });
+
+      const safePlay = (v) => {
+        if (!v) return;
+        const playNow = () => {
+          const p = v.play();
+          if (p && typeof p.then === 'function') {
+            p.catch(() => {
+              const kick = () => v.play().catch(() => {});
+              window.addEventListener('touchstart', kick, { once: true });
+              window.addEventListener('mousedown',  kick, { once: true });
+            });
+          }
+        };
+        if (v.readyState >= 2) playNow();
+        else v.addEventListener('loadeddata', playNow, { once: true });
+      };
+
+      // Initial pulse on step 2 (within this section)
+      section.querySelectorAll('.text-step[data-video-link="2"] .step-number')
+        .forEach(el => el.classList.add('pulse'));
+
+      // Autoplay the initially active video
+      safePlay(area.querySelector('video.how-to-video.active'));
+
+      // Handle clicks on steps (scoped to this section)
+      section.addEventListener('click', (e) => {
+        const step = e.target.closest('.text-step');
+        if (!step || !section.contains(step)) return;
+
+        const key = step.dataset.videoLink;
+        const target = area.querySelector(`video[data-video-src="${key}"]`);
+        if (!target) return;
+
+        // Update active step
+        step.closest('.text-area')?.querySelectorAll('.text-step.active')
+          .forEach(el => el.classList.remove('active'));
+        step.classList.add('active');
+
+        // Switch videos: pause others, DON'T call load() on target
+        videos.forEach(v => {
+          if (v !== target) {
+            v.pause();
+            v.currentTime = 0;
+            v.classList.remove('active');
+          }
+        });
+        target.classList.add('active');
+        safePlay(target);
+
+        // Pulse the next step (1 → 2 → 3 → 1)
+        section.querySelectorAll('.step-number').forEach(el => el.classList.remove('pulse'));
+        const current = parseInt(key, 10);
+        const next = current === 3 ? 1 : current + 1;
+        section.querySelector(`.text-step[data-video-link="${next}"] .step-number`)
+          ?.classList.add('pulse');
+      });
+    });
+
+    // Nice-to-have: pause when tab hidden; resume when visible
+    document.addEventListener('visibilitychange', () => {
+      const active = document.querySelector('.video-area video.how-to-video.active');
+      if (!active) return;
+      if (document.hidden) active.pause();
+      else active.play().catch(() => {});
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "How to Use Video",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How to Use Nodpod BODY"
+    },
+    {
+      "type": "image_picker",
+      "id": "loading_image",
+      "label": "Loading Image",
+      "info": "Optional placeholder image shown while videos load"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_heading",
+          "label": "Step Heading",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "step_description",
+          "label": "Step Description",
+          "default": "Step description text"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL",
+          "info": "Direct URL to the video file (e.g., .mp4)"
+        },
+        {
+          "type": "select",
+          "id": "object_position",
+          "label": "Video Position",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ],
+          "default": "center",
+          "info": "Control the position of the video within its container"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How to Use Video",
+      "settings": {
+        "heading": "How to Use Nodpod BODY"
+      },
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_heading": "DRAPE & CHILL",
+            "step_description": "Lay it across your body — chest, stomach, or legs. Feel the instant calming effect of the soothing weight.",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/58a887d098a74b42a0d5a4b916ac94bf.mp4",
+            "object_position": "center"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_heading": "CUSTOMIZE YOUR COMFORT",
+            "step_description": "Use folded, layered, or flat — the flexible design molds to your body wherever you need relief most.",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/3eec5f3deac8444caaa47c789ad42fc2.mp4",
+            "object_position": "center"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_heading": "TAKE IT ANYWHERE",
+            "step_description": "Perfect for bed, couch, or travel. Use it for naps, wind-down time, or just a moment of calm.",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/439d27b520914f20bcba759c964937ee.mp4",
+            "object_position": "center"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,503 @@
+{%- comment -%}
+  Template for Bundle Product Page
+  This should be saved as templates/product.bundle.liquid
+  Apply this template to your bundle product in the Shopify admin
+{%- endcomment -%}
+
+{%- assign bundle_variants = product.variants -%}
+{%- assign bundle_products = '' | split: ',' -%}
+
+{%- comment -%}
+  Define your bundle structure here
+  This creates a mapping of your actual bundle variants to the individual products
+{%- endcomment -%}
+
+<div class="bundle-product-page section-{{ section.id }}-padding">
+  {{ 'bundle-product.css' | asset_url | stylesheet_tag }}
+  
+  <div class="page-width">
+    <div class="bundle-hero">
+      <div class="bundle-hero__content">
+        <h1 class="bundle-hero__title">{{ product.title }}</h1>
+        <div class="bundle-hero__description rte">
+          {{ product.description }}
+        </div>
+        
+        {%- if product.featured_media -%}
+          <div class="bundle-hero__media">
+            <img 
+              src="{{ product.featured_media | image_url: width: 600 }}"
+              alt="{{ product.featured_media.alt | escape }}"
+              width="600"
+              height="{{ 600 | divided_by: product.featured_media.aspect_ratio | ceil }}"
+              loading="eager"
+            >
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Bundle Form -->
+    <form id="bundle-form" class="bundle-product__form" data-product-id="{{ product.id }}">
+      
+      <!-- Step 1: Mask Selection -->
+      <div class="bundle-step" data-step="mask">
+        <h3 class="bundle-step__title">Step 1: Choose Your Mask Color</h3>
+        <div class="bundle-options">
+          <label class="bundle-option">
+            <input type="radio" name="mask" value="45341214179498" data-price="6800" data-title="Mineralized Silk Mask - Petal" required>
+            <div class="bundle-option__content">
+              <img src="https://cdn.shopify.com/s/files/1/0579/4070/5770/files/petal-mask.jpg?v=1" alt="Petal Mask" class="bundle-option__image">
+              <div class="bundle-option__details">
+                <h4>Petal</h4>
+                <p class="price">$68.00</p>
+                <p class="bundle-option__description">Soft pink silk mask</p>
+              </div>
+            </div>
+          </label>
+          
+          <label class="bundle-option">
+            <input type="radio" name="mask" value="45341214146730" data-price="6800" data-title="Mineralized Silk Mask - Pearl" required>
+            <div class="bundle-option__content">
+              <img src="https://cdn.shopify.com/s/files/1/0579/4070/5770/files/pearl-mask.jpg?v=1" alt="Pearl Mask" class="bundle-option__image">
+              <div class="bundle-option__details">
+                <h4>Pearl</h4>
+                <p class="price">$68.00</p>
+                <p class="bundle-option__description">Classic white silk mask</p>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Step 2: Pillowcase Selection -->
+      <div class="bundle-step" data-step="pillowcase">
+        <fieldset class="js product-form__input product-form__input--swatch">
+          <legend class="form__label bundle-step__title">
+            Step 2: Choose Your Pillowcase Color & Size
+            <span data-selected-value></span>
+          </legend>
+          <div class="bundle-variant-options">
+            {%- liquid
+              assign pillowcase_variants = '47411628769450,47451340210346,47411628736682,47451340177578' | split: ','
+              assign pillowcase_colors = 'Petal,Petal,Pearl,Pearl' | split: ','
+              assign pillowcase_sizes = 'Queen,King,Standard,King' | split: ','
+              assign pillowcase_hex_colors = '#F4C2C2,#F4C2C2,#FFFFFF,#FFFFFF' | split: ','
+              assign pillowcase_prices = '10200,11200,10200,11200' | split: ','
+            -%}
+            
+            {%- for i in (0..3) -%}
+              {%- assign variant_id = pillowcase_variants[i] -%}
+              {%- assign color_name = pillowcase_colors[i] -%}
+              {%- assign size_name = pillowcase_sizes[i] -%}
+              {%- assign hex_color = pillowcase_hex_colors[i] -%}
+              {%- assign price = pillowcase_prices[i] -%}
+              {%- assign price_display = price | divided_by: 100.0 | money -%}
+              
+              <input
+                type="radio"
+                id="pillowcase-{{ variant_id }}"
+                name="pillowcase"
+                value="{{ variant_id }}"
+                data-price="{{ price }}"
+                data-title="Mineralized Silk Pillowcase - {{ color_name }} {{ size_name }}"
+                class="pdp-color__input swatch-input__input bundle-pillowcase-option"
+                data-variant-color="{{ hex_color }}"
+                data-variant-available="true"
+                data-size="{{ size_name }}"
+                style="--np-outline: {{ hex_color }};"
+                required
+              >
+              <label
+                for="pillowcase-{{ variant_id }}"
+                class="pdp-color__label bundle-pillowcase-label"
+                style="--np-outline: {{ hex_color }};"
+                title="{{ color_name }} - {{ size_name }}"
+              >
+                <span class="pdp-color__chip" style="background: {{ hex_color }};"></span>
+                <span class="bundle-option-text">
+                  <strong>{{ color_name }} - {{ size_name }}</strong>
+                  <span class="bundle-option-price">{{ price_display }}</span>
+                </span>
+              </label>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Step 3: Scrunchie Selection -->
+      <div class="bundle-step" data-step="scrunchie">
+        <fieldset class="js product-form__input product-form__input--mixed">
+          <legend class="form__label bundle-step__title">
+            Step 3: Choose Your Scrunchie Color & Size
+            <span data-selected-value></span>
+          </legend>
+          <div class="bundle-variant-options bundle-scrunchie-grid">
+            {%- liquid
+              assign scrunchie_variants = '47447561371818,47451366817962,47447561339050,47451366785194' | split: ','
+              assign scrunchie_colors = 'Petal,Petal,Pearl,Pearl' | split: ','
+              assign scrunchie_sizes = 'Skinny,Large,Skinny,Large' | split: ','
+              assign scrunchie_hex_colors = '#F4C2C2,#F4C2C2,#FFFFFF,#FFFFFF' | split: ','
+              assign scrunchie_prices = '3500,4500,3500,4500' | split: ','
+            -%}
+            
+            {%- for i in (0..3) -%}
+              {%- assign variant_id = scrunchie_variants[i] -%}
+              {%- assign color_name = scrunchie_colors[i] -%}
+              {%- assign size_name = scrunchie_sizes[i] -%}
+              {%- assign hex_color = scrunchie_hex_colors[i] -%}
+              {%- assign price = scrunchie_prices[i] -%}
+              {%- assign price_display = price | divided_by: 100.0 | money -%}
+              {%- assign size_letter = size_name | slice: 0, 1 | upcase -%}
+              
+              <input
+                type="radio"
+                id="scrunchie-{{ variant_id }}"
+                name="scrunchie"
+                value="{{ variant_id }}"
+                data-price="{{ price }}"
+                data-title="Mineralized Silk Scrunchie - {{ color_name }} {{ size_name }}"
+                class="pdp-color__input swatch-input__input bundle-scrunchie-option"
+                data-variant-color="{{ hex_color }}"
+                data-variant-available="true"
+                data-size="{{ size_name }}"
+                style="--np-outline: {{ hex_color }};"
+                required
+              >
+              <label
+                for="scrunchie-{{ variant_id }}"
+                class="pdp-color__label bundle-scrunchie-label"
+                style="--np-outline: {{ hex_color }};"
+                title="{{ color_name }} - {{ size_name }}"
+              >
+                <span class="pdp-color__chip bundle-scrunchie-chip" style="background: {{ hex_color }};">
+                  <span class="bundle-size-indicator">{{ size_letter }}</span>
+                </span>
+                <span class="bundle-option-text">
+                  <strong>{{ color_name }} - {{ size_name }}</strong>
+                  <span class="bundle-option-price">{{ price_display }}</span>
+                </span>
+              </label>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Bundle Summary -->
+      <div class="bundle-summary">
+        <div class="bundle-summary__content">
+          <div class="bundle-summary__selected-items">
+            <h4>Your Bundle Includes:</h4>
+            <div class="selected-items-list">
+              <div class="selected-item" data-type="mask" style="display: none;">
+                <span class="selected-item__title"></span>
+              </div>
+              <div class="selected-item" data-type="pillowcase" style="display: none;">
+                <span class="selected-item__title"></span>
+              </div>
+              <div class="selected-item" data-type="scrunchie" style="display: none;">
+                <span class="selected-item__title"></span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bundle-summary__pricing">
+            <div class="bundle-summary__row">
+              <span>Individual Prices:</span>
+              <span class="bundle-retail-price">$0.00</span>
+            </div>
+            <div class="bundle-summary__row bundle-summary__savings">
+              <span>Bundle Discount (14%):</span>
+              <span class="bundle-discount">-$0.00</span>
+            </div>
+            <div class="bundle-summary__row bundle-summary__total">
+              <span>Your Bundle Price:</span>
+              <span class="bundle-total-price">$0.00</span>
+            </div>
+          </div>
+          
+          <button type="submit" class="bundle-add-to-cart button button--primary" disabled>
+            <span class="bundle-add-text">Select all items to continue</span>
+            <div class="loading-overlay__spinner hidden">
+              <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function() {
+  const bundleForm = document.getElementById('bundle-form');
+  const retailPriceEl = document.querySelector('.bundle-retail-price');
+  const discountEl = document.querySelector('.bundle-discount');
+  const totalPriceEl = document.querySelector('.bundle-total-price');
+  const addToCartBtn = document.querySelector('.bundle-add-to-cart');
+  const addToCartText = document.querySelector('.bundle-add-text');
+  const loadingSpinner = document.querySelector('.loading-overlay__spinner');
+  const selectedItemsList = document.querySelector('.selected-items-list');
+
+  function formatPrice(cents) {
+    return '$' + (cents / 100).toFixed(2);
+  }
+
+  function updateSelectedItems() {
+    const selections = {
+      mask: document.querySelector('input[name="mask"]:checked'),
+      pillowcase: document.querySelector('input[name="pillowcase"]:checked'),
+      scrunchie: document.querySelector('input[name="scrunchie"]:checked')
+    };
+
+    // Update selected value displays in legends
+    Object.keys(selections).forEach(type => {
+      const input = selections[type];
+      const legend = document.querySelector(`[data-step="${type}"] [data-selected-value]`);
+      const selectedItem = selectedItemsList.querySelector(`[data-type="${type}"]`);
+      
+      if (input && legend) {
+        const title = input.dataset.title;
+        // Extract just the variant part (color and size)
+        const variantPart = title.replace(/^[^-]*-\s*/, '');
+        legend.textContent = variantPart;
+      } else if (legend) {
+        legend.textContent = '';
+      }
+      
+      if (input && selectedItem) {
+        selectedItem.querySelector('.selected-item__title').textContent = input.dataset.title;
+        selectedItem.style.display = 'block';
+      } else if (selectedItem) {
+        selectedItem.style.display = 'none';
+      }
+    });
+  }
+
+  function updatePricing() {
+    const maskInput = document.querySelector('input[name="mask"]:checked');
+    const pillowcaseInput = document.querySelector('input[name="pillowcase"]:checked');
+    const scrunchieInput = document.querySelector('input[name="scrunchie"]:checked');
+
+    if (!maskInput || !pillowcaseInput || !scrunchieInput) {
+      retailPriceEl.textContent = '$0.00';
+      discountEl.textContent = '-$0.00';
+      totalPriceEl.textContent = '$0.00';
+      addToCartBtn.disabled = true;
+      addToCartText.textContent = 'Select all items to continue';
+      return;
+    }
+
+    const retailTotal = parseInt(maskInput.dataset.price) + 
+                       parseInt(pillowcaseInput.dataset.price) + 
+                       parseInt(scrunchieInput.dataset.price);
+    
+    const discountAmount = Math.round(retailTotal * 0.14);
+    const bundleTotal = retailTotal - discountAmount;
+
+    retailPriceEl.textContent = formatPrice(retailTotal);
+    discountEl.textContent = '-' + formatPrice(discountAmount);
+    totalPriceEl.textContent = formatPrice(bundleTotal);
+    addToCartBtn.disabled = false;
+    addToCartText.textContent = 'Add Bundle to Cart';
+  }
+
+  // Listen for radio button changes
+  bundleForm.addEventListener('change', function() {
+    updateSelectedItems();
+    updatePricing();
+  });
+
+  // Handle form submission
+  bundleForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const maskInput = document.querySelector('input[name="mask"]:checked');
+    const pillowcaseInput = document.querySelector('input[name="pillowcase"]:checked');
+    const scrunchieInput = document.querySelector('input[name="scrunchie"]:checked');
+
+    if (!maskInput || !pillowcaseInput || !scrunchieInput) {
+      alert('Please select all bundle items');
+      return;
+    }
+
+    // Show loading state
+    addToCartBtn.disabled = true;
+    addToCartText.textContent = 'Adding to Cart...';
+    loadingSpinner.classList.remove('hidden');
+
+    try {
+      // Validate bundle before adding
+      const items = [
+        {
+          id: parseInt(maskInput.value),
+          quantity: 1,
+          properties: {
+            '_bundled': 'silk_bundle',
+            '_bundle_item': 'mask',
+            '_bundle_title': maskInput.dataset.title
+          }
+        },
+        {
+          id: parseInt(pillowcaseInput.value),
+          quantity: 1,
+          properties: {
+            '_bundled': 'silk_bundle',
+            '_bundle_item': 'pillowcase',
+            '_bundle_title': pillowcaseInput.dataset.title
+          }
+        },
+        {
+          id: parseInt(scrunchieInput.value),
+          quantity: 1,
+          properties: {
+            '_bundled': 'silk_bundle',
+            '_bundle_item': 'scrunchie',
+            '_bundle_title': scrunchieInput.dataset.title
+          }
+        }
+      ];
+
+      // Validate with bundle monitor if available
+      if (window.BundleCartMonitor) {
+        await window.BundleCartMonitor.validateBundleBeforeAdd(items);
+      }
+
+      const response = await fetch('/cart/add.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ items })
+      });
+
+      if (response.ok) {
+        // Trigger cart drawer/notification events
+        document.dispatchEvent(new CustomEvent('cart:add', {
+          detail: { items: items }
+        }));
+        
+        // If using Upcart, trigger their event
+        if (window.UpcartCore) {
+          window.UpcartCore.trigger('cart:add', { items: items });
+        }
+        
+        // Success feedback
+        addToCartText.textContent = 'Added to Cart!';
+        setTimeout(() => {
+          window.location.href = '/cart';
+        }, 1000);
+        
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to add items to cart');
+      }
+    } catch (error) {
+      console.error('Error adding bundle to cart:', error);
+      alert('There was an error adding the bundle to cart: ' + error.message);
+      
+      // Reset button state
+      addToCartBtn.disabled = false;
+      addToCartText.textContent = 'Add Bundle to Cart';
+      loadingSpinner.classList.add('hidden');
+    }
+  });
+
+  // Initialize on page load
+  updateSelectedItems();
+  updatePricing();
+})();
+</script>
+
+<style>
+  .bundle-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+  }
+  
+  .bundle-hero__title {
+    font-size: 3.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .bundle-hero__description {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .bundle-hero__media img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .selected-items-list {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(var(--color-foreground), 0.05);
+    border-radius: 6px;
+  }
+  
+  .selected-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+  }
+  
+  .selected-item:last-child {
+    border-bottom: none;
+  }
+  
+  .selected-item__title {
+    font-weight: 500;
+  }
+  
+  .bundle-option__description {
+    font-size: 1.3rem;
+    color: rgba(var(--color-foreground), 0.7);
+    margin-top: 0.5rem;
+  }
+  
+  .loading-overlay__spinner.hidden {
+    display: none;
+  }
+  
+  .spinner {
+    width: 2rem;
+    height: 2rem;
+    animation: rotator 1.4s linear infinite;
+  }
+  
+  @keyframes rotator {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+  }
+  
+  .spinner .path {
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: dash 1.4s ease-in-out infinite;
+  }
+  
+  @keyframes dash {
+    0% { stroke-dashoffset: 187; }
+    50% { stroke-dashoffset: 46.75; transform: rotate(135deg); }
+    100% { stroke-dashoffset: 187; transform: rotate(450deg); }
+  }
+  
+  @media screen and (max-width: 749px) {
+    .bundle-hero__title {
+      font-size: 2.8rem;
+    }
+    
+    .bundle-hero__description {
+      font-size: 1.6rem;
+    }
+  }
+</style>

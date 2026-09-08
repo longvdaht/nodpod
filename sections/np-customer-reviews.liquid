@@ -1,0 +1,154 @@
+{% style %}
+  #customer-review-{{ section.id }}-wrapper {
+    padding: {{ section.settings.wrapper_padding }}px;
+    border-top: {% if section.settings.show_top_border %}1px solid {{ section.settings.border_color }}{% else %}none{% endif %};
+    border-bottom: {% if section.settings.show_bottom_border %}1px solid {{ section.settings.border_color }}{% else %}none{% endif %};
+  }
+
+  .np-customer-review {
+    background-color: {{ section.settings.background_color }};
+    border: 1px solid {{ section.settings.border_color }};
+    padding: 40px;
+  }
+  
+  #customer-review-{{ section.id }}-wrapper .reviewer-name-area {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  #customer-review-{{ section.id }}-wrapper p.section-main-text {
+    font-size: 2rem;
+    font-weight: 500 !important;
+    margin: 0 !important;
+  }
+
+  #customer-review-{{ section.id }}-wrapper .reviewer-name-area i {
+    font-size: 19.19px !important;
+    color: #A2B0A5;
+  }
+
+  #customer-review-{{ section.id }}-wrapper .section-main-heading {
+    max-width: 1050px;
+    margin: 10px auto 15px auto;
+  }
+
+  #customer-review-{{ section.id }}-wrapper .section-subheading {
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 749px) {
+
+    .np-customer-review {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .np-customer-review h2 {
+        font-size: 2.4rem;
+        margin: 0;
+    }
+
+    .np-customer-review h3 {
+        font-size: 1.75rem;
+        margin: 0;
+    }
+
+    .section-main-heading {
+      margin: 0 !important;
+    }
+
+    .np-customer-review p.section-main-text {
+        font-size: 2rem !important;
+        margin: 0;
+    }
+
+    .reviewer-name-area {
+        display: flex;
+        flex-direction: row;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+  }
+
+{% endstyle %}
+
+<div id="customer-review-{{ section.id }}-wrapper">
+  <section id="customer-review-{{ section.id }}" class="np-customer-review">
+    {% if section.settings.subheading %}
+      <h3 class="section-subheading">{{ section.settings.subheading }}</h3>
+    {% endif %}
+    <h2 class="section-main-heading">{{ section.settings.review_text }}</h2>
+    <div class="reviewer-name-area">
+      <p class="section-main-text">{{ section.settings.reviewer_name }}</p>
+      <i class="fa-regular fa-circle-check"></i>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Review Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "textarea",
+      "id": "review_text",
+      "label": "Review Text",
+      "default": "“Love. I was skeptical but this has helped me have the best nights of sleep in a long time. So happy with this purchase.”"
+    },
+    {
+      "type": "text",
+      "id": "reviewer_name",
+      "label": "Reviewer Name",
+      "default": "Kristal"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F6F6F5"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#75787B"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_border",
+      "label": "Show Top Border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_border",
+      "label": "Show Bottom Border",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "wrapper_padding",
+      "label": "Wrapper Padding (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Review Section",
+      "category": "Nodpod"
+    }
+  ]
+}
+{% endschema %}

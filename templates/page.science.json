@@ -1,0 +1,431 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "np_hero_banner_UHM6pc": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_xriz33": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/science.png",
+            "imageMobile": "shopify://shop_images/science-mobile_ec9e1d8c-8c72-4d9d-8e9f-a9cb3d663e76.png",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_xriz33"
+      ],
+      "custom_css": [
+        "p {padding-top: 20px;}",
+        "@media (max-width: 777px) {h2 {font-size: 5rem; line-height: 1.1; max-width: 500px; text-align: center; margin-bottom: 20px; } p {font-size: 1.5rem; margin-bottom: 10px; }}"
+      ],
+      "name": "Hero banner (Dawn)",
+      "settings": {
+        "block_id": "sustainability",
+        "overlay_position": "middle_center",
+        "overlay_max_width": 95,
+        "overlay_position_mobile": "top",
+        "overlay_align_mobile": "center",
+        "subtitle": "OUR PRODUCTS ARE BASED IN",
+        "title": "Sleep Science",
+        "content": "Our products are designed to provide Deep Touch pressure, a therapy modality proven to help you relax and drift off to deeper sleep.",
+        "cta": "Shop more",
+        "url": "",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#75787b",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "uncropped",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": true,
+        "mobile_full_height_max_px": 500
+      }
+    },
+    "np_image_with_text_JVEWkq": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_HU9WPg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Weighted sleep products can help:"
+          }
+        },
+        "liquid_PUqcQL": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"benefits-science\">\n<div class=\"benefit-list-item\">Sleep disorders / Insomnia</div>\n<div class=\"benefit-list-item\">Stress & Anxiety</div>\n<div class=\"benefit-list-item\">ADHD / Sensory Disorder</div>\n<div class=\"benefit-list-item\">Restless Leg Syndrome</div>\n</div>\n<style>\n.benefit-list-item {\n    position: relative;\n    font-size: 1.75rem;\n    padding: 15px 45px;\n    border-bottom: 1px solid #dddddd;\n    color: #636466;\n}\n\n.benefits-science {\n    margin-top: 10px;\n}\n\n.benefit-list-item:before {\n    content: '';\n    background-image: url(https://cdn.shopify.com/s/files/1/0253/2982/7939/files/Group_126.png?v=1737474017);\n    width: 30px;\n    height: 30px;\n    background-size: cover;\n    position: absolute;\n    top: 15px;\n    left: 0;\n}\n</style>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HU9WPg",
+        "liquid_PUqcQL"
+      ],
+      "custom_css": [
+        "img {margin: auto; border: 1px solid #5d5e5d; border-radius: 20px;}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "image": "shopify://shop_images/science-benefits.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e"
+      }
+    },
+    "np_header_block_PekLYA": {
+      "type": "np-header-block",
+      "blocks": {
+        "subheading_QFcPic": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "THE SCIENCE OF"
+          }
+        },
+        "heading_wRWbR8": {
+          "type": "heading",
+          "settings": {
+            "heading": "Deep Touch Pressure"
+          }
+        },
+        "text_bfip8k": {
+          "type": "text",
+          "settings": {
+            "text": "Research from medical & scientific community has shown that sleeping under weight improves sleep and wellbeing. By applying firm but gentle pressure to the body, weighted masks and blankets use a therapy tool called Deep Touch Pressure or Deep Pressure Stimulation to provide an overall calming effect to help achieve a deeper and better night’s sleep."
+          }
+        }
+      },
+      "block_order": [
+        "subheading_QFcPic",
+        "heading_wRWbR8",
+        "text_bfip8k"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#dde2dc",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "multicolumn_PQ8R3q": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_3q4EUq": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group_127.png",
+            "title": "Promotes Serotonin Release",
+            "text": "<p>A chemical that regulates mood, happiness and overall sense of well-being. This allows your mind to relax into a more restful, restorative sleep.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_YFgqXg": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group_128.png",
+            "title": "Reduces Cortisol Levels",
+            "text": "<p>The hormones that causes stress. It works with certain parts of your brain to control your mood, motivation, and fear.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_NWz3Hh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group_129.png",
+            "title": "Stimulates Melatonin Production",
+            "text": "<p>The chemical that helps you sleep and relax. Melatonin creates deeper REM cycles, leading to a more restful sleep.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_3q4EUq",
+        "column_YFgqXg",
+        "column_NWz3Hh"
+      ],
+      "custom_css": [
+        ".multicolumn {padding: 40px 0;}",
+        "img {width: 100px; height: 100px; margin: auto;}",
+        ".media {text-align: center;}",
+        ".media--square {padding-bottom: 100px; padding-right: 0 !important; padding-left: 0 !important; height: 100px; width: 100px; margin: auto;}",
+        "h3 {font-size: 2.5rem; line-height: 1.2; font-weight: 300; margin-bottom: 20px;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "np_header_block_b6yrmm": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_PhXb3d": {
+          "type": "heading",
+          "settings": {
+            "heading": "What Our Experts Say"
+          }
+        },
+        "text_dycqGT": {
+          "type": "text",
+          "settings": {
+            "text": "We’ve enlisted the help of professionals in the field of sleep, medicine, infant care, and occupational therapy to provide us with their expert guidance and ensure that we continue to deliver safe, effective products that meet the highest quality standards!"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PhXb3d",
+        "text_dycqGT"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 80,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "np_image_with_text_yq3WGR": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_kQxVYP": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "DR. AAISHWARIYA | OPHTHALMOLOGY PHYSICIAN"
+          }
+        },
+        "heading_8GxPFG": {
+          "type": "heading",
+          "settings": {
+            "heading": "“The science of sleep is rooted in the senses of sleep, and a lot of that originates in stimulus provided to or around the eye. Thus, optimizing these conditions improves one's quality of sleep.”"
+          }
+        },
+        "button_WAYcRw": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read More >",
+            "button_link": "shopify://blogs/news/the-science-behind-sleep",
+            "button_type": "link",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_kQxVYP",
+        "heading_8GxPFG",
+        "button_WAYcRw"
+      ],
+      "custom_css": [
+        "h2 {font-size: 3.5rem;}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "image": "shopify://shop_images/Asset_8.png",
+        "image_position": "right",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e"
+      }
+    },
+    "np_image_with_text_fHjFnq": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_4bkrNn": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "DR. JANINA | NEUROSCIENTIST"
+          }
+        },
+        "heading_eqLdcm": {
+          "type": "heading",
+          "settings": {
+            "heading": "“I use a Nodpod weighted sleep mask. The gentle pressure helps me to relax and fall asleep more easily. When we are in a dark environment, the production of melatonin, the hormone that regulates sleep-wake cycles, is stimulated.”"
+          }
+        },
+        "button_JQc6fN": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read More >",
+            "button_link": "shopify://blogs/news/the-science-behind-adhd-and-sleep-disturbances-what-you-need-to-know",
+            "button_type": "link",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_4bkrNn",
+        "heading_eqLdcm",
+        "button_JQc6fN"
+      ],
+      "custom_css": [
+        "h2 {font-size: 3.5rem;}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "image": "shopify://shop_images/Asset_10.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e"
+      }
+    },
+    "np_image_with_text_rEHjNn": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_ckaxGA": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "DR. BLAKE |  EMERGENCY MEDICINE PHYSICIAN"
+          }
+        },
+        "heading_F6Umhn": {
+          "type": "heading",
+          "settings": {
+            "heading": "“When I discover somebody isn’t sleeping well, I often recommend that they give Nodpod a try. After all, I speak from experience as a night shift worker who needs to sleep during the day.”"
+          }
+        },
+        "button_Lh6tPT": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read More >",
+            "button_link": "shopify://blogs/news/dr-blake-mckinney-on-sleep",
+            "button_type": "link",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_ckaxGA",
+        "heading_F6Umhn",
+        "button_Lh6tPT"
+      ],
+      "custom_css": [
+        "h2 {font-size: 3.5rem;}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "image": "shopify://shop_images/Asset_9.png",
+        "image_position": "right",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "np_hero_banner_UHM6pc",
+    "np_image_with_text_JVEWkq",
+    "np_header_block_PekLYA",
+    "multicolumn_PQ8R3q",
+    "np_header_block_b6yrmm",
+    "np_image_with_text_yq3WGR",
+    "np_image_with_text_fHjFnq",
+    "np_image_with_text_rEHjNn"
+  ]
+}

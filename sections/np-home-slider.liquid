@@ -1,0 +1,1095 @@
+{% comment %}
+  Nodpod Home Slider (Swiper.js)
+  File: sections/np-home-slider.liquid
+  Dawn 15.4+ compatible
+{% endcomment %}
+
+<section
+  id="np-home-slider-{{ section.id }}"
+  class="np-home-slider section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient"
+  data-section-id="{{ section.id }}"
+  data-autoplay="{{ section.settings.autoplay }}"
+  data-autoplay-delay="{{ section.settings.autoplay_delay | times: 1000 }}"
+  data-loop="{{ section.settings.loop }}"
+  data-show-pagination="{{ section.settings.show_pagination }}"
+  style="position:relative;overflow:hidden;"
+  aria-label="{{ section.settings.accessible_label | escape | default: 'Homepage slider' }}"
+>
+  <style>
+    /* ========== Scoped styles for this instance ========== */
+    #np-home-slider-{{ section.id }} {
+        --np-pad-x: 4vw;
+        --np-pad-y: 2vh;
+        --np-header-offset: {{ section.settings.header_offset | default: 200 }}px;
+        --np-height-desktop: calc(100vh - var(--np-header-offset));
+        --np-height-mobile: {{ section.settings.mobile_height | default: 500 }}px;
+    }
+
+    #np-home-slider-{{ section.id }} .np-swiper { width: 100vw; }
+    #np-home-slider-{{ section.id }} .np-slide { width: 100vw; height: var(--np-height-desktop) !important; }
+    #np-home-slider-{{ section.id }} .np-frame { display:flex; width:100%; height:100%; }
+
+    /* halves & full */
+    #np-home-slider-{{ section.id }} .np-half {
+        flex: 1; position: relative;
+        background-size: cover; background-position: center;
+    }
+    #np-home-slider-{{ section.id }} .np-full {
+        position: relative; width:100%; height:100%;
+        background-size: cover; background-position: center; background-repeat:no-repeat;
+        cursor: pointer;
+    }
+
+    /* placeholders */
+    #np-home-slider-{{ section.id }} .np-ph {
+        position:absolute; inset:0; z-index:1; display:grid; place-items:center; background:#f3f3f3;
+    }
+    #np-home-slider-{{ section.id }} .np-ph .placeholder-svg { width:100%; height:100%; }
+
+    /* overlay base */
+    #np-home-slider-{{ section.id }} .np-overlay{
+        position:absolute;
+        z-index:2;
+        inset:auto;
+        display:flex;
+        flex-direction:column;
+        gap:30px;
+        max-inline-size: var(--overlay-max, 90vw);
+        padding: 30px 0;
+    }
+    #np-home-slider-{{ section.id }} .np-align-left   { text-align:left;   align-items:flex-start; }
+    #np-home-slider-{{ section.id }} .np-align-center { text-align:center; align-items:center; }
+    #np-home-slider-{{ section.id }} .np-align-right  { text-align:right;  align-items:flex-end; }
+
+    #np-home-slider-{{ section.id }} .np-h1 p {
+        margin: 0 !important;
+        word-break: auto-phrase;
+    }
+
+    /* Make heading/subtitle follow overlay alignment */
+    #np-home-slider-{{ section.id }} .np-align-left  .np-h1,
+    #np-home-slider-{{ section.id }} .np-align-left  .np-sub { text-align:left;  margin-left:0;    margin-right:auto; }
+    #np-home-slider-{{ section.id }} .np-align-center .np-h1,
+    #np-home-slider-{{ section.id }} .np-align-center .np-sub { text-align:center; margin-left:auto; margin-right:auto; }
+    #np-home-slider-{{ section.id }} .np-align-right .np-h1,
+    #np-home-slider-{{ section.id }} .np-align-right .np-sub { text-align:right; margin-left:auto; margin-right:0; }
+
+    /* 9-point grid — ALWAYS apply (no :not([class*="mpos-"]) guard) */
+    #np-home-slider-{{ section.id }} .np-pos-tl { top:var(--np-pad-y); left:var(--np-pad-x); }
+    #np-home-slider-{{ section.id }} .np-pos-tc { top:var(--np-pad-y); left:50%; transform:translateX(-50%); }
+    #np-home-slider-{{ section.id }} .np-pos-tr { top:var(--np-pad-y); right:var(--np-pad-x); }
+
+    #np-home-slider-{{ section.id }} .np-pos-ml { top:50%; left:var(--np-pad-x); transform:translateY(-50%); }
+    #np-home-slider-{{ section.id }} .np-pos-mc { top:50%; left:50%; transform:translate(-50%,-50%); }
+    #np-home-slider-{{ section.id }} .np-pos-mr { top:50%; right:var(--np-pad-x); transform:translateY(-50%); }
+
+    #np-home-slider-{{ section.id }} .np-pos-bl { bottom:var(--np-pad-y); left:var(--np-pad-x); }
+    #np-home-slider-{{ section.id }} .np-pos-bc { bottom:var(--np-pad-y); left:50%; transform:translateX(-50%); }
+    #np-home-slider-{{ section.id }} .np-pos-br { bottom:var(--np-pad-y); right:var(--np-pad-x); }
+
+    /* text elements (inherit theme fonts) */
+    #np-home-slider-{{ section.id }} .np-sub { margin:10px auto; line-height:1.3; }
+    #np-home-slider-{{ section.id }} .np-h1 { margin:0 auto; line-height:1 !important; font-weight:300; hyphens:auto; }
+
+    /* slider buttons */
+    #np-home-slider-{{ section.id }} .np-slider-btn {
+      font-family:var(--font-heading-family);
+      font-weight:300;
+      font-style:italic;
+      padding:10px 40px 10px 40px;
+      line-height: 1.5;
+      min-height: unset;
+      text-align: center;
+      width: fit-content;
+    }
+
+    /* pagination */
+    #np-home-slider-{{ section.id }} .swiper-pagination{
+      position:absolute; bottom:20px; left:0; width:100%; text-align:center; z-index:10;
+    }
+    #np-home-slider-{{ section.id }} .swiper-pagination-bullet-active{ background:#fff; }
+
+    /* arrows (kept hidden by default) */
+    #np-home-slider-{{ section.id }} .swiper-button-prev,
+    #np-home-slider-{{ section.id }} .swiper-button-next{ display:none; }
+
+    /* ===== MOBILE ===== */
+    @media screen and (max-width: 989px){
+      #np-home-slider-{{ section.id }} .np-slide{ height:var(--np-height-mobile) !important; overflow:hidden; }
+      #np-home-slider-{{ section.id }} .np-half{ width:100% !important; }
+
+      {% for block in section.blocks %}
+        #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-h1{
+            font-size: {{ block.settings.font_size_mobile | default: block.settings.font_size }}rem !important;
+        }
+        #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-sub{
+            font-size: {{ block.settings.sub_font_size_mobile | default: block.settings.sub_font_size }}rem !important;
+        }
+        #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-slider-btn{
+            font-size: {{ block.settings.button_font_size_mobile | default: block.settings.button_font_size }}rem !important;
+        }
+      {% endfor %}
+
+      #np-home-slider-{{ section.id }} .np-overlay{
+        box-sizing: border-box;
+        /* Force width, not just a max */
+        inline-size: min(
+            var(--overlay-max-mobile, var(--overlay-max, 100vw)),
+            calc(100vw - (2 * var(--np-pad-x)))
+            ) !important;
+        width: min(
+            var(--overlay-max-mobile, var(--overlay-max, 100vw)),
+            calc(100vw - (2 * var(--np-pad-x)))
+            ) !important; /* fallback for older browsers */
+        max-inline-size: none !important;
+        max-width: none !important;
+        padding: 10px;
+      }
+
+      /* Responsive, sane overlay width on phones */
+      #np-home-slider-{{ section.id }} .np-h1{ text-wrap: balance; }
+      #np-home-slider-{{ section.id }} .np-sub{ max-width:100% !important; }
+
+      /* Hide the non-text half on split slides according to setting */
+      {% for block in section.blocks %}
+        {% if block.type == 'split_banner' %}
+          {% if block.settings.text_position == 'left' %}
+            #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-half.right{ display:none !important; }
+          {% else %}
+            #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-half.left{ display:none !important; }
+          {% endif %}
+        {% endif %}
+
+        /* Mobile image swap for full slide */
+        {% if block.type == 'full_banner' %}
+          {% if block.settings.image_mobile != blank %}
+            #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-full{
+              background-image:url('{{ block.settings.image_mobile | image_url }}') !important;
+            }
+          {% elsif block.settings.image != blank %}
+            #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-full{
+              background-image:url('{{ block.settings.image | image_url }}') !important;
+            }
+          {% endif %}
+        {% endif %}
+
+        /* Per-slide mobile overlay position overrides (wins via !important) */
+        {% assign m = block.settings.overlay_position_mobile %}
+        {% if m and m != 'same_as_desktop' %}
+          #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-overlay{
+            top:auto !important; right:auto !important; bottom:auto !important; left:auto !important; transform:none !important;
+            {% if m == 'top_left' %}      top:var(--np-pad-y) !important; left:var(--np-pad-x) !important; {% endif %}
+            {% if m == 'top_center' %}    top:var(--np-pad-y) !important; left:50% !important; transform:translateX(-50%) !important; {% endif %}
+            {% if m == 'top_right' %}     top:var(--np-pad-y) !important; right:var(--np-pad-x) !important; {% endif %}
+            {% if m == 'middle_left' %}   top:50% !important; left:var(--np-pad-x) !important; transform:translateY(-50%) !important; {% endif %}
+            {% if m == 'middle_center' %} top:50% !important; left:50% !important; transform:translate(-50%,-50%) !important; {% endif %}
+            {% if m == 'middle_right' %}  top:50% !important; right:var(--np-pad-x) !important; transform:translateY(-50%) !important; {% endif %}
+            {% if m == 'bottom_left' %}   bottom:var(--np-pad-y) !important; left:var(--np-pad-x) !important; {% endif %}
+            {% if m == 'bottom_center' %} bottom:var(--np-pad-y) !important; left:50% !important; transform:translateX(-50%) !important; {% endif %}
+            {% if m == 'bottom_right' %}  bottom:var(--np-pad-y) !important; right:var(--np-pad-x) !important; {% endif %}
+            /* NEW: flex cross-axis alignment so the BUTTON follows left/center/right */
+            {% if m contains 'left' %}   align-items:flex-start !important; {% endif %}
+            {% if m contains 'center' %} align-items:center !important;     {% endif %}
+            {% if m contains 'right' %}  align-items:flex-end !important;   {% endif %}
+          }
+          /* You already adjust text alignment; keep this as-is */
+          #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-h1,
+          #np-home-slider-{{ section.id }} .swiper-slide[data-block-id="{{ block.id }}"] .np-sub{
+            {% if m contains 'left' %} text-align:left !important; margin-left:0 !important; margin-right:auto !important;
+            {% elsif m contains 'center' %} text-align:center !important; margin-left:auto !important; margin-right:auto !important;
+            {% else %} text-align:right !important; margin-left:auto !important; margin-right:0 !important; {% endif %}
+          }
+        {% endif %}
+      {% endfor %}
+    }
+  </style>
+
+  <div class="np-swiper swiper" data-slider>
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'full_banner' %}
+            {% liquid
+              assign bg = block.settings.image | image_url
+
+              assign overlay_class = 'np-pos-mc np-align-center'
+              case block.settings.overlay_position
+                when 'top_left'
+                  assign overlay_class = 'np-pos-tl np-align-left'
+                when 'top_center'
+                  assign overlay_class = 'np-pos-tc np-align-center'
+                when 'top_right'
+                  assign overlay_class = 'np-pos-tr np-align-right'
+                when 'middle_left'
+                  assign overlay_class = 'np-pos-ml np-align-left'
+                when 'middle_center'
+                  assign overlay_class = 'np-pos-mc np-align-center'
+                when 'middle_right'
+                  assign overlay_class = 'np-pos-mr np-align-right'
+                when 'bottom_left'
+                  assign overlay_class = 'np-pos-bl np-align-left'
+                when 'bottom_center'
+                  assign overlay_class = 'np-pos-bc np-align-center'
+                when 'bottom_right'
+                  assign overlay_class = 'np-pos-br np-align-right'
+              endcase
+
+              assign mobile_overlay_class = ''
+              case block.settings.overlay_position_mobile
+                when 'top_left'
+                  assign mobile_overlay_class = 'mpos-tl'
+                when 'top_center'
+                  assign mobile_overlay_class = 'mpos-tc'
+                when 'top_right'
+                  assign mobile_overlay_class = 'mpos-tr'
+                when 'middle_left'
+                  assign mobile_overlay_class = 'mpos-ml'
+                when 'middle_center'
+                  assign mobile_overlay_class = 'mpos-mc'
+                when 'middle_right'
+                  assign mobile_overlay_class = 'mpos-mr'
+                when 'bottom_left'
+                  assign mobile_overlay_class = 'mpos-bl'
+                when 'bottom_center'
+                  assign mobile_overlay_class = 'mpos-bc'
+                when 'bottom_right'
+                  assign mobile_overlay_class = 'mpos-br'
+              endcase
+
+              assign ts = ''
+              assign btn_ts = ''
+              assign btn_bs = ''
+              if block.settings.enable_shadows
+                assign ts = 'text-shadow:0 0 5px #0000004d;'
+                assign btn_ts = 'text-shadow:0 0 8px #00000044;'
+                assign btn_bs = 'box-shadow:0 0 10px #00000044;'
+              endif
+            %}
+            <div class="swiper-slide np-slide np-slide--full" data-block-id="{{ block.id }}">
+              <div class="np-frame">
+                <div
+                  class="np-full"
+                  {% if bg != blank %}
+                    style="background-image:url('{{ bg }}');"
+                  {% endif %}
+                  {% if block.settings.url != blank %}
+                    data-link-url="{{ block.settings.url }}"
+                  {% endif %}
+                >
+                  {% if bg == blank %}
+                    <div class="np-ph">{{ 'hero-apparel-1' | placeholder_svg_tag }}</div>
+                  {% endif %}
+
+                  <div
+                    class="np-overlay {{ overlay_class }} {% if mobile_overlay_class != '' %}{{ mobile_overlay_class }}{% endif %}"
+                    style="
+                      --overlay-max: {{ block.settings.overlay_max_width }}vw;
+                      {% if block.settings.overlay_max_width_mobile != blank %}
+                        --overlay-max-mobile: {{ block.settings.overlay_max_width_mobile }}vw;
+                      {% endif %}
+                    "
+                  >
+                    {% if block.settings.subheading != blank %}
+                      {%- capture np_sub_raw -%}{{ block.settings.subheading }}{%- endcapture -%}
+                      {%- assign np_sub_one_p = np_sub_raw
+                        | replace: '</p><p>', '<br>'
+                        | replace: '<p>', ''
+                        | replace: '</p>', ''
+                        | strip
+                      -%}
+                      <p
+                        class="np-sub"
+                        style="color:{{ block.settings.sub_text_color }};font-size:{{ block.settings.sub_font_size }}rem;{{ ts }}"
+                      >
+                        {{ np_sub_one_p }}
+                      </p>
+                    {% endif %}
+                    {% if block.settings.title != blank %}
+                      {%- capture np_title_raw -%}{{ block.settings.title }}{%- endcapture -%}
+                      {%- assign np_title_html = np_title_raw
+                        | replace: '&lt;br&gt;', '<br>'
+                        | replace: '&lt;br/&gt;', '<br>'
+                        | replace: '&lt;br /&gt;', '<br>'
+                        | replace: '[br]', '<br>'
+                        | newline_to_br
+                      -%}
+                      <h2
+                        class="np-h1"
+                        style="color:{{ block.settings.text_color }};font-size:{{ block.settings.font_size }}rem;{{ ts }}"
+                      >
+                        {{ np_title_html }}
+                      </h2>
+                    {% endif %}
+                    {% if block.settings.url != blank and block.settings.button_text != blank %}
+                      <a
+                        class="np-slider-btn"
+                        href="{{ block.settings.url }}"
+                        style="display:inline-block;font-size:{{ block.settings.button_font_size }}rem;background-color:{{ block.settings.button_bkg_color }} !important;color:{{ block.settings.button_text_color }};text-decoration:none;border:{{ block.settings.button_stroke }}px solid {{ block.settings.button_border_color }} !important;{{ btn_bs }} {{ btn_ts }}"
+                      >
+                        {{ block.settings.button_text }}
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          {% when 'split_banner' %}
+            {% liquid
+              assign left_image = block.settings.image | image_url
+              assign right_image = block.settings.image2 | image_url
+              assign pos = block.settings.text_position
+
+              assign overlay_class = 'np-pos-mc np-align-center'
+              case block.settings.overlay_position
+                when 'top_left'
+                  assign overlay_class = 'np-pos-tl np-align-left'
+                when 'top_center'
+                  assign overlay_class = 'np-pos-tc np-align-center'
+                when 'top_right'
+                  assign overlay_class = 'np-pos-tr np-align-right'
+                when 'middle_left'
+                  assign overlay_class = 'np-pos-ml np-align-left'
+                when 'middle_center'
+                  assign overlay_class = 'np-pos-mc np-align-center'
+                when 'middle_right'
+                  assign overlay_class = 'np-pos-mr np-align-right'
+                when 'bottom_left'
+                  assign overlay_class = 'np-pos-bl np-align-left'
+                when 'bottom_center'
+                  assign overlay_class = 'np-pos-bc np-align-center'
+                when 'bottom_right'
+                  assign overlay_class = 'np-pos-br np-align-right'
+              endcase
+
+              assign mobile_overlay_class = ''
+              case block.settings.overlay_position_mobile
+                when 'top_left'
+                  assign mobile_overlay_class = 'mpos-tl'
+                when 'top_center'
+                  assign mobile_overlay_class = 'mpos-tc'
+                when 'top_right'
+                  assign mobile_overlay_class = 'mpos-tr'
+                when 'middle_left'
+                  assign mobile_overlay_class = 'mpos-ml'
+                when 'middle_center'
+                  assign mobile_overlay_class = 'mpos-mc'
+                when 'middle_right'
+                  assign mobile_overlay_class = 'mpos-mr'
+                when 'bottom_left'
+                  assign mobile_overlay_class = 'mpos-bl'
+                when 'bottom_center'
+                  assign mobile_overlay_class = 'mpos-bc'
+                when 'bottom_right'
+                  assign mobile_overlay_class = 'mpos-br'
+              endcase
+
+              assign ts = ''
+              assign btn_ts = ''
+              assign btn_bs = ''
+              if block.settings.enable_shadows
+                assign ts = 'text-shadow:0 0 5px #0000004d;'
+                assign btn_ts = 'text-shadow:0 0 8px #00000044;'
+                assign btn_bs = 'box-shadow:0 0 10px #00000044;'
+              endif
+            %}
+            <div class="swiper-slide np-slide np-slide--split" data-block-id="{{ block.id }}">
+              <div class="np-frame">
+                <!-- LEFT HALF -->
+                <div
+                  class="np-half left"
+                  {% if left_image != blank %}
+                    style="background-image:url('{{ left_image }}');"
+                  {% endif %}
+                  {% if block.settings.url != blank %}
+                    data-link-url="{{ block.settings.url }}"
+                  {% endif %}
+                >
+                  {% if left_image == blank %}
+                    <div class="np-ph">{{ 'hero-apparel-1' | placeholder_svg_tag }}</div>
+                  {% endif %}
+                  {% if pos == 'left' %}
+                    <div
+                      class="np-overlay {{ overlay_class }} {% if mobile_overlay_class != '' %}{{ mobile_overlay_class }}{% endif %}"
+                      style="
+                        --overlay-max: calc({{ block.settings.overlay_max_width }}vw / 1.5);
+                        {% if block.settings.overlay_max_width_mobile != blank %}
+                          --overlay-max-mobile: calc({{ block.settings.overlay_max_width_mobile }}vw / 1.5);
+                        {% endif %}
+                      "
+                    >
+                      {% if block.settings.subheading != blank %}
+                        {%- capture np_sub_raw -%}{{ block.settings.subheading }}{%- endcapture -%}
+                        {%- assign np_sub_one_p = np_sub_raw
+                          | replace: '</p><p>', '<br>'
+                          | replace: '<p>', ''
+                          | replace: '</p>', ''
+                          | strip
+                        -%}
+                        <p
+                          class="np-sub"
+                          style="color:{{ block.settings.sub_text_color }};font-size:{{ block.settings.sub_font_size }}rem;{{ ts }}"
+                        >
+                          {{ np_sub_one_p }}
+                        </p>
+                      {% endif %}
+                      {% if block.settings.title != blank %}
+                        {%- capture np_title_raw -%}{{ block.settings.title }}{%- endcapture -%}
+                        {%- assign np_title_html = np_title_raw
+                          | replace: '&lt;br&gt;', '<br>'
+                          | replace: '&lt;br/&gt;', '<br>'
+                          | replace: '&lt;br /&gt;', '<br>'
+                          | replace: '[br]', '<br>'
+                          | newline_to_br
+                        -%}
+                        <h2
+                          class="np-h1"
+                          style="color:{{ block.settings.text_color }};font-size:{{ block.settings.font_size }}rem;{{ ts }}"
+                        >
+                          {{ np_title_html }}
+                        </h2>
+                      {% endif %}
+                      {% if block.settings.url != blank and block.settings.button_text != blank %}
+                        <a
+                          class="np-slider-btn"
+                          href="{{ block.settings.url }}"
+                          style="display:inline-block;font-size:{{ block.settings.button_font_size }}rem;background-color:{{ block.settings.button_bkg_color }} !important;color:{{ block.settings.button_text_color }};text-decoration:none;border:{{ block.settings.button_stroke }}px solid {{ block.settings.button_border_color }} !important;{{ btn_bs }} {{ btn_ts }}"
+                        >
+                          {{ block.settings.button_text }}
+                        </a>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+
+                <!-- RIGHT HALF -->
+                <div
+                  class="np-half right"
+                  {% if right_image != blank %}
+                    style="background-image:url('{{ right_image }}');"
+                  {% endif %}
+                  {% if block.settings.url != blank %}
+                    data-link-url="{{ block.settings.url }}"
+                  {% endif %}
+                >
+                  {% if right_image == blank %}
+                    <div class="np-ph">{{ 'hero-apparel-2' | placeholder_svg_tag }}</div>
+                  {% endif %}
+                  {% if pos == 'right' %}
+                    <div
+                      class="np-overlay {{ overlay_class }} {% if mobile_overlay_class != '' %}{{ mobile_overlay_class }}{% endif %}"
+                      style="
+                        --overlay-max: calc({{ block.settings.overlay_max_width }}vw / 1.5);
+                        {% if block.settings.overlay_max_width_mobile != blank %}
+                          --overlay-max-mobile: calc({{ block.settings.overlay_max_width_mobile }}vw / 1.5);
+                        {% endif %}
+                      "
+                    >
+                      {% if block.settings.subheading != blank %}
+                        {%- capture np_sub_raw -%}{{ block.settings.subheading }}{%- endcapture -%}
+                        {%- assign np_sub_one_p = np_sub_raw
+                          | replace: '</p><p>', '<br>'
+                          | replace: '<p>', ''
+                          | replace: '</p>', ''
+                          | strip
+                        -%}
+                        <p
+                          class="np-sub"
+                          style="color:{{ block.settings.sub_text_color }};font-size:{{ block.settings.sub_font_size }}rem;{{ ts }}"
+                        >
+                          {{ np_sub_one_p }}
+                        </p>
+                      {% endif %}
+                      {% if block.settings.title != blank %}
+                        {%- capture np_title_raw -%}{{ block.settings.title }}{%- endcapture -%}
+                        {%- assign np_title_html = np_title_raw
+                          | replace: '&lt;br&gt;', '<br>'
+                          | replace: '&lt;br/&gt;', '<br>'
+                          | replace: '&lt;br /&gt;', '<br>'
+                          | replace: '[br]', '<br>'
+                          | newline_to_br
+                        -%}
+                        <h2
+                          class="np-h1"
+                          style="color:{{ block.settings.text_color }};font-size:{{ block.settings.font_size }}rem;{{ ts }}"
+                        >
+                          {{ np_title_html }}
+                        </h2>
+                      {% endif %}
+                      {% if block.settings.url != blank and block.settings.button_text != blank %}
+                        <a
+                          class="np-slider-btn"
+                          href="{{ block.settings.url }}"
+                          style="display:inline-block;font-size:{{ block.settings.button_font_size }}rem;background-color:{{ block.settings.button_bkg_color }} !important;color:{{ block.settings.button_text_color }};text-decoration:none;border:{{ block.settings.button_stroke }}px solid {{ block.settings.button_border_color }} !important;{{ btn_bs }} {{ btn_ts }}"
+                        >
+                          {{ block.settings.button_text }}
+                        </a>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+
+    {% if section.blocks.size > 1 and section.settings.show_pagination %}
+      <div class="swiper-pagination"></div>
+    {% endif %}
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById('np-home-slider-{{ section.id }}');
+      if (!root) return;
+
+      function stopPropagationOnLinks(container) {
+        container.querySelectorAll('a, button').forEach(function (el) {
+          el.addEventListener(
+            'click',
+            function (e) {
+              e.stopPropagation();
+            },
+            { passive: true }
+          );
+        });
+      }
+
+      function makeSlidesClickable(container) {
+        container.querySelectorAll('[data-link-url]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            // ignore clicks starting on interactive children
+            const t = e.target;
+            if (t.closest('a, button, input, select, textarea')) return;
+            const href = el.getAttribute('data-link-url');
+            if (href) window.location.href = href;
+          });
+        });
+      }
+
+      function loadSwiperAssets() {
+        const cssId = 'np-swiper-css';
+        const jsId = 'np-swiper-js';
+
+        const ensureCSS = new Promise(function (resolve) {
+          if (document.getElementById(cssId)) return resolve();
+          const link = document.createElement('link');
+          link.id = cssId;
+          link.rel = 'stylesheet';
+          link.href = 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css';
+          link.onload = resolve;
+          link.onerror = resolve; // fail-soft
+          document.head.appendChild(link);
+        });
+
+        const ensureJS = new Promise(function (resolve) {
+          if (window.Swiper) return resolve();
+          if (document.getElementById(jsId)) {
+            document.getElementById(jsId).addEventListener('load', resolve, { once: true });
+            return;
+          }
+          const s = document.createElement('script');
+          s.id = jsId;
+          s.src = 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js';
+          s.defer = true;
+          s.onload = resolve;
+          document.head.appendChild(s);
+        });
+
+        return Promise.all([ensureCSS, ensureJS]);
+      }
+
+      function initSlider() {
+        const el = root.querySelector('[data-slider]');
+        if (!el || !window.Swiper) return;
+
+        // Prevent double-inits
+        if (el.__npSwiper) {
+          el.__npSwiper.destroy(true, true);
+          el.__npSwiper = null;
+        }
+
+        const autoplay = root.dataset.autoplay === 'true';
+        const autoplayDelay = parseInt(root.dataset.autoplayDelay || '5000', 10);
+        const loop = root.dataset.loop === 'true';
+        const showPagination = root.dataset.showPagination === 'true';
+
+        el.__npSwiper = new Swiper(el, {
+          loop: loop,
+          slidesPerView: 1,
+          spaceBetween: 0,
+          autoplay: autoplay ? { delay: autoplayDelay, disableOnInteraction: false } : false,
+          pagination: showPagination ? { el: root.querySelector('.swiper-pagination'), clickable: true } : undefined,
+        });
+
+        makeSlidesClickable(root);
+        stopPropagationOnLinks(root);
+      }
+
+      function boot() {
+        loadSwiperAssets().then(initSlider);
+      }
+
+      // Storefront
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot, { once: true });
+      } else {
+        boot();
+      }
+
+      // Theme Editor
+      document.addEventListener('shopify:section:load', function (e) {
+        if (e.target && e.target.id === root.id) boot();
+      });
+      document.addEventListener('shopify:section:unload', function (e) {
+        if (e.target && e.target.id === root.id) {
+          const el = root.querySelector('[data-slider]');
+          if (el && el.__npSwiper) {
+            el.__npSwiper.destroy(true, true);
+            el.__npSwiper = null;
+          }
+        }
+      });
+      document.addEventListener('shopify:block:select', function (e) {
+        if (!root.contains(e.target)) return;
+        const el = root.querySelector('[data-slider]');
+        if (el && el.__npSwiper) {
+          const index = Array.from(root.querySelectorAll('.swiper-slide')).indexOf(e.target.closest('.swiper-slide'));
+          if (index >= 0) el.__npSwiper.slideToLoop(index);
+        }
+      });
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Nodpod Home Slider",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-3", "label": "Scheme 3" },
+        { "value": "scheme-4", "label": "Scheme 4" },
+        { "value": "scheme-5", "label": "Scheme 5" }
+      ]
+    },
+    { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": true },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay delay (seconds)",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    },
+    { "type": "checkbox", "id": "loop", "label": "Loop slides", "default": true },
+    { "type": "checkbox", "id": "show_pagination", "label": "Show pagination dots", "default": true },
+    {
+      "type": "range",
+      "id": "header_offset",
+      "label": "Desktop header offset (px)",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Mobile slide height (px)",
+      "min": 320,
+      "max": 900,
+      "step": 10,
+      "default": 500
+    },
+    {
+      "type": "text",
+      "id": "accessible_label",
+      "label": "Accessible label",
+      "default": "Homepage slider"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "split_banner",
+      "name": "Split banner",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Banner images"
+        },
+        { "type": "image_picker", "id": "image", "label": "Left desktop image", "info": "1800 x 1800px" },
+        { "type": "image_picker", "id": "image2", "label": "Right desktop image", "info": "1800 x 1800px" },
+        {
+          "type": "header",
+          "content": "Text Overlay"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Show text overlay on:",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "Left half" },
+            { "value": "right", "label": "Right half" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "overlay_position",
+          "label": "Text overlay position",
+          "default": "middle_center",
+          "options": [
+            { "value": "top_left", "label": "Top • Left" },
+            { "value": "top_center", "label": "Top • Center" },
+            { "value": "top_right", "label": "Top • Right" },
+            { "value": "middle_left", "label": "Middle • Left" },
+            { "value": "middle_center", "label": "Middle • Center" },
+            { "value": "middle_right", "label": "Middle • Right" },
+            { "value": "bottom_left", "label": "Bottom • Left" },
+            { "value": "bottom_center", "label": "Bottom • Center" },
+            { "value": "bottom_right", "label": "Bottom • Right" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "overlay_max_width",
+          "label": "Text overlay max width (vw)",
+          "min": 5,
+          "max": 95,
+          "step": 5,
+          "default": 45
+        },
+        {
+          "type": "header",
+          "content": "Text Overlay (Mobile)"
+        },
+        {
+          "type": "select",
+          "id": "overlay_position_mobile",
+          "label": "Mobile text overlay position",
+          "default": "same_as_desktop",
+          "options": [
+            { "value": "same_as_desktop", "label": "Same as desktop (default)" },
+            { "value": "top_left", "label": "Top • Left" },
+            { "value": "top_center", "label": "Top • Center" },
+            { "value": "top_right", "label": "Top • Right" },
+            { "value": "middle_left", "label": "Middle • Left" },
+            { "value": "middle_center", "label": "Middle • Center" },
+            { "value": "middle_right", "label": "Middle • Right" },
+            { "value": "bottom_left", "label": "Bottom • Left" },
+            { "value": "bottom_center", "label": "Bottom • Center" },
+            { "value": "bottom_right", "label": "Bottom • Right" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "overlay_max_width_mobile",
+          "label": "Text overlay max width (vw) – mobile",
+          "min": 5,
+          "max": 95,
+          "step": 5,
+          "default": 90
+        },
+        {
+          "type": "header",
+          "content": "Subheading"
+        },
+        { "type": "richtext", "id": "subheading", "label": "Subheading text" },
+        { "type": "color", "id": "sub_text_color", "label": "Subheading color", "default": "#FFFFFF" },
+        {
+          "type": "range",
+          "id": "sub_font_size",
+          "label": "Subheading Font Size",
+          "min": 1,
+          "max": 10,
+          "step": 0.1,
+          "default": 1.5
+        },
+        {
+          "type": "header",
+          "content": "Subheading (Mobile)"
+        },
+        {
+          "type": "range",
+          "id": "sub_font_size_mobile",
+          "label": "Mobile subheading size (rem)",
+          "min": 0.5,
+          "max": 10,
+          "step": 0.1,
+          "default": 1.2
+        },
+        {
+          "type": "header",
+          "content": "Heading"
+        },
+        { "type": "richtext", "id": "title", "label": "Heading text" },
+        { "type": "color", "id": "text_color", "label": "Heading color", "default": "#FFFFFF" },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Heading size (rem)",
+          "min": 1,
+          "max": 10,
+          "step": 0.1,
+          "default": 2
+        },
+        {
+          "type": "header",
+          "content": "Heading (Mobile)"
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "Mobile heading size (rem)",
+          "min": 0.5,
+          "max": 10,
+          "step": 0.1,
+          "default": 1.6
+        },
+        {
+          "type": "header",
+          "content": "Button/Link"
+        },
+        { "type": "text", "id": "button_text", "label": "Button text", "default": "Learn More" },
+        { "type": "url", "id": "url", "label": "Button URL (banner link)" },
+        { "type": "color", "id": "button_text_color", "label": "Button text color", "default": "#FFFFFF" },
+        { "type": "color", "id": "button_bkg_color", "label": "Button background color" },
+        {
+          "type": "range",
+          "id": "button_stroke",
+          "label": "Button border width (px)",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "button_font_size",
+          "label": "Button font size (rem)",
+          "min": 1,
+          "max": 10,
+          "step": 0.1,
+          "default": 3
+        },
+        { "type": "color", "id": "button_border_color", "label": "Button border color", "default": "#FFFFFF" },
+        {
+          "type": "header",
+          "content": "Button/Link (Mobile)"
+        },
+        {
+          "type": "range",
+          "id": "button_font_size_mobile",
+          "label": "Mobile button size (rem)",
+          "min": 0.5,
+          "max": 10,
+          "step": 0.1,
+          "default": 2.2
+        },
+        {
+          "type": "header",
+          "content": "Text Shadows"
+        },
+        { "type": "checkbox", "id": "enable_shadows", "label": "Text & button shadows", "default": false }
+      ]
+    },
+    {
+      "type": "full_banner",
+      "name": "Full banner",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Banner Image"
+        },
+        { "type": "image_picker", "id": "image", "label": "Background image", "info": "3456 x 1728px" },
+        {
+          "type": "header",
+          "content": "Banner Image (Mobile)"
+        },
+        { "type": "image_picker", "id": "image_mobile", "label": "Mobile image (<= 989px, optional)", "info": "1290 x 1500px" },
+        {
+          "type": "header",
+          "content": "Text Overlay"
+        },
+        {
+          "type": "select",
+          "id": "overlay_position",
+          "label": "Text overlay position",
+          "default": "middle_center",
+          "options": [
+            { "value": "top_left", "label": "Top • Left" },
+            { "value": "top_center", "label": "Top • Center" },
+            { "value": "top_right", "label": "Top • Right" },
+            { "value": "middle_left", "label": "Middle • Left" },
+            { "value": "middle_center", "label": "Middle • Center" },
+            { "value": "middle_right", "label": "Middle • Right" },
+            { "value": "bottom_left", "label": "Bottom • Left" },
+            { "value": "bottom_center", "label": "Bottom • Center" },
+            { "value": "bottom_right", "label": "Bottom • Right" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "overlay_max_width",
+          "label": "Text overlay max width (vw)",
+          "min": 5,
+          "max": 95,
+          "step": 5,
+          "default": 45
+        },
+        {
+          "type": "header",
+          "content": "Text Overlay (Mobile)"
+        },
+        {
+          "type": "select",
+          "id": "overlay_position_mobile",
+          "label": "Mobile text overlay position",
+          "default": "same_as_desktop",
+          "options": [
+            { "value": "same_as_desktop", "label": "Same as desktop (default)" },
+            { "value": "top_left", "label": "Top • Left" },
+            { "value": "top_center", "label": "Top • Center" },
+            { "value": "top_right", "label": "Top • Right" },
+            { "value": "middle_left", "label": "Middle • Left" },
+            { "value": "middle_center", "label": "Middle • Center" },
+            { "value": "middle_right", "label": "Middle • Right" },
+            { "value": "bottom_left", "label": "Bottom • Left" },
+            { "value": "bottom_center", "label": "Bottom • Center" },
+            { "value": "bottom_right", "label": "Bottom • Right" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "overlay_max_width_mobile",
+          "label": "Text overlay max width (vw) – mobile",
+          "min": 5,
+          "max": 95,
+          "step": 5,
+          "default": 90
+        },
+        {
+          "type": "header",
+          "content": "Subheading"
+        },
+        { "type": "text", "id": "subheading", "label": "Subheading text" },
+        { "type": "color", "id": "sub_text_color", "label": "Subheading color", "default": "#FFFFFF" },
+        {
+          "type": "range",
+          "id": "sub_font_size",
+          "label": "Subheading size (rem)",
+          "min": 1,
+          "max": 10,
+          "step": 0.1,
+          "default": 1.5
+        },
+        {
+          "type": "header",
+          "content": "Subheading (Mobile)"
+        },
+        {
+          "type": "range",
+          "id": "sub_font_size_mobile",
+          "label": "Mobile subheading size (rem)",
+          "min": 0.5,
+          "max": 10,
+          "step": 0.1,
+          "default": 1.2
+        },
+        {
+          "type": "header",
+          "content": "Heading"
+        },
+        { "type": "textarea", "id": "title", "label": "Heading text" },
+        { "type": "color", "id": "text_color", "label": "Heading color", "default": "#FFFFFF" },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Heading size (rem)",
+          "min": 1,
+          "max": 10,
+          "step": 0.1,
+          "default": 2
+        },
+        {
+          "type": "header",
+          "content": "Heading (Mobile)"
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "Mobile heading size (rem)",
+          "min": 0.5,
+          "max": 10,
+          "step": 0.1,
+          "default": 1.6
+        },
+        {
+          "type": "header",
+          "content": "Button/Link"
+        },
+        { "type": "text", "id": "button_text", "label": "Button text", "default": "View more" },
+        { "type": "url", "id": "url", "label": "Button URL (banner link)" },
+        { "type": "color", "id": "button_text_color", "label": "Button text color", "default": "#FFFFFF" },
+        { "type": "color", "id": "button_bkg_color", "label": "Button background color", "default": "transparent" },
+        {
+          "type": "range",
+          "id": "button_font_size",
+          "label": "Button font size (rem)",
+          "min": 1,
+          "max": 10,
+          "step": 0.1,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "button_stroke",
+          "label": "Button border width (px)",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 1
+        },
+        { "type": "color", "id": "button_border_color", "label": "Button border color", "default": "#FFFFFF" },
+        {
+          "type": "header",
+          "content": "Button/Link (Mobile)"
+        },
+        {
+          "type": "range",
+          "id": "button_font_size_mobile",
+          "label": "Mobile button size (rem)",
+          "min": 0.5,
+          "max": 10,
+          "step": 0.1,
+          "default": 1.6
+        },
+        {
+          "type": "header",
+          "content": "Text Shadows"
+        },
+        { "type": "checkbox", "id": "enable_shadows", "label": "Text & button shadows", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nodpod Home Slider",
+      "category": "Nodpod",
+      "blocks": [{ "type": "full_banner" }, { "type": "split_banner" }]
+    }
+  ]
+}
+{% endschema %}

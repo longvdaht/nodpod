@@ -1,0 +1,344 @@
+<div class="custom-form-section{% if section.settings.show_info %} has-info{% endif %}">
+  <div class="form-page-section">
+    <div class="form-header">
+      {% if section.settings.header_text != blank %}<h2>{{ section.settings.header_text }}</h2>{% endif %}
+      {% if section.settings.subheader_text != blank %}<p>{{ section.settings.subheader_text }}</p>{% endif %}
+    </div>
+
+    <div class="form-layout">
+      {% if section.settings.show_info %}
+        <aside class="info-column">
+          {% for block in section.blocks %}
+            {% if block.type == 'info_text' %}
+              <div class="info-block" {{ block.shopify_attributes }}>
+                {% if block.settings.heading != blank %}
+                  <h4>{{ block.settings.heading }}</h4>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <div class="info-text rte">{{ block.settings.text }}</div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </aside>
+      {% endif %}
+
+      <div class="form-column">
+        {%- form 'contact', id: 'ContactForm', class: 'custom-form' -%}
+
+          {%- if form.posted_successfully? -%}
+            <p class="form-success" role="status">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              {{ section.settings.success_title | default: 'Thank you, your request has been sent!' }}
+              {% if section.settings.success_subtext != blank %}
+                <span>{{ section.settings.success_subtext }}</span>
+              {% endif %}
+            </p>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <ul class="form-errors" role="alert">
+              {%- for field in form.errors -%}
+                <li>{{ form.errors.translated_fields[field] | default: field | capitalize }} — {{ form.errors.messages[field] }}</li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+
+              {%- when 'text_input' -%}
+                <div class="form-row {% if block.settings.full_width %}full{% else %}half{% endif %}" {{ block.shopify_attributes }}>
+                  {% if block.settings.label != blank %}
+                    <label for="{{ block.id }}">{{ block.settings.label }}</label>
+                  {% endif %}
+                  <input
+                    type="text"
+                    id="{{ block.id }}"
+                    name="contact[{{ block.settings.label | default: block.settings.placeholder | default: 'Field' | handleize }}]"
+                    placeholder="{{ block.settings.placeholder }}"
+                    {% if block.settings.required %}required aria-required="true"{% endif %}>
+                </div>
+
+              {%- when 'email_input' -%}
+                <div class="form-row {% if block.settings.full_width %}full{% else %}half{% endif %}" {{ block.shopify_attributes }}>
+                  {% if block.settings.label != blank %}
+                    <label for="{{ block.id }}">{{ block.settings.label }}</label>
+                  {% endif %}
+                  <input
+                    type="email"
+                    id="{{ block.id }}"
+                    name="contact[email]"
+                    placeholder="{{ block.settings.placeholder }}"
+                    {% if block.settings.required %}required aria-required="true"{% endif %}>
+                </div>
+
+              {%- when 'textarea' -%}
+                <div class="form-row {% if block.settings.full_width %}full{% else %}half{% endif %}" {{ block.shopify_attributes }}>
+                  {% if block.settings.label != blank %}
+                    <label for="{{ block.id }}">{{ block.settings.label }}</label>
+                  {% endif %}
+                  <textarea
+                    id="{{ block.id }}"
+                    name="contact[body]"
+                    placeholder="{{ block.settings.placeholder }}"
+                    {% if block.settings.required %}required aria-required="true"{% endif %}></textarea>
+                </div>
+
+              {%- when 'dropdown' -%}
+                <div class="form-row {% if block.settings.full_width %}full{% else %}half{% endif %}" {{ block.shopify_attributes }}>
+                  {% if block.settings.label != blank %}
+                    <label for="{{ block.id }}">{{ block.settings.label }}</label>
+                  {% endif %}
+                  {% assign dropdown_options = block.settings.options | split: ',' %}
+                  <select
+                    id="{{ block.id }}"
+                    name="contact[{{ block.settings.label | default: block.settings.placeholder | default: 'Dropdown' | handleize }}]"
+                    {% if block.settings.required %}required aria-required="true"{% endif %}>
+                    <option value="" disabled selected>{{ block.settings.placeholder }}</option>
+                    {% for option in dropdown_options %}
+                      <option value="{{ option | strip }}">{{ option | strip }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+              {%- when 'liquid' -%}
+                <div class="form-row {% if block.settings.full_width %}full{% else %}half{% endif %}" {{ block.shopify_attributes }}>
+                  {{ block.settings.custom_liquid }}
+                </div>
+
+            {%- endcase -%}
+          {%- endfor -%}
+
+          {{ form.noscript }}
+          {{ form.recaptcha }}
+
+          <button type="submit" class="form-submit-btn">Submit</button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-form-section { background: #fafaf9; }
+  .form-page-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+    color: #000;
+  }
+
+  .form-header h2 {
+    font-size: 6rem;
+    font-family: 'larken';
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .form-header p {
+    font-family: 'poppins';
+    font-weight: 400;
+    text-align: center;
+    font-size: 2rem;
+  }
+  .form-header {
+    margin-bottom: 60px;
+  }
+
+  /* Layout */
+  .form-layout {
+    display: grid;
+    grid-template-columns: {% if section.settings.show_info %} 1fr 1.4fr {% else %} 1fr {% endif %};
+    gap: 40px;
+    align-items: start;
+  }
+
+  .info-block { 
+    margin-bottom: 40px;
+  }
+  .info-block h4 {
+    margin: 0 0 10px 0;
+    font-family: 'poppins';
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: .02em;
+    color: #636466;
+    text-transform: uppercase;
+    font-size: 2rem;
+  }
+  .info-text { 
+    color: #636466; 
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+  .info-text p {
+    margin: 0;
+  }
+
+  /* Form */
+  .custom-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  /* width toggles */
+  .form-row { display: flex; flex-direction: column; gap: 10px; }
+  .form-row.half { width: calc(50% - 10px); }
+  .form-row.full { width: 100%; }
+
+  .custom-form input,
+  .custom-form textarea,
+  .custom-form select,
+  .custom-form input:hover,
+  .custom-form textarea:hover,
+  .custom-form select:hover {
+    border: 1px solid #dddddd !important;
+    border-radius: 0;
+    padding: 15px 20px;
+    font-family: 'poppins';
+    font-size: 1rem;
+    background: #fff;
+  }
+  textarea { resize: none; min-height: 200px; }
+  .custom-form label {
+    font-family: 'poppins';
+    color: #636466;
+    margin-bottom: 6px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0px;
+  }
+
+  .custom-form-section select, .custom-form-section input, .custom-form-section textarea {
+    font-size: 1.5rem !important;
+  }
+
+  button.form-submit-btn {
+    display: inline-block !important;
+    margin-top: 20px;
+    background: #636466;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'poppins' !important;
+    font-size: 1.85rem;
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+  }
+  .form-submit-btn:hover { background: #333; }
+
+  /* Success */
+  p.form-success {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #636466;
+    padding: 20px;
+    background: #fafaf9;
+    border-radius: 10px;
+    border: 1px dashed #5e5d5e;
+    font-family: 'larken';
+    font-weight: 300 !important;
+    letter-spacing: 0.25px;
+    margin-bottom: 15px;
+  }
+  .form-success span {
+    display: block;
+    font-size: 1.65rem;
+    font-weight: 300;
+    font-family: 'poppins';
+    letter-spacing: 0.5px;
+  }
+  .form-success i { display: block; font-size: 4rem; color: #afbbaf; }
+
+  /* Full-width mode (no info) */
+  .custom-form-section:not(.has-info) .form-layout { max-width: 1200px; margin: 0 auto; }
+
+  /* Responsive */
+  @media (max-width: 777px) {
+    .form-layout { grid-template-columns: 1fr; }
+    .form-row.half, .form-row.full { width: 100%; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dynamic Form",
+  "settings": [
+    { "type": "checkbox", "id": "show_info", "label": "Show info column (left)", "default": false },
+    { "type": "text", "id": "header_text", "label": "Header Text", "default": "We’d Love to Hear From You" },
+    { "type": "textarea", "id": "subheader_text", "label": "Subheader Text" },
+    { "type": "text", "id": "success_title", "label": "Success message title", "default": "Thank you, your request has been sent!" },
+    { "type": "text", "id": "success_subtext", "label": "Success message subtext (optional)", "default": "We will reply shortly." }
+  ],
+  "blocks": [
+    {
+      "type": "info_text",
+      "name": "Info block",
+      "limit": 10,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "richtext", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "text_input",
+      "name": "Text Input",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label (Optional)" },
+        { "type": "text", "id": "placeholder", "label": "Placeholder" },
+        { "type": "checkbox", "id": "required", "label": "Required Field" },
+        { "type": "checkbox", "id": "full_width", "label": "Make this field full width", "default": false }
+      ]
+    },
+    {
+      "type": "email_input",
+      "name": "Email Input",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label (Optional)" },
+        { "type": "text", "id": "placeholder", "label": "Placeholder" },
+        { "type": "checkbox", "id": "required", "label": "Required Field", "default": true },
+        { "type": "checkbox", "id": "full_width", "label": "Make this field full width", "default": false }
+      ]
+    },
+    {
+      "type": "textarea",
+      "name": "Textarea",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label (Optional)" },
+        { "type": "text", "id": "placeholder", "label": "Placeholder" },
+        { "type": "checkbox", "id": "required", "label": "Required Field", "default": true },
+        { "type": "checkbox", "id": "full_width", "label": "Make this field full width", "default": true }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "name": "Dropdown",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label (Optional)" },
+        { "type": "text", "id": "placeholder", "label": "Placeholder" },
+        { "type": "checkbox", "id": "required", "label": "Required Field" },
+        { "type": "text", "id": "options", "label": "Dropdown Options (Comma-separated)" },
+        { "type": "checkbox", "id": "full_width", "label": "Make this field full width", "default": false }
+      ]
+    },
+    {
+      "type": "liquid",
+      "name": "Liquid",
+      "settings": [
+        { "type": "liquid", "id": "custom_liquid", "label": "Liquid", "info": "Add app snippets or other custom Liquid/HTML inside the form." },
+        { "type": "checkbox", "id": "full_width", "label": "Make this field full width", "default": true }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Dynamic Form" }
+  ]
+}
+{% endschema %}

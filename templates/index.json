@@ -1,0 +1,1134 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "np_home_slider_KD4iFg": {
+      "type": "np-home-slider",
+      "blocks": {
+        "full_banner_zRD388": {
+          "type": "full_banner",
+          "settings": {
+            "image": "shopify://shop_images/Out_West_Web_Banners_Desktop_copy.png",
+            "image_mobile": "shopify://shop_images/Out_West_Web_Banners_Mobile_copy.png",
+            "overlay_position": "middle_center",
+            "overlay_max_width": 45,
+            "overlay_position_mobile": "same_as_desktop",
+            "overlay_max_width_mobile": 90,
+            "subheading": "",
+            "sub_text_color": "#ffffff",
+            "sub_font_size": 1.5,
+            "sub_font_size_mobile": 1.2,
+            "title": "",
+            "text_color": "#ffffff",
+            "font_size": 2,
+            "font_size_mobile": 1.6,
+            "button_text": "",
+            "url": "shopify://collections/resort-collection",
+            "button_text_color": "#ffffff",
+            "button_bkg_color": "rgba(0,0,0,0)",
+            "button_font_size": 2,
+            "button_stroke": 1,
+            "button_border_color": "#ffffff",
+            "button_font_size_mobile": 1.6,
+            "enable_shadows": false
+          }
+        },
+        "full_banner_jUB9Wq": {
+          "type": "full_banner",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Resort_Web_Banners.png",
+            "image_mobile": "shopify://shop_images/Resort_Web_Banners_mobile.png",
+            "overlay_position": "middle_center",
+            "overlay_max_width": 45,
+            "overlay_position_mobile": "same_as_desktop",
+            "overlay_max_width_mobile": 90,
+            "subheading": "",
+            "sub_text_color": "#ffffff",
+            "sub_font_size": 1.5,
+            "sub_font_size_mobile": 1.2,
+            "title": "",
+            "text_color": "#ffffff",
+            "font_size": 2,
+            "font_size_mobile": 1.6,
+            "button_text": "",
+            "url": "https://nodpod.com/collections/resort-collection",
+            "button_text_color": "#ffffff",
+            "button_bkg_color": "rgba(0,0,0,0)",
+            "button_font_size": 2,
+            "button_stroke": 1,
+            "button_border_color": "#ffffff",
+            "button_font_size_mobile": 1.6,
+            "enable_shadows": false
+          }
+        },
+        "full_banner_WPTyWP": {
+          "type": "full_banner",
+          "settings": {
+            "image": "shopify://shop_images/Noir_Web_Banners.png",
+            "image_mobile": "shopify://shop_images/Noir_Assets_SMS_Now_Live.png",
+            "overlay_position": "middle_center",
+            "overlay_max_width": 45,
+            "overlay_position_mobile": "same_as_desktop",
+            "overlay_max_width_mobile": 90,
+            "subheading": "",
+            "sub_text_color": "#ffffff",
+            "sub_font_size": 1.5,
+            "sub_font_size_mobile": 1.2,
+            "title": "",
+            "text_color": "#ffffff",
+            "font_size": 2,
+            "font_size_mobile": 1.6,
+            "button_text": "",
+            "url": "shopify://products/nodpod-silk",
+            "button_text_color": "#ffffff",
+            "button_bkg_color": "rgba(0,0,0,0)",
+            "button_font_size": 2,
+            "button_stroke": 1,
+            "button_border_color": "#ffffff",
+            "button_font_size_mobile": 1.6,
+            "enable_shadows": false
+          }
+        },
+        "full_banner_MPT4DU": {
+          "type": "full_banner",
+          "settings": {
+            "image": "shopify://shop_images/Cafe_Web_Banners_back_in_stock_1.png",
+            "image_mobile": "shopify://shop_images/Cafe_Web_Banner-mobile.png",
+            "overlay_position": "middle_center",
+            "overlay_max_width": 45,
+            "overlay_position_mobile": "same_as_desktop",
+            "overlay_max_width_mobile": 90,
+            "subheading": "",
+            "sub_text_color": "#ffffff",
+            "sub_font_size": 1.5,
+            "sub_font_size_mobile": 1.2,
+            "title": "",
+            "text_color": "#ffffff",
+            "font_size": 2,
+            "font_size_mobile": 1.6,
+            "button_text": "",
+            "url": "shopify://products/nodpod",
+            "button_text_color": "#ffffff",
+            "button_bkg_color": "rgba(0,0,0,0)",
+            "button_font_size": 2,
+            "button_stroke": 1,
+            "button_border_color": "#ffffff",
+            "button_font_size_mobile": 1.6,
+            "enable_shadows": false
+          }
+        },
+        "full_banner_Q8gfAD": {
+          "type": "full_banner",
+          "settings": {
+            "image": "shopify://shop_images/hero-banner-1_c631af27-081d-4a69-ade7-469314a10bfe.png",
+            "image_mobile": "shopify://shop_images/full-banner-mobile.png",
+            "overlay_position": "bottom_left",
+            "overlay_max_width": 45,
+            "overlay_position_mobile": "same_as_desktop",
+            "overlay_max_width_mobile": 90,
+            "subheading": "",
+            "sub_text_color": "#ffffff",
+            "sub_font_size": 1.5,
+            "sub_font_size_mobile": 1.2,
+            "title": "<p>Chill More. Stress Less.<br><em>Sleep Better.</em></p>",
+            "text_color": "#ffffff",
+            "font_size": 6,
+            "font_size_mobile": 4,
+            "button_text": "Shop Now",
+            "url": "shopify://products/nodpod-body",
+            "button_text_color": "#ffffff",
+            "button_bkg_color": "rgba(0,0,0,0)",
+            "button_font_size": 1.8,
+            "button_stroke": 1,
+            "button_border_color": "#ffffff",
+            "button_font_size_mobile": 2.3,
+            "enable_shadows": true
+          }
+        },
+        "split_banner_a9AaYd": {
+          "type": "split_banner",
+          "settings": {
+            "image": "shopify://shop_images/silk1.png",
+            "image2": "shopify://shop_images/silk2.png",
+            "text_position": "left",
+            "overlay_position": "middle_center",
+            "overlay_max_width": 45,
+            "overlay_position_mobile": "same_as_desktop",
+            "overlay_max_width_mobile": 90,
+            "subheading": "<p>NOW AVAILABLE</p>",
+            "sub_text_color": "#5d5e5d",
+            "sub_font_size": 2,
+            "sub_font_size_mobile": 2,
+            "title": "<p>The Mineralized <br/>Silk<strong>™</strong> Collection</p>",
+            "text_color": "#5d5e5d",
+            "font_size": 6,
+            "font_size_mobile": 4.3,
+            "button_text": "Shop Now",
+            "url": "shopify://collections/mineralized-silk",
+            "button_text_color": "#5d5e5d",
+            "button_bkg_color": "",
+            "button_stroke": 1,
+            "button_font_size": 2.5,
+            "button_border_color": "#5d5e5d",
+            "button_font_size_mobile": 2.2,
+            "enable_shadows": false
+          }
+        }
+      },
+      "block_order": [
+        "full_banner_zRD388",
+        "full_banner_jUB9Wq",
+        "full_banner_WPTyWP",
+        "full_banner_MPT4DU",
+        "full_banner_Q8gfAD",
+        "split_banner_a9AaYd"
+      ],
+      "custom_css": [
+        "@media (min-width: 990px) {.swiper-slide {height: calc(var(--np-height-desktop) - 82px) !important; }}",
+        ".np-h1 {margin-top: 0;}",
+        "p {margin: 0 !important;}",
+        ".np-overlay {gap: 15px;}",
+        ".np-slider-btn {margin-top: 10px;}",
+        ".np-overlay h2 p strong {font-style: normal; font-size: 20px; vertical-align: super; display: inline; font-family: \"Poppins\", sans-serif;}"
+      ],
+      "name": "Nodpod Home Slider",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "autoplay": true,
+        "autoplay_delay": 5,
+        "loop": true,
+        "show_pagination": true,
+        "header_offset": 130,
+        "mobile_height": 530,
+        "accessible_label": "Homepage slider"
+      }
+    },
+    "scrolling_logo_list_dXwHDb": {
+      "type": "scrolling-logo-list",
+      "blocks": {
+        "logo_image_jQzFYg": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/allure3-new.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_J4piiK": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/nb-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_cTxmcV": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/wh-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_iw6ErL": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/fb-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_n6ahRU": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/gp-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_FEDqMe": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/wsj-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_Fnn9CJ": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/pp-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_jQzFYg",
+        "logo_image_J4piiK",
+        "logo_image_cTxmcV",
+        "logo_image_iw6ErL",
+        "logo_image_n6ahRU",
+        "logo_image_FEDqMe",
+        "logo_image_Fnn9CJ"
+      ],
+      "custom_css": [],
+      "name": "Scrolling logo list",
+      "settings": {
+        "heading": "",
+        "headingAlignment": "start",
+        "logoVH_desktop": 4.5,
+        "logoVH_mobile": 3.5,
+        "logoPadding": 10,
+        "marqueeDirection": "false",
+        "marqueeSpeeds": 35,
+        "marqueePause": true,
+        "headingBg": "#a2b0a5",
+        "headingColor": "#000000",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "np_header_block_TK4PKt": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_BPUihC": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your Everyday Wellness Ritual"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BPUihC"
+      ],
+      "custom_css": [
+        ".main-title-block {max-width: 800px;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "custom_css": [
+        "{max-width: 1400px; margin: auto;}"
+      ],
+      "settings": {
+        "collection": "sleep-essentials",
+        "products_to_show": 3,
+        "title": "",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "np_image_with_text_x9xpMG": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_mhD7Gt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Backed by Science"
+          }
+        },
+        "text_dMRVnR": {
+          "type": "text",
+          "settings": {
+            "text": "When gentle pressure is applied to the body, it has a natural calming effect. The science behind this is known as Deep Touch Pressure, but you'll think it's magic."
+          }
+        },
+        "button_8Yad3B": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More >",
+            "button_link": "shopify://pages/science",
+            "button_type": "link",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mhD7Gt",
+        "text_dMRVnR",
+        "button_8Yad3B"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/Group_289.png",
+        "image_position": "right",
+        "mobile_image_position": "top",
+        "mobile_gap": 20,
+        "paddingTop": 40,
+        "paddingRight": 20,
+        "paddingBottom": 40,
+        "paddingLeft": 20,
+        "marginTop": 40,
+        "marginBottom": 0,
+        "show_partial_bkg": true,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#fafaf9",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "np_header_block_B4htHm": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_jpRq9U": {
+          "type": "heading",
+          "settings": {
+            "heading": "Meet Our Dream Team"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jpRq9U"
+      ],
+      "custom_css": [],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 40,
+        "paddingRight": 20,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "np_image_with_text_KhVaKy": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_UHetPa": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Weighted Blanket For Your Eyes®"
+          }
+        },
+        "text_q3act8": {
+          "type": "text",
+          "settings": {
+            "text": "Our patented, strap-free mask uses four weighted pods to gently hug your eyes and temples. It helps calm your mind, ease tension, and guide you into deep, restful sleep — no matter how you rest."
+          }
+        },
+        "button_GEACdj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/nodpod",
+            "button_type": "outline",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#5e5d5e",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UHetPa",
+        "text_q3act8",
+        "button_GEACdj"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": true,
+        "image": "shopify://shop_images/Isabella_Jewel_Collection_3099-2_10.png",
+        "image_position": "left",
+        "mobile_image_position": "bottom",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "np_image_with_text_FfNCAW": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_ajdB43": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Weighted Pod For Your Body®"
+          }
+        },
+        "text_RiMdKV": {
+          "type": "text",
+          "settings": {
+            "text": "Experience the calming benefits of Deep Touch Pressure without the bulk. Nodpod BODY delivers targeted relief wherever you need it most. It is portable, breathable, and fully machine washable."
+          }
+        },
+        "button_gh7qAa": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/nodpod-body",
+            "button_type": "outline",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#5e5d5e",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ajdB43",
+        "text_RiMdKV",
+        "button_gh7qAa"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": true,
+        "image": "shopify://shop_images/Isabella_Jewel_Collection_3099-2_9.png",
+        "image_position": "right",
+        "mobile_image_position": "bottom",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "np_header_block_zUpRki": {
+      "type": "np-header-block",
+      "blocks": {
+        "subheading_3aHnUP": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "THE NODPOD PROMISE"
+          }
+        },
+        "heading_DkNLgD": {
+          "type": "heading",
+          "settings": {
+            "heading": "We stand for so much more than good sleep"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_3aHnUP",
+        "heading_DkNLgD"
+      ],
+      "custom_css": [
+        ".main-page-heading {margin-bottom: 0; margin-top: 0;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#fafaf9",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "np_guarantees_rQie6H": {
+      "type": "np-guarantees",
+      "blocks": {
+        "logo_image_NnJfmE": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/heart-icon.svg",
+            "heading": "30 DAY GUARANTEE",
+            "content": "",
+            "link": ""
+          }
+        },
+        "logo_image_pifWRM": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/women-icon.svg",
+            "heading": "FEMALE FOUNDED & OWNED",
+            "content": "",
+            "link": ""
+          }
+        },
+        "logo_image_RCNzjB": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/drop-icon.svg",
+            "heading": "OEKO-TEX CERTIFIED",
+            "content": "",
+            "link": ""
+          }
+        },
+        "logo_image_hPAfqr": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/one-percent-new.svg",
+            "heading": "1% FOR MENTAL HEALTH",
+            "content": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_NnJfmE",
+        "logo_image_pifWRM",
+        "logo_image_RCNzjB",
+        "logo_image_hPAfqr"
+      ],
+      "name": "NP Guarantees",
+      "settings": {
+        "heading": "",
+        "headingAlignment": "center",
+        "textAlignment": "center",
+        "section_bg": "#fafaf9",
+        "headingBg": "#ffffff",
+        "headingColor": "#5d5e5d"
+      }
+    },
+    "np_header_block_Fe6887": {
+      "type": "np-header-block",
+      "blocks": {
+        "button_wTkEWW": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "https://nodpod.com/pages/our-story",
+            "button_type": "outline",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#5d5e5d",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "button_wTkEWW"
+      ],
+      "custom_css": [],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#fafaf9",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "np_home_slider_eehV4c": {
+      "type": "np-home-slider",
+      "blocks": {
+        "full_banner_rzbxxV": {
+          "type": "full_banner",
+          "settings": {
+            "image": "shopify://shop_images/mid-banner-home.png",
+            "image_mobile": "shopify://shop_images/mid-banner-home-mobile.png",
+            "overlay_position": "middle_right",
+            "overlay_max_width": 35,
+            "overlay_position_mobile": "bottom_center",
+            "overlay_max_width_mobile": 90,
+            "subheading": "",
+            "sub_text_color": "#ffffff",
+            "sub_font_size": 1.5,
+            "sub_font_size_mobile": 3.8,
+            "title": "<p>Our two best-selling sleep solutions in one bundle.</p>",
+            "text_color": "#ffffff",
+            "font_size": 5,
+            "font_size_mobile": 3.6,
+            "button_text": "Shop Now",
+            "url": "shopify://collections/all",
+            "button_text_color": "#5d5e5d",
+            "button_bkg_color": "#ffffff",
+            "button_font_size": 2,
+            "button_stroke": 1,
+            "button_border_color": "#ffffff",
+            "button_font_size_mobile": 1.6,
+            "enable_shadows": false
+          }
+        }
+      },
+      "block_order": [
+        "full_banner_rzbxxV"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".swiper-slide {max-height: 550px;}",
+        ".np-overlay {margin-right: 4rem;}"
+      ],
+      "name": "Nodpod Home Slider",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "autoplay": true,
+        "autoplay_delay": 5,
+        "loop": true,
+        "show_pagination": true,
+        "header_offset": 200,
+        "mobile_height": 500,
+        "accessible_label": "Homepage slider"
+      }
+    },
+    "np_header_block_Ye8PaG": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_mbJ7qw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Find us at"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mbJ7qw"
+      ],
+      "custom_css": [
+        "h1 {line-height: 1; margin: 0; font-size: 5rem;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 40,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#ffffff",
+        "full_bkg_color": "#a2b0a5",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "scrolling_logo_list_XeCU8T": {
+      "type": "scrolling-logo-list",
+      "blocks": {
+        "logo_image_3dBqTd": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/ulta-logo.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_kiWBRp": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/ns-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_mALRUE": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/an-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_rbRtiB": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/bn-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_zWYmfE": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/kl-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_3dBqTd",
+        "logo_image_kiWBRp",
+        "logo_image_mALRUE",
+        "logo_image_rbRtiB",
+        "logo_image_zWYmfE"
+      ],
+      "custom_css": [
+        "section span:first-child img {height: 4vh;}",
+        ".logo-list-scroller span img {height: 2.5vh;}"
+      ],
+      "name": "Scrolling logo list",
+      "settings": {
+        "heading": "",
+        "headingAlignment": "start",
+        "logoVH_desktop": 5,
+        "logoVH_mobile": 5,
+        "logoPadding": 20,
+        "marqueeDirection": "false",
+        "marqueeSpeeds": 25,
+        "marqueePause": true,
+        "headingBg": "#a2b0a5",
+        "headingColor": "#000000",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "np_header_block_rX3YwD": {
+      "type": "np-header-block",
+      "blocks": {
+        "button_RaRwLy": {
+          "type": "button",
+          "settings": {
+            "button_label": "Find a store near me",
+            "button_link": "https://nodpod.com/pages/store-locator",
+            "button_type": "outline",
+            "buttonBg": "#ffffff",
+            "buttonOutline": "#ffffff",
+            "buttonColor": "#ffffff",
+            "linkColor": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "button_RaRwLy"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 50,
+        "paddingLeft": 20,
+        "text_color": "#ffffff",
+        "full_bkg_color": "#a2b0a5",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "np_header_block_UAgQLA": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_9FFVQq": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join The Weighted Sleep Revolution"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9FFVQq"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 50,
+        "paddingRight": 20,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "1757998893053dfe02": {
+      "type": "apps",
+      "blocks": {
+        "tolstoy_shoppable_video_quiz_carousel_block_BKCt99": {
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "7v70dzosw9ko9"
+          }
+        }
+      },
+      "block_order": [
+        "tolstoy_shoppable_video_quiz_carousel_block_BKCt99"
+      ],
+      "custom_css": [
+        ".tolstoy-carousel-arrows-container {display: none !important;}",
+        ".tolstoy-carousel-title {display: none;}",
+        ".tolstoy-product-tile div {color: #5e5d5e !important; font-weight: 400 !important; font-size: 14px !important;}"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "np_header_block_7AKUd3": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_jCUaTj": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your Top Questions Answered"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jCUaTj"
+      ],
+      "custom_css": [
+        ".main-title-block {max-width: 800px;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 40,
+        "paddingBottom": 10,
+        "paddingLeft": 40,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#fafaf9",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "np_faqs_3xV8Dg": {
+      "type": "np-faqs",
+      "blocks": {
+        "question_q9hxrF": {
+          "type": "question",
+          "settings": {
+            "title": "How is the Nodpod Sleep Mask different from other sleep masks?",
+            "answer": "<p>There’s nothing like a Nodpod®. With its patented four-pod design, it applies gentle, calming pressure across your eyes and temples—no straps, no Velcro, just soft, weighted comfort that stays in place in any sleep position. It’s the original, one-of-a-kind sleep experience.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_y8y4gH": {
+          "type": "question",
+          "settings": {
+            "title": "How is the Nodpod BODY different from other weighted blankets?",
+            "answer": "<p>Traditional weighted blankets can be bulky, leaving you feeling hot and trapped. Nodpod BODY’s patented design is compact, breathable, and body-hugging, delivering calming Deep Touch Pressure exactly where you need it. It’s fully machine washable and dryer safe, making stress relief easier than ever.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_e9CmUM": {
+          "type": "question",
+          "settings": {
+            "title": "Can I use Nodpod if I sleep on my side, and will it stay on all night?",
+            "answer": "<p>Yes! Nodpod was designed for side sleeping—and thanks to its strap-free design, it lays comfortably in any sleep position.</p><p>Nodpod is meant to help you <em>fall</em> asleep, not stay strapped to your face all night. Its gentle weight works naturally with your body to ease you into deep sleep without restriction.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_PXnzGf": {
+          "type": "question",
+          "settings": {
+            "title": "How do I use Nodpod upright (like on a plane or sitting up)?",
+            "answer": "<p>To wear Nodpod upright, insert the corner of one end tab through the slit on the opposing end tab. Then, place it over your head and adjust for a soft, secure fit. No Velcro, no straps—just hands-free, weighted comfort that stays in place while you rest upright.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_EQyMJA": {
+          "type": "question",
+          "settings": {
+            "title": "How do I care for my Nodpod, and can I chill it?",
+            "answer": "<p>Nodpod is machine washable and scent-free. You can pop it in the freezer for a refreshing cool-down, it stays soft and flexible, never stiff. </p><p>The mask is also dual-sided: one side offers a warm, cozy feel, while the other stays cool to the touch for soothing versatility. Just please don’t microwave it!</p>",
+            "expandAnswer": false
+          }
+        }
+      },
+      "block_order": [
+        "question_q9hxrF",
+        "question_y8y4gH",
+        "question_e9CmUM",
+        "question_PXnzGf",
+        "question_EQyMJA"
+      ],
+      "custom_css": [
+        ".faq {padding-top: 20px;}"
+      ],
+      "name": "NP FAQ",
+      "settings": {
+        "summary": false,
+        "summary_heading": "Topics",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "np_header_block_BrAfBw": {
+      "type": "np-header-block",
+      "blocks": {
+        "button_tQtybY": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "",
+            "button_type": "outline",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#5d5e5d",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "button_tQtybY"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 40,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#fafaf9",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "np_image_with_text_mpMeN8": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_ir9gq7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Story"
+          }
+        },
+        "text_LwBhVJ": {
+          "type": "text",
+          "settings": {
+            "text": "Nodpod is an award-winning, female-owned company leading the way in weighted wellness by offering innovative ways to stress less and sleep better."
+          }
+        },
+        "button_7wXegT": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn how Nodpod came to be >",
+            "button_link": "",
+            "button_type": "link",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ir9gq7",
+        "text_LwBhVJ",
+        "button_7wXegT"
+      ],
+      "custom_css": [
+        "{background: #fafaf9;}",
+        ".floating-partial-bkg {height: 80%;}",
+        "img {max-width: 400px;}",
+        ".np-image-img-block {display: flex; justify-content: center; align-items: flex-end;}",
+        ".np-image-text-block {margin-top: 6%;}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/our-story_3712b8a4-9036-44e1-88f7-d8c6fef73cf0.png",
+        "image_position": "right",
+        "mobile_image_position": "bottom",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 0,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": true,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "linear-gradient(0deg,#ffffff,#e8f6fd 100%)",
+        "partial_bkg_position": "bottom",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    }
+  },
+  "order": [
+    "np_home_slider_KD4iFg",
+    "scrolling_logo_list_dXwHDb",
+    "np_header_block_TK4PKt",
+    "featured_collection",
+    "np_image_with_text_x9xpMG",
+    "np_header_block_B4htHm",
+    "np_image_with_text_KhVaKy",
+    "np_image_with_text_FfNCAW",
+    "np_header_block_zUpRki",
+    "np_guarantees_rQie6H",
+    "np_header_block_Fe6887",
+    "np_home_slider_eehV4c",
+    "np_header_block_Ye8PaG",
+    "scrolling_logo_list_XeCU8T",
+    "np_header_block_rX3YwD",
+    "np_header_block_UAgQLA",
+    "1757998893053dfe02",
+    "np_header_block_7AKUd3",
+    "np_faqs_3xV8Dg",
+    "np_header_block_BrAfBw",
+    "np_image_with_text_mpMeN8"
+  ]
+}

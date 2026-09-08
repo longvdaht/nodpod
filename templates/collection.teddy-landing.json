@@ -1,0 +1,344 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_hero_banner_qtQYpF": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_YH3QfJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Teddy_Web_Banners-05_1.png",
+            "imageMobile": "shopify://shop_images/Teddy_Web_Banners-04_92d8c3dd-e4df-425f-b08b-cfd84a204227.png",
+            "imgClickable": true
+          }
+        }
+      },
+      "block_order": [
+        "image_YH3QfJ"
+      ],
+      "custom_css": [
+        "h2 {margin-bottom: 12px !important; line-height: 1; font-family: \"recoleta\", \"sans-serif\"; font-size: 76px; font-weight: 300;}",
+        ".button {margin-top: 10px; background: white; color: #c5b9ab; font-family: \"Poppins\"; font-weight: 600; letter-spacing: 0.05em;}",
+        ".hero-meta {padding: min(5vw, 24px);}",
+        "@media (max-width: 750px) {h2 {font-size: 5rem; padding-top: 40px; }}"
+      ],
+      "name": "Hero banner (Dawn)",
+      "settings": {
+        "block_id": "",
+        "overlay_position": "middle_center",
+        "overlay_max_width": 60,
+        "overlay_position_mobile": "middle",
+        "overlay_align_mobile": "same_as_desktop",
+        "subtitle": "",
+        "title": "",
+        "content": "",
+        "cta": "",
+        "url": "https://nodpod.com/collections/the-teddy-collection#ProductGridContainer",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#ffffff",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "uncropped",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": true,
+        "mobile_full_height_max_px": 500
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".title {font-family: var(--font-heading-family); color: white; font-size: 50px; letter-spacing: 0.02em; font-weight: 300; margin-bottom: 36px !important;}",
+        ".product-grid-container {padding: 40px 0; background: url(https://cdn.shopify.com/s/files/1/0253/2982/7939/files/Layer_1_2.png?v=1761154465) !important; background-size: cover; background-position: center;}",
+        ".grid {justify-content: center;}"
+      ],
+      "settings": {
+        "show_section_title": true,
+        "section_title": "Luxury You Can Feel",
+        "section_title_tag": "h1",
+        "section_title_align": "center",
+        "products_per_page": 16,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-bb8fca88-9573-4d03-bcc8-fad47199a392",
+        "enable_custom_filters": false,
+        "show_sleepmask_filter": false,
+        "sleepmask_filter_text": "",
+        "show_silk_filter": false,
+        "silk_filter_text": "",
+        "show_body_filter": false,
+        "body_filter_text": "",
+        "show_extras_filter": false,
+        "extras_filter_text": "extras",
+        "all_filter_text": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "np_image_with_text_rwYFrd": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_JWh8xG": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "BECAUSE REST SHOULD FEEL LUXURIOUS"
+          }
+        },
+        "heading_j4HJan": {
+          "type": "heading",
+          "settings": {
+            "heading": "Cloud-soft texture. Soothing weight. Comfort, redefined in its most elegant form"
+          }
+        },
+        "button_4ztWC9": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Add to cart",
+            "button_link": "",
+            "button_type": "full",
+            "buttonBg": "#c5b9ab",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_JWh8xG",
+        "heading_j4HJan",
+        "button_4ztWC9"
+      ],
+      "custom_css": [
+        ".section-main-button {margin-top: 2rem;}",
+        "@media screen and (max-width: 767px) {.section-main-button, .section-subheading {margin-top: 4rem; } .section-main-heading {text-align: center; }}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "pdp_product_highlight",
+        "image": "shopify://shop_images/image_80_3.png",
+        "image_position": "right",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "bottom",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#6c6463",
+        "product_to_add": ""
+      }
+    },
+    "np_guarantees_9bwefq": {
+      "type": "np-guarantees",
+      "blocks": {
+        "logo_image_kFzem9": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_226_22271045-ebfc-43c3-8a7a-10b12e19e895.svg",
+            "heading": "Cloud-Soft Minky",
+            "content": "<p>Velvety, plush fabric for cozy full-body comfor</p>",
+            "link": ""
+          }
+        },
+        "logo_image_NrnhPC": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_234_1.svg",
+            "heading": "Even Weight",
+            "content": "<p>Weighted pods evenly distribute from shoulders to toes.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_L3zpGW": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_237.svg",
+            "heading": "Weighted Comfort",
+            "content": "<p>Sized for relaxation, naps, and winding down.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_Nw4KJf": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_235_9c214367-48ff-4bc6-8848-2c3197a1a38f.svg",
+            "heading": "Effortless Aesthetic",
+            "content": "<p>Minimal, elegant design that blends into your space.</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_kFzem9",
+        "logo_image_NrnhPC",
+        "logo_image_L3zpGW",
+        "logo_image_Nw4KJf"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h3.gs-title {font-family: var(--font-heading-family); font-size: 48px; font-weight: 300; letter-spacing: 0.02em; margin-top: 10px;}",
+        ".np-guarantees__grid h2 {font-size: 32px; font-family: var(--font-heading-family); font-weight: 300;}",
+        ".np-guarantees__grid p {font-size: 18px; font-family: \"Poppins\"; font-weight: 400;}",
+        "@media screen and (max-width: 767px) {h3.gs-title {font-size: 28px; } .np-guarantees__grid h2 {font-size: 20px; } .np-guarantees__grid p {font-size: 14px; }}"
+      ],
+      "name": "NP Guarantees",
+      "settings": {
+        "heading": "The Details",
+        "headingAlignment": "center",
+        "textAlignment": "center",
+        "section_bg": "#fffbf7",
+        "headingBg": "#ffffff",
+        "headingColor": "#6c6463"
+      }
+    },
+    "np_image_with_text_EHebky": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_pY89RM": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "YOU DESERVE THIS FEELING"
+          }
+        },
+        "heading_NQ3mgk": {
+          "type": "heading",
+          "settings": {
+            "heading": "“Here’s to slowing down, sinking in, and savoring the softness.”"
+          }
+        },
+        "image_crEe7a": {
+          "type": "image",
+          "settings": {
+            "logoImage": "shopify://shop_images/Layer_1_1.png",
+            "logoWidth": 180
+          }
+        }
+      },
+      "block_order": [
+        "subheading_pY89RM",
+        "heading_NQ3mgk",
+        "image_crEe7a"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "image": "shopify://shop_images/Ellipse_45.png",
+        "image_position": "right",
+        "mobile_image_position": "bottom",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": true,
+        "partial_bkg_color": "#ebeae6",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#6c6463",
+        "product_to_add": ""
+      }
+    },
+    "np_header_block_397Kki": {
+      "type": "np-header-block",
+      "blocks": {
+        "image_ejMWKW": {
+          "type": "image",
+          "settings": {
+            "logoImage": "shopify://shop_images/Group_240.svg",
+            "logoWidth": 180
+          }
+        },
+        "heading_nFxDKH": {
+          "type": "heading",
+          "settings": {
+            "heading": "\"I didn’t think a sleep mask could feel this luxurious. I travel with it everywhere now.\""
+          }
+        },
+        "text_8rRm6K": {
+          "type": "text",
+          "settings": {
+            "text": "- Morgan C."
+          }
+        },
+        "button_tmUg4a": {
+          "type": "button",
+          "settings": {
+            "button_label": "READ THE REVIEWS",
+            "button_link": "shopify://products/nodpod",
+            "button_type": "full",
+            "buttonBg": "#c5b9ab",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "image_ejMWKW",
+        "heading_nFxDKH",
+        "text_8rRm6K",
+        "button_tmUg4a"
+      ],
+      "disabled": true,
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "text_color": "#6c6463",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "medium"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "np_hero_banner_qtQYpF",
+    "product-grid",
+    "np_image_with_text_rwYFrd",
+    "np_guarantees_9bwefq",
+    "np_image_with_text_EHebky",
+    "np_header_block_397Kki"
+  ]
+}

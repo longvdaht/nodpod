@@ -1,0 +1,125 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "enable_custom_filters": true,
+        "show_sleepmask_filter": true,
+        "sleepmask_filter_text": "",
+        "show_silk_filter": true,
+        "silk_filter_text": "",
+        "show_body_filter": true,
+        "body_filter_text": "",
+        "show_extras_filter": true,
+        "extras_filter_text": "extras",
+        "all_filter_text": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "np_press_review_NXXXKC": {
+      "type": "np-press-review",
+      "custom_css": [
+        "{padding: 60px 0; background: #ebeae6;}"
+      ],
+      "name": "Press Review",
+      "settings": {
+        "quote_text": "\"A Weighted, Strap-Free Design Means Major Versatility\"",
+        "logo_image": "shopify://shop_images/Forbes_logo.svg",
+        "logo_width": 110,
+        "color_scheme": "2",
+        "background_color": "#ebeae6",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_left": 20,
+        "padding_right": 20
+      }
+    },
+    "np_header_block_7zLaMy": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_9HnrLE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our 3 Minute Promise"
+          }
+        },
+        "text_TdTb6f": {
+          "type": "text",
+          "settings": {
+            "text": "We promise that within 3 minutes you'll start to experience natural stress relief and sink into your best night's sleep, or your money back."
+          }
+        },
+        "button_UViaFY": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop All",
+            "button_link": "",
+            "button_type": "outline",
+            "buttonBg": "#ffffff",
+            "buttonOutline": "#ffffff",
+            "buttonColor": "#ffffff",
+            "linkColor": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9HnrLE",
+        "text_TdTb6f",
+        "button_UViaFY"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 80,
+        "paddingRight": 20,
+        "paddingBottom": 80,
+        "paddingLeft": 20,
+        "text_color": "#ffffff",
+        "full_bkg_color": "#ffffff",
+        "background_image": "shopify://shop_images/Rectangle_334_1_1_1.png",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "np_press_review_NXXXKC",
+    "np_header_block_7zLaMy"
+  ]
+}

@@ -1,0 +1,449 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_hero_banner_qtQYpF": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_YH3QfJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/silk-banner-top.png",
+            "imageMobile": "shopify://shop_images/silk-banner-top-mobile.png",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_YH3QfJ"
+      ],
+      "custom_css": [
+        "h2 {max-width: 500px; margin: auto; line-height: 1; font-family: ivybodoni;}",
+        "@media (max-width: 750px) {h2 {font-size: 5rem; padding-top: 40px; }}"
+      ],
+      "name": "Hero banner (Dawn)",
+      "settings": {
+        "block_id": "",
+        "overlay_position": "middle_center",
+        "overlay_max_width": 60,
+        "overlay_position_mobile": "middle",
+        "overlay_align_mobile": "same_as_desktop",
+        "subtitle": "",
+        "title": "Expect <i>More</i> From Your Silk",
+        "content": "",
+        "cta": "Shop more",
+        "url": "",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#FFFFFF",
+        "heroMetaH1Color": "#5d5e5d",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "uncropped",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": true,
+        "mobile_full_height_max_px": 500
+      }
+    },
+    "np_header_block_qJfayx": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_XCw6jX": {
+          "type": "heading",
+          "settings": {
+            "heading": "Better Skin. Better Hair. Better Sleep."
+          }
+        }
+      },
+      "block_order": [
+        "heading_XCw6jX"
+      ],
+      "custom_css": [
+        ".main-title-block {max-width: 850px;}",
+        "h2 {font-family: ivybodoni;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "medium"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        "{max-width: 1400px; margin: auto;}"
+      ],
+      "settings": {
+        "show_section_title": false,
+        "section_title": "Shop all",
+        "section_title_tag": "h2",
+        "section_title_align": "center",
+        "products_per_page": 16,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "enable_custom_filters": false,
+        "show_sleepmask_filter": false,
+        "sleepmask_filter_text": "",
+        "show_silk_filter": false,
+        "silk_filter_text": "",
+        "show_body_filter": false,
+        "body_filter_text": "",
+        "show_extras_filter": false,
+        "extras_filter_text": "extras",
+        "all_filter_text": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "custom_liquid_d9T7qF": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".gradient {margin-bottom: -10px;}",
+        "#promo-mobile {display: none;}",
+        "@media (max-width: 989px) {#promo-mobile {display: block; } #promo-desktop {display: none; }}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<img id=\"promo-desktop\" width=\"100%\" src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/silk-land-desktop.png?v=1758908972\" />\n\n<img id=\"promo-mobile\" width=\"100%\" src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/silk-land-mobile.png?v=1758909056\" />",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "np_image_with_text_pe88Jk": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_UKWijd": {
+          "type": "heading",
+          "settings": {
+            "heading": "What makes Mineralized Silk™ <em>different?</em>"
+          }
+        },
+        "liquid_i43rwF": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<ul class=\"min-silk-list\">\n<li>\nClinically tested silver-ions fight acne-causing bacteria.\n</li>\n<li>\nKeeps your silk fresher between washes.\n</li>\n<li>\nCombines the time-honored beauty benefits of silk with the power of science.\n</li>\n</ul>\n\n<style>\n.min-silk-list {\n  margin: 0;\n  padding: 0 0 0 20px;\n  margin: 20px 0 20px 0;\n}\n.min-silk-list li {\n  position: relative;\n  padding-left: 5px;\n  font-size: 1.85rem;\n  padding-bottom: 10px;\n  font-weight: 300 !important;\n  line-height: 1.5;\n}\n</style>"
+          }
+        },
+        "button_p6wNyx": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP MINERALIZED SILK",
+            "button_link": "#MainContent",
+            "button_type": "full",
+            "buttonBg": "#5e5d5e",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UKWijd",
+        "liquid_i43rwF",
+        "button_p6wNyx"
+      ],
+      "custom_css": [
+        "h2 {font-family: ivybodoni;}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "image": "shopify://shop_images/silk.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e"
+      }
+    },
+    "scrolling_logo_list_HqF96y": {
+      "type": "scrolling-logo-list",
+      "blocks": {
+        "logo_image_P7gQaw": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/al-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_Uhm8b9": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/nb-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_DrEpFN": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/wh-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_Pci9wF": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/fb-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_RLXrYt": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/goop3-new.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_EtpQFV": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/wsj-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_hqJUXn": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/people3-new.svg",
+            "link": "",
+            "newTab": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_P7gQaw",
+        "logo_image_Uhm8b9",
+        "logo_image_DrEpFN",
+        "logo_image_Pci9wF",
+        "logo_image_RLXrYt",
+        "logo_image_EtpQFV",
+        "logo_image_hqJUXn"
+      ],
+      "name": "Scrolling logo list",
+      "settings": {
+        "heading": "",
+        "headingAlignment": "start",
+        "logoVH_desktop": 5,
+        "logoVH_mobile": 5,
+        "logoPadding": 25,
+        "marqueeDirection": "false",
+        "marqueeSpeeds": 35,
+        "marqueePause": true,
+        "headingBg": "#9f9e9f",
+        "headingColor": "#000000",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "np_header_block_egQWXY": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_B9UREf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Can't Wait to Sleep With You"
+          }
+        }
+      },
+      "block_order": [
+        "heading_B9UREf"
+      ],
+      "custom_css": [
+        "h1 {font-family: ivybodoni;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "17589011679571bd73": {
+      "type": "apps",
+      "blocks": {
+        "tolstoy_shoppable_video_quiz_carousel_block_ArxwjD": {
+          "type": "shopify://apps/tolstoy-shoppable-video-quiz/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "7v70dzosw9ko9"
+          }
+        }
+      },
+      "block_order": [
+        "tolstoy_shoppable_video_quiz_carousel_block_ArxwjD"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "np_header_block_9MDVJN": {
+      "type": "np-header-block",
+      "blocks": {
+        "subheading_CpLKiB": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "WE THOUGHT YOU MIGHT ASK"
+          }
+        },
+        "heading_gfKFFT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your Top Questions Answered"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_CpLKiB",
+        "heading_gfKFFT"
+      ],
+      "custom_css": [
+        ".main-title-block {max-width: 1700px; margin: 0 auto; padding: 0 20px;}",
+        "h2 {margin-top: 0; font-family: ivybodoni;}",
+        "h4 {margin-bottom: 0; text-align: left !important;}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 80,
+        "paddingRight": 20,
+        "paddingBottom": 40,
+        "paddingLeft": 20,
+        "text_color": "#5d5e5d",
+        "full_bkg_color": "#eadcde",
+        "text_alignment": "left",
+        "heading_size": "medium"
+      }
+    },
+    "np_faqs_kaKFnf": {
+      "type": "np-faqs",
+      "blocks": {
+        "question_CDg8jB": {
+          "type": "question",
+          "settings": {
+            "title": "What exactly is a silver ion?",
+            "answer": "<p>A silver ion is simply a charged particle of silver that we have bonded to our silk. You can’t see it or feel it, but it works at the microscopic level to naturally help fight bacteria. Silver has been trusted for centuries from ancient civilizations to modern hospitals so this isn’t new science, just a smarter way to pair it with the beauty benefits of silk.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_CLgYAT": {
+          "type": "question",
+          "settings": {
+            "title": "How do silver ions work?",
+            "answer": "<p>They naturally fight acne-causing bacteria. In fact, our Mineralized Silk™ has been clinically tested to eliminate over 99% of acne-causing bacteria.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_NnTCGk": {
+          "type": "question",
+          "settings": {
+            "title": "How long can I go between washes?",
+            "answer": "<p> Because silver ions naturally fight bacteria, your silk can stay fresher up to 3–5 times longer than traditional fabrics. Of course, things like makeup, hair products, and natural oils still build up, so we recommend washing when it feels right for you<em>.</em></p>",
+            "expandAnswer": false
+          }
+        },
+        "question_CQEcVL": {
+          "type": "question",
+          "settings": {
+            "title": "How do I care for Mineralized Silk™?",
+            "answer": "<p> Just like traditional silk. We recommend a gentle cycle or hand wash with a pH-neutral detergent, then air dry.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_P7Hqdj": {
+          "type": "question",
+          "settings": {
+            "title": "Will the silver ions last forever?",
+            "answer": "<p>Our Mineralized Silk™ is treated with silver ions, they aren’t woven into the fabric itself. That treatment is designed to last for years of normal use. Because the fabric stays fresher 3–5 times longer between washes, most people enjoy the benefits for well over a year or two. </p><p>Over time, with repeated washing, the treatment naturally begins to fade, but you’ll always have the timeless beauty benefits of premium silk, which inherently has skin and hair soothing properties.</p>",
+            "expandAnswer": false
+          }
+        }
+      },
+      "block_order": [
+        "question_CDg8jB",
+        "question_CLgYAT",
+        "question_NnTCGk",
+        "question_CQEcVL",
+        "question_P7Hqdj"
+      ],
+      "custom_css": [
+        ".faq {background: #eadcde; padding: 20px;}"
+      ],
+      "name": "NP FAQs",
+      "settings": {
+        "summary": false,
+        "summary_heading": "Topics",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "np_hero_banner_qtQYpF",
+    "np_header_block_qJfayx",
+    "product-grid",
+    "custom_liquid_d9T7qF",
+    "np_image_with_text_pe88Jk",
+    "scrolling_logo_list_HqF96y",
+    "np_header_block_egQWXY",
+    "17589011679571bd73",
+    "np_header_block_9MDVJN",
+    "np_faqs_kaKFnf"
+  ]
+}

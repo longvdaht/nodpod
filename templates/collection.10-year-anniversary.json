@@ -1,0 +1,147 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "custom_liquid_bqCfAn": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "h3 {margin: 0 !important;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'birthday-banner' %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".product-grid-container {background: url(https://cdn.shopify.com/s/files/1/0253/2982/7939/files/year-of-you-banner.png?v=1737567333) !important; background-size: cover; background-position: center;}",
+        ".grid {justify-content: center;}"
+      ],
+      "settings": {
+        "show_section_title": false,
+        "section_title": "Shop all",
+        "section_title_tag": "h2",
+        "section_title_align": "center",
+        "products_per_page": 16,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "enable_custom_filters": false,
+        "show_sleepmask_filter": true,
+        "sleepmask_filter_text": "",
+        "show_silk_filter": true,
+        "silk_filter_text": "",
+        "show_body_filter": true,
+        "body_filter_text": "",
+        "show_extras_filter": true,
+        "extras_filter_text": "extras",
+        "all_filter_text": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "np_image_with_text_TxQUgP": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_iTrCV6": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "A limited edition collection"
+          }
+        },
+        "heading_pWWa3b": {
+          "type": "heading",
+          "settings": {
+            "heading": "Celebrating Ten Years of Sweet Dreams"
+          }
+        },
+        "button_GxQGQi": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP BIRTHDAY BLUE",
+            "button_link": "shopify://products/nodpod",
+            "button_type": "full",
+            "buttonBg": "#8db7d4",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_iTrCV6",
+        "heading_pWWa3b",
+        "button_GxQGQi"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/image_80_1.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "custom_liquid_XtACie": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<script>\n(function () {\n  // Prefer Birthday Blue first; fall back to Butter Yellow if Blue isn't present\n  const NP_PREFERRED_VARIANTS = new Set([\n    '46485226487978', // Sleep Mask — Birthday Blue\n    '46485222064298', // BODY — Birthday Blue\n    '47367482146986', // Sleep Mask — Butter Yellow (fallback)\n    '47368430452906'  // BODY — Butter Yellow (fallback)\n  ]);\n\n  function setBadgeOverride(cardEl, text) {\n    cardEl.querySelectorAll('.card__badge').forEach(function (wrap) {\n      const def = wrap.querySelector('.badge:not(.np-badge-override)');\n      const ov  = wrap.querySelector('.np-badge-override');\n      if (!ov) return;\n      if (text && text.trim()) {\n        ov.textContent = text.trim();\n        ov.hidden = false;\n        if (def) def.style.display = 'none';\n      } else {\n        ov.hidden = true;\n        if (def) def.style.display = '';\n      }\n    });\n  }\n\n  function updateImages(cardEl, urls) {\n    let imgs = cardEl.querySelectorAll('.media-thumb > img');\n    if (!imgs.length) imgs = cardEl.querySelectorAll('.card__media .media > img');\n    if (!imgs.length) return;\n\n    imgs.forEach(function (img) {\n      if (!img.dataset.defaultSrc) {\n        img.dataset.defaultSrc    = img.getAttribute('src')    || '';\n        img.dataset.defaultSrcset = img.getAttribute('srcset') || '';\n      }\n    });\n\n    if (urls && urls.length) {\n      if (imgs[0]) { imgs[0].src = urls[0]; imgs[0].srcset = urls[0]; }\n      if (imgs[1]) {\n        const u = urls[1] || urls[0];\n        imgs[1].src = u; imgs[1].srcset = u;\n      }\n    } else {\n      imgs.forEach(function (img) {\n        if (img.dataset.defaultSrc)    img.src    = img.dataset.defaultSrc;\n        if (img.dataset.defaultSrcset) img.srcset = img.dataset.defaultSrcset;\n      });\n    }\n  }\n\n  function setActiveSwatch(btn) {\n    const list = btn.closest('.np-swatch-list');\n    if (!list) return;\n    list.querySelectorAll('.np-swatch').forEach(function (b) {\n      b.classList.remove('is-active');\n      b.setAttribute('aria-checked', 'false');\n    });\n    btn.classList.add('is-active');\n    btn.setAttribute('aria-checked', 'true');\n  }\n\n  function syncQuickAdd(wrapper, variantId) {\n    const hidden = wrapper.querySelector('input.product-variant-id');\n    if (hidden) hidden.value = variantId;\n  }\n\n  /* ---------- Tippy boot ---------- */\n  function ensureTippy(cb) {\n    if (window.tippy) return cb && cb();\n    var s = document.createElement('script');\n    s.src = 'https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.min.js';\n    s.async = true;\n    s.onload = function () { cb && cb(); };\n    document.head.appendChild(s);\n  }\n\n  function initTippyFor(container) {\n    if (!window.tippy || !container) return;\n    container.querySelectorAll('.np-swatch[data-tippy-content]').forEach(function (el) {\n      if (el._tippy) return;\n      window.tippy(el, {\n        content: el.getAttribute('data-tippy-content') || '',\n        theme: 'np',\n        placement: 'top',\n        arrow: true,\n        duration: [120, 80],\n        offset: [0, 10],\n        interactive: false,\n        allowHTML: false,\n        trigger: 'mouseenter focus',\n        appendTo: function () { return document.body; },\n        touch: ['hold', 300],\n      });\n    });\n  }\n\n  // Try to select a preferred variant; returns true if it changed/confirmed selection\n  function applyPreferred(wrapper) {\n    const picker = wrapper.querySelector('.np-card-variants');\n    const card   = wrapper.querySelector('.card');\n    if (!picker || !card) return false;\n\n    let preferredBtn = null;\n    NP_PREFERRED_VARIANTS.forEach(function (vid) {\n      if (!preferredBtn) {\n        const cand = picker.querySelector(`.np-swatch[data-variant-id=\"${vid}\"]:not(.is-disabled)`);\n        if (cand) preferredBtn = cand;\n      }\n    });\n    if (!preferredBtn) return false;\n\n    if (!preferredBtn.classList.contains('is-active')) {\n      preferredBtn.click(); // triggers existing handlers\n      return true;\n    } else {\n      // Already active — still sync dependent UI\n      const urls  = (preferredBtn.dataset.images || '').split('|').filter(Boolean);\n      updateImages(wrapper, urls.length ? urls : null);\n      const vBadge = (preferredBtn.dataset.badgeOverride || '').trim();\n      const pBadge = (card.dataset.npInitialBadge || '').trim();\n      setBadgeOverride(card, vBadge || pBadge);\n      const vid = preferredBtn.dataset.variantId;\n      if (vid) syncQuickAdd(wrapper, vid);\n      return true;\n    }\n  }\n\n  function bindSwatchHandlers(wrapper) {\n    const card   = wrapper.querySelector('.card');\n    const picker = wrapper.querySelector('.np-card-variants');\n    if (!card || !picker) return;\n\n    picker.addEventListener('click', function (e) {\n      const btn = e.target.closest('.np-swatch');\n      if (!btn || btn.classList.contains('is-disabled')) return;\n      e.preventDefault();\n\n      setActiveSwatch(btn);\n      const urls = (btn.dataset.images || '').split('|').filter(Boolean);\n      updateImages(wrapper, urls.length ? urls : null);\n\n      const vBadge = (btn.dataset.badgeOverride || '').trim();\n      const pBadge = (card.dataset.npInitialBadge || '').trim();\n      setBadgeOverride(card, vBadge || pBadge);\n\n      const vid = btn.dataset.variantId;\n      if (vid) syncQuickAdd(wrapper, vid);\n    }, { capture: true });\n\n    picker.addEventListener('keydown', function (e) {\n      const btn = e.target.closest('.np-swatch');\n      if (!btn || btn.classList.contains('is-disabled')) return;\n      if (e.key === 'Enter' || e.key === ' ') {\n        e.preventDefault();\n        btn.click();\n      }\n    }, { capture: true });\n  }\n\n  function initCard(wrapper) {\n    if (!wrapper) return;\n\n    const firstInit = wrapper.dataset.npScriptInit !== '1';\n    if (firstInit) {\n      wrapper.dataset.npScriptInit = '1';\n      bindSwatchHandlers(wrapper);\n      ensureTippy(function () { initTippyFor(wrapper); });\n    }\n\n    // Prefer Birthday Blue (then Butter) when available\n    const appliedPreferred = applyPreferred(wrapper);\n\n    // If nothing preferred applied, sync whatever is active\n    if (!appliedPreferred) {\n      const card   = wrapper.querySelector('.card');\n      const picker = wrapper.querySelector('.np-card-variants');\n      if (!card || !picker) return;\n\n      const active = picker.querySelector('.np-swatch.is-active') || picker.querySelector('.np-swatch:not(.is-disabled)');\n      if (active) {\n        const urls = (active.dataset.images || '').split('|').filter(Boolean);\n        updateImages(wrapper, urls.length ? urls : null);\n        const vBadge = (active.dataset.badgeOverride || '').trim();\n        const pBadge = (card.dataset.npInitialBadge || '').trim();\n        setBadgeOverride(card, vBadge || pBadge);\n        const vid = active.dataset.variantId;\n        if (vid) syncQuickAdd(wrapper, vid);\n      }\n    }\n  }\n\n  function initAll() {\n    document.querySelectorAll('.product-card-wrapper').forEach(initCard);\n\n    new MutationObserver(function (muts) {\n      muts.forEach(function (m) {\n        m.addedNodes.forEach(function (n) {\n          if (n.nodeType !== 1) return;\n          if (n.matches && n.matches('.product-card-wrapper')) initCard(n);\n          n.querySelectorAll && n.querySelectorAll('.product-card-wrapper').forEach(initCard);\n          if (n.querySelectorAll) {\n            ensureTippy(function () {\n              document.querySelectorAll('.product-card-wrapper').forEach(initTippyFor);\n            });\n          }\n        });\n      });\n    }).observe(document.documentElement, { childList: true, subtree: true });\n\n    ensureTippy(function () {\n      document.querySelectorAll('.product-card-wrapper').forEach(initTippyFor);\n    });\n  }\n\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', initAll, { once: true });\n  } else {\n    initAll();\n  }\n})();\n</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "custom_liquid_bqCfAn",
+    "product-grid",
+    "np_image_with_text_TxQUgP",
+    "custom_liquid_XtACie"
+  ]
+}

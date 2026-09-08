@@ -1,0 +1,129 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_XBqghR": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Treat yourself to better sleep this Prime Day with 20% off Nodpod!",
+            "link": "shopify://collections",
+            "secondary_link_text": "",
+            "secondary_link_url": ""
+          }
+        },
+        "announcement_zpMpYW": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "ORDERS PLACED AFTER 12/11 MAY ARRIVE AFTER CHRISTMAS",
+            "link": "",
+            "secondary_link_text": "SHOP NOW",
+            "secondary_link_url": "shopify://collections/all"
+          }
+        },
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "FREE SHIPPING ON ORDERS OVER $75",
+            "link": "",
+            "secondary_link_text": "SHOP NOW",
+            "secondary_link_url": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_XBqghR",
+        "announcement_zpMpYW",
+        "announcement-bar-0"
+      ],
+      "custom_css": [
+        "@media (min-width: 767px) {.announcement-bar__message {line-height: 1.6; }}"
+      ],
+      "settings": {
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "color_scheme": "scheme-16a1e502-2c79-4891-9114-f493fedec102",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "megamenu_Drnexj": {
+          "type": "megamenu",
+          "settings": {
+            "linkTitle": "Shop",
+            "linkedMenu": "header-v2-shop",
+            "megamenu_image_1": "shopify://shop_images/Out_West_Campaign_Nodpod_0779.jpg",
+            "megamenu_image_1_link": "shopify://collections/outwestcollection",
+            "megamenu_image_1_link_heading": "The Out West Collection",
+            "megamenu_image_1_link_text": "Shop Now",
+            "link_1_text_color": "#ffffff",
+            "megamenu_image_2": "shopify://shop_images/Nodpod_Resort_Collection_Lou_0207_fb57bd0a-00bc-4596-8148-a70cbc9af887.jpg",
+            "megamenu_image_2_link": "shopify://products/nodpod",
+            "megamenu_image_2_link_heading": "The Resort Collection",
+            "megamenu_image_2_link_text": "Shop Now",
+            "link_2_text_color": "#ffffff"
+          }
+        },
+        "megamenu_Ypgxpz": {
+          "type": "megamenu",
+          "settings": {
+            "linkTitle": "About",
+            "linkedMenu": "about-v2",
+            "megamenu_image_1": "shopify://shop_images/Kiana_Nodpod_8443_2.png",
+            "megamenu_image_1_link": "shopify://pages/faq",
+            "megamenu_image_1_link_heading": "Your Top Questions Answered",
+            "megamenu_image_1_link_text": "Shop Now",
+            "link_1_text_color": "#ffffff",
+            "megamenu_image_2": "shopify://shop_images/Kiana_Nodpod_8443_2_1.png",
+            "megamenu_image_2_link": "shopify://pages/our-impact",
+            "megamenu_image_2_link_heading": "One Percent for Mental Health",
+            "megamenu_image_2_link_text": "Shop Now",
+            "link_2_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "megamenu_Drnexj",
+        "megamenu_Ypgxpz"
+      ],
+      "settings": {
+        "logo_position": "middle-center",
+        "mobile_logo_position": "center",
+        "menu": "header-menu-v2",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "always",
+        "show_line_separator": true,
+        "color_scheme": "scheme-2",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": true,
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

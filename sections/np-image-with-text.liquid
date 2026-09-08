@@ -1,0 +1,489 @@
+{% comment %}
+  Section: np-image-with-text
+  Usage: Save as sections/np-image-with-text.liquid and add via Theme Editor.
+{% endcomment %}
+
+{% style %}
+  div[id="shopify-section-{{section.id}}"] {
+    position: relative;
+    margin: {{section.settings.marginTop}}px 0px {{section.settings.marginBottom}}px 0px;
+    {% if section.settings.show_partial_bkg %}
+      background-color: transparent;
+    {% elsif section.settings.full_bkg_gradient != blank %}
+      background: {{ section.settings.full_bkg_gradient }};
+    {% else %}
+      background-color: {{ section.settings.full_bkg_color }};
+    {% endif %}
+  }
+
+  div[id="shopify-section-{{section.id}}"] .np-image-text {
+    max-width: 1600px;
+    width: 100%;
+    margin: auto;
+    padding: {{section.settings.paddingTop}}px {{section.settings.paddingRight}}px {{section.settings.paddingBottom}}px {{section.settings.paddingLeft}}px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: {% if section.settings.image_position == 'left' %}row-reverse{% else %}row{% endif %};
+  }
+
+  div[id="shopify-section-{{section.id}}"] .np-image-text-block h4,
+  div[id="shopify-section-{{section.id}}"] .np-image-text-block h2,
+  div[id="shopify-section-{{section.id}}"] .np-image-text-block p,
+  div[id="shopify-section-{{section.id}}"] .np-image-text-block a {
+    color: {{ section.settings.text_color }};
+  }
+
+  div[id="shopify-section-{{section.id}}"] .np-image-text-block,
+  div[id="shopify-section-{{section.id}}"] .np-image-img-block {
+    width: 48%;
+  }
+
+  div[id="shopify-section-{{section.id}}"] .np-image-text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 48%;
+    padding: 3vw;
+
+    {% if section.settings.show_partial_bkg and section.settings.partial_bkg_position == "bottom" and section.settings.image_position == "left" %}
+      margin-bottom: unset;
+      margin-top: 12%;
+    {% elsif section.settings.show_partial_bkg and section.settings.partial_bkg_position == "bottom" and section.settings.image_position == "right" %}
+      margin-top: 12%;
+      margin-bottom: unset;
+    {% elsif section.settings.show_partial_bkg and section.settings.partial_bkg_position == "top" %}
+      margin-top: unset;
+      margin-bottom: 12%;
+    {% endif %}
+  }
+
+  {% if section.settings.show_partial_bkg %}
+    div[id="shopify-section-{{section.id}}"] .floating-partial-bkg {
+      width: 100%;
+      position: absolute;
+      height: 75%;
+      display: block !important;
+      {% if section.settings.partial_bkg_gradient != blank %}
+        background: {{ section.settings.partial_bkg_gradient }};
+      {% else %}
+        background-color: {{ section.settings.partial_bkg_color }};
+      {% endif %}
+      z-index: 0;
+
+      {% if section.settings.partial_bkg_position == "top" %}
+        top: 0;
+        bottom: unset;
+      {% else %}
+        top: unset;
+        bottom: 0;
+      {% endif %}
+    }
+  {% endif %}
+
+  div[id="shopify-section-{{section.id}}"] .np-image-text__heading-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  div[id="shopify-section-{{section.id}}"] .np-image-text__heading-row .section-main-heading {
+    margin-bottom: 0;
+  }
+
+  div[id="shopify-section-{{section.id}}"] .np-image-text__heading-row .fsa-badge-wrapper {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 777px) {
+    div[id="shopify-section-{{section.id}}"] .np-image-text {
+      flex-direction: {% if section.settings.mobile_image_position == "top" %}column-reverse{% else %}column{% endif %};
+    }
+
+    div[id="shopify-section-{{section.id}}"] .np-image-text__heading-row {
+      justify-content: center;
+      gap: 12px;
+    }
+
+    div[id="shopify-section-{{section.id}}"] .np-image-text-block,
+    div[id="shopify-section-{{section.id}}"] .np-image-img-block {
+      width: 100%;
+    }
+
+    {% if section.settings.show_partial_bkg %}
+      div[id="shopify-section-{{section.id}}"] .floating-partial-bkg {
+        {% if section.settings.mobile_image_position == "top" %}
+          top: unset;
+          bottom: 0;
+        {% else %}
+          top: 0;
+          bottom: unset;
+        {% endif %}
+      }
+    {% endif %}
+
+    /* New mobile gap spacing */
+    {% if section.settings.mobile_gap > 0 %}
+      {% if section.settings.mobile_image_position == "top" %}
+        div[id="shopify-section-{{section.id}}"] .np-image-img-block {
+          margin-bottom: {{ section.settings.mobile_gap }}px;
+        }
+      {% else %}
+        div[id="shopify-section-{{section.id}}"] .np-image-text-block {
+          margin-bottom: {{ section.settings.mobile_gap }}px;
+        }
+      {% endif %}
+    {% endif %}
+  }
+{% endstyle %}
+
+{% if section.settings.show_partial_bkg %}
+  <div class="floating-partial-bkg"></div>
+{% endif %}
+
+{%- assign fsa_badge_pending = section.settings.show_fsa_badge -%}
+
+<div id="{{ section.settings.unique_id }}" data-section-target="{{ section.id }}" class="np-image-text image-{{ section.settings.image_position }}">
+  <div class="np-image-text-block">
+    {%- for block in section.blocks -%}
+      {% case block.type %}
+        {%- when 'subheading' -%}
+          <h4 class="section-subheading">{{ block.settings.subheading }}</h4>
+
+        {%- when 'heading' -%}
+          {%- if fsa_badge_pending -%}
+            <div class="np-image-text__heading-row">
+              <h2 class="section-main-heading">{{ block.settings.heading }}</h2>
+              {%- render 'fsa-hsa-badge', fsa_force: true, fsa_id: section.id -%}
+            </div>
+            {%- assign fsa_badge_pending = false -%}
+          {%- else -%}
+            <h2 class="section-main-heading">{{ block.settings.heading }}</h2>
+          {%- endif -%}
+
+        {%- when 'text' -%}
+          <p class="section-main-text">{{ block.settings.text }}</p>
+
+        {%- when 'button' -%}
+          {% assign type = block.settings.button_type %}
+          {% if block.settings.button_label != blank %}
+            <a href="{{ block.settings.button_link }}"
+               class="{% case type %}{% when 'full' %}section-main-button{% when 'link' %}section-main-link{% when 'outline' %}section-main-outline-btn{% endcase %}"
+               {% if section.settings.product_to_add != blank %}
+                 data-add-to-cart="true"
+                 data-variant-id="{{ section.settings.product_to_add.selected_or_first_available_variant.id }}"
+                 data-quantity="1"
+               {% endif %}
+               style="
+                 {% if type == 'full' %}
+                   background-color: {{ block.settings.buttonBg }};
+                   color: {{ block.settings.buttonColor }};
+                 {% elsif type == 'outline' %}
+                   border: 1px solid {{ block.settings.buttonOutline }};
+                   color: {{ block.settings.buttonColor }};
+                   background-color: transparent;
+                 {% else %}
+                   color: {{ block.settings.linkColor }};
+                 {% endif %}
+               ">
+              {{ block.settings.button_label }}
+            </a>
+          {% endif %}
+
+        {%- when 'image' -%}
+          {% if block.settings.logoImage != blank %}
+            <img
+              class="section-main-text-logo"
+              src="{{ block.settings.logoImage | image_url }}"
+              width="{{ block.settings.logoWidth }}px"
+              height="auto"
+              alt="{{ block.settings.logoImage.alt | default: 'Logo' | escape }}"
+              loading="lazy"
+            >
+          {% endif %}
+
+        {%- when 'liquid' -%}
+          {{ block.settings.liquid }}
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+  <div class="np-image-img-block">
+    {% if section.settings.image != blank %}
+      <img
+        src="{{ section.settings.image | image_url }}"
+        class="section-image"
+        width="100%"
+        height="auto"
+        alt="{{ section.settings.image.alt | default: 'Section image' | escape }}"
+        loading="lazy"
+      >
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'section-image placeholder-svg' }}
+    {% endif %}
+  </div>
+</div>
+
+{% assign has_button_with_atc = false %}
+{% for block in section.blocks %}
+  {% if block.type == 'button' and section.settings.product_to_add != blank %}
+    {% assign has_button_with_atc = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if has_button_with_atc %}
+<script>
+  (function() {
+    var sectionEl = document.getElementById('shopify-section-{{ section.id }}');
+    if (!sectionEl) return;
+    var buttons = sectionEl.querySelectorAll('[data-add-to-cart="true"]');
+    if (!buttons || !buttons.length) return;
+
+    // Valid variant IDs for this product (for validation)
+    var validVariantIds = [
+      {% for variant in section.settings.product_to_add.variants %}
+        '{{ variant.id }}'{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
+    // Get variant from URL parameter
+    function getVariantFromUrl() {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('variant');
+    }
+
+    // Validate that variant belongs to this product
+    function isValidVariant(variantId) {
+      return variantId && validVariantIds.indexOf(String(variantId)) !== -1;
+    }
+
+    // Update buttons with current URL variant (with validation)
+    function updateButtonsWithUrlVariant() {
+      var urlVariantId = getVariantFromUrl();
+      // Only update if the variant is valid for this product
+      if (isValidVariant(urlVariantId)) {
+        buttons.forEach(function(btn) {
+          btn.setAttribute('data-variant-id', urlVariantId);
+        });
+      }
+    }
+
+    // Check URL on page load
+    updateButtonsWithUrlVariant();
+
+    // Better approach: Listen for history changes using a more efficient method
+    var originalPushState = history.pushState;
+    var originalReplaceState = history.replaceState;
+    
+    history.pushState = function() {
+      originalPushState.apply(history, arguments);
+      updateButtonsWithUrlVariant();
+    };
+    
+    history.replaceState = function() {
+      originalReplaceState.apply(history, arguments);
+      updateButtonsWithUrlVariant();
+    };
+
+    // Listen for popstate (browser back/forward)
+    window.addEventListener('popstate', updateButtonsWithUrlVariant);
+
+    // Listen for custom variant change events (if other sections dispatch them)
+    document.addEventListener('variant:change', function(e) {
+      if (e.detail && e.detail.variant && e.detail.variant.id) {
+        // Validate before updating
+        if (isValidVariant(e.detail.variant.id)) {
+          buttons.forEach(function(btn) {
+            btn.setAttribute('data-variant-id', e.detail.variant.id);
+          });
+        }
+      }
+    });
+
+    // Handle add to cart button clicks
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var variantId = btn.getAttribute('data-variant-id');
+        var quantityAttr = btn.getAttribute('data-quantity');
+        var quantity = parseInt(quantityAttr || '1', 10);
+        
+        // Validate variant before attempting to add
+        if (!variantId || !isValidVariant(variantId)) {
+          console.warn('Invalid variant ID:', variantId);
+          return;
+        }
+
+        btn.setAttribute('aria-busy', 'true');
+
+        var payload = new URLSearchParams();
+        payload.set('id', variantId);
+        payload.set('quantity', isNaN(quantity) ? '1' : String(quantity));
+
+        fetch('/cart/add.js?upcart=1&opens_cart=maybe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+          body: payload.toString()
+        })
+        .then(function(res) { 
+          if (!res.ok) {
+            return res.json().then(function(err) {
+              console.error('Cart add failed:', err);
+              throw err;
+            });
+          }
+          return res.json(); 
+        })
+        .catch(function(err) { 
+          console.error('Error adding to cart:', err);
+        })
+        .finally(function() { btn.removeAttribute('aria-busy'); });
+      }, { passive: false });
+    });
+  })();
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "NP Image With Text",
+  "settings": [
+    { "type": "text", "id": "unique_id", "label": "Unique ID" },
+
+    { "type": "header", "content": "FSA/HSA" },
+    {
+      "type": "checkbox", "id": "show_fsa_badge", "label": "Show FSA/HSA badge next to heading",
+      "info": "Places the eligibility badge beside the first heading block. Badge artwork is set in Theme settings > FSA/HSA eligibility.",
+      "default": false
+    },
+
+    { "type": "header", "content": "Select Image" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+
+    { "type": "header", "content": "Image Position" },
+    {
+      "type": "select", "id": "image_position", "label": "Image Position", "default": "right",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select", "id": "mobile_image_position", "label": "Mobile Image Position", "default": "bottom",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "Gap between text and image on mobile (px)",
+      "min": 0, "max": 100, "step": 1, "default": 0
+    },
+
+    { "type": "header", "content": "Section Padding" },
+    { "type": "range", "id": "paddingTop", "label": "Padding Top", "min": 0, "max": 100, "step": 1, "default": 20 },
+    { "type": "range", "id": "paddingRight", "label": "Padding Right", "min": 0, "max": 100, "step": 1, "default": 20 },
+    { "type": "range", "id": "paddingBottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 1, "default": 20 },
+    { "type": "range", "id": "paddingLeft", "label": "Padding Left", "min": 0, "max": 100, "step": 1, "default": 20 },
+
+    { "type": "header", "content": "Section Margin" },
+    { "type": "range", "id": "marginTop", "label": "Margin Top", "min": 0, "max": 100, "step": 1, "default": 0 },
+    { "type": "range", "id": "marginBottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 1, "default": 0 },
+
+    { "type": "header", "content": "Partial Background" },
+    { "type": "checkbox", "id": "show_partial_bkg", "label": "Show partial background", "default": false },
+    { "type": "color", "id": "partial_bkg_color", "label": "Partial background color", "default": "#fafaf9" },
+    { "type": "text", "id": "partial_bkg_gradient", "label": "Partial Background Gradient (Optional)" },
+    {
+      "type": "select", "id": "partial_bkg_position", "label": "Partial background position", "default": "top",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    },
+
+    { "type": "header", "content": "Full Background" },
+    { "type": "color", "id": "full_bkg_color", "label": "Full section background color", "default": "#ffffff" },
+    { "type": "text", "id": "full_bkg_gradient", "label": "Full Background Gradient (Optional)" },
+
+    { "type": "header", "content": "Text Color" },
+    { "type": "color", "id": "text_color", "label": "Text Color", "default": "#5e5d5e" },
+
+    { "type": "header", "content": "Add to Cart" },
+    { "type": "product", "id": "product_to_add", "label": "Product to add when button clicked" }
+  ],
+  "blocks": [
+    {
+      "type": "subheading", "name": "Subheading",
+      "settings": [
+        { "type": "text", "id": "subheading", "label": "Subheading", "default": "Subheading Text" }
+      ]
+    },
+    {
+      "type": "heading", "name": "Heading",
+      "settings": [
+        { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Heading Text" }
+      ]
+    },
+    {
+      "type": "text", "name": "Text",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Main paragraph text." }
+      ]
+    },
+    {
+      "type": "button", "name": "Button",
+      "settings": [
+        { "type": "text", "id": "button_label", "label": "Button Label" },
+        { "type": "url", "id": "button_link", "label": "Button Link" },
+        {
+          "type": "select", "id": "button_type", "label": "Button Type", "default": "full",
+          "options": [
+            { "value": "full", "label": "Full" },
+            { "value": "link", "label": "Link" },
+            { "value": "outline", "label": "Outline" }
+          ]
+        },
+        { "type": "color", "id": "buttonBg", "label": "Button Background", "default": "#5e5d5e" },
+        { "type": "color", "id": "buttonOutline", "label": "Button Outline", "default": "#5e5d5e" },
+        { "type": "color", "id": "buttonColor", "label": "Button Text Color", "default": "#ffffff" },
+        { "type": "color", "id": "linkColor", "label": "Link Color", "default": "#5e5d5e" }
+      ]
+    },
+    {
+      "type": "image", "name": "Logo Image",
+      "settings": [
+        { "type": "image_picker", "id": "logoImage", "label": "Logo Image" },
+        {
+          "type": "range", "id": "logoWidth", "label": "Logo Image Width",
+          "min": 0, "max": 400, "step": 10, "default": 150
+        }
+      ]
+    },
+    {
+      "type": "liquid", "name": "Custom Liquid",
+      "settings": [
+        { "type": "liquid", "id": "liquid", "label": "Custom Liquid" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NP Image With Text",
+      "category": "Nodpod",
+      "blocks": [
+        { "type": "subheading" },
+        { "type": "heading" },
+        { "type": "text" },
+        { "type": "button" }
+      ]
+    }
+  ]
+}
+{% endschema %}

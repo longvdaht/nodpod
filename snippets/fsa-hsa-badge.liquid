@@ -1,0 +1,149 @@
+{% comment %}
+  Renders the FSA/HSA eligibility badge and its explainer modal.
+
+  A product is eligible when it is on the product list in Theme settings > FSA/HSA
+  eligibility, OR when one of its tags matches the tag list there (case-insensitive,
+  exact match). The block sits on every product template and renders only for eligible
+  products, so the badge never has to be placed or removed per product.
+
+  Accepts:
+  - fsa_product: {Object} Product to test for eligibility. Optional when fsa_force is true.
+  - fsa_id: {String} Unique suffix for element ids (block id, section id, ...). Required.
+  - fsa_force: {Boolean} Skip the product check and always render. Default: false.
+  - fsa_attributes: {String} Extra attributes for the wrapper, e.g. block.shopify_attributes. Optional.
+
+  Usage:
+  {% render 'fsa-hsa-badge', fsa_product: product, fsa_id: block.id %}
+{% endcomment %}
+
+{%- liquid
+  assign fsa_badge_label = settings.fsa_badge_text | default: 'FSA/HSA Eligible'
+  assign fsa_cta_label = settings.fsa_cta_label | default: 'Learn More'
+  assign fsa_eligible = false
+
+  if settings.fsa_enabled == false
+    assign fsa_eligible = false
+  elsif fsa_force
+    assign fsa_eligible = true
+  elsif fsa_product != blank
+    for fsa_allowed_product in settings.fsa_eligible_products
+      if fsa_allowed_product.id == fsa_product.id
+        assign fsa_eligible = true
+        break
+      endif
+    endfor
+
+    unless fsa_eligible
+      assign fsa_eligible_tags = settings.fsa_eligible_tags | downcase | split: ','
+      for fsa_tag in fsa_eligible_tags
+        assign fsa_tag_test = fsa_tag | strip
+        if fsa_tag_test == blank
+          continue
+        endif
+        for fsa_product_tag in fsa_product.tags
+          assign fsa_product_tag_test = fsa_product_tag | downcase | strip
+          if fsa_product_tag_test == fsa_tag_test
+            assign fsa_eligible = true
+            break
+          endif
+        endfor
+        if fsa_eligible
+          break
+        endif
+      endfor
+    endunless
+  endif
+-%}
+
+{%- if fsa_eligible -%}
+  {{ 'component-fsa-hsa-badge.css' | asset_url | stylesheet_tag }}
+
+  <div class="fsa-badge-wrapper" {{ fsa_attributes }}>
+    <modal-opener class="fsa-badge__opener" data-modal="#FsaHsaModal-{{ fsa_id }}">
+      <button
+        id="FsaHsaBadge-{{ fsa_id }}"
+        class="fsa-badge"
+        type="button"
+        aria-haspopup="dialog"
+        aria-label="{{ fsa_badge_label | escape }}. {{ fsa_cta_label | escape }}"
+      >
+        {%- if settings.fsa_badge_image != blank -%}
+          {{
+            settings.fsa_badge_image
+            | image_url: width: 480
+            | image_tag:
+              loading: 'lazy',
+              class: 'fsa-badge__image',
+              widths: '160, 240, 320, 480',
+              sizes: '160px',
+              alt: fsa_badge_label
+          }}
+        {%- else -%}
+          <span class="fsa-badge__mark" aria-hidden="true">
+            <svg viewBox="0 0 20 20" focusable="false" role="presentation">
+              <path
+                fill="currentColor"
+                d="M10 1.5 12.2 6l5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L2.8 6.7l5-.7L10 1.5Z"
+              />
+            </svg>
+          </span>
+          <span class="fsa-badge__text">{{ fsa_badge_label }}</span>
+        {%- endif -%}
+
+        <span class="fsa-badge__info" aria-hidden="true">
+          <svg viewBox="0 0 20 20" focusable="false" role="presentation">
+            <circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <path
+              fill="currentColor"
+              d="M9.1 8.4h1.8v6H9.1v-6Zm.9-3.3a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1Z"
+            />
+          </svg>
+        </span>
+      </button>
+    </modal-opener>
+
+    <modal-dialog id="FsaHsaModal-{{ fsa_id }}" class="fsa-modal">
+      <div
+        role="dialog"
+        aria-labelledby="FsaHsaModalHeading-{{ fsa_id }}"
+        aria-modal="true"
+        class="fsa-modal__content"
+        tabindex="-1"
+      >
+        <button
+          id="ModalClose-Fsa-{{ fsa_id }}"
+          type="button"
+          class="fsa-modal__close"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          {{- 'icon-close.svg' | inline_asset_content -}}
+        </button>
+
+        <div class="fsa-modal__body">
+          <h2 id="FsaHsaModalHeading-{{ fsa_id }}" class="fsa-modal__heading">
+            {{ settings.fsa_modal_heading | default: fsa_badge_label }}
+          </h2>
+
+          {%- if settings.fsa_modal_intro != blank -%}
+            <div class="fsa-modal__intro rte">{{ settings.fsa_modal_intro }}</div>
+          {%- endif -%}
+
+          {%- if settings.fsa_modal_steps != blank -%}
+            {%- if settings.fsa_modal_steps_heading != blank -%}
+              <p class="fsa-modal__steps-heading">{{ settings.fsa_modal_steps_heading }}</p>
+            {%- endif -%}
+            <div class="fsa-modal__steps rte">{{ settings.fsa_modal_steps }}</div>
+          {%- endif -%}
+
+          {%- if settings.fsa_modal_disclaimer != blank -%}
+            <div class="fsa-modal__disclaimer rte">{{ settings.fsa_modal_disclaimer }}</div>
+          {%- endif -%}
+
+          {%- if settings.fsa_cta_link != blank and fsa_cta_label != blank -%}
+            <a class="fsa-modal__cta" href="{{ settings.fsa_cta_link }}">{{ fsa_cta_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </modal-dialog>
+  </div>
+{%- endif -%}

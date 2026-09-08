@@ -1,0 +1,291 @@
+<div class="video-column-section">
+  <div class="text-area">
+    <div class="text-wrapper">
+      <h2 class="video-heading">How to Use Nodpod</h2>
+      <div class="text-step active" data-video-link="1">
+        <div class="num-col">
+          <div class="step-number">1</div>
+        </div>
+        <div class="text-col">
+          <div class="step-heading">SIDE-SLEEPING</div>
+          <div class="step-p">Use the last two pods over your eyes and rest your head over the hollow end.</div>
+        </div>
+      </div>
+      <div class="text-step" data-video-link="2">
+        <div class="num-col">
+          <div class="step-number">2</div>
+        </div>
+        <div class="text-col">
+          <div class="step-heading">UPRIGHT & SECURE USE</div>
+          <div class="step-p">Pull the corner through the slit and secure.</div>
+        </div>
+      </div>
+      <div class="text-step" data-video-link="3">
+        <div class="num-col">
+          <div class="step-number">3</div>
+        </div>
+        <div class="text-col">
+          <div class="step-heading">3 MINUTE MAGIC</div>
+          <div class="step-p">Designed to get you to sleep, not meant to stay on all night.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="video-area">
+    <video
+      class="how-to-video active"
+      data-video-src="1"
+      src="https://cdn.accentuate.io/7911124402346/1704269806037/Mask-Step-1.mp4?v=1704269806038"
+      autoplay
+      loop
+      playsinline
+      muted
+    ></video>
+    <video
+      class="how-to-video"
+      data-video-src="2"
+      src="https://cdn.accentuate.io/7911124402346/1704269921423/Mask-Step-2.mp4?v=1704269921423"
+      autoplay
+      loop
+      playsinline
+      muted
+    ></video>
+    <video
+      class="how-to-video"
+      data-video-src="3"
+      src="https://cdn.accentuate.io/7911124402346/1704270284768/Mask-Step-3.mp4?v=1704270284768"
+      autoplay
+      loop
+      playsinline
+      muted
+    ></video>
+    <div class="video-loading">
+      <img width="100%" height="auto" src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/video-loading.png?v=1734714451">
+    </div>
+  </div>
+</div>
+
+<style>
+  .video-column-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 100%;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+  .text-area {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+  .text-wrapper {
+    max-width: 500px;
+    margin: auto;
+  }
+  .video-area {
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-step {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    color: #5d5e5d;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: .6s;
+    margin-bottom: 40px;
+  }
+  .text-step.active {
+    opacity: 1;
+    transition: .6s;
+  }
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: #ffffff;
+    color: #aab7ad;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+    font-weight: 400;
+    font-family: var(--font-body-family);
+    line-height: 1;
+    border: 1px solid #828081;
+    font-size: 2rem;
+  }
+  .text-step.active .step-number {
+    background: #aab7ad;
+    color: #ffffff;
+    border: 0;
+  }
+  .step-heading {
+      font-size: 16px !important;
+      letter-spacing: 1px;
+      font-family: var(--font-body-family);
+      font-weight: 400;
+      line-height: 1.5;
+      margin: 0;
+  }
+  .step-p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      font-family: var(--font-heading-family);
+      font-weight: 300;
+  }
+  .text-col {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: center;
+  }
+  .video-heading {
+    font-size: 5rem;
+    color: #5d5e5d;
+    margin-bottom: 40px;
+    line-height: 1;
+  }
+  .how-to-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .how-to-video.active {
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+  }
+  .video-area {
+    position: relative;
+    aspect-ratio: 1/1;
+  }
+  .video-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width:996px) {
+    .text-area {
+      width: 100%;
+    }
+    .video-area {
+      width: 100%;
+    }
+    .video-heading {
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const area = document.querySelector('.video-area');
+    const videos = Array.from(document.querySelectorAll('.how-to-video'));
+
+    // Make sure all videos are set up for mobile autoplay
+    videos.forEach(v => {
+      v.muted = true;
+      v.autoplay = true;
+      v.playsInline = true;
+      v.setAttribute('muted', '');
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
+      // Optional: improve first-frame availability
+      v.preload = v.preload || 'auto';
+    });
+
+    const safePlay = (v) => {
+      if (!v) return;
+      const tryPlay = () => {
+        const p = v.play();
+        if (p && typeof p.then === 'function') {
+          p.catch(() => {
+            // If autoplay were ever blocked, play on next user gesture
+            const kick = () => v.play().catch(() => {});
+            window.addEventListener('touchstart', kick, { once: true });
+            window.addEventListener('mousedown',  kick, { once: true });
+          });
+        }
+      };
+      if (v.readyState >= 2) {
+        tryPlay();
+      } else {
+        v.addEventListener('loadeddata', tryPlay, { once: true });
+      }
+    };
+
+    // Initial pulse on step 2
+    document.querySelectorAll('.text-step[data-video-link="2"] .step-number')
+      .forEach(el => el.classList.add('pulse'));
+
+    // Autoplay the initially active video
+    safePlay(area?.querySelector('video.how-to-video.active'));
+
+    // Handle clicks on steps (event delegation)
+    document.addEventListener('click', (e) => {
+      const step = e.target.closest('.text-step');
+      if (!step) return;
+
+      const videoSrc = step.dataset.videoLink;
+      const activeVideo = area?.querySelector(`video[data-video-src="${videoSrc}"]`);
+      if (!activeVideo) return;
+
+      // Deactivate all steps & videos, pause others
+      step.closest('.text-area')?.querySelectorAll('.text-step.active')
+        .forEach(el => el.classList.remove('active'));
+
+      videos.forEach(v => {
+        if (v !== activeVideo) {
+          v.pause();
+          v.currentTime = 0;
+          v.classList.remove('active');
+        }
+      });
+
+      // Activate clicked step & video
+      step.classList.add('active');
+      activeVideo.classList.add('active');
+
+      // Crucial: don't call activeVideo.load(); just play it
+      safePlay(activeVideo);
+
+      // Manage pulse hint
+      document.querySelectorAll('.step-number').forEach(el => el.classList.remove('pulse'));
+      const current = parseInt(videoSrc, 10);
+      const next = current === 3 ? 1 : current + 1;
+      document
+        .querySelector(`.text-step[data-video-link="${next}"] .step-number`)
+        ?.classList.add('pulse');
+    });
+
+    // Optional nicety: pause when tab hidden; resume when visible
+    document.addEventListener('visibilitychange', () => {
+      const active = area?.querySelector('video.how-to-video.active');
+      if (!active) return;
+      if (document.hidden) {
+        active.pause();
+      } else {
+        safePlay(active);
+      }
+    });
+  });
+</script>
+

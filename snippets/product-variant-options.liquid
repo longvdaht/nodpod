@@ -1,0 +1,366 @@
+{% comment %}
+  Renders product variant options with release_ready visibility
+
+  Accepts:
+  - product: {Object} product object.
+  - option: {Object} current product_option object.
+  - block: {Object} block object.
+  - picker_type: {String} type of picker to display
+  - staff_view: {Boolean} whether user is in staff/preview mode.
+  - swatch_grouping_enabled: {Boolean} whether to group swatches by collection metafield.
+
+  Usage:
+  {% render 'product-variant-options',
+    product: product,
+    option: option,
+    block: block
+    picker_type: picker_type,
+    staff_view: staff_view
+  %}
+{% endcomment %}
+{%- liquid
+  assign product_form_id = 'product-form-' | append: section.id
+  
+  # Build list of visible option values based on variant visibility
+  assign visible_values = ''
+  
+  for variant in product.variants
+    assign rr1 = variant.metafields.release.ready.value
+    assign rr2 = variant.metafields.custom.release_ready.value
+    assign ready_true = false
+    
+    if rr1 == true or rr1 == 'true' or rr1 == 1 or rr1 == '1'
+      assign ready_true = true
+    elsif rr2 == true or rr2 == 'true' or rr2 == 1 or rr2 == '1'
+      assign ready_true = true
+    endif
+    
+    if staff_view or ready_true
+      # Get the option value for this variant based on option position
+      assign variant_option_value = ''
+      if option.position == 1
+        assign variant_option_value = variant.option1
+      elsif option.position == 2
+        assign variant_option_value = variant.option2
+      elsif option.position == 3
+        assign variant_option_value = variant.option3
+      endif
+      
+      unless visible_values contains variant_option_value
+        if visible_values != ''
+          assign visible_values = visible_values | append: ','
+        endif
+        assign visible_values = visible_values | append: variant_option_value
+      endunless
+    endif
+  endfor
+  
+  assign visible_values_array = visible_values | split: ','
+  
+  # Initialize swatch grouping
+  assign swatch_grouping_enabled = swatch_grouping_enabled | default: false
+  assign should_group_swatches = false
+  
+  if picker_type == 'swatch'
+    if swatch_grouping_enabled == true or swatch_grouping_enabled == 'true' or swatch_grouping_enabled == 1 or swatch_grouping_enabled == '1'
+      assign should_group_swatches = true
+      assign swatch_group_entries = ''
+      assign swatch_group_order = ''
+    endif
+  endif
+-%}
+
+{%- for value in option.values -%}
+  {%- comment -%} Only render if this value is visible {%- endcomment -%}
+  {%- if visible_values_array contains value -%}
+    {%- liquid
+      assign swatch_focal_point = null
+      if value.swatch.image
+        assign image_url = value.swatch.image | image_url: width: 50
+        assign swatch_value = 'url(' | append: image_url | append: ')'
+        assign swatch_focal_point = value.swatch.image.presentation.focal_point
+      elsif value.swatch.color
+        assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+      else
+        assign swatch_value = null
+      endif
+
+      # Check if this value has any available AND visible variants
+      # Note: We don't disable sold out options, just mark them for styling
+      assign option_disabled = false
+      assign option_available = false
+      for variant in product.variants
+        assign rr1 = variant.metafields.release.ready.value
+        assign rr2 = variant.metafields.custom.release_ready.value
+        assign ready_true = false
+        
+        if rr1 == true or rr1 == 'true' or rr1 == 1 or rr1 == '1'
+          assign ready_true = true
+        elsif rr2 == true or rr2 == 'true' or rr2 == 1 or rr2 == '1'
+          assign ready_true = true
+        endif
+        
+        if staff_view or ready_true
+          assign variant_matches = false
+          if option.position == 1 and variant.option1 == value
+            assign variant_matches = true
+          elsif option.position == 2 and variant.option2 == value
+            assign variant_matches = true
+          elsif option.position == 3 and variant.option3 == value
+            assign variant_matches = true
+          endif
+          
+          if variant_matches and variant.available
+            assign option_available = true
+            break
+          endif
+        endif
+      endfor
+    -%}
+
+    {%- capture input_id -%}
+      {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+    {%- endcapture -%}
+
+    {%- capture input_dataset -%}
+      data-product-url="{{ value.product_url }}"
+      data-option-value-id="{{ value.id }}"
+    {%- endcapture -%}
+
+    {%- capture label_unavailable -%}
+      <span class="visually-hidden label-unavailable">
+        {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
+      </span>
+    {%- endcapture -%}
+
+    {%- if picker_type == 'swatch' -%}
+      {%- comment %} Accessible help text {%- endcomment %}
+      {%- capture help_text -%}
+        <span class="visually-hidden">{{ value | escape }}</span>{{ label_unavailable }}
+      {%- endcapture -%}
+
+      {%- comment %} Pick a representative variant for this value so we can read metafields {%- endcomment %}
+      {%- assign vref = null -%}
+      {%- for v in product.variants -%}
+        {%- liquid
+          assign rr1 = v.metafields.release.ready.value
+          assign rr2 = v.metafields.custom.release_ready.value
+          assign ready_true = false
+          
+          if rr1 == true or rr1 == 'true' or rr1 == 1 or rr1 == '1'
+            assign ready_true = true
+          elsif rr2 == true or rr2 == 'true' or rr2 == 1 or rr2 == '1'
+            assign ready_true = true
+          endif
+        -%}
+        {%- if staff_view or ready_true -%}
+          {%- if option.position == 1 and v.option1 == value -%}
+            {%- assign vref = v -%}
+            {%- break -%}
+          {%- elsif option.position == 2 and v.option2 == value -%}
+            {%- assign vref = v -%}
+            {%- break -%}
+          {%- elsif option.position == 3 and v.option3 == value -%}
+            {%- assign vref = v -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if vref -%}
+        {%- assign c1 = vref.metafields.custom.variant_color.value | default: vref.metafields.custom.variant_color -%}
+        {%- assign c2 = vref.metafields.custom.variant_secondary_color.value
+          | default: vref.metafields.custom.variant_secondary_color
+        -%}
+        {%- assign multicolor = vref.metafields.custom.variant_multicolor -%}
+        {%- assign variant_swatch_image = vref.metafields.custom.variant_swatch_image.value -%}
+        {%- assign collection_name = vref.metafields.custom.collection_name.value | default: '' -%}
+        {%- assign is_limited = false -%}
+        {%- if collection_name != 'Core Collection' and collection_name != '' -%}
+          {%- assign is_limited = true -%}
+        {%- endif -%}
+
+        {%- assign outline = c1 | default: '#000000' -%}
+        {%- capture bg -%}
+          {%- if swatch_value -%}
+            background: {{ swatch_value }};
+            {%- if value.swatch.image and swatch_focal_point -%}
+              background-position: {{ swatch_focal_point }};
+            {%- elsif value.swatch.image -%}
+              background-position: center;
+            {%- endif -%}
+            {%- if value.swatch.image -%}
+              background-size: cover;
+            {%- endif -%}
+          {%- elsif variant_swatch_image -%}
+            background-image: url('{{ variant_swatch_image | image_url: width: 100 }}');
+            background-size: cover;
+            background-position: center;
+          {%- elsif c1 and c2 -%}
+            background: {{ c1 }}; background: linear-gradient(180deg, {{ c1 }} 0%, {{ c1 }} 54%, {{ c2 }} 54%);
+          {%- elsif multicolor -%}
+            background: rgb(165,154,185);
+            background: linear-gradient(45deg, rgba(165,154,185,1) 0%, rgba(241,179,184,1) 20%, rgba(233,223,213,1) 40%, rgba(142,165,142,1) 60%, rgba(89,87,91,1) 80%, rgba(2,3,3,1) 100%);
+            {%- assign outline = 'rgba(165,154,185,1)' -%}
+          {%- else -%}
+            background: {{ c1 | default: '#000000' }};
+          {%- endif -%}
+        {%- endcapture -%}
+
+        {%- capture swatch_markup -%}
+          <input
+            type="radio"
+            id="{{ input_id }}"
+            name="options[{{ option.name | escape }}]"
+            value="{{ value | escape }}"
+            form="{{ product_form_id }}"
+            class="pdp-color__input swatch-input__input{% unless option_available %} sold-out{% endunless %}"
+            {% if value.selected %}
+              checked
+            {% endif %}
+            {{ input_dataset }}
+            data-variant-color="{{ c1 | strip }}"
+            data-variant-secondary-color="{{ c2 | strip }}"
+            data-variant-multicolor="{% if multicolor %}true{% else %}false{% endif %}"
+            data-variant-limited="{% if is_limited %}true{% else %}false{% endif %}"
+            data-variant-available="{{ option_available }}"
+            style="--np-outline: {{ outline }};"
+          >
+          <label
+            for="{{ input_id }}"
+            class="pdp-color__label{% unless option_available %} sold-out{% endunless %}"
+            style="--np-outline: {{ outline }};"
+            title="{{ value | escape }}"
+          >
+            <span class="pdp-color__chip" style="{{ bg | strip }}"></span>
+            {{ help_text }}
+          </label>
+        {%- endcapture -%}
+
+        {%- if should_group_swatches -%}
+          {%- comment -%} Determine collection group {%- endcomment -%}
+          {%- assign group_label = collection_name | strip | default: 'Other' -%}
+          {%- assign group_handle = group_label | handleize | default: 'other' -%}
+          {%- assign group_token = '[' | append: group_handle | append: ']' -%}
+          
+          {%- comment -%} Track group index (for label IDs) {%- endcomment -%}
+          {%- unless swatch_group_order contains group_token -%}
+            {%- assign group_order_array = swatch_group_order | split: '%%%' -%}
+            {%- assign current_group_index = group_order_array.size | plus: 1 -%}
+            {%- assign swatch_group_order = swatch_group_order | append: group_token | append: group_label | append: '%%%' -%}
+          {%- else -%}
+            {%- assign group_order_array = swatch_group_order | split: '%%%' -%}
+            {%- for g in group_order_array -%}
+              {%- if g contains group_token -%}
+                {%- assign current_group_index = forloop.index -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endunless -%}
+          
+          {%- comment -%} Add collection metadata to input {%- endcomment -%}
+          {%- capture collection_attrs -%}
+            data-collection-index="{{ current_group_index }}" data-collection-name="{{ group_label }}" class="pdp-color__input
+          {%- endcapture -%}
+          {%- assign enhanced_markup = swatch_markup | replace: 'class="pdp-color__input', collection_attrs -%}
+          
+          {%- comment -%} Store for later grouped rendering {%- endcomment -%}
+          {%- assign swatch_group_entries = swatch_group_entries | append: group_handle | append: '|||' | append: enhanced_markup | append: '%%%' -%}
+        {%- else -%}
+          {{- swatch_markup -}}
+        {%- endif -%}
+      {%- endif -%}
+
+    {%- elsif picker_type == 'button' -%}
+      {%- if value.size == 2 -%}
+        {%- assign display_label = value | upcase -%}
+      {%- else -%}
+        {%- assign display_label = value | slice: 0, 1 | upcase -%}
+      {%- endif -%}
+      <input
+        type="radio"
+        id="{{ input_id }}"
+        name="options[{{ option.name | escape }}]"
+        value="{{ value | escape }}"
+        form="{{ product_form_id }}"
+        class="pdp-size__input{% unless option_available %} sold-out{% endunless %}"
+        {% if value.selected %}
+          checked
+        {% endif %}
+        {{ input_dataset }}
+        data-variant-available="{{ option_available }}"
+      >
+      <label
+        for="{{ input_id }}"
+        class="pdp-size__label{% unless option_available %} sold-out{% endunless %}"
+      >
+        <span class="pdp-size__letter">{{ display_label }}</span>
+        {{ label_unavailable -}}
+        <span class="visually-hidden">{{ value }}</span>
+      </label>
+
+    {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
+      <option
+        id="{{ input_id }}"
+        value="{{ value | escape }}"
+        {% if value.selected %}
+          selected="selected"
+        {% endif %}
+        {% if option_disabled %}
+          disabled
+        {% endif %}
+        {% if swatch_value and picker_type == 'swatch_dropdown' %}
+          data-option-swatch-value="{{ swatch_value }}"
+          {% if swatch_focal_point %}
+            data-option-swatch-focal-point="{{ swatch_focal_point }}"
+          {% endif %}
+        {% endif %}
+        {{ input_dataset }}
+      >
+        {% if option_disabled -%}
+          {{- 'products.product.value_unavailable' | t: option_value: value -}}
+        {%- else -%}
+          {{- value -}}
+        {%- endif %}
+      </option>
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Render grouped swatches by collection {%- endcomment -%}
+{%- if should_group_swatches and swatch_group_order != '' -%}
+  <div class="swatch-groups" data-swatch-layout="rows">
+    {%- assign group_entries = swatch_group_order | split: '%%%' -%}
+    {%- assign swatch_markup_entries = swatch_group_entries | split: '%%%' -%}
+    
+    {%- for group_entry in group_entries -%}
+      {%- unless group_entry == '' -%}
+        {%- assign handle_part = group_entry | split: ']' | first -%}
+        {%- assign group_handle = handle_part | remove: '[' | strip | default: 'other' -%}
+        {%- assign group_label = group_entry | split: ']' | last | strip -%}
+        {%- assign group_index = forloop.index -%}
+        
+        <div class="swatch-group swatch-group--row" data-swatch-group="{{ group_handle }}">
+          <div class="swatch-group__header">
+            <legend class="form__label" id="collection-label-{{ section.id }}-{{ group_index }}" data-collection-name="{{ group_label }}">
+              {{ group_label }}: <span></span>
+            </legend>
+          </div>
+          
+          <div class="swatch-group__row" role="row">
+            {%- for entry in swatch_markup_entries -%}
+              {%- unless entry == '' -%}
+                {%- assign entry_parts = entry | split: '|||' -%}
+                {%- assign entry_handle = entry_parts | first -%}
+                {%- assign entry_markup = entry_parts | last -%}
+                {%- if entry_handle == group_handle -%}
+                  {{ entry_markup }}
+                {%- endif -%}
+              {%- endunless -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

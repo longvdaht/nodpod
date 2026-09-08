@@ -1,0 +1,141 @@
+{% comment %}
+  NP Footer Logo Bar — Dawn compatible
+  Place in: sections/np-footer-logo.liquid
+  Add it to the Footer group (above the Footer section).
+{% endcomment %}
+
+<section
+  id="np-footer-logo-{{ section.id }}"
+  class="np-footer-logo"
+  aria-label="Brand logo strip"
+>
+  <style>
+    /* Scoped to this section instance */
+    #np-footer-logo-{{ section.id }}{
+      --bg: {{ section.settings.bg_color }};
+      --pt: {{ section.settings.padding_top | default: 20 }}px;
+      --pb: {{ section.settings.padding_bottom | default: 20 }}px;
+      --maxw: {{ section.settings.logo_max_width | default: 220 }}px;
+
+      background: var(--bg);
+      padding-block: var(--pt) var(--pb);
+      text-align: center;
+
+      {% if section.settings.show_border_top %}
+        border-top: {{ section.settings.border_top_width | default: 1 }}px solid {{ section.settings.border_top_color }};
+      {% endif %}
+      {% if section.settings.show_border_bottom %}
+        border-bottom: {{ section.settings.border_bottom_width | default: 1 }}px solid {{ section.settings.border_bottom_color }};
+      {% endif %}
+    }
+
+    #np-footer-logo-{{ section.id }} .np-footer-logo__img{
+      display:block;
+      margin-inline:auto;
+      max-width: min(100%, var(--maxw));
+      height:auto;
+    }
+
+    #np-footer-logo-{{ section.id }} .np-footer-logo__ph{
+      display:grid; place-items:center;
+    }
+    #np-footer-logo-{{ section.id }} .np-footer-logo__ph svg{
+      width: min(60%, var(--maxw));
+      height:auto;
+      opacity:.4;
+    }
+  </style>
+
+  {% if section.settings.logo != blank %}
+    {%- assign alt_text = section.settings.logo.alt | default: shop.name | escape -%}
+    {{
+      section.settings.logo
+      | image_url: width: 1200
+      | image_tag:
+          class: 'np-footer-logo__img',
+          widths: '200,300,400,600,800,1000,1200',
+          sizes: 'min(100vw, var(--maxw))',
+          alt: alt_text,
+          loading: 'lazy'
+    }}
+  {% else %}
+    <div class="np-footer-logo__ph">
+      {{ 'image' | placeholder_svg_tag }}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "NP Footer Logo Bar",
+  "class": "section",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "Logo" },
+    { "type": "image_picker", "id": "logo", "label": "Logo image" },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "label": "Logo max width (px)",
+      "min": 60,
+      "max": 600,
+      "step": 10,
+      "default": 220
+    },
+
+    { "type": "header", "content": "Spacing" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "default": 20
+    },
+
+    { "type": "header", "content": "Borders" },
+
+    { "type": "checkbox", "id": "show_border_top", "label": "Show top border", "default": false },
+    {
+      "type": "range",
+      "id": "border_top_width",
+      "label": "Top border width (px)",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 1
+    },
+    { "type": "color", "id": "border_top_color", "label": "Top border color", "default": "#E5E5E5" },
+
+    { "type": "checkbox", "id": "show_border_bottom", "label": "Show bottom border", "default": false },
+    {
+      "type": "range",
+      "id": "border_bottom_width",
+      "label": "Bottom border width (px)",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 1
+    },
+    { "type": "color", "id": "border_bottom_color", "label": "Bottom border color", "default": "#E5E5E5" }
+  ],
+  "presets": [
+    {
+      "name": "NP Footer Logo Bar",
+      "category": "Nodpod"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+/* swatch lives in its own file for reusability of the swatch in swatch-input and dropdown */
+.swatch {
+  --swatch--size: var(--swatch-input--size, 4.4rem);
+  --swatch--border-radius: var(--swatch-input--border-radius, 50%);
+
+  display: block;
+  width: var(--swatch--size);
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--swatch--background);
+  background-position: var(--swatch-focal-point, initial);
+  background-size: cover;
+  background-origin: border-box;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  border-radius: var(--swatch--border-radius);
+}
+
+.swatch--square {
+  --swatch--border-radius: var(--swatch-input--border-radius, 0.2rem);
+}
+
+.swatch--unavailable {
+  border-style: dashed;
+  border-color: rgba(var(--color-foreground), 0.5);
+}
+
+.swatch-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.swatch-group {
+  position: relative;
+}
+
+.swatch-group__header {
+  margin-bottom: 0.2rem;
+}
+
+.swatch-group__header .form__label {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: none;
+  color: rgb(var(--color-foreground));
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+.swatch-group__header .form__label span {
+  margin-left: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6f6f6f;
+  font-weight: 300;
+  font-size: 14px;
+  font-family: var(--font-body-family);
+}
+
+.swatch-group__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.swatch-group__row .swatch-input__input + .swatch-input__label {
+  margin: 0.7rem 1rem 0.2rem 0;
+}
+
+@media screen and (min-width: 750px) {
+  .swatch-groups {
+    gap: 2.4rem;
+  }
+}

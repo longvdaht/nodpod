@@ -1,0 +1,116 @@
+{%- comment -%}
+If you want to reuse the player in your section, please refer to 'gs-hero.liquid' for the necessary schema.
+
+-- [ USAGE ] --
+    {%- liquid
+        assign vid = block.settings.video
+        assign vidMobile = block.settings.videoMobile | default: nil 
+
+        assign loop = block.settings.videoLoop
+        assign autoplay = block.settings.videoAutoplay
+        assign muted = block.settings.videoMute
+        assign clickToPlay = block.settings.clickToPlay
+        assign controls = block.settings.playPause
+
+        render 'global-video' vid: vid, vidMobile: vidMobile, loop: loop, autoplay: autoplay, muted: muted, clickToPlay: clickToPlay, controls: controls
+    -%}
+
+-- [ Accepts ] --
+	vid: the video to render [REQUIRED]
+    vidMobile: if you want to have a different video for mobile. [Optional]
+
+    loop: the video
+    autoplay: the video
+    muted: the video
+    clickToPlay: click over the video to play
+    controls: show play/pause buttons
+{% endcomment %}
+
+{%- liquid
+    assign vid = vid | default: nil
+    assign vidMobile = vidMobile | default: nil
+
+    assign loop = loop | default: false
+    assign autoplay = autoplay | default: false
+    assign muted = muted | default: false
+    assign controls = controls | default: false
+    assign clickToPlay = clickToPlay | default: false 
+-%}
+
+{%- if vid != nil -%}
+    {%- comment -%} 
+        Desktop video
+    {%- endcomment -%}
+        {%- liquid
+            assign style = nil
+            if vidMobile != nil
+                assign style = 'large-only'
+            endif
+            assign viewport = 'desktop'
+            assign vidPoster = vid.preview_image | image_url: width: 1500 
+        -%}
+
+        <video-player x-grid columns="absolute" data-viewport="{{ viewport }}" class="{{ style }}">
+            <video class="js"
+                poster="{{ vidPoster }}"
+                crossorigin 
+                playsinline
+                {% if loop %}loop{% endif %}
+                {% if autoplay %}autoplay muted{% endif %}
+                {% if mute %}muted{% endif %}
+                {% if clickToPlay %}click-play{% endif %}
+            >
+                {%- for video in vid.sources -%}
+                <source data-src="{{ video.url }}" type="{{ video.mime_type }}">
+                {%- endfor -%}
+            </video>
+
+            {% # theme-check-disable RemoteAsset %}
+            <noscript><video poster="{{ vidPoster }}" crossorigin playsinline {% if loop %}loop{% endif %} {% if autoplay %}autoplay muted{% endif %} {% if muted %}muted{% endif %}>{%- for video in vid.sources -%}<source src="{{ video.url }}" type="{{ video.mime_type }}">{%- endfor -%}</video></noscript>
+            {% # theme-check-enable RemoteAsset %}
+
+            <button class="is-white is-pill has-icon controller js" {% unless controls %}hidden{% endunless %}>
+                <span class="pause-icon">{%- render 'global-icon' with 'o-pause' -%}</span>
+                <span class="play-icon">{%- render 'global-icon' with 'o-play' -%}</span>
+            </button>
+        </video-player>
+
+    {%- comment -%} 
+        Mobile video
+    {%- endcomment -%}
+    {%- if vidMobile != nil -%}
+        {%- liquid
+            assign vid = vidMobile
+            assign vidPoster = vid.preview_image | image_url: width: 1000
+            assign viewport = 'mobile'
+            assign style = 'small-only'
+        -%}
+        <video-player x-grid columns="absolute" data-viewport="{{ viewport }}" class="{{ style }}">
+            <video class="js"
+                poster="{{ vidPoster }}"
+                crossorigin 
+                playsinline 
+                {% if loop %}loop{% endif %}
+                {% if autoplay %}autoplay muted{% endif %}
+                {% if muted %}muted{% endif %}
+                {% if clickToPlay %}click-play{% endif %}
+            >
+                {%- for video in vid.sources -%}
+                <source data-src="{{ video.url }}" type="{{ video.mime_type }}">
+                {%- endfor -%}
+            </video>
+
+            {% # theme-check-disable RemoteAsset %}
+            <noscript><video poster="{{ vidPoster }}" crossorigin playsinline {% if loop %}loop{% endif %} {% if autoplay %}autoplay muted{% endif %} {% if muted %}muted{% endif %}>{%- for video in vid.sources -%}<source src="{{ video.url }}" type="{{ video.mime_type }}">{%- endfor -%}</video></noscript>
+            {% # theme-check-enable RemoteAsset %}
+
+            <button class="is-white is-pill has-icon controller js" {% unless controls %}hidden{% endunless %}>
+                <span class="pause-icon">{%- render 'global-icon' with 'o-pause' -%}</span>
+                <span class="play-icon">{%- render 'global-icon' with 'o-play' -%}</span>
+            </button>
+        </video-player>
+    {%- endif -%}
+{%- else -%}
+
+    <picture>{{ 'image' | placeholder_svg_tag: 'svgph' }}</picture>
+{%- endif -%}

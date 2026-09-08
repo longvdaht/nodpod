@@ -1,0 +1,251 @@
+{{ 'section-press-review.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-left: {{ section.settings.padding_left | times: 0.75 | round: 0 }}px;
+    padding-right: {{ section.settings.padding_right | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right: {{ section.settings.padding_right }}px;
+    }
+  }
+
+  {% if section.settings.background_color != blank and section.settings.background_color != '#ffffff' %}
+    .press-review-{{ section.id }} {
+      background-color: {{ section.settings.background_color }} !important;
+    }
+  {% endif %}
+
+  .press-review-{{ section.id }} {
+    {% if section.settings.show_top_border %}
+      border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+    {% endif %}
+    {% if section.settings.show_bottom_border %}
+      border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+    {% endif %}
+  }
+{%- endstyle -%}
+
+<div class="press-review press-review-{{ section.id }} color-scheme-{{ section.settings.color_scheme }} gradient">
+  <div class="press-review__container section-{{ section.id }}-padding page-width">
+    <div class="press-review__content">
+      {% if section.settings.quote_text != blank %}
+        <h2 class="press-review__quote h1">
+          {{ section.settings.quote_text }}
+        </h2>
+      {% endif %}
+      
+      {% if section.settings.logo_image %}
+        <div class="press-review__logo-wrapper">
+          {%- assign logo_alt = section.settings.logo_image.alt | default: 'Press Review Logo' -%}
+          {%- assign logo_width = section.settings.logo_width | default: 100 -%}
+          
+          {{
+            section.settings.logo_image
+            | image_url: width: logo_width
+            | image_tag:
+              class: 'press-review__logo',
+              alt: logo_alt,
+              width: logo_width,
+              height: section.settings.logo_image.height,
+              loading: 'lazy'
+          }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% comment %} CSS Asset {% endcomment %}
+{% style %}
+  .press-review {
+    width: 100%;
+    margin: 0;
+  }
+
+  .press-review__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20rem;
+  }
+
+  .press-review__content {
+    text-align: center;
+    max-width: 80rem;
+    width: 100%;
+  }
+
+  .press-review__quote {
+    font-size: clamp(2.8rem, 4vw, 3.8rem);
+    line-height: 1;
+    color: rgba(var(--color-foreground), 0.7);
+    margin: 0 0 4rem 0;
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
+  }
+
+  .press-review__logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .press-review__logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .press-review__quote {
+      margin-bottom: 2rem;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Press Review",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "quote_text",
+      "label": "Quote text",
+      "default": "The greatest invention since inventions were a thing"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 100,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "1",
+          "label": "Scheme 1"
+        },
+        {
+          "value": "2",
+          "label": "Scheme 2"
+        },
+        {
+          "value": "3",
+          "label": "Scheme 3"
+        },
+        {
+          "value": "4",
+          "label": "Scheme 4"
+        },
+        {
+          "value": "5",
+          "label": "Scheme 5"
+        }
+      ],
+      "default": "1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Custom background color",
+      "info": "Overrides color scheme if set. Leave empty to use color scheme background."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_border",
+      "label": "Show top border",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_border",
+      "label": "Show bottom border",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding left",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding right",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press Review"
+    }
+  ]
+}
+{% endschema %}

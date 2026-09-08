@@ -1,0 +1,18 @@
+{%- liquid 
+	assign alt = alt | default: img.alt
+    assign width = width | default: 2750
+    assign widths = widths | default: '200,300,400,500,750,1000,1280,1500,1750,2000,2500,2750'
+	assign sizes = sizes | default: '100vw'
+	assign loading = loading | default: 'eager'
+    assign mobile = mobile | default: false
+    if mobile
+        assign widths = nil
+        assign sizes = nil
+    endif
+
+	if section.index > 3
+		assign loading = 'lazy'
+	endif
+
+	echo img | image_url: width: width | image_tag: widths: widths, sizes: sizes, loading: loading, alt: alt
+-%}

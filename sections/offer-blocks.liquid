@@ -1,0 +1,131 @@
+<!-- offer-blocks.liquid -->
+<div class="offer-page-section">
+  <div class="offer-table">
+    {% for block in section.blocks %}
+      <div class="offer-card">
+        <img
+          width="100%"
+          height="100%"
+          src="{{ block.settings.offer_image | image_url: width: 1200, height: 600 }}"
+          alt="Offer Image"
+        >
+        <div class="offer-content">
+          <h3>{{ block.settings.offer_title }}</h3>
+          <p>{{ block.settings.offer_description }}</p>
+          <a href="{{ block.settings.offer_button_url }}" class="offers-btn">{{ block.settings.offer_button_text }}</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .offer-page-section {
+    padding: 100px 40px;
+    text-align: center;
+    max-width: 1400px;
+    margin: auto;
+  }
+  .offer-card {
+    border: 1px solid #5d5e5d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 43%;
+    border-radius: 20px;
+    flex-wrap: wrap;
+  }
+  .offer-card img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 1px solid #5d5e5d;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  .offer-card h3 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    line-height: 1;
+  }
+  .offer-card p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .offer-content {
+    padding: 20px;
+  }
+  a.offers-btn,
+  a.offers-btn:hover {
+    background: #5d5e5d;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 40px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .offer-table {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 1800px;
+    margin: auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 40px;
+  }
+  @media (max-width: 777px) {
+    .offer-card {
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Offer Blocks",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "offer",
+      "name": "Offer Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "offer_image",
+          "label": "Offer Image"
+        },
+        {
+          "type": "text",
+          "id": "offer_title",
+          "label": "Title",
+          "default": "Free US Shipping on orders over $100"
+        },
+        {
+          "type": "textarea",
+          "id": "offer_description",
+          "label": "Description",
+          "default": "No code needed."
+        },
+        {
+          "type": "text",
+          "id": "offer_button_text",
+          "label": "Button Text",
+          "default": "SHOP NOW"
+        },
+        {
+          "type": "url",
+          "id": "offer_button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

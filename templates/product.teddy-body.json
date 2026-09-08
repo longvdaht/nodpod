@@ -1,0 +1,754 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "yotpo_product_reviews_star_rating_DhKeUU": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_liquid_wQ4TRW": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p class=\"subtitle\">{{ product.metafields.descriptors.subtitle }}</p>"
+          }
+        },
+        "divider_cLMHCN": {
+          "type": "divider",
+          "settings": {
+            "space": 16,
+            "color": "#d9d9d9"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "divider_7FnXyt": {
+          "type": "divider",
+          "settings": {
+            "space": 12,
+            "color": "#d9d9d9"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "text_i43CGF": {
+          "type": "text",
+          "settings": {
+            "text": "Free Shipping  over $100 + Easy Returns",
+            "text_style": "body"
+          }
+        },
+        "divider_qRaJAm": {
+          "type": "divider",
+          "disabled": true,
+          "settings": {
+            "space": 16,
+            "color": "#d9d9d9"
+          }
+        },
+        "icon_with_text_dhMfjM": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/Group_374.svg",
+            "heading_1": "Clinically tested to eliminate acne-causing bacteria by over 99%",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/Group_375.svg",
+            "heading_2": "Stays fresher 3–5x longer between washes",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/Layer_1_1.svg",
+            "heading_3": "Promotes skin wellness while reducing hair friction"
+          }
+        },
+        "divider_H9xhmp": {
+          "type": "divider",
+          "settings": {
+            "space": 8,
+            "color": "#d9d9d9"
+          }
+        },
+        "tolstoy_shoppable_video_quiz_carousel_block_taALbX": {
+          "type": "shopify://apps/tolstoy-shoppable-video-quiz/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "uqar2z0widuue"
+          }
+        },
+        "tabs_RCq6T9": {
+          "type": "tabs",
+          "settings": {}
+        },
+        "product_tab_ixfDAL": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Details",
+            "content": "{{ product.description }}",
+            "page": ""
+          }
+        },
+        "product_tab_zymyec": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Materials",
+            "content": "<p>{{ product.metafields.custom.pdp_materials | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "product_tab_QRJWpQ": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Size",
+            "content": "<p>{{ product.metafields.custom.pdp_size | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "product_tab_CPPT6F": {
+          "type": "product_tab",
+          "settings": {
+            "title": "Shipping + Returns",
+            "content": "<p>{{ product.metafields.custom.pdp_shipping | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "custom_liquid_V9cMrD": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<img width=\"100%\" style=\"margin: 20px 0 0 0 !important;\" src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/pdp-icons-text.svg?v=1758741235\" />"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_star_rating_DhKeUU",
+        "title",
+        "price",
+        "custom_liquid_wQ4TRW",
+        "divider_cLMHCN",
+        "variant_picker",
+        "divider_7FnXyt",
+        "buy_buttons",
+        "text_i43CGF",
+        "divider_qRaJAm",
+        "icon_with_text_dhMfjM",
+        "divider_H9xhmp",
+        "tolstoy_shoppable_video_quiz_carousel_block_taALbX",
+        "tabs_RCq6T9",
+        "product_tab_ixfDAL",
+        "product_tab_zymyec",
+        "product_tab_QRJWpQ",
+        "product_tab_CPPT6F",
+        "custom_liquid_V9cMrD"
+      ],
+      "custom_css": [
+        "ul.icon-with-text.icon-with-text--horizontal {background: #fafaf9; padding: 15px 20px 10px; border: 1px solid #d9d9d9; border-radius: 6px;}",
+        ".shopify-app-block {margin: 0 !important;}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 60,
+        "tabs_indicator_color": "#111111",
+        "tabs_line_color": "#e5e5e5"
+      }
+    },
+    "np_image_with_text_dXgRgJ": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_HYWgrW": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "BECAUSE REST SHOULD FEEL LUXURIOUS"
+          }
+        },
+        "heading_bMG8kN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Cloud-soft texture. Soothing weight. Comfort, redefined in its most elegant form"
+          }
+        },
+        "button_eheRKN": {
+          "type": "button",
+          "settings": {
+            "button_label": "Add to cart",
+            "button_link": "",
+            "button_type": "full",
+            "buttonBg": "#c5b9ab",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_HYWgrW",
+        "heading_bMG8kN",
+        "button_eheRKN"
+      ],
+      "custom_css": [
+        ".section-main-button {margin-top: 2rem;}",
+        "@media screen and (max-width: 767px) {.section-main-button, .section-subheading {margin-top: 4rem; } .section-main-heading {text-align: center; }}"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "pdp_product_highlight",
+        "image": "shopify://shop_images/image_80_2.png",
+        "image_position": "right",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "bottom",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#6c6463",
+        "product_to_add": "teddy-body"
+      }
+    },
+    "np_image_with_text_FVWUnQ": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "heading_3iyXwH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Thoughtfully Designed for Better Sleep"
+          }
+        },
+        "liquid_EjDU43": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- comment -%} HTML {%- endcomment -%}\n<div class=\"np-points\">\n  <div class=\"product-highlight-points\">\n    <div class=\"product-point-img\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/PDP_4_1.png?v=1732647914\"\n        alt=\"Naturally calming\"\n        loading=\"lazy\"\n        decoding=\"async\">\n    </div>\n    <div class=\"product-point-text\">\n      <h3>NATURALLY CALMING</h3>\n      <p>Perfect for overactive minds to help you fall asleep faster.</p>\n    </div>\n  </div>\n\n  <div class=\"product-highlight-points\">\n    <div class=\"product-point-img\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/PDP_4_1_1.png?v=1732647914\"\n        alt=\"3 Minute Magic\"\n        loading=\"lazy\"\n        decoding=\"async\">\n    </div>\n    <div class=\"product-point-text\">\n      <h3>3 MINUTE MAGIC</h3>\n      <p>Feel the Deep Touch Pressure magic within minutes.</p>\n    </div>\n  </div>\n\n  <div class=\"product-highlight-points\">\n    <div class=\"product-point-img\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/PDP_4_1_2.png?v=1732647914\"\n        alt=\"Targets key pressure points\"\n        loading=\"lazy\"\n        decoding=\"async\">\n    </div>\n    <div class=\"product-point-text\">\n      <h3>EASILY PORTABLE</h3>\n      <p>Nodpod’s compact size makes stress and anxiety relief on the go possible.</p>\n    </div>\n  </div>\n</div>"
+          }
+        },
+        "liquid_bV3RMh": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"mask-features\">\n  <div class=\"mask-feature\">\n    Weighted Comfort\n  </div>\n\n  <div class=\"feature-sep\">\n    |\n  </div>\n  \n  <div class=\"mask-feature\">\n   Full Body Calm\n  </div>\n\n  <div class=\"feature-sep\">\n    |\n  </div> \n  \n  <div class=\"mask-feature\">\n     Machine Washable\n  </div>\n\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3iyXwH",
+        "liquid_EjDU43",
+        "liquid_bV3RMh"
+      ],
+      "name": "NP Image With Text",
+      "settings": {
+        "unique_id": "pdp_product_highlight",
+        "image": "shopify://shop_images/Nodpod_TeddyBody_PolarBear_06_89f5baa6-0209-4a9c-9125-f7f8f1f98c16.png",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "bottom",
+        "full_bkg_color": "#fafaf9",
+        "full_bkg_gradient": "",
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
+      }
+    },
+    "np_customer_reviews_XGJH6h": {
+      "type": "np-customer-reviews",
+      "custom_css": [
+        ".section-subheading,.section-main-heading,.section-main-text {text-align: center;}",
+        " {padding: 40px 20px 20px 20px; background: #ecebe7;}"
+      ],
+      "name": "Customer Review Section",
+      "settings": {
+        "subheading": "An Instant Hug",
+        "review_text": "\"The Teddy BODY has become my go-to for relaxing at the end of the day. It’s like an instant hug — so calming and grounding.\"",
+        "reviewer_name": "Mily",
+        "background_color": "#ecebe7",
+        "border_color": "rgba(0,0,0,0)",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "wrapper_padding": 0
+      }
+    },
+    "how_to_use_video_RnbMkJ": {
+      "type": "how-to-use-video",
+      "blocks": {
+        "step_FMEtVd": {
+          "type": "step",
+          "settings": {
+            "step_heading": "DRAPE & CHILL",
+            "step_description": "Lay it across your body — chest, stomach, or legs. Feel the instant calming effect of the soothing weight.",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/033e76e88ad24080b329ba05e3d68178.mp4",
+            "object_position": "center"
+          }
+        },
+        "step_mE9cHt": {
+          "type": "step",
+          "settings": {
+            "step_heading": "CUSTOMIZE YOUR COMFORT",
+            "step_description": "Use folded, layered, or flat — the flexible design molds to your body wherever you need relief most.",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/bf0350f261e84eaf91a096f6440961e6.mp4",
+            "object_position": "center"
+          }
+        },
+        "step_TTfVac": {
+          "type": "step",
+          "settings": {
+            "step_heading": "TAKE IT ANYWHERE",
+            "step_description": "Perfect for bed, couch, or travel. Use it for naps, wind-down time, or just a moment of calm.",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/c2af68fa5a234a35862ccc6c5e6288a7.mp4",
+            "object_position": "left"
+          }
+        }
+      },
+      "block_order": [
+        "step_FMEtVd",
+        "step_mE9cHt",
+        "step_TTfVac"
+      ],
+      "name": "How to Use Video",
+      "settings": {
+        "heading": "How to Use Teddy BODY"
+      }
+    },
+    "multicolumn_r9a4eQ": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_Wgb4nP": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/svg14_1_fc80ad4d-f1bc-4e57-87d3-3a6db0eb52d1.svg",
+            "title": "“Why Everyone's Buying The Nodpod BODY Weighted Blanket”",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_BmpW9N": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Layer_1_6c0e1fc5-b7a5-4dd7-9f56-8f5b6f628208.svg",
+            "title": "“Here’s How to Combat Flight Anxiety”",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_KWFDQy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/layer.svg",
+            "title": "“Nodpod BODY wins \"Best Weighted Blanket\"",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_Wgb4nP",
+        "column_BmpW9N",
+        "column_KWFDQy"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn,.multicolumn-card {background-color: #c5b9ab; color: white;}",
+        ".multicolumn-card {height: 100%; justify-content: space-between;}",
+        ".multicolumn-card__info h3 {color: white !important; font-size: 32px; font-weight: 300;}",
+        ".multicolumn__title h2 {width: 100%; text-align: center; color: white; font-size: 14px; font-family: \"poppins\";}",
+        ".multicolumn-card__image-wrapper img {object-fit: contain; height: 100% !important;}",
+        ".multicolumn-list .multicolumn-list__item:nth-child(2) .multicolumn-card__image-wrapper img {width: 50%;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "IN THE PRESS",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "reverse_content": true,
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "1758516001104defa8": {
+      "type": "apps",
+      "custom_css": [],
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "np_header_block_At6fRW": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_LcJcVP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Skeptical? So Were They."
+          }
+        }
+      },
+      "block_order": [
+        "heading_LcJcVP"
+      ],
+      "custom_css": [
+        "@media (max-width: 989px) {.main-page-heading {margin-bottom: 0; }}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#fafaf9",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "1758516193a0ad4d56": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_reviews_reviews_KgzwGn": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_reviews_KgzwGn"
+      ],
+      "custom_css": [
+        ".yotpo-head {display: none !important;}",
+        " {background: #fafaf9;}"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "np_header_block_WNQQHK": {
+      "type": "np-header-block",
+      "blocks": {
+        "subheading_yNmXfx": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "NODPOD BODY"
+          }
+        },
+        "heading_xEPEix": {
+          "type": "heading",
+          "settings": {
+            "heading": "Frequently Asked Questions"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_yNmXfx",
+        "heading_xEPEix"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 40,
+        "paddingLeft": 20,
+        "text_color": "#5d5e5d",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "left",
+        "heading_size": "large"
+      }
+    },
+    "np_faqs_mTVFVL": {
+      "type": "np-faqs",
+      "blocks": {
+        "heading_b7PCbh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nodpod BODY"
+          }
+        },
+        "question_XxhJbE": {
+          "type": "question",
+          "settings": {
+            "title": "How do I wash my Teddy BODY?",
+            "answer": "<p>To avoid stress on the seams, it is important to wash your Nodpod BODY with other soft items, like sheets. Ideally machine wash cold on a delicate cycle inside a garment bag.</p><p>Do not tumble dry — air dry only to maintain fur softness.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_i8bqkV": {
+          "type": "question",
+          "settings": {
+            "title": "What makes this different from a full size weighted blanket?",
+            "answer": "<p>You do not need a full size weighted blanket in order to received the benefits of Deep Touch Pressure. Nodpod BODY's design offers concentrated weight to hug the areas that need it most.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_zEgEC6": {
+          "type": "question",
+          "settings": {
+            "title": "What is Nodpod BODY filled with?",
+            "answer": "<p>Nodpod BODY is filled with small, sand-like glass beads.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_Yntnwj": {
+          "type": "question",
+          "settings": {
+            "title": "Can my small child use my Teddy BODY?",
+            "answer": "<p>No, we do not recommend small children using Nodpod BODY as the concentrated weighted could pose a suffocation hazard.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_KpEDhK": {
+          "type": "question",
+          "settings": {
+            "title": "Can I Microwave my Nodpod BODY?",
+            "answer": "<p>No. You can not microwave your Nodpod BODY.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_pDRR3g": {
+          "type": "question",
+          "settings": {
+            "title": "Is it TSA approved?",
+            "answer": "<p>Yes!</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_Fk8MLd": {
+          "type": "question",
+          "settings": {
+            "title": "What are the beads in Nodpod BODY made of? Are they safe?",
+            "answer": "<p>Yes, they are safe. The beads are smooth, round, sand-like glass beads.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_tRFWmR": {
+          "type": "question",
+          "settings": {
+            "title": "Who should not use a weighted blanket?",
+            "answer": "<p>Using a weighted blanket may not be suitable for individuals who have difficulty removing it from their body due to its weight. Furthermore, people with certain medical conditions such as sleep apnea, breathing difficulties like asthma, sleep disorders, or claustrophobia, should either refrain from using a weighted blanket or consult with a physician before doing so.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_FBQHe7": {
+          "type": "question",
+          "settings": {
+            "title": "Do your materials contain dangerous chemicals?",
+            "answer": "<p>All of Nodpod's materials meet and exceed the most stringent state and federal agencies' guidelines for safe materials.</p>",
+            "expandAnswer": false
+          }
+        },
+        "question_H4FHCA": {
+          "type": "question",
+          "settings": {
+            "title": "Does 3-minute magic mean I'll be asleep in 3 minutes?",
+            "answer": "<p>Most people describe a feeling of relaxation, which is attributed to the science of Deep Touch Pressure within minutes. Not everyone experiences the same feeling as quickly. If you are not fully satisfied with your Nodpod we would be happy to refund you. </p>",
+            "expandAnswer": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_b7PCbh",
+        "question_XxhJbE",
+        "question_i8bqkV",
+        "question_zEgEC6",
+        "question_Yntnwj",
+        "question_KpEDhK",
+        "question_pDRR3g",
+        "question_Fk8MLd",
+        "question_tRFWmR",
+        "question_FBQHe7",
+        "question_H4FHCA"
+      ],
+      "custom_css": [],
+      "name": "NP FAQs",
+      "settings": {
+        "summary": false,
+        "summary_heading": "Topics",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_header_block_A9fNdd": {
+      "type": "np-header-block",
+      "blocks": {
+        "heading_kQChJW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Complete Your Sleep Routine"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kQChJW"
+      ],
+      "custom_css": [
+        "@media (max-width: 989px) {.main-page-heading {margin-bottom: 0; }}"
+      ],
+      "name": "NP Header Block",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 50,
+        "paddingRight": 20,
+        "paddingBottom": 30,
+        "paddingLeft": 20,
+        "text_color": "#5e5d5e",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    },
+    "featured_products_ARVqay": {
+      "type": "featured-products",
+      "blocks": {
+        "product_jgyxqx": {
+          "type": "product",
+          "settings": {
+            "product": "surprise-product"
+          }
+        },
+        "product_bpFg3p": {
+          "type": "product",
+          "settings": {
+            "product": "nodpod-body"
+          }
+        },
+        "product_t8wX8N": {
+          "type": "product",
+          "settings": {
+            "product": "nodpod-silk"
+          }
+        }
+      },
+      "block_order": [
+        "product_jgyxqx",
+        "product_bpFg3p",
+        "product_t8wX8N"
+      ],
+      "custom_css": [
+        ".collection {max-width: 1400px; margin: auto;}"
+      ],
+      "name": "Featured products",
+      "settings": {
+        "products_to_show": 4,
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-size: 5rem; text-align: center; line-height: 1; margin-bottom: 60px; font-weight: 300;}"
+      ],
+      "settings": {
+        "heading": "Complete Your Sleep Routine",
+        "heading_size": "h2",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "np_image_with_text_dXgRgJ",
+    "np_image_with_text_FVWUnQ",
+    "np_customer_reviews_XGJH6h",
+    "how_to_use_video_RnbMkJ",
+    "multicolumn_r9a4eQ",
+    "1758516001104defa8",
+    "np_header_block_At6fRW",
+    "1758516193a0ad4d56",
+    "np_header_block_WNQQHK",
+    "np_faqs_mTVFVL",
+    "np_header_block_A9fNdd",
+    "featured_products_ARVqay",
+    "related-products"
+  ]
+}

@@ -1,0 +1,116 @@
+{%- # Swiper Panorama -%}
+<script src="{{ 'effect-panorama.js' | asset_url }}"></script>
+
+<div class="community-slider-wrapper">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="community-slider-column">
+          <img width="100%" height="auto" class="community-slider-logo" src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/art-therapy-project.png?v=1740439933">
+        </div>
+        <div class="community-slider-column">
+          <a class="community-slider-partner" src="https://thearttherapyproject.org/" target="_blank">
+            The Art Therapy Project <span class="community-slider-link"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <p class="section-main-text">
+            The Art Therapy Project is a nonprofit providing group art therapy in a safe inclusive space for people in need of mental health services. Clients feel connected and inspired while exploring their personal journeys, increasing their self-awareness, and improving their quality of life.
+          </p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="community-slider-column">
+          <img width="100%" height="auto" class="community-slider-logo" src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/write-love.png?v=1740439933">
+        </div>  
+        <div class="community-slider-column">
+          <a class="community-slider-partner" src="https://thearttherapyproject.org/" target="_blank">
+            To Write Love on Her Arms <span class="community-slider-link"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <p class="section-main-text">
+            To Write Love on Her Arms (TWLOHA) is a non-profit movement dedicated to providing hope, help, and support to individuals struggling with depression, addiction, self-injury, and thoughts of suicide. With a mission to encourage, inform, and inspire. TWLOHA aims to present hope and empower individuals to seek treatment and recovery.
+          </p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="community-slider-column">
+          <img width="100%" height="auto" class="community-slider-logo" src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/trevor-project.png?v=1740439933">
+        </div>
+        <div class="community-slider-column">
+          <a class="community-slider-partner" src="https://www.thetrevorproject.org/" target="_blank">
+            The Trevor Project <span class="community-slider-link"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <p class="section-main-text">
+            The Trevor Project is the leading suicide prevention and crisis intervention nonprofit organization for LGBTQ+ young people. They provide information & support to LGBTQ+ young people 24/7, all year round.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .community-slider-column {
+    width: 50%;
+    max-width: 500px;
+    padding: 20px;
+  }
+  a.community-slider-partner {
+    font-size: 4.5rem;
+    margin-bottom: 30px;
+    line-height: 1.1;
+    font-weight: 300;
+    font-family: 'larken';
+    display: block;
+    position: relative;
+  }
+  .community-slider-link {
+    font-size: 2rem;
+    position: relative;
+    top: 12px;
+    right: 0px;
+  }
+  .community-slider-partner {
+    display: flex !important;
+    flex-direction: row;
+    gap: 10px !important;
+}
+  .community-slider-wrapper .section-main-text {
+    text-align: left;
+  }
+  span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 12px;
+    height: 12px;
+    background: #636466;
+  }
+  span.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border: 1px solid #636466;
+    opacity: 1;
+  }
+  @media (max-width: 777px) {
+    .community-slider-column {
+        width: 100%;
+    }
+  }
+</style>
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination"
+    },
+  });
+</script>
