@@ -99,7 +99,8 @@
           }
         },
         "tolstoy_shoppable_video_quiz_carousel_block_taALbX": {
-          "type": "shopify://apps/tolstoy-shoppable-video-quiz/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "disabled": true,
           "settings": {
             "publishId": "uqar2z0widuue"
           }
@@ -230,6 +231,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "pdp_product_highlight",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/image_80_2.png",
         "image_position": "right",
         "mobile_image_position": "top",
@@ -280,6 +282,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "pdp_product_highlight",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/Nodpod_TeddyBody_PolarBear_06_89f5baa6-0209-4a9c-9125-f7f8f1f98c16.png",
         "image_position": "left",
         "mobile_image_position": "top",
