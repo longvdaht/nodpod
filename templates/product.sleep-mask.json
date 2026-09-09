@@ -71,6 +71,12 @@
             "text_style": "body"
           }
         },
+        "tolstoy_shoppable_video_quiz_carousel_block_taALbX": {
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "d2y6nubutjzus"
+          }
+        },
         "complementary_wdeMwe": {
           "type": "complementary",
           "settings": {
@@ -114,12 +120,6 @@
           "settings": {
             "space": 8,
             "color": "#d9d9d9"
-          }
-        },
-        "tolstoy_shoppable_video_quiz_carousel_block_taALbX": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
-          "settings": {
-            "publishId": "d5qgmsuczkxp1"
           }
         },
         "tabs_RCq6T9": {
@@ -176,11 +176,11 @@
         "divider_7FnXyt",
         "buy_buttons",
         "text_i43CGF",
+        "tolstoy_shoppable_video_quiz_carousel_block_taALbX",
         "complementary_wdeMwe",
         "divider_qRaJAm",
         "icon_with_text_dhMfjM",
         "divider_H9xhmp",
-        "tolstoy_shoppable_video_quiz_carousel_block_taALbX",
         "tabs_RCq6T9",
         "product_tab_ixfDAL",
         "product_tab_zymyec",
