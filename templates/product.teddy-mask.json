@@ -113,9 +113,9 @@
           }
         },
         "tolstoy_shoppable_video_quiz_carousel_block_taALbX": {
-          "type": "shopify://apps/tolstoy-shoppable-video-quiz/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
-            "publishId": "ifmovg9hiuoys"
+            "publishId": "zov1vnwhvpkbp"
           }
         },
         "tabs_RCq6T9": {
@@ -245,6 +245,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "pdp_product_highlight",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/image_80_3.png",
         "image_position": "right",
         "mobile_image_position": "top",
@@ -295,6 +296,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "pdp_product_highlight",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/teddy_mask_transparent_with_shadow.png",
         "image_position": "left",
         "mobile_image_position": "top",
