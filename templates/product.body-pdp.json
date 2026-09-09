@@ -71,13 +71,6 @@
             "text_style": "body"
           }
         },
-        "divider_wdceTf": {
-          "type": "divider",
-          "settings": {
-            "space": 12,
-            "color": "#d9d9d9"
-          }
-        },
         "tolstoy_shoppable_video_quiz_carousel_block_VhtDCa": {
           "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
@@ -170,7 +163,6 @@
         "divider_7FnXyt",
         "buy_buttons",
         "text_i43CGF",
-        "divider_wdceTf",
         "tolstoy_shoppable_video_quiz_carousel_block_VhtDCa",
         "divider_qRaJAm",
         "icon_with_text_dhMfjM",
