@@ -1,0 +1,141 @@
+{{ 'section-corporate-gifting-form.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-corporate-gifting-form.js' | asset_url }}" defer></script>
+
+{%- liquid
+  assign subdomain = section.settings.zendesk_subdomain | default: 'nodpod'
+  assign uid = section.id
+-%}
+
+<div class="cgf-section">
+  <div class="cgf-inner">
+    {%- if section.settings.header_text != blank or section.settings.subheader_text != blank -%}
+      <div class="cgf-header">
+        {%- if section.settings.header_text != blank -%}<h2>{{ section.settings.header_text }}</h2>{%- endif -%}
+        {%- if section.settings.subheader_text != blank -%}<p>{{ section.settings.subheader_text }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <form
+      class="cgf-form"
+      novalidate
+      data-cgf
+      data-endpoint="https://{{ subdomain }}.zendesk.com/api/v2/requests.json"
+      data-ticket-form-id="{{ section.settings.ticket_form_id }}"
+      data-fid-first-name="{{ section.settings.fid_first_name }}"
+      data-fid-last-name="{{ section.settings.fid_last_name }}"
+      data-fid-email="{{ section.settings.fid_email }}"
+      data-fid-company="{{ section.settings.fid_company }}"
+      data-fid-quantity="{{ section.settings.fid_quantity }}"
+      data-fid-delivery="{{ section.settings.fid_delivery }}"
+      data-fid-products="{{ section.settings.fid_products }}"
+      data-fid-colors="{{ section.settings.fid_colors }}"
+      data-fid-shipping="{{ section.settings.fid_shipping }}"
+    >
+      <p class="cgf-success" role="status" hidden>
+        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+        {{ section.settings.success_title | default: 'Thank you, your request has been sent!' }}
+        {%- if section.settings.success_subtext != blank -%}
+          <span>{{ section.settings.success_subtext }}</span>
+        {%- endif -%}
+      </p>
+
+      <ul class="cgf-errors" role="alert" hidden></ul>
+
+      <div class="cgf-fields">
+        <div class="cgf-row half">
+          <label for="cgf-first-name-{{ uid }}">First Name *</label>
+          <input type="text" id="cgf-first-name-{{ uid }}" name="first_name" required aria-required="true">
+        </div>
+
+        <div class="cgf-row half">
+          <label for="cgf-last-name-{{ uid }}">Last Name *</label>
+          <input type="text" id="cgf-last-name-{{ uid }}" name="last_name" required aria-required="true">
+        </div>
+
+        <div class="cgf-row half">
+          <label for="cgf-email-{{ uid }}">Email Address *</label>
+          <input type="email" id="cgf-email-{{ uid }}" name="email" required aria-required="true">
+        </div>
+
+        <div class="cgf-row half">
+          <label for="cgf-company-{{ uid }}">Company *</label>
+          <input type="text" id="cgf-company-{{ uid }}" name="company" required aria-required="true">
+        </div>
+
+        <div class="cgf-row half">
+          <label for="cgf-quantity-{{ uid }}">Quantity Requested *</label>
+          <input type="text" id="cgf-quantity-{{ uid }}" name="quantity" required aria-required="true">
+        </div>
+
+        <div class="cgf-row half">
+          <label for="cgf-delivery-{{ uid }}">Desired Delivery *</label>
+          <input type="text" id="cgf-delivery-{{ uid }}" name="delivery" required aria-required="true">
+        </div>
+
+        <div class="cgf-row half">
+          <label for="cgf-products-{{ uid }}">Which products are you interested in? *</label>
+          <input type="text" id="cgf-products-{{ uid }}" name="products" required aria-required="true">
+        </div>
+
+        <div class="cgf-row half">
+          <label for="cgf-colors-{{ uid }}">Interested in selecting colors? *</label>
+          <select id="cgf-colors-{{ uid }}" name="colors" required aria-required="true">
+            <option value="" disabled selected>Select an option</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div class="cgf-row full">
+          <label for="cgf-shipping-{{ uid }}">Shipping *</label>
+          <select id="cgf-shipping-{{ uid }}" name="shipping" required aria-required="true">
+            <option value="" disabled selected>Select an option</option>
+            <option value="ship_all_products_to_a_single_location">Ship all products to a single location</option>
+            <option value="ship_each_product_to_a_different_location">Ship each product to a different location</option>
+          </select>
+        </div>
+
+        <div class="cgf-row full">
+          <label for="cgf-notes-{{ uid }}">Anything else to add?</label>
+          <textarea id="cgf-notes-{{ uid }}" name="notes"></textarea>
+        </div>
+
+        {%- comment -%} Honeypot — bots fill this, humans never see it {%- endcomment -%}
+        <div class="cgf-hp" aria-hidden="true">
+          <label for="cgf-website-{{ uid }}">Website</label>
+          <input type="text" id="cgf-website-{{ uid }}" name="website" tabindex="-1" autocomplete="off">
+        </div>
+      </div>
+
+      <button type="submit" class="cgf-submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Corporate Gifting Form",
+  "settings": [
+    { "type": "text", "id": "header_text", "label": "Header text" },
+    { "type": "textarea", "id": "subheader_text", "label": "Subheader text" },
+    { "type": "text", "id": "success_title", "label": "Success message title", "default": "Thank you, your request has been sent!" },
+    { "type": "text", "id": "success_subtext", "label": "Success message subtext", "default": "We will reply shortly." },
+    { "type": "header", "content": "Zendesk" },
+    { "type": "paragraph", "content": "Submissions create a Zendesk request on the Corporate Gifting ticket form. Routing to concierge@nodpod.com is handled by a Zendesk trigger." },
+    { "type": "text", "id": "zendesk_subdomain", "label": "Zendesk subdomain", "default": "nodpod" },
+    { "type": "text", "id": "ticket_form_id", "label": "Ticket form ID", "default": "55238448020243" },
+    { "type": "text", "id": "fid_first_name", "label": "Field ID — First Name", "default": "54606608356627" },
+    { "type": "text", "id": "fid_last_name", "label": "Field ID — Last Name", "default": "54606635864467" },
+    { "type": "text", "id": "fid_email", "label": "Field ID — Email", "default": "54606701572371" },
+    { "type": "text", "id": "fid_company", "label": "Field ID — Company", "default": "55238288650643" },
+    { "type": "text", "id": "fid_quantity", "label": "Field ID — Quantity Requested", "default": "55238285799315" },
+    { "type": "text", "id": "fid_delivery", "label": "Field ID — Desired Delivery", "default": "55238290405907" },
+    { "type": "text", "id": "fid_products", "label": "Field ID — Which products", "default": "55238305173267" },
+    { "type": "text", "id": "fid_colors", "label": "Field ID — Interested in selecting colors", "default": "55238343973651" },
+    { "type": "text", "id": "fid_shipping", "label": "Field ID — Shipping", "default": "55238309424275" }
+  ],
+  "presets": [
+    { "name": "Corporate Gifting Form" }
+  ]
+}
+{% endschema %}
