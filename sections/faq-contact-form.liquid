@@ -1,0 +1,141 @@
+{{ 'section-faq-contact-form.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-faq-contact-form.js' | asset_url }}" defer></script>
+
+{%- liquid
+  assign subdomain = section.settings.zendesk_subdomain | default: 'nodpod'
+  assign uid = section.id
+-%}
+
+<div class="fcf-section">
+  <div class="fcf-inner">
+    {%- if section.settings.header_text != blank or section.settings.subheader_text != blank -%}
+      <div class="fcf-header">
+        {%- if section.settings.header_text != blank -%}<h2>{{ section.settings.header_text }}</h2>{%- endif -%}
+        {%- if section.settings.subheader_text != blank -%}<p>{{ section.settings.subheader_text }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="fcf-layout">
+      <aside class="fcf-info">
+        {%- if section.settings.info_email != blank -%}
+          <div class="fcf-info-block">
+            <h4>Email</h4>
+            <p><a href="mailto:{{ section.settings.info_email }}">{{ section.settings.info_email }}</a></p>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.info_phone != blank -%}
+          <div class="fcf-info-block">
+            <h4>Phone</h4>
+            <p>{{ section.settings.info_phone }}</p>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.info_hours != blank -%}
+          <div class="fcf-info-block">
+            <h4>Our Hours</h4>
+            <p>{{ section.settings.info_hours }}</p>
+          </div>
+        {%- endif -%}
+      </aside>
+
+      <form
+        class="fcf-form"
+        novalidate
+        data-fcf
+        data-endpoint="https://{{ subdomain }}.zendesk.com/api/v2/requests.json"
+        data-ticket-form-id="{{ section.settings.ticket_form_id }}"
+        data-fid-reason="{{ section.settings.fid_reason }}"
+        data-fid-first-name="{{ section.settings.fid_first_name }}"
+        data-fid-last-name="{{ section.settings.fid_last_name }}"
+        data-fid-email="{{ section.settings.fid_email }}"
+        data-fid-order-number="{{ section.settings.fid_order_number }}"
+      >
+        <p class="fcf-success" role="status" hidden>
+          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+          {{ section.settings.success_title | default: 'Thank you, your request has been sent!' }}
+          {%- if section.settings.success_subtext != blank -%}
+            <span>{{ section.settings.success_subtext }}</span>
+          {%- endif -%}
+        </p>
+
+        <ul class="fcf-errors" role="alert" hidden></ul>
+
+        <div class="fcf-fields">
+          <div class="fcf-row full">
+            <label for="fcf-reason-{{ uid }}">Reason For Contact *</label>
+            <select id="fcf-reason-{{ uid }}" name="reason" required aria-required="true">
+              <option value="" disabled selected>Select One</option>
+              <option value="general_question">General Question</option>
+              <option value="product_quality">Product Quality Concern</option>
+              <option value="returns">Returns</option>
+              <option value="shipping_or_delivery">Shipping or Delivery Question</option>
+              <option value="pr_collaboration">PR &amp; Collaboration</option>
+              <option value="ugc">UGC</option>
+              <option value="wholesale">Wholesale</option>
+            </select>
+          </div>
+
+          <div class="fcf-row half">
+            <label for="fcf-first-name-{{ uid }}">First Name *</label>
+            <input type="text" id="fcf-first-name-{{ uid }}" name="first_name" required aria-required="true">
+          </div>
+
+          <div class="fcf-row half">
+            <label for="fcf-last-name-{{ uid }}">Last Name *</label>
+            <input type="text" id="fcf-last-name-{{ uid }}" name="last_name" required aria-required="true">
+          </div>
+
+          <div class="fcf-row half">
+            <label for="fcf-email-{{ uid }}">Email Address *</label>
+            <input type="email" id="fcf-email-{{ uid }}" name="email" required aria-required="true">
+          </div>
+
+          <div class="fcf-row half">
+            <label for="fcf-order-number-{{ uid }}">Order Number</label>
+            <input type="text" id="fcf-order-number-{{ uid }}" name="order_number">
+          </div>
+
+          <div class="fcf-row full">
+            <label for="fcf-message-{{ uid }}">Message *</label>
+            <textarea id="fcf-message-{{ uid }}" name="message" required aria-required="true"></textarea>
+          </div>
+
+          {%- comment -%} Honeypot — bots fill this, humans never see it {%- endcomment -%}
+          <div class="fcf-hp" aria-hidden="true">
+            <label for="fcf-website-{{ uid }}">Website</label>
+            <input type="text" id="fcf-website-{{ uid }}" name="website" tabindex="-1" autocomplete="off">
+          </div>
+        </div>
+
+        <button type="submit" class="fcf-submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Contact Form",
+  "settings": [
+    { "type": "text", "id": "header_text", "label": "Header text", "default": "We’d Love to Hear From You" },
+    { "type": "textarea", "id": "subheader_text", "label": "Subheader text" },
+    { "type": "text", "id": "success_title", "label": "Success message title", "default": "Thank you, your request has been sent!" },
+    { "type": "text", "id": "success_subtext", "label": "Success message subtext", "default": "We will reply shortly." },
+    { "type": "header", "content": "Contact info column" },
+    { "type": "text", "id": "info_email", "label": "Email", "default": "hello@nodpod.com" },
+    { "type": "text", "id": "info_phone", "label": "Phone", "default": "1-888-486-4224" },
+    { "type": "text", "id": "info_hours", "label": "Hours", "default": "Monday – Friday, 9:00AM – 4:00PM PST" },
+    { "type": "header", "content": "Zendesk" },
+    { "type": "paragraph", "content": "Submissions create a Zendesk request on the Contact ticket form. Routing to hello@nodpod.com is handled by a Zendesk trigger." },
+    { "type": "text", "id": "zendesk_subdomain", "label": "Zendesk subdomain", "default": "nodpod" },
+    { "type": "text", "id": "ticket_form_id", "label": "Ticket form ID", "default": "55271870941715" },
+    { "type": "text", "id": "fid_reason", "label": "Field ID — Reason for contact (Request Type)", "default": "54605356112659" },
+    { "type": "text", "id": "fid_first_name", "label": "Field ID — First Name", "default": "54606608356627" },
+    { "type": "text", "id": "fid_last_name", "label": "Field ID — Last Name", "default": "54606635864467" },
+    { "type": "text", "id": "fid_email", "label": "Field ID — Email", "default": "54606701572371" },
+    { "type": "text", "id": "fid_order_number", "label": "Field ID — Order Number", "default": "54606691841171" }
+  ],
+  "presets": [
+    { "name": "FAQ Contact Form" }
+  ]
+}
+{% endschema %}

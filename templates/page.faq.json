@@ -501,123 +501,23 @@
         "color_scheme": "scheme-1"
       }
     },
-    "dynamic_form_GnAYfP": {
-      "type": "dynamic-form",
-      "blocks": {
-        "liquid_Bci9g8": {
-          "type": "liquid",
-          "settings": {
-            "custom_liquid": "",
-            "full_width": true
-          }
-        },
-        "info_text_rKwiJf": {
-          "type": "info_text",
-          "settings": {
-            "heading": "EMAIL",
-            "text": "<p><a href=\"mailto:hello@nodpod.com\" target=\"_blank\" title=\"mailto:hello@nodpod.com\">hello@nodpod.com</a></p>"
-          }
-        },
-        "info_text_MdJ4ht": {
-          "type": "info_text",
-          "settings": {
-            "heading": "PHONE",
-            "text": "<p>1-888-486-4224</p>"
-          }
-        },
-        "info_text_izEn3G": {
-          "type": "info_text",
-          "settings": {
-            "heading": "OUR HOURS:",
-            "text": "<p>MONDAY - FRIDAY</p><p>9:00AM - 4:00 PM PST</p>"
-          }
-        },
-        "dropdown_fYWiRK": {
-          "type": "dropdown",
-          "settings": {
-            "label": "Reason For Contact *",
-            "placeholder": "Select One",
-            "required": true,
-            "options": "General Question, Order Status, Wholesale, Retail, Other",
-            "full_width": true
-          }
-        },
-        "text_input_KHR3by": {
-          "type": "text_input",
-          "settings": {
-            "label": "First Name *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "text_input_7eWJ6Q": {
-          "type": "text_input",
-          "settings": {
-            "label": "Last Name *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "email_input_XTHQED": {
-          "type": "email_input",
-          "settings": {
-            "label": "Email Address *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "text_input_U7mCYn": {
-          "type": "text_input",
-          "settings": {
-            "label": "Order Number",
-            "placeholder": "",
-            "required": false,
-            "full_width": false
-          }
-        },
-        "textarea_QNqJAE": {
-          "type": "textarea",
-          "settings": {
-            "label": "Message *",
-            "placeholder": "",
-            "required": true,
-            "full_width": true
-          }
-        }
-      },
-      "block_order": [
-        "liquid_Bci9g8",
-        "info_text_rKwiJf",
-        "info_text_MdJ4ht",
-        "info_text_izEn3G",
-        "dropdown_fYWiRK",
-        "text_input_KHR3by",
-        "text_input_7eWJ6Q",
-        "email_input_XTHQED",
-        "text_input_U7mCYn",
-        "textarea_QNqJAE"
-      ],
-      "name": "Dynamic Form",
+    "faq_contact_form_Cm9taH": {
+      "type": "faq-contact-form",
       "settings": {
-        "show_info": true,
         "header_text": "We’d Love to Hear From You",
         "subheader_text": "",
         "success_title": "Thank you, your request has been sent!",
-        "success_subtext": "We will reply shortly."
-      }
-    },
-    "custom_liquid_Cm9taH": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<script defer src=\"https://contact.gorgias.help/api/contact-forms/loader.js?v=3\" data-gorgias-loader-contact-form data-gorgias-contact-form-uid=\"89en56l9\"></script>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "success_subtext": "We will reply shortly.",
+        "info_email": "hello@nodpod.com",
+        "info_phone": "1-888-486-4224",
+        "info_hours": "Monday – Friday, 9:00AM – 4:00PM PST",
+        "zendesk_subdomain": "nodpod",
+        "ticket_form_id": "55271870941715",
+        "fid_reason": "54605356112659",
+        "fid_first_name": "54606608356627",
+        "fid_last_name": "54606635864467",
+        "fid_email": "54606701572371",
+        "fid_order_number": "54606691841171"
       }
     }
   },
@@ -625,7 +525,6 @@
     "main",
     "np_header_block_zwTKM4",
     "np_faqs_BW8jXf",
-    "dynamic_form_GnAYfP",
-    "custom_liquid_Cm9taH"
+    "faq_contact_form_Cm9taH"
   ]
 }
