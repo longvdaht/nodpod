@@ -547,7 +547,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".shopify-app-block:has(> tolstoy-carousel) {overflow: hidden;}"
+      ".product .shopify-app-block:has(> tolstoy-carousel) {overflow: hidden;}"
     ]
   }
 }
