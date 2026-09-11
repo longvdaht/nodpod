@@ -546,6 +546,8 @@
     }
   },
   "platform_customizations": {
-    "custom_css": []
+    "custom_css": [
+      ".shopify-app-block:has(> tolstoy-carousel) {overflow: hidden;}"
+    ]
   }
 }
