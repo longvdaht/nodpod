@@ -546,6 +546,8 @@
     }
   },
   "platform_customizations": {
-    "custom_css": []
+    "custom_css": [
+      ".product__info-wrapper {min-width: 0;}"
+    ]
   }
 }
