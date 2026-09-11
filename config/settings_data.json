@@ -544,5 +544,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "@media screen and (max-width: 767px) {/* Forces the Tolstoy main wrapper to respect parent constraints */ .tolstoy-carousel-container, div[class*=\"tolstoy-\"] {max-width: 100% !important; box-sizing: border-box !important; overflow-x: hidden !important; } /* Ensures the inner tracking slide block forces horizontal swipe over layout breaking */ .tolstoy-carousel-inner {display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; }}"
+    ]
   }
 }
