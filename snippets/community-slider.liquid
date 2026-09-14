@@ -73,12 +73,15 @@
     font-family: 'larken';
     display: block;
     position: relative;
+    text-decoration: none;
+    color: #5e5d5e;
   }
   .community-slider-link {
     font-size: 2rem;
     position: relative;
     top: 12px;
     right: 0px;
+    color: #5e5d5e;
   }
   .community-slider-partner {
     display: flex !important;
@@ -109,6 +112,7 @@
 
 <script>
   var swiper = new Swiper(".mySwiper", {
+    loop: true,
     pagination: {
       el: ".swiper-pagination"
     },
