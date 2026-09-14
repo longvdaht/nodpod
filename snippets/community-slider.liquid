@@ -9,7 +9,7 @@
           <img width="100%" height="auto" class="community-slider-logo" src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/art-therapy-project.png?v=1740439933">
         </div>
         <div class="community-slider-column">
-          <a class="community-slider-partner" src="https://thearttherapyproject.org/" target="_blank">
+          <a class="community-slider-partner" href="https://thearttherapyproject.org/" target="_blank">
             The Art Therapy Project <span class="community-slider-link"><i class="fa-solid fa-arrow-right"></i></span>
           </a>
           <p class="section-main-text">
@@ -22,7 +22,7 @@
           <img width="100%" height="auto" class="community-slider-logo" src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/write-love.png?v=1740439933">
         </div>  
         <div class="community-slider-column">
-          <a class="community-slider-partner" src="https://thearttherapyproject.org/" target="_blank">
+          <a class="community-slider-partner" href="https://thearttherapyproject.org/" target="_blank">
             To Write Love on Her Arms <span class="community-slider-link"><i class="fa-solid fa-arrow-right"></i></span>
           </a>
           <p class="section-main-text">
@@ -35,7 +35,7 @@
           <img width="100%" height="auto" class="community-slider-logo" src="https://cdn.shopify.com/s/files/1/0253/2982/7939/files/trevor-project.png?v=1740439933">
         </div>
         <div class="community-slider-column">
-          <a class="community-slider-partner" src="https://www.thetrevorproject.org/" target="_blank">
+          <a class="community-slider-partner" href="https://www.thetrevorproject.org/" target="_blank">
             The Trevor Project <span class="community-slider-link"><i class="fa-solid fa-arrow-right"></i></span>
           </a>
           <p class="section-main-text">
@@ -112,5 +112,13 @@
     pagination: {
       el: ".swiper-pagination"
     },
+  });
+
+  document.querySelectorAll(".community-slider-wrapper .community-slider-link").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      swiper.slideNext();
+    });
   });
 </script>
