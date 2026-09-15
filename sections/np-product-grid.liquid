@@ -1,0 +1,375 @@
+{% comment %}
+  Page-compatible product grid.
+
+  main-collection-product-grid only works on collection templates because it reads
+  the global `collection` object. This section takes a collection from a setting
+  instead, so the same card markup can be used on standalone /pages/ landing pages.
+
+  Optionally scopes the variants shown on each card to a single collection/drop via
+  the `custom.launch_group` variant metafield (see snippets/card-product.liquid).
+{% endcomment %}
+
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  {%- if section.settings.background_color != blank -%}
+    div[id="shopify-section-{{ section.id }}"] .np-product-grid { background-color: {{ section.settings.background_color }}; }
+  {%- endif -%}
+
+  {%- if section.settings.text_color != blank -%}
+    div[id="shopify-section-{{ section.id }}"] .np-product-grid,
+    div[id="shopify-section-{{ section.id }}"] .np-product-grid .title,
+    div[id="shopify-section-{{ section.id }}"] .np-product-grid .card__heading,
+    div[id="shopify-section-{{ section.id }}"] .np-product-grid .card__heading a,
+    div[id="shopify-section-{{ section.id }}"] .np-product-grid .price {
+      color: {{ section.settings.text_color }};
+    }
+  {%- endif -%}
+
+  .section-{{ section.id }}-padding .title.title--primary { margin-bottom: 1.25rem; }
+  @media (min-width: 750px) {
+    .section-{{ section.id }}-padding .title.title--primary { margin-bottom: 2rem; }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign grid_collection = section.settings.collection
+  assign launch_filter = section.settings.launch_group_filter
+
+  assign filter_handle = ''
+  if launch_filter != blank
+    assign filter_handle = launch_filter | handleize
+  endif
+
+  # Staff/preview detector, mirroring card-product so the editor shows hidden variants.
+  assign staff_view = false
+  if request.design_mode
+    assign staff_view = true
+  elsif content_for_header contains 'previewBarInjector'
+    assign staff_view = true
+  endif
+-%}
+
+<div class="np-product-grid color-{{ section.settings.color_scheme }} isolate gradient">
+  <div
+    class="product-grid-container section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    id="ProductGridContainer"
+    {% if settings.animations_reveal_on_scroll %}
+      data-cascade
+    {% endif %}
+  >
+    {%- if section.settings.show_section_title and section.settings.section_title != blank -%}
+      <div class="page-width">
+        <{{ section.settings.section_title_tag | default: 'h2' }}
+          class="title title--primary"
+          style="text-align: {{ section.settings.section_title_align | default: 'center' }};"
+        >
+          {{ section.settings.section_title | escape }}
+        </{{ section.settings.section_title_tag | default: 'h2' }}>
+      </div>
+    {%- endif -%}
+
+    {%- if grid_collection == blank -%}
+      {%- if staff_view -%}
+        <div class="collection collection--empty page-width">
+          <div class="title-wrapper center">
+            <h2 class="title title--primary">Select a collection for this product grid.</h2>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      <div class="collection page-width">
+        <ul
+          id="product-grid-{{ section.id }}"
+          data-id="{{ section.id }}"
+          class="
+            grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+            grid--{{ section.settings.columns_desktop }}-col-desktop
+            {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
+          "
+        >
+          {%- assign skip_card_product_styles = false -%}
+          {%- assign rendered_count = 0 -%}
+          {%- for product in grid_collection.products limit: section.settings.products_to_show -%}
+            {%- liquid
+              # Skip products with no variant visible under the current filter, so the
+              # grid never renders an empty cell (card-product itself outputs nothing).
+              assign has_visible = false
+              for v in product.variants
+                assign rr1 = v.metafields.release.ready.value
+                assign rr2 = v.metafields.custom.release_ready.value
+                assign ready_true = false
+                if rr1 == true or rr1 == 'true' or rr1 == 1 or rr1 == '1'
+                  assign ready_true = true
+                elsif rr2 == true or rr2 == 'true' or rr2 == 1 or rr2 == '1'
+                  assign ready_true = true
+                endif
+
+                assign variant_visible = false
+                if staff_view or ready_true
+                  assign variant_visible = true
+                endif
+                if filter_handle != blank
+                  assign v_launch_joined = v.metafields.custom.launch_group.value | join: '||'
+                  assign v_launch_list = v_launch_joined | split: '||'
+                  assign v_in_launch = false
+                  for lg in v_launch_list
+                    assign lg_handle = lg | strip | handleize
+                    if lg_handle == filter_handle
+                      assign v_in_launch = true
+                      break
+                    endif
+                  endfor
+                  unless v_in_launch
+                    assign variant_visible = false
+                  endunless
+                endif
+
+                if variant_visible
+                  assign has_visible = true
+                  break
+                endif
+              endfor
+            -%}
+            {%- if has_visible -%}
+              {%- assign rendered_count = rendered_count | plus: 1 -%}
+              {%- assign lazy_load = true -%}
+              {%- if rendered_count <= 2 -%}
+                {%- assign lazy_load = false -%}
+              {%- endif -%}
+              <li
+                class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ rendered_count }};"
+                {% endif %}
+                data-tags="{{ product.tags | join: ',' }}"
+              >
+                {% render 'card-product',
+                  card_product: product,
+                  media_aspect_ratio: section.settings.image_ratio,
+                  image_shape: section.settings.image_shape,
+                  show_secondary_image: section.settings.show_secondary_image,
+                  show_vendor: section.settings.show_vendor,
+                  show_rating: section.settings.show_rating,
+                  lazy_load: lazy_load,
+                  skip_styles: skip_card_product_styles,
+                  quick_add: section.settings.quick_add,
+                  section_id: section.id,
+                  launch_filter: launch_filter
+                %}
+              </li>
+              {%- assign skip_card_product_styles = true -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        {%- if rendered_count == 0 -%}
+          <div class="title-wrapper center">
+            <h2 class="title title--primary">
+              {%- if staff_view and filter_handle != blank -%}
+                No variants match the launch group "{{ launch_filter }}". Clear the
+                "Launch group" field in this section's settings to show all variants, or
+                check that the Launch group metafield is filled in on these variants.
+              {%- else -%}
+                {{ 'sections.collection_template.empty' | t }}
+              {%- endif -%}
+            </h2>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {% if section.settings.image_shape == 'arch' %}
+    {{ 'mask-arch.svg' | inline_asset_content }}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "NP Product Grid",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    {
+      "type": "text",
+      "id": "launch_group_filter",
+      "label": "Launch group (optional)",
+      "placeholder": "Leave blank to show all variants",
+      "info": "LEAVE BLANK to show every variant. Fill this in only to restrict the grid to one launch \u2014 it must match a value in the variant's \"Launch group\" metafield (e.g. \"Resort Silk\"). Typing \"all\" here hides everything."
+    },
+    { "type": "header", "content": "Section title" },
+    { "type": "checkbox", "id": "show_section_title", "label": "Show section title", "default": true },
+    { "type": "text", "id": "section_title", "label": "Title text", "default": "Shop the collection" },
+    {
+      "type": "select",
+      "id": "section_title_tag",
+      "label": "Title HTML tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_title_align",
+      "label": "Title alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 36,
+      "step": 2,
+      "default": 16,
+      "label": "Maximum products to show"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "Number of columns on desktop"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "1",
+      "label": "Number of columns on mobile",
+      "options": [
+        { "value": "1", "label": "1 column" },
+        { "value": "2", "label": "2 columns" }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave blank to use the colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "info": "Applies to the section title and product card text. Leave blank to use the colour scheme."
+    },
+    { "type": "header", "content": "Product card" },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "square",
+      "label": "Image ratio"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "arch", "label": "Arch" },
+        { "value": "blob", "label": "Blob" },
+        { "value": "chevronleft", "label": "Chevron left" },
+        { "value": "chevronright", "label": "Chevron right" },
+        { "value": "diamond", "label": "Diamond" },
+        { "value": "parallelogram", "label": "Parallelogram" },
+        { "value": "round", "label": "Round" }
+      ],
+      "default": "default",
+      "label": "Image shape"
+    },
+    { "type": "checkbox", "id": "show_secondary_image", "label": "Show second image on hover", "default": true },
+    { "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false },
+    { "type": "checkbox", "id": "show_rating", "label": "Show product rating", "default": true },
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "standard",
+      "label": "Quick add",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "standard", "label": "Standard" },
+        { "value": "bulk", "label": "Bulk" }
+      ]
+    },
+    { "type": "header", "content": "t:sections.all.padding.section_padding_heading" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 40
+    }
+  ],
+  "presets": [{ "name": "NP Product Grid" }]
+}
+{% endschema %}

@@ -152,7 +152,9 @@
     }
 
     /* Media */
-    #hero-{{ section.id }}{ position:relative; }
+    #hero-{{ section.id }}{ position:relative;
+      {%- if section.settings.background_color != blank %} background-color: {{ section.settings.background_color }};{% endif -%}
+    }
     #hero-{{ section.id }} .hero-media{ position:relative; }
     #hero-{{ section.id }} .hero-media picture,
     #hero-{{ section.id }} .hero-media img,
@@ -578,6 +580,7 @@
     },
     { "type": "color", "id": "heroMetaH1Bg", "label": "Heading background", "default": "#FFFFFF" },
     { "type": "color", "id": "heroMetaH1Color", "label": "Text color", "default": "#000000" },
+    { "type": "color", "id": "background_color", "label": "Section background color", "info": "Shows behind/around the media. Leave blank to use the colour scheme." },
     { "type": "checkbox", "id": "heroMetaH1hasBg", "label": "Enable heading background", "default": false },
 
     { "type": "header", "content": "Height" },

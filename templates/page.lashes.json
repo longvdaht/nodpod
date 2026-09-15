@@ -1,0 +1,328 @@
+{
+  "sections": {
+    "hero": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_hero": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "imageMobile": "",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_hero"
+      ],
+      "custom_css": [
+        "h2 {margin-bottom: 12px; line-height: 1; font-family: var(--font-heading-family); font-size: 76px; font-weight: 300;}",
+        ".button {margin-top: 10px; background: white; color: #6c6463; font-family: \"Poppins\"; font-weight: 600; letter-spacing: 0.05em;}",
+        ".hero-meta {padding: min(5vw, 24px);}",
+        "@media (max-width: 750px) {h2 {font-size: 5rem; padding-top: 40px; }}"
+      ],
+      "name": "Hero banner",
+      "settings": {
+        "block_id": "",
+        "overlay_position": "middle_center",
+        "overlay_max_width": 60,
+        "overlay_position_mobile": "middle",
+        "overlay_align_mobile": "same_as_desktop",
+        "subtitle": "",
+        "title": "",
+        "content": "",
+        "cta": "",
+        "url": "",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#ffffff",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "uncropped",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": true,
+        "mobile_full_height_max_px": 500
+      }
+    },
+    "product_grid": {
+      "type": "np-product-grid",
+      "custom_css": [
+        ".title {font-family: var(--font-heading-family); font-size: 50px; letter-spacing: 0.02em; font-weight: 300; margin-bottom: 36px;}",
+        ".grid {justify-content: center;}",
+        "@media screen and (max-width: 767px) {.title {font-size: 28px; margin-bottom: 20px; }}"
+      ],
+      "name": "Product grid",
+      "settings": {
+        "collection": "all",
+        "launch_group_filter": "Lashes",
+        "show_section_title": true,
+        "section_title": "The perfect recipe for better rest",
+        "section_title_tag": "h1",
+        "section_title_align": "center",
+        "products_to_show": 16,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "image_with_text": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_1": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Because Rest Should Feel Indulgent"
+          }
+        },
+        "heading_1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Placeholder intro copy for the Lashes collection — swap for launch copy."
+          }
+        },
+        "button_1": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP THE COLLECTION",
+            "button_link": "#",
+            "button_type": "full",
+            "buttonBg": "#e9dfd5",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#6c6463",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_1",
+        "heading_1",
+        "button_1"
+      ],
+      "custom_css": [
+        "h2 {font-family: var(--font-heading-family); font-size: 3rem; line-height: 1.65; margin-bottom: 30px;}",
+        "img {border-radius: 20px;}",
+        "a {font-weight: 500;}",
+        "@media screen and (max-width: 767px) {h2 {font-size: 2rem; line-height: 1.4; }}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "unique_id": "lashes_highlight",
+        "show_fsa_badge": false,
+        "image": "",
+        "image_position": "left",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#6c6463",
+        "product_to_add": ""
+      }
+    },
+    "guarantees": {
+      "type": "np-guarantees",
+      "blocks": {
+        "logo_image_1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "",
+            "heading": "Detail one",
+            "content": "<p>Placeholder copy — swap for launch detail.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "",
+            "heading": "Detail two",
+            "content": "<p>Placeholder copy — swap for launch detail.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_3": {
+          "type": "logo_image",
+          "settings": {
+            "image": "",
+            "heading": "Detail three",
+            "content": "<p>Placeholder copy — swap for launch detail.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_4": {
+          "type": "logo_image",
+          "settings": {
+            "image": "",
+            "heading": "Detail four",
+            "content": "<p>Placeholder copy — swap for launch detail.</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_1",
+        "logo_image_2",
+        "logo_image_3",
+        "logo_image_4"
+      ],
+      "custom_css": [
+        "h3 {font-family: var(--font-heading-family); font-size: 3.5rem; line-height: 1; margin-bottom: 80px; margin-top: 0;}",
+        "h2 {font-family: var(--font-heading-family); font-size: 2rem; line-height: 1;}",
+        "p {line-height: 1.5;}",
+        "@media screen and (max-width: 767px) {h3 {font-size: 28px; margin-bottom: 40px; } h2 {font-size: 20px; } p {font-size: 14px; }}"
+      ],
+      "name": "The Details",
+      "settings": {
+        "heading": "The Details",
+        "headingAlignment": "center",
+        "textAlignment": "center",
+        "section_bg": "#fffbf7",
+        "headingBg": "rgba(0,0,0,0)",
+        "headingColor": "#6c6463",
+        "text_color": "#6c6463"
+      }
+    },
+    "founders_note": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_1": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "FOUNDER’S NOTE"
+          }
+        },
+        "heading_1": {
+          "type": "heading",
+          "settings": {
+            "heading": "“Placeholder founder’s note for the Lashes launch — swap for final copy.”"
+          }
+        },
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "logoImage": "shopify://shop_images/Layer_1.svg",
+            "logoWidth": 180
+          }
+        }
+      },
+      "block_order": [
+        "subheading_1",
+        "heading_1",
+        "image_1"
+      ],
+      "custom_css": [
+        "h2 {font-family: var(--font-heading-family); font-size: 3.5rem;}",
+        "@media screen and (max-width: 767px) {h2 {font-size: 2rem; line-height: 1.4; }}"
+      ],
+      "name": "Founder's note",
+      "settings": {
+        "unique_id": "lashes_founders_note",
+        "show_fsa_badge": false,
+        "image": "",
+        "image_position": "right",
+        "mobile_image_position": "bottom",
+        "mobile_gap": 0,
+        "paddingTop": 20,
+        "paddingRight": 20,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": true,
+        "partial_bkg_color": "#f4ece4",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "top",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#6c6463",
+        "product_to_add": ""
+      }
+    },
+    "review_quote": {
+      "type": "np-header-block",
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "logoImage": "shopify://shop_images/stars.svg",
+            "logoWidth": 180
+          }
+        },
+        "heading_1": {
+          "type": "heading",
+          "settings": {
+            "heading": "“Placeholder customer review for the Lashes launch — swap for final quote.”"
+          }
+        },
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "- Customer name"
+          }
+        },
+        "button_1": {
+          "type": "button",
+          "settings": {
+            "button_label": "READ THE REVIEWS",
+            "button_link": "shopify://products/nodpod",
+            "button_type": "full",
+            "buttonBg": "#e9dfd5",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#6c6463",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "image_1",
+        "heading_1",
+        "text_1",
+        "button_1"
+      ],
+      "custom_css": [
+        "h1 {font-family: var(--font-heading-family); font-size: 3rem; line-height: 1.65; margin-bottom: 30px;}",
+        "p {font-size: 2rem; font-weight: 600; margin-bottom: 40px;}",
+        "img {margin-bottom: 40px;}",
+        "a {font-weight: 500;}",
+        "@media screen and (max-width: 767px) {h1 {font-size: 2rem; line-height: 1.4; } p {font-size: 1.4rem; }}"
+      ],
+      "name": "Review quote",
+      "settings": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "text_color": "#6c6463",
+        "full_bkg_color": "#ffffff",
+        "text_alignment": "center",
+        "heading_size": "large"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "product_grid",
+    "image_with_text",
+    "guarantees",
+    "founders_note",
+    "review_quote"
+  ]
+}
