@@ -60,120 +60,23 @@
       }
     },
     "dynamic_form_3Jf3EQ": {
-      "type": "dynamic-form",
-      "blocks": {
-        "text_input_jqtmdN": {
-          "type": "text_input",
-          "settings": {
-            "label": "First Name *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "text_input_KYn3mm": {
-          "type": "text_input",
-          "settings": {
-            "label": "Last Name *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "email_input_iq68UF": {
-          "type": "email_input",
-          "settings": {
-            "label": "Email Address *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "text_input_tVPJfJ": {
-          "type": "text_input",
-          "settings": {
-            "label": "Company *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "text_input_cJDKkT": {
-          "type": "text_input",
-          "settings": {
-            "label": "Quantity Requested *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "text_input_g9hK3J": {
-          "type": "text_input",
-          "settings": {
-            "label": "Desired Delivery *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "text_input_eJcKBy": {
-          "type": "text_input",
-          "settings": {
-            "label": "Which products are you interested in? *",
-            "placeholder": "",
-            "required": true,
-            "full_width": false
-          }
-        },
-        "dropdown_pB6VbE": {
-          "type": "dropdown",
-          "settings": {
-            "label": "Interested in selecting colors? *",
-            "placeholder": "Select an option",
-            "required": true,
-            "options": "Yes, No",
-            "full_width": false
-          }
-        },
-        "dropdown_WRtr9r": {
-          "type": "dropdown",
-          "settings": {
-            "label": "Shipping *",
-            "placeholder": "Select an option",
-            "required": true,
-            "options": "Ship all products to a single location, Ship each product to a different location",
-            "full_width": true
-          }
-        },
-        "textarea_PEhmGw": {
-          "type": "textarea",
-          "settings": {
-            "label": "Anything else to add?",
-            "placeholder": "",
-            "required": false,
-            "full_width": true
-          }
-        }
-      },
-      "block_order": [
-        "text_input_jqtmdN",
-        "text_input_KYn3mm",
-        "email_input_iq68UF",
-        "text_input_tVPJfJ",
-        "text_input_cJDKkT",
-        "text_input_g9hK3J",
-        "text_input_eJcKBy",
-        "dropdown_pB6VbE",
-        "dropdown_WRtr9r",
-        "textarea_PEhmGw"
-      ],
-      "name": "Dynamic Form",
+      "type": "corporate-gifting-form",
       "settings": {
-        "show_info": false,
         "header_text": "",
         "subheader_text": "We can help you find the perfect gift for potential clients, express appreciation to current ones, or show your employees your appreciation for their hard work.\n<br><br>\nOrders over $1000 will receive a 10% discount.",
         "success_title": "Thank you, your request has been sent!",
-        "success_subtext": "We will reply shortly."
+        "success_subtext": "We will reply shortly.",
+        "zendesk_subdomain": "nodpod",
+        "ticket_form_id": "55238448020243",
+        "fid_first_name": "54606608356627",
+        "fid_last_name": "54606635864467",
+        "fid_email": "54606701572371",
+        "fid_company": "55238288650643",
+        "fid_quantity": "55238285799315",
+        "fid_delivery": "55238290405907",
+        "fid_products": "55238305173267",
+        "fid_colors": "55238343973651",
+        "fid_shipping": "55238309424275"
       }
     }
   },
