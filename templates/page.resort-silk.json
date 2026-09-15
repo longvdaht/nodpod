@@ -81,7 +81,8 @@
         "show_rating": true,
         "quick_add": "standard",
         "padding_top": 40,
-        "padding_bottom": 40
+        "padding_bottom": 40,
+        "enable_scroll_animation": false
       }
     },
     "image_with_text": {

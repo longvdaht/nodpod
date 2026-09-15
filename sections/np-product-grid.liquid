@@ -46,20 +46,6 @@
     }
   }
 
-  {%- if section.settings.background_color != blank -%}
-    div[id="shopify-section-{{ section.id }}"] .np-product-grid { background-color: {{ section.settings.background_color }}; }
-  {%- endif -%}
-
-  {%- if section.settings.text_color != blank -%}
-    div[id="shopify-section-{{ section.id }}"] .np-product-grid,
-    div[id="shopify-section-{{ section.id }}"] .np-product-grid .title,
-    div[id="shopify-section-{{ section.id }}"] .np-product-grid .card__heading,
-    div[id="shopify-section-{{ section.id }}"] .np-product-grid .card__heading a,
-    div[id="shopify-section-{{ section.id }}"] .np-product-grid .price {
-      color: {{ section.settings.text_color }};
-    }
-  {%- endif -%}
-
   .section-{{ section.id }}-padding .title.title--primary { margin-bottom: 1.25rem; }
   @media (min-width: 750px) {
     .section-{{ section.id }}-padding .title.title--primary { margin-bottom: 2rem; }
@@ -67,6 +53,14 @@
 {%- endstyle -%}
 
 {%- liquid
+  # Scroll reveal keeps items at opacity .01 until IntersectionObserver clears
+  # `scroll-trigger--offscreen`. Off by default here so a launch grid cannot end
+  # up invisible if that never fires.
+  assign reveal_on_scroll = false
+  if settings.animations_reveal_on_scroll and section.settings.enable_scroll_animation
+    assign reveal_on_scroll = true
+  endif
+
   assign grid_collection = section.settings.collection
   assign launch_filter = section.settings.launch_group_filter
 
@@ -86,9 +80,9 @@
 
 <div class="np-product-grid color-{{ section.settings.color_scheme }} isolate gradient">
   <div
-    class="product-grid-container section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    class="product-grid-container section-{{ section.id }}-padding{% if reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     id="ProductGridContainer"
-    {% if settings.animations_reveal_on_scroll %}
+    {% if reveal_on_scroll %}
       data-cascade
     {% endif %}
   >
@@ -172,8 +166,8 @@
                 {%- assign lazy_load = false -%}
               {%- endif -%}
               <li
-                class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {% if settings.animations_reveal_on_scroll %}
+                class="grid__item{% if reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if reveal_on_scroll %}
                   data-cascade
                   style="--animation-order: {{ rendered_count }};"
                 {% endif %}
@@ -259,6 +253,13 @@
         { "value": "right", "label": "Right" }
       ]
     },
+    {
+      "type": "checkbox",
+      "id": "enable_scroll_animation",
+      "label": "Reveal products on scroll",
+      "default": false,
+      "info": "Off keeps products visible at all times. On follows the theme's scroll animation, which hides them until they scroll into view."
+    },
     { "type": "header", "content": "Layout" },
     {
       "type": "range",
@@ -293,18 +294,6 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background color",
-      "info": "Leave blank to use the colour scheme."
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text color",
-      "info": "Applies to the section title and product card text. Leave blank to use the colour scheme."
     },
     { "type": "header", "content": "Product card" },
     {

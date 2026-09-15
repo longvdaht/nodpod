@@ -71,33 +71,35 @@
 {%- liquid
   assign overlay_class = 'pos-mc align-center'
   case section.settings.overlay_position
-    when 'top_left'      then assign overlay_class = 'pos-tl align-left'
-
-    when 'top_center'    then assign overlay_class = 'pos-tc align-center'
-
-    when 'top_right'     then assign overlay_class = 'pos-tr align-right'
-
-    when 'middle_left'   then assign overlay_class = 'pos-ml align-left'
-
-    when 'middle_center' then assign overlay_class = 'pos-mc align-center'
-
-    when 'middle_right'  then assign overlay_class = 'pos-mr align-right'
-
-    when 'bottom_left'   then assign overlay_class = 'pos-bl align-left'
-
-    when 'bottom_center' then assign overlay_class = 'pos-bc align-center'
-
-    when 'bottom_right'  then assign overlay_class = 'pos-br align-right'
+    when 'top_left'
+      assign overlay_class = 'pos-tl align-left'
+    when 'top_center'
+      assign overlay_class = 'pos-tc align-center'
+    when 'top_right'
+      assign overlay_class = 'pos-tr align-right'
+    when 'middle_left'
+      assign overlay_class = 'pos-ml align-left'
+    when 'middle_center'
+      assign overlay_class = 'pos-mc align-center'
+    when 'middle_right'
+      assign overlay_class = 'pos-mr align-right'
+    when 'bottom_left'
+      assign overlay_class = 'pos-bl align-left'
+    when 'bottom_center'
+      assign overlay_class = 'pos-bc align-center'
+    when 'bottom_right'
+      assign overlay_class = 'pos-br align-right'
 
   endcase
 
   assign mobile_pos_class = ''
   case section.settings.overlay_position_mobile
-    when 'top'    then assign mobile_pos_class = 'mpos-top'
-
-    when 'middle' then assign mobile_pos_class = 'mpos-middle'
-
-    when 'bottom' then assign mobile_pos_class = 'mpos-bottom'
+    when 'top'
+      assign mobile_pos_class = 'mpos-top'
+    when 'middle'
+      assign mobile_pos_class = 'mpos-middle'
+    when 'bottom'
+      assign mobile_pos_class = 'mpos-bottom'
 
     else
       if overlay_class contains 'pos-t'
@@ -111,11 +113,12 @@
 
   assign mobile_align_class = ''
   case section.settings.overlay_align_mobile
-    when 'left'   then assign mobile_align_class = 'malign-left'
-
-    when 'center' then assign mobile_align_class = 'malign-center'
-
-    when 'right'  then assign mobile_align_class = 'malign-right'
+    when 'left'
+      assign mobile_align_class = 'malign-left'
+    when 'center'
+      assign mobile_align_class = 'malign-center'
+    when 'right'
+      assign mobile_align_class = 'malign-right'
 
     else
       if overlay_class contains 'align-left'

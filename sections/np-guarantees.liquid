@@ -5,9 +5,20 @@
 
 {% style %}
   /* Scoped to this section instance */
+  {%- comment -%}
+    `default` only fires on nil/empty, so a Section background of "Transparent"
+    (rgba(0,0,0,0)) counted as set and the legacy fallback never applied, despite
+    what its label promises. Treat transparent as "not set".
+  {%- endcomment -%}
+  {%- liquid
+    assign guarantees_bg = section.settings.section_bg
+    if guarantees_bg == blank or guarantees_bg == 'rgba(0,0,0,0)'
+      assign guarantees_bg = section.settings.headingBg
+    endif
+  -%}
   div[id="shopify-section-{{ section.id }}"] .np-guarantees__bg {
     /* Background spans full width */
-    background-color: {{ section.settings.section_bg | default: section.settings.headingBg }};
+    background-color: {{ guarantees_bg }};
   }
 
   div[id="shopify-section-{{ section.id }}"] .np-guarantees__inner {
