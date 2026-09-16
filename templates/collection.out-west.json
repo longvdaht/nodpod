@@ -24,8 +24,8 @@
         "image_YH3QfJ": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Out_West_Collection_Banner.png",
-            "imageMobile": "shopify://shop_images/Out_West_Collection_Banners.png",
+            "image": "shopify://shop_images/resort_collection_banner_2.png",
+            "imageMobile": "shopify://shop_images/Resort_web_b_anner_1.png",
             "imgClickable": true
           }
         }
