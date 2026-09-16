@@ -175,10 +175,7 @@
         "product_tab_CPPT6F",
         "custom_liquid_N9eXgy"
       ],
-      "custom_css": [
-        "ul.icon-with-text.icon-with-text--horizontal {background: #fafaf9; padding: 15px 20px 10px; border: 1px solid #d9d9d9; border-radius: 6px;}",
-        ".shopify-app-block {margin: 0 !important;}"
-      ],
+      
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",

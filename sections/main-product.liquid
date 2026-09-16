@@ -756,7 +756,12 @@
                   {%- endif -%}
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
-                {% render 'icon-with-text', block: block %}
+                <div
+                  class="pdp-icon-with-text-wrapper"
+                  style="--icon-image-width: {{ block.settings.image_width }}px;"
+                >
+                  {% render 'icon-with-text', block: block %}
+                </div>
               {%- when 'fsa_hsa_badge' -%}
                 {%- render 'fsa-hsa-badge',
                   fsa_product: product,
@@ -1685,6 +1690,23 @@
   .icon-with-text--vertical img {
     width: 32px;
     height: 32px;
+  }
+
+  .pdp-icon-with-text-wrapper ul.icon-with-text {
+    justify-content: space-between;
+    background: #fafaf9;
+    padding: 30px;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    gap: 1%
+  }
+
+  .pdp-icon-with-text-wrapper ul.icon-with-text.icon-with-text--horizontal li.icon-with-text__item {
+    width: 30%;
+  }
+  .pdp-icon-with-text-wrapper ul.icon-with-text.icon-with-text--horizontal li.icon-with-text__item img {
+    width: var(--icon-image-width);
+    height: auto;
   }
   .icon-with-text--vertical .icon-with-text__item {
     margin-bottom: 10px;
@@ -2879,6 +2901,16 @@
           ],
           "default": "horizontal",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.layout.label"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 16,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Custom image width",
+          "default": 32
         },
         {
           "type": "header",

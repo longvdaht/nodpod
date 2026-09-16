@@ -401,12 +401,12 @@ svg.yotpo-verified-icon.yotpo-reviewer-verified-icon-standalone {
 
 .icon-with-text--horizontal .icon-with-text__item {
     flex-direction: column !important;
-    width: 25% !important;
+    width: 25%;
 }
 
 ul.icon-with-text.icon-with-text--horizontal li.icon-with-text__item img {
-    width: 120px !important;
-    height: 120px !important;
+    width: 120px;
+    height: 120px;
 }
 
 ul.icon-with-text.icon-with-text--horizontal {
