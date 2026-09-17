@@ -657,7 +657,7 @@
           "type": "button",
           "settings": {
             "button_label": "Learn More",
-            "button_link": "https://nodpod.com/pages/our-story",
+            "button_link": "shopify://pages/sustainability",
             "button_type": "outline",
             "buttonBg": "#5e5d5e",
             "buttonOutline": "#5e5d5e",
