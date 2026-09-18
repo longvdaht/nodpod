@@ -15,8 +15,8 @@
         "image_hero": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Out_West_Collection_Banner.png",
-            "imageMobile": "shopify://shop_images/Out_West_Collection_Banners.png",
+            "image": "shopify://shop_images/resort_collection_banner_2_8dabda16-fccc-40f4-bc11-eff5eb0d563b.png",
+            "imageMobile": "shopify://shop_images/Resort_web_b_anner_1_4dc93888-b3e9-49a2-8b67-64e519def973.png",
             "imgClickable": false
           }
         }
@@ -63,11 +63,12 @@
       "name": "Product grid",
       "settings": {
         "collection": "all",
-        "launch_group_filter": "Resort Silk",
+        "launch_group_filter": "Resort Collection",
         "show_section_title": true,
         "section_title": "Luxury You Can Feel",
         "section_title_tag": "h1",
         "section_title_align": "center",
+        "enable_scroll_animation": false,
         "products_to_show": 16,
         "columns_desktop": 3,
         "columns_mobile": "1",
@@ -79,8 +80,7 @@
         "show_rating": true,
         "quick_add": "standard",
         "padding_top": 40,
-        "padding_bottom": 40,
-        "enable_scroll_animation": false
+        "padding_bottom": 40
       }
     },
     "image_with_text": {
