@@ -12,6 +12,34 @@
     "np_home_slider_KD4iFg": {
       "type": "np-home-slider",
       "blocks": {
+        "full_banner_jUB9Wq": {
+          "type": "full_banner",
+          "settings": {
+            "image": "shopify://shop_images/Resort_Web_Banners.png",
+            "image_mobile": "shopify://shop_images/Resort_Web_Banners_mobile.png",
+            "overlay_position": "middle_center",
+            "overlay_max_width": 45,
+            "overlay_position_mobile": "same_as_desktop",
+            "overlay_max_width_mobile": 90,
+            "subheading": "",
+            "sub_text_color": "#ffffff",
+            "sub_font_size": 1.5,
+            "sub_font_size_mobile": 1.2,
+            "title": "",
+            "text_color": "#ffffff",
+            "font_size": 2,
+            "font_size_mobile": 1.6,
+            "button_text": "",
+            "url": "shopify://pages/resort-silk-landing",
+            "button_text_color": "#ffffff",
+            "button_bkg_color": "rgba(0,0,0,0)",
+            "button_font_size": 2,
+            "button_stroke": 1,
+            "button_border_color": "#ffffff",
+            "button_font_size_mobile": 1.6,
+            "enable_shadows": false
+          }
+        },
         "full_banner_zRD388": {
           "type": "full_banner",
           "settings": {
@@ -31,35 +59,6 @@
             "font_size_mobile": 1.6,
             "button_text": "",
             "url": "shopify://collections/outwestcollection",
-            "button_text_color": "#ffffff",
-            "button_bkg_color": "rgba(0,0,0,0)",
-            "button_font_size": 2,
-            "button_stroke": 1,
-            "button_border_color": "#ffffff",
-            "button_font_size_mobile": 1.6,
-            "enable_shadows": false
-          }
-        },
-        "full_banner_jUB9Wq": {
-          "type": "full_banner",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Resort_Web_Banners.png",
-            "image_mobile": "shopify://shop_images/Resort_Web_Banners_mobile.png",
-            "overlay_position": "middle_center",
-            "overlay_max_width": 45,
-            "overlay_position_mobile": "same_as_desktop",
-            "overlay_max_width_mobile": 90,
-            "subheading": "",
-            "sub_text_color": "#ffffff",
-            "sub_font_size": 1.5,
-            "sub_font_size_mobile": 1.2,
-            "title": "",
-            "text_color": "#ffffff",
-            "font_size": 2,
-            "font_size_mobile": 1.6,
-            "button_text": "",
-            "url": "https://nodpod.com/collections/resort-collection",
             "button_text_color": "#ffffff",
             "button_bkg_color": "rgba(0,0,0,0)",
             "button_font_size": 2,
@@ -184,8 +183,8 @@
         }
       },
       "block_order": [
-        "full_banner_zRD388",
         "full_banner_jUB9Wq",
+        "full_banner_zRD388",
         "full_banner_WPTyWP",
         "full_banner_MPT4DU",
         "full_banner_Q8gfAD",
