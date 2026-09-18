@@ -116,6 +116,7 @@
         "heading_1",
         "button_1"
       ],
+      "disabled": true,
       "custom_css": [
         ".section-main-button {margin-top: 2rem;}",
         "@media screen and (max-width: 767px) {.section-main-button, .section-subheading {margin-top: 4rem; } .section-main-heading {text-align: center; }}"
@@ -190,6 +191,7 @@
         "logo_image_3",
         "logo_image_4"
       ],
+      "disabled": true,
       "custom_css": [
         "h3.gs-title {font-family: var(--font-heading-family); font-size: 48px; font-weight: 300; letter-spacing: 0.02em; margin-top: 10px;}",
         ".np-guarantees__grid h2 {font-size: 32px; font-family: var(--font-heading-family); font-weight: 300;}",
