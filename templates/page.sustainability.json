@@ -51,6 +51,7 @@
         "color_scheme": "scheme-1",
         "heroMetaH1Bg": "#ffffff",
         "heroMetaH1Color": "#75787b",
+        "background_color": "",
         "heroMetaH1hasBg": false,
         "heroHeight": "var(--heroHeight-l)",
         "cropVideo": false,
@@ -198,6 +199,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -213,7 +215,7 @@
         "text_P9Qgw6": {
           "type": "text",
           "settings": {
-            "text": "We’ve partnered with TerraCycle to upcycle damaged Nodpod’s into raw materials that can be used to manufacture new household items."
+            "text": "We’ve partnered with GiveNKind to donate gently used and excess nodpods, giving our products a second life while helping people in need."
           }
         }
       },
