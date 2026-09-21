@@ -63,7 +63,7 @@
       "name": "Product grid",
       "settings": {
         "collection": "all",
-        "launch_group_filter": "Resort Collection",
+        "launch_group_filter": "Out West Collection",
         "show_section_title": true,
         "section_title": "Luxury You Can Feel",
         "section_title_tag": "h1",
