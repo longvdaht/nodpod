@@ -862,6 +862,7 @@
       "block_order": [
         "button_RaRwLy"
       ],
+      "disabled": true,
       "name": "NP Header Block",
       "settings": {
         "marginTop": 0,
