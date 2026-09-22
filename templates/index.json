@@ -210,85 +210,70 @@
         "accessible_label": "Homepage slider"
       }
     },
-    "scrolling_logo_list_dXwHDb": {
+    "scrolling_logo_list_XeCU8T": {
       "type": "scrolling-logo-list",
       "blocks": {
-        "logo_image_jQzFYg": {
+        "logo_image_3dBqTd": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/allure3-new.svg",
+            "image": "shopify://shop_images/ulta-logo.svg",
             "link": "",
             "newTab": false
           }
         },
-        "logo_image_J4piiK": {
+        "logo_image_kiWBRp": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/nb-logo-en.svg",
+            "image": "shopify://shop_images/ns-logo-en.svg",
             "link": "",
             "newTab": false
           }
         },
-        "logo_image_cTxmcV": {
+        "logo_image_mALRUE": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/wh-logo-en.svg",
+            "image": "shopify://shop_images/an-logo-en.svg",
             "link": "",
             "newTab": false
           }
         },
-        "logo_image_iw6ErL": {
+        "logo_image_rbRtiB": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/fb-logo-en.svg",
+            "image": "shopify://shop_images/bn-logo-en.svg",
             "link": "",
             "newTab": false
           }
         },
-        "logo_image_n6ahRU": {
+        "logo_image_zWYmfE": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/gp-logo-en.svg",
-            "link": "",
-            "newTab": false
-          }
-        },
-        "logo_image_FEDqMe": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/wsj-logo-en.svg",
-            "link": "",
-            "newTab": false
-          }
-        },
-        "logo_image_Fnn9CJ": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/pp-logo-en.svg",
+            "image": "shopify://shop_images/kl-logo-en.svg",
             "link": "",
             "newTab": false
           }
         }
       },
       "block_order": [
-        "logo_image_jQzFYg",
-        "logo_image_J4piiK",
-        "logo_image_cTxmcV",
-        "logo_image_iw6ErL",
-        "logo_image_n6ahRU",
-        "logo_image_FEDqMe",
-        "logo_image_Fnn9CJ"
+        "logo_image_3dBqTd",
+        "logo_image_kiWBRp",
+        "logo_image_mALRUE",
+        "logo_image_rbRtiB",
+        "logo_image_zWYmfE"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "section span:first-child img {height: 4vh;}",
+        ".logo-list-scroller span img {height: 2.5vh;}"
+      ],
       "name": "Scrolling logo list",
       "settings": {
         "heading": "",
         "headingAlignment": "start",
-        "logoVH_desktop": 4.5,
-        "logoVH_mobile": 3.5,
-        "logoPadding": 10,
+        "logoVH_desktop": 5,
+        "logoVH_mobile": 5,
+        "logoPadding": 20,
         "marqueeDirection": "false",
-        "marqueeSpeeds": 35,
+        "marqueeSpeeds": 25,
         "marqueePause": true,
         "headingBg": "#a2b0a5",
         "headingColor": "#000000",
@@ -746,7 +731,7 @@
         "heading_mbJ7qw": {
           "type": "heading",
           "settings": {
-            "heading": "Find us at"
+            "heading": "As seen in"
           }
         }
       },
@@ -771,70 +756,85 @@
         "heading_size": "large"
       }
     },
-    "scrolling_logo_list_XeCU8T": {
+    "scrolling_logo_list_dXwHDb": {
       "type": "scrolling-logo-list",
       "blocks": {
-        "logo_image_3dBqTd": {
+        "logo_image_jQzFYg": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/ulta-logo.svg",
+            "image": "shopify://shop_images/allure3-new.svg",
             "link": "",
             "newTab": false
           }
         },
-        "logo_image_kiWBRp": {
+        "logo_image_J4piiK": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/ns-logo-en.svg",
+            "image": "shopify://shop_images/nb-logo-en.svg",
             "link": "",
             "newTab": false
           }
         },
-        "logo_image_mALRUE": {
+        "logo_image_cTxmcV": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/an-logo-en.svg",
+            "image": "shopify://shop_images/wh-logo-en.svg",
             "link": "",
             "newTab": false
           }
         },
-        "logo_image_rbRtiB": {
+        "logo_image_iw6ErL": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/bn-logo-en.svg",
+            "image": "shopify://shop_images/fb-logo-en.svg",
             "link": "",
             "newTab": false
           }
         },
-        "logo_image_zWYmfE": {
+        "logo_image_n6ahRU": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/kl-logo-en.svg",
+            "image": "shopify://shop_images/gp-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_FEDqMe": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/wsj-logo-en.svg",
+            "link": "",
+            "newTab": false
+          }
+        },
+        "logo_image_Fnn9CJ": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/pp-logo-en.svg",
             "link": "",
             "newTab": false
           }
         }
       },
       "block_order": [
-        "logo_image_3dBqTd",
-        "logo_image_kiWBRp",
-        "logo_image_mALRUE",
-        "logo_image_rbRtiB",
-        "logo_image_zWYmfE"
+        "logo_image_jQzFYg",
+        "logo_image_J4piiK",
+        "logo_image_cTxmcV",
+        "logo_image_iw6ErL",
+        "logo_image_n6ahRU",
+        "logo_image_FEDqMe",
+        "logo_image_Fnn9CJ"
       ],
-      "custom_css": [
-        "section span:first-child img {height: 4vh;}",
-        ".logo-list-scroller span img {height: 2.5vh;}"
-      ],
+      "custom_css": [],
       "name": "Scrolling logo list",
       "settings": {
         "heading": "",
         "headingAlignment": "start",
-        "logoVH_desktop": 5,
-        "logoVH_mobile": 5,
-        "logoPadding": 20,
+        "logoVH_desktop": 4.5,
+        "logoVH_mobile": 3.5,
+        "logoPadding": 10,
         "marqueeDirection": "false",
-        "marqueeSpeeds": 25,
+        "marqueeSpeeds": 35,
         "marqueePause": true,
         "headingBg": "#a2b0a5",
         "headingColor": "#000000",
@@ -847,6 +847,7 @@
       "blocks": {
         "button_RaRwLy": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Find a store near me",
             "button_link": "https://nodpod.com/pages/store-locator",
@@ -889,6 +890,7 @@
       "block_order": [
         "heading_9FFVQq"
       ],
+      "disabled": true,
       "name": "NP Header Block",
       "settings": {
         "marginTop": 0,
@@ -1119,7 +1121,7 @@
   },
   "order": [
     "np_home_slider_KD4iFg",
-    "scrolling_logo_list_dXwHDb",
+    "scrolling_logo_list_XeCU8T",
     "np_header_block_TK4PKt",
     "featured_collection",
     "np_image_with_text_x9xpMG",
@@ -1131,7 +1133,7 @@
     "np_header_block_Fe6887",
     "np_home_slider_eehV4c",
     "np_header_block_Ye8PaG",
-    "scrolling_logo_list_XeCU8T",
+    "scrolling_logo_list_dXwHDb",
     "np_header_block_rX3YwD",
     "np_header_block_UAgQLA",
     "1757998893053dfe02",
