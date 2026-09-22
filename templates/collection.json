@@ -20,6 +20,10 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
+        "show_section_title": false,
+        "section_title": "Shop all",
+        "section_title_tag": "h2",
+        "section_title_align": "center",
         "products_per_page": 16,
         "columns_desktop": 4,
         "columns_mobile": "2",
@@ -84,6 +88,7 @@
         },
         "button_UViaFY": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Shop All",
             "button_link": "",
@@ -112,6 +117,7 @@
         "full_bkg_color": "#ffffff",
         "background_image": "shopify://shop_images/Rectangle_334_1_1_1.png",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     }
