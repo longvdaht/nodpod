@@ -422,6 +422,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ebeae6",
         "text_alignment": "left",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -493,7 +494,7 @@
         "question_gyNqdq": {
           "type": "question",
           "settings": {
-            "title": "Can I wash and dry my nodpod?",
+            "title": "Can I wash and dry my Nodpod?",
             "answer": "<p>Nodpod is easy to care for. It can be washed on a normal setting with a full load inside a garment bag. We recommend washing your Nodpod before first use. Although Nodpod is dryer safe, we recommend that you air dry for longevity.</p>",
             "expandAnswer": false
           }
@@ -627,6 +628,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#fafaf9",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -678,6 +680,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
