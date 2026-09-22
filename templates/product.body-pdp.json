@@ -448,7 +448,7 @@
         "question_wrgbHp": {
           "type": "question",
           "settings": {
-            "title": "Can I Microwave my Nodpod BODY?",
+            "title": "Can I microwave my Nodpod BODY?",
             "answer": "<p>No. You can not microwave your Nodpod BODY.</p>",
             "expandAnswer": false
           }
