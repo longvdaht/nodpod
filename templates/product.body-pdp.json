@@ -400,6 +400,7 @@
         "text_color": "#5d5e5d",
         "full_bkg_color": "#ebeae6",
         "text_alignment": "left",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -440,7 +441,7 @@
           "type": "question",
           "settings": {
             "title": "Can my small child use my Nodpod BODY?",
-            "answer": "<p>No, we do not recommend using Nodpod BODY as the concentrated weighted could pose a suffocation hazard.</p>",
+            "answer": "<p>No, we do not recommend using Nodpod BODY as the concentrated weight could pose a suffocation hazard.</p>",
             "expandAnswer": false
           }
         },
@@ -544,6 +545,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#fafaf9",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -595,6 +597,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
