@@ -320,6 +320,7 @@
         },
         "button_hMxxYQ": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "SHOP MINERALIZED SILK",
             "button_link": "",
