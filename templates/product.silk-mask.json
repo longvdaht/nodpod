@@ -494,6 +494,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ebeae6",
         "text_alignment": "left",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -629,6 +630,7 @@
         "text_color": "#5d5e5d",
         "full_bkg_color": "#fafaf9",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -638,7 +640,7 @@
         "yotpo_product_reviews_reviews_KgzwGn": {
           "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
-            "product": "{{product}}"
+            "product": "nodpod-silk"
           }
         }
       },
@@ -680,6 +682,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
