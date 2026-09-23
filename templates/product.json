@@ -132,6 +132,7 @@
         },
         "product_tab_QRJWpQ": {
           "type": "product_tab",
+          "disabled": true,
           "settings": {
             "title": "Size",
             "content": "<p>{{ product.metafields.custom.pdp_size | metafield_tag }}</p>",
