@@ -87,6 +87,7 @@
         },
         "complementary_NEakd4": {
           "type": "complementary",
+          "disabled": true,
           "settings": {
             "block_heading": "Also available in:",
             "make_collapsible_row": false,
