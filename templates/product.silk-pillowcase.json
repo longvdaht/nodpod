@@ -151,10 +151,20 @@
             "page": ""
           }
         },
-        "custom_liquid_aTwrw9": {
-          "type": "custom_liquid",
+        "icon_with_text_xLrBXi": {
+          "type": "icon-with-text",
           "settings": {
-            "custom_liquid": "<img width=\"100%\" style=\"margin: 20px 0 0 0 !important;\" src=\"https://cdn.shopify.com/s/files/1/0253/2982/7939/files/pdp-icons-text.svg?v=1758741235\" />"
+            "layout": "horizontal",
+            "image_width": 48,
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/satisfaction-guarantee.png",
+            "heading_1": "30 Day Satisfaction Guarantee",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/oeko-tex-certified.png",
+            "heading_2": "OEKO-TEX® Certified",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/shipping-returns.png",
+            "heading_3": "Free Shipping over $75 + Easy Returns"
           }
         }
       },
@@ -179,7 +189,7 @@
         "product_tab_zymyec",
         "product_tab_QRJWpQ",
         "product_tab_CPPT6F",
-        "custom_liquid_aTwrw9"
+        "icon_with_text_xLrBXi"
       ],
       "custom_css": [
         "ul.icon-with-text.icon-with-text--horizontal {background: #fafaf9; padding: 15px 20px 10px; border: 1px solid #d9d9d9; border-radius: 6px;}",
