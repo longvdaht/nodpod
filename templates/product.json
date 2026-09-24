@@ -132,6 +132,7 @@
         },
         "product_tab_QRJWpQ": {
           "type": "product_tab",
+          "disabled": true,
           "settings": {
             "title": "Size",
             "content": "<p>{{ product.metafields.custom.pdp_size | metafield_tag }}</p>",
@@ -261,6 +262,7 @@
     },
     "np_customer_reviews_XGJH6h": {
       "type": "np-customer-reviews",
+      "disabled": true,
       "custom_css": [
         ".section-subheading,.section-main-heading,.section-main-text {text-align: center;}",
         " {padding: 40px 20px 20px 20px; background: #ecebe7;}"
@@ -426,6 +428,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ecebe7",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "medium"
       }
     },
@@ -476,6 +479,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ebeae6",
         "text_alignment": "left",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -861,6 +865,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -913,6 +918,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },

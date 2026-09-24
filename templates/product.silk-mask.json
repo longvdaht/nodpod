@@ -15,7 +15,7 @@
         "yotpo_product_reviews_star_rating_DhKeUU": {
           "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
-            "product": "{{product}}"
+            "product": "nodpod-silk"
           }
         },
         "fsa_hsa_badge_AqY76k": {
@@ -87,6 +87,7 @@
         },
         "complementary_NEakd4": {
           "type": "complementary",
+          "disabled": true,
           "settings": {
             "block_heading": "Also available in:",
             "make_collapsible_row": false,
@@ -150,6 +151,7 @@
         },
         "product_tab_QRJWpQ": {
           "type": "product_tab",
+          "disabled": true,
           "settings": {
             "title": "Size",
             "content": "<p>{{ product.metafields.custom.pdp_size | metafield_tag }}</p>",
@@ -327,6 +329,7 @@
         },
         "button_hMxxYQ": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "SHOP MINERALIZED SILK",
             "button_link": "",
@@ -501,6 +504,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ebeae6",
         "text_alignment": "left",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -525,7 +529,7 @@
           "type": "question",
           "settings": {
             "title": "How long can I go between washes?",
-            "answer": "<p> Because silver ions naturally resist bacteria, your Nodpod Silk can stay fresher up to 3–5 times longer than traditional sleep masks. Of course, things like makeup, hair products, and natural oils still build up, so we recommend washing when it feels right for you<em>.</em></p>",
+            "answer": "<p>Because silver ions naturally resist bacteria, your Nodpod Silk can stay fresher up to 3–5 times longer than traditional sleep masks. Of course, things like makeup, hair products, and natural oils still build up, so we recommend washing when it feels right for you<em>.</em></p>",
             "expandAnswer": false
           }
         },
@@ -548,7 +552,7 @@
         "question_dpBWTM": {
           "type": "question",
           "settings": {
-            "title": "Can I use nodpod for side sleeping?",
+            "title": "Can I use Nodpod for side sleeping?",
             "answer": "<p>Yes. It works incredibly for side sleeping. Be sure to use the last two pods over your eyes and rest your head on the hollow end.</p>",
             "expandAnswer": false
           }
@@ -557,14 +561,14 @@
           "type": "question",
           "settings": {
             "title": "Will it stay on all night?",
-            "answer": "<p>The purpose of nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
+            "answer": "<p>The purpose of Nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
             "expandAnswer": false
           }
         },
         "question_mxnEep": {
           "type": "question",
           "settings": {
-            "title": "What are the beads in the nodpod made of? Are they safe?",
+            "title": "What are the beads in the Nodpod made of? Are they safe?",
             "answer": "<p>Yes, very safe. The microbeads are made of 100% Polyethylene (PE) plastic pellets, which is the most common plastic in use today. It's used in medical equipment, food containers, and children's stuffed animals. These beads are nontoxic, BPA free and hypoallergenic.</p>",
             "expandAnswer": false
           }
@@ -636,6 +640,7 @@
         "text_color": "#5d5e5d",
         "full_bkg_color": "#fafaf9",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -645,7 +650,7 @@
         "yotpo_product_reviews_reviews_KgzwGn": {
           "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
-            "product": "{{product}}"
+            "product": "nodpod-silk"
           }
         }
       },
@@ -687,6 +692,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },

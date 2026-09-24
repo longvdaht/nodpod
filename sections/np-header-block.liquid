@@ -120,6 +120,27 @@
     .section-main-outline-btn,
     .section-main-text-logo { margin: 0 auto; }
   }
+
+  {%- comment -%}
+    The rules above are unscoped and hard-code centring on mobile, which silently
+    overrides the Text Alignment setting. This scoped rule wins on specificity so
+    each instance can opt out. Default is "center", so existing pages are unchanged.
+  {%- endcomment -%}
+  {%- liquid
+    assign mobile_align = section.settings.text_alignment_mobile | default: 'center'
+    if mobile_align == 'same_as_desktop'
+      assign mobile_align = section.settings.text_alignment
+    endif
+  -%}
+  @media (max-width: 750px) {
+    div[id="shopify-section-{{ section.id }}"] .main-title-block .section-subheading,
+    div[id="shopify-section-{{ section.id }}"] .main-title-block .section-main-heading,
+    div[id="shopify-section-{{ section.id }}"] .main-title-block .main-page-heading,
+    div[id="shopify-section-{{ section.id }}"] .main-title-block .section-main-text,
+    div[id="shopify-section-{{ section.id }}"] .main-title-block .section-main-link {
+      text-align: {{ mobile_align }};
+    }
+  }
 {% endstyle %}
 
 <div class="main-title-block">
@@ -214,6 +235,16 @@
     {
       "type": "select", "id": "text_alignment", "label": "Text Alignment", "default": "center",
       "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select", "id": "text_alignment_mobile", "label": "Text Alignment (mobile)", "default": "center",
+      "info": "Mobile has always been forced to centre. Choose \"Same as desktop\" to follow the Text Alignment setting instead.",
+      "options": [
+        { "value": "same_as_desktop", "label": "Same as desktop" },
         { "value": "left", "label": "Left" },
         { "value": "center", "label": "Center" },
         { "value": "right", "label": "Right" }

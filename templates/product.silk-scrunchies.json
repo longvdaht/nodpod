@@ -110,7 +110,7 @@
           }
         },
         "tolstoy_shoppable_video_quiz_carousel_block_XJa69R": {
-          "type": "shopify://apps/tolstoy-shoppable-video-quiz/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "disabled": true,
           "settings": {
             "publishId": "d2y6nubutjzus"
@@ -243,6 +243,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#f6f6f5",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "medium"
       }
     },
@@ -278,6 +279,7 @@
         },
         "button_wXY3Dw": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "SHOP MINERALIZED SILK",
             "button_link": "",
@@ -297,6 +299,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/silk.png",
         "image_position": "left",
         "mobile_image_position": "bottom",
@@ -313,7 +316,8 @@
         "partial_bkg_position": "top",
         "full_bkg_color": "#ffffff",
         "full_bkg_gradient": "",
-        "text_color": "#5e5d5e"
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
       }
     },
     "scrolling_logo_list_WyAEy4": {
@@ -437,6 +441,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#eadcde",
         "text_alignment": "left",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -455,7 +460,7 @@
           "type": "question",
           "settings": {
             "title": "How do silver ions work in a scrunchie?",
-            "answer": "<p><em>They help resist the bacteria and odor that can build up on everyday hair ties. That means your scrunchie stays fresher longer and requires fewer washes.</em></p>",
+            "answer": "<p>They help resist the bacteria and odor that can build up on everyday hair ties. That means your scrunchie stays fresher longer and requires fewer washes.</p>",
             "expandAnswer": false
           }
         },
@@ -529,6 +534,7 @@
         "text_color": "#5d5e5d",
         "full_bkg_color": "#fafaf9",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -580,6 +586,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },

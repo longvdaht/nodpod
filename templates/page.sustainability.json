@@ -51,6 +51,7 @@
         "color_scheme": "scheme-1",
         "heroMetaH1Bg": "#ffffff",
         "heroMetaH1Color": "#75787b",
+        "background_color": "",
         "heroMetaH1hasBg": false,
         "heroHeight": "var(--heroHeight-l)",
         "cropVideo": false,
@@ -83,7 +84,7 @@
         "text_jbwJTF": {
           "type": "text",
           "settings": {
-            "text": "At Nodpod, we believe small, thoughtful choices can lead to meaningful change. That’s why all of our packaging is fully recyclable, and why we donate gently used and excess nodpods to GiveNKind, giving our products a second life while helping people in need. We’ve made a conscious effort to limit waste wherever possible (more on that below!), but we know we have a long way to go."
+            "text": "At Nodpod, we believe small, thoughtful choices can lead to meaningful change. That’s why all of our packaging is fully recyclable, and why we donate gently used Nodpods through our partnership with TerraCycle. We’ve made a conscious effort to limit waste wherever possible (more on that below!), but we know we have a long way to go."
           }
         }
       },
@@ -198,6 +199,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -213,7 +215,7 @@
         "text_P9Qgw6": {
           "type": "text",
           "settings": {
-            "text": "We donate gently used and excess nodpods to GiveNKind, giving our products a second life while helping people in need."
+            "text": "We’ve partnered with GiveNKind to donate gently used and excess nodpods, giving our products a second life while helping people in need."
           }
         }
       },

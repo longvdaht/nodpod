@@ -5,9 +5,20 @@
 
 {% style %}
   /* Scoped to this section instance */
+  {%- comment -%}
+    `default` only fires on nil/empty, so a Section background of "Transparent"
+    (rgba(0,0,0,0)) counted as set and the legacy fallback never applied, despite
+    what its label promises. Treat transparent as "not set".
+  {%- endcomment -%}
+  {%- liquid
+    assign guarantees_bg = section.settings.section_bg
+    if guarantees_bg == blank or guarantees_bg == 'rgba(0,0,0,0)'
+      assign guarantees_bg = section.settings.headingBg
+    endif
+  -%}
   div[id="shopify-section-{{ section.id }}"] .np-guarantees__bg {
     /* Background spans full width */
-    background-color: {{ section.settings.section_bg | default: section.settings.headingBg }};
+    background-color: {{ guarantees_bg }};
   }
 
   div[id="shopify-section-{{ section.id }}"] .np-guarantees__inner {
@@ -30,6 +41,14 @@
     line-height: 1;
     letter-spacing: 2px;
   }
+
+  {%- if section.settings.text_color != blank -%}
+    div[id="shopify-section-{{ section.id }}"] .np-guarantees__grid h2,
+    div[id="shopify-section-{{ section.id }}"] .np-guarantees__grid p,
+    div[id="shopify-section-{{ section.id }}"] .np-guarantees__grid a {
+      color: {{ section.settings.text_color }};
+    }
+  {%- endif -%}
 
   /* Grid + items */
   div[id="shopify-section-{{ section.id }}"] .np-guarantees__grid {
@@ -175,6 +194,12 @@
       "id": "headingColor",
       "label": "Heading color",
       "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "info": "Colour for the item headings and copy. Leave blank to inherit from the page."
     }
   ],
   "blocks": [

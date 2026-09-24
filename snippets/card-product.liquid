@@ -16,6 +16,7 @@
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
+  - launch_filter: {String} Only show variants whose custom.launch_group contains this value. Blank = show all variants. (optional)
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
@@ -36,6 +37,15 @@
       assign staff_view = true
     elsif content_for_header contains 'previewBarInjector'
       assign staff_view = true
+    endif
+
+    # Optional launch scoping: when a caller passes launch_filter, only variants
+    # whose custom.launch_group contains it are treated as visible.
+    # NOTE: this is deliberately NOT custom.collection_name — any value other than
+    # "Core Collection" there switches on the "(Limited Edition)" label on the PDP.
+    assign launch_filter_handle = ''
+    if launch_filter != blank
+      assign launch_filter_handle = launch_filter | handleize
     endif
 
     # Compute "first visible" + "first visible & available" + visibility check
@@ -60,7 +70,29 @@
         assign ready_true = true
       endif
 
+      assign variant_visible = false
       if staff_view or ready_true
+        assign variant_visible = true
+      endif
+      if launch_filter_handle != blank
+        # launch_group is a list metafield; `join` also accepts a plain string, so
+        # this normalises both shapes into one array we can walk.
+        assign v_launch_joined = v.metafields.custom.launch_group.value | join: '||'
+        assign v_launch_list = v_launch_joined | split: '||'
+        assign v_in_launch = false
+        for lg in v_launch_list
+          assign lg_handle = lg | strip | handleize
+          if lg_handle == launch_filter_handle
+            assign v_in_launch = true
+            break
+          endif
+        endfor
+        unless v_in_launch
+          assign variant_visible = false
+        endunless
+      endif
+
+      if variant_visible
         assign has_visible_variants = true
         if first_visible_variant == null
           assign first_visible_variant = v
@@ -466,8 +498,28 @@
                       elsif rr2 == true or rr2 == 'true' or rr2 == 1 or rr2 == '1'
                         assign ready_true = true
                       endif
+
+                      assign variant_visible = false
+                      if staff_view or ready_true
+                        assign variant_visible = true
+                      endif
+                      if launch_filter_handle != blank
+                        assign v_launch_joined = v.metafields.custom.launch_group.value | join: '||'
+                        assign v_launch_list = v_launch_joined | split: '||'
+                        assign v_in_launch = false
+                        for lg in v_launch_list
+                          assign lg_handle = lg | strip | handleize
+                          if lg_handle == launch_filter_handle
+                            assign v_in_launch = true
+                            break
+                          endif
+                        endfor
+                        unless v_in_launch
+                          assign variant_visible = false
+                        endunless
+                      endif
                     -%}
-                    {%- if staff_view or ready_true -%}
+                    {%- if variant_visible -%}
                       {%- assign is_initial = false -%}
                       {%- if initial_variant and initial_variant.id == v.id -%}
                         {% assign is_initial = true %}
