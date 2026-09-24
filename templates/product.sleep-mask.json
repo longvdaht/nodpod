@@ -86,6 +86,7 @@
         },
         "complementary_wdeMwe": {
           "type": "complementary",
+          "disabled": true,
           "settings": {
             "block_heading": "Also available in:",
             "make_collapsible_row": false,
@@ -152,6 +153,7 @@
         },
         "product_tab_QRJWpQ": {
           "type": "product_tab",
+          "disabled": true,
           "settings": {
             "title": "Size",
             "content": "<p>{{ product.metafields.custom.pdp_size | metafield_tag }}</p>",
@@ -429,6 +431,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ebeae6",
         "text_alignment": "left",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -500,7 +503,7 @@
         "question_gyNqdq": {
           "type": "question",
           "settings": {
-            "title": "Can I wash and dry my nodpod?",
+            "title": "Can I wash and dry my Nodpod?",
             "answer": "<p>Nodpod is easy to care for. It can be washed on a normal setting with a full load inside a garment bag. We recommend washing your Nodpod before first use. Although Nodpod is dryer safe, we recommend that you air dry for longevity.</p>",
             "expandAnswer": false
           }
@@ -524,7 +527,7 @@
         "question_egktD7": {
           "type": "question",
           "settings": {
-            "title": "What are the beads in the nodpod made of? Are they safe?",
+            "title": "What are the beads in the Nodpod made of? Are they safe?",
             "answer": "<p>Yes, very safe. The microbeads are made of 100% Polyethylene (PE) plastic pellets, which is the most common plastic in use today. It's used in medical equipment, food containers, and children's stuffed animals. These beads are nontoxic, BPA free and hypoallergenic.</p>",
             "expandAnswer": false
           }
@@ -541,7 +544,7 @@
           "type": "question",
           "settings": {
             "title": "Who can use Nodpod?",
-            "answer": "<p>We recommend the nodpod for those 12 and older who are able to independently and correctly place and remove the nodpod themselves. Never use the nodpod, or any weighted product, on or near an infant or impaired person.</p>",
+            "answer": "<p>We recommend the Nodpod for those 12 and older who are able to independently and correctly place and remove the Nodpod themselves. Never use the Nodpod, or any weighted product, on or near an infant or impaired person.</p>",
             "expandAnswer": false
           }
         },
@@ -634,6 +637,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#fafaf9",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -685,6 +689,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
