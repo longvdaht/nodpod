@@ -247,6 +247,7 @@
         },
         "logo_image_zWYmfE": {
           "type": "logo_image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/kl-logo-en.svg",
             "link": "",

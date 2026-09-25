@@ -51,6 +51,7 @@
         "color_scheme": "scheme-1",
         "heroMetaH1Bg": "#ffffff",
         "heroMetaH1Color": "#75787b",
+        "background_color": "",
         "heroMetaH1hasBg": false,
         "heroHeight": "var(--heroHeight-l)",
         "cropVideo": false,
@@ -95,6 +96,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -276,6 +278,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },

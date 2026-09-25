@@ -51,6 +51,7 @@
         "color_scheme": "scheme-1",
         "heroMetaH1Bg": "#ffffff",
         "heroMetaH1Color": "#75787b",
+        "background_color": "",
         "heroMetaH1hasBg": false,
         "heroHeight": "uncropped",
         "cropVideo": false,
@@ -84,6 +85,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/science-benefits.png",
         "image_position": "left",
         "mobile_image_position": "top",
@@ -100,7 +102,8 @@
         "partial_bkg_position": "top",
         "full_bkg_color": "#ffffff",
         "full_bkg_gradient": "",
-        "text_color": "#5e5d5e"
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
       }
     },
     "np_header_block_PekLYA": {
@@ -141,6 +144,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#dde2dc",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -162,7 +166,7 @@
           "settings": {
             "image": "shopify://shop_images/Group_128.png",
             "title": "Reduces Cortisol Levels",
-            "text": "<p>The hormones that causes stress. It works with certain parts of your brain to control your mood, motivation, and fear.</p>",
+            "text": "<p>The hormones that cause stress. It works with certain parts of your brain to control your mood, motivation, and fear.</p>",
             "link_label": "",
             "link": ""
           }
@@ -200,6 +204,7 @@
         "button_link": "",
         "columns_desktop": 3,
         "column_alignment": "center",
+        "reverse_content": false,
         "background_style": "none",
         "color_scheme": "scheme-2",
         "columns_mobile": "1",
@@ -239,6 +244,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -281,6 +287,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/Asset_8.png",
         "image_position": "right",
         "mobile_image_position": "top",
@@ -297,7 +304,8 @@
         "partial_bkg_position": "top",
         "full_bkg_color": "#ffffff",
         "full_bkg_gradient": "",
-        "text_color": "#5e5d5e"
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
       }
     },
     "np_image_with_text_fHjFnq": {
@@ -339,6 +347,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/Asset_10.png",
         "image_position": "left",
         "mobile_image_position": "top",
@@ -355,7 +364,8 @@
         "partial_bkg_position": "top",
         "full_bkg_color": "#ffffff",
         "full_bkg_gradient": "",
-        "text_color": "#5e5d5e"
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
       }
     },
     "np_image_with_text_rEHjNn": {
@@ -397,6 +407,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/Asset_9.png",
         "image_position": "right",
         "mobile_image_position": "top",
@@ -413,7 +424,8 @@
         "partial_bkg_position": "top",
         "full_bkg_color": "#ffffff",
         "full_bkg_gradient": "",
-        "text_color": "#5e5d5e"
+        "text_color": "#5e5d5e",
+        "product_to_add": ""
       }
     }
   },

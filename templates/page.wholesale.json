@@ -52,6 +52,7 @@
         "color_scheme": "scheme-1",
         "heroMetaH1Bg": "#ffffff",
         "heroMetaH1Color": "#ffffff",
+        "background_color": "",
         "heroMetaH1hasBg": false,
         "heroHeight": "uncropped",
         "cropVideo": false,
@@ -93,6 +94,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -162,7 +164,7 @@
         "text_UqdUpx": {
           "type": "text",
           "settings": {
-            "text": "New to Faire? ou’ll get $100 off your first order, plus free shipping with us for an entire year."
+            "text": "New to Faire? You’ll get $100 off your first order, plus free shipping with us for an entire year."
           }
         },
         "button_Lh6tPT": {
@@ -190,6 +192,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/wholesale-bottom-banner_78f6eb4f-1fa6-4012-a6f6-0d3cddd5553b.png",
         "image_position": "right",
         "mobile_image_position": "top",
