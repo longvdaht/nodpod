@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -6,8 +15,6 @@
         "image_hero": {
           "type": "image",
           "settings": {
-            "image": "",
-            "imageMobile": "",
             "imgClickable": false
           }
         }
@@ -36,6 +43,7 @@
         "color_scheme": "scheme-1",
         "heroMetaH1Bg": "#ffffff",
         "heroMetaH1Color": "#ffffff",
+        "background_color": "",
         "heroMetaH1hasBg": false,
         "heroHeight": "uncropped",
         "cropVideo": false,
@@ -58,6 +66,7 @@
         "section_title": "The perfect recipe for better rest",
         "section_title_tag": "h1",
         "section_title_align": "center",
+        "enable_scroll_animation": false,
         "products_to_show": 16,
         "columns_desktop": 3,
         "columns_mobile": "1",
@@ -69,8 +78,7 @@
         "show_rating": true,
         "quick_add": "standard",
         "padding_top": 40,
-        "padding_bottom": 40,
-        "enable_scroll_animation": false
+        "padding_bottom": 40
       }
     },
     "image_with_text": {
@@ -106,6 +114,7 @@
         "heading_1",
         "button_1"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {font-family: var(--font-heading-family); font-size: 3rem; line-height: 1.65; margin-bottom: 30px;}",
         "img {border-radius: 20px;}",
@@ -116,7 +125,6 @@
       "settings": {
         "unique_id": "lashes_highlight",
         "show_fsa_badge": false,
-        "image": "",
         "image_position": "left",
         "mobile_image_position": "top",
         "mobile_gap": 0,
@@ -142,7 +150,6 @@
         "logo_image_1": {
           "type": "logo_image",
           "settings": {
-            "image": "",
             "heading": "Detail one",
             "content": "<p>Placeholder copy — swap for launch detail.</p>",
             "link": ""
@@ -151,7 +158,6 @@
         "logo_image_2": {
           "type": "logo_image",
           "settings": {
-            "image": "",
             "heading": "Detail two",
             "content": "<p>Placeholder copy — swap for launch detail.</p>",
             "link": ""
@@ -160,7 +166,6 @@
         "logo_image_3": {
           "type": "logo_image",
           "settings": {
-            "image": "",
             "heading": "Detail three",
             "content": "<p>Placeholder copy — swap for launch detail.</p>",
             "link": ""
@@ -169,7 +174,6 @@
         "logo_image_4": {
           "type": "logo_image",
           "settings": {
-            "image": "",
             "heading": "Detail four",
             "content": "<p>Placeholder copy — swap for launch detail.</p>",
             "link": ""
@@ -182,6 +186,7 @@
         "logo_image_3",
         "logo_image_4"
       ],
+      "disabled": true,
       "custom_css": [
         "h3 {font-family: var(--font-heading-family); font-size: 3.5rem; line-height: 1; margin-bottom: 80px; margin-top: 0;}",
         "h2 {font-family: var(--font-heading-family); font-size: 2rem; line-height: 1;}",
@@ -211,7 +216,7 @@
         "heading_1": {
           "type": "heading",
           "settings": {
-            "heading": "“Placeholder founder’s note for the Lashes launch — swap for final copy.”"
+            "heading": "“For years, I heard from women who reluctantly gave up their Nodpod after getting lash extensions. I never thought you should have to choose between the lashes you love and a great night’s sleep.After years of prototypes and perfecting the design, I’m so proud to finally introduce <strong>Nodpod Lashes</strong>. You can have both.”"
           }
         },
         "image_1": {
@@ -235,7 +240,6 @@
       "settings": {
         "unique_id": "lashes_founders_note",
         "show_fsa_badge": false,
-        "image": "",
         "image_position": "right",
         "mobile_image_position": "bottom",
         "mobile_gap": 0,
@@ -296,6 +300,7 @@
         "text_1",
         "button_1"
       ],
+      "disabled": true,
       "custom_css": [
         "h1 {font-family: var(--font-heading-family); font-size: 3rem; line-height: 1.65; margin-bottom: 30px;}",
         "p {font-size: 2rem; font-weight: 600; margin-bottom: 40px;}",
@@ -314,6 +319,7 @@
         "text_color": "#6c6463",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     }
