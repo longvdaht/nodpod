@@ -366,7 +366,7 @@
           "type": "question",
           "settings": {
             "title": "Return Policy",
-            "answer": "<p>Any order purchased from nodpod.com* can be returned within 30 days. If not completely satisfied, simply return the product for a prompt refund. </p><p>For easy returns use our Easy Returns Portal <a href=\"https://nodpod.loopreturns.com/#/\" target=\"_blank\" title=\"Nodpod Loop Returns\">here.</a></p><p>*Products purchased from any other retailer or website (Amazon, Anthropologie, Nordstrom, etc.) must be returned to the original seller.</p>",
+            "answer": "<p>Any order purchased from nodpod.com* can be returned within 30 days. If not completely satisfied, simply return the product for a prompt refund.&nbsp;</p><p>For easy returns use our Easy Returns Portal&nbsp;<a href=\"https://nodpod.loopreturns.com/#/\" target=\"_blank\" title=\"Nodpod Loop Returns\">here.</a></p><p>*Orders marked as Final Sale are not eligible for returns.&nbsp;</p><p>*Products purchased from any other retailer or website (Amazon, Anthropologie, Nordstrom, etc.) must be returned to the original seller.</p>",
             "expandAnswer": false
           }
         },
