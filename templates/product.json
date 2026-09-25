@@ -85,6 +85,7 @@
           "disabled": true,
           "settings": {
             "layout": "vertical",
+            "image_width": 32,
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Group_374.svg",
             "heading_1": "Clinically tested to eliminate acne-causing bacteria by over 99%",
@@ -124,6 +125,7 @@
         },
         "product_tab_zymyec": {
           "type": "product_tab",
+          "disabled": true,
           "settings": {
             "title": "Materials",
             "content": "<p>{{ product.metafields.custom.pdp_materials | metafield_tag }}</p>",
@@ -141,6 +143,7 @@
         },
         "product_tab_CPPT6F": {
           "type": "product_tab",
+          "disabled": true,
           "settings": {
             "title": "Shipping + Returns",
             "content": "<p>{{ product.metafields.custom.pdp_shipping | metafield_tag }}</p>",
@@ -186,7 +189,6 @@
         "product_tab_CPPT6F",
         "icon_with_text_xLrBXi"
       ],
-      
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
