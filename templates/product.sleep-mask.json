@@ -456,7 +456,7 @@
           "type": "question",
           "settings": {
             "title": "Will it stay on all night?",
-            "answer": "<p>The purpose of nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
+            "answer": "<p>The purpose of Nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
             "expandAnswer": false
           }
         },
