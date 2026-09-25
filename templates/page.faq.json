@@ -45,6 +45,7 @@
         "full_bkg_color": "#ffffff",
         "background_image": "shopify://shop_images/faq-banner-desktop.png",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -69,14 +70,14 @@
           "type": "question",
           "settings": {
             "title": "Will it stay on all night?",
-            "answer": "<p>The purpose of nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
+            "answer": "<p>The purpose of Nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
             "expandAnswer": false
           }
         },
         "question_4QpTca": {
           "type": "question",
           "settings": {
-            "title": "Does nodpod come in different weight options?",
+            "title": "Does Nodpod come in different weight options?",
             "answer": "<p>Nodpod was designed with the comfort in mind. We've experimented with every weight down to the bead, and found that 9 ounces, evenly distributed, was the perfect weight for all sleeping positions.</p>",
             "expandAnswer": false
           }
@@ -124,7 +125,7 @@
         "question_w8RwGY": {
           "type": "question",
           "settings": {
-            "title": "Can I freeze my nodpod?",
+            "title": "Can I freeze my Nodpod?",
             "answer": "<p>Yes, it feels amazing this way. It stays soft and flexible.</p>",
             "expandAnswer": false
           }
@@ -218,7 +219,7 @@
         "question_W6qzPK": {
           "type": "question",
           "settings": {
-            "title": "Can I use nodpod for side sleeping?",
+            "title": "Can I use Nodpod for side sleeping?",
             "answer": "<p>Yes. It works incredibly for side sleeping. Be sure to use the last two pods over your eyes and rest your head on the hollow end.</p>",
             "expandAnswer": false
           }
