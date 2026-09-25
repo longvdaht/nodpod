@@ -52,6 +52,7 @@
         "color_scheme": "scheme-1",
         "heroMetaH1Bg": "#ffffff",
         "heroMetaH1Color": "#5d5e5d",
+        "background_color": "",
         "heroMetaH1hasBg": false,
         "heroHeight": "uncropped",
         "cropVideo": false,
@@ -71,7 +72,7 @@
         "text_dycqGT": {
           "type": "text",
           "settings": {
-            "text": "Do you love coming up with creative solutions to help people relax and unwind? If so, then Nodpod might be the place for you! We're a tight-knit team of dreamers and doers who are always looking for ways to make a difference in the lives of others. Whether it's through our cozy weighted blankets or our luxurious sleep masks, we strive to create products that enhance people's"
+            "text": "Do you love coming up with creative solutions to help people relax and unwind? If so, then Nodpod might be the place for you! We're a tight-knit team of dreamers and doers who are always looking for ways to make a difference in the lives of others."
           }
         }
       },
@@ -90,6 +91,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -133,6 +135,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/careers-img_2b9d9664-7bb7-49ee-b0dd-640e271418e4.png",
         "image_position": "right",
         "mobile_image_position": "top",
@@ -149,7 +152,8 @@
         "partial_bkg_position": "top",
         "full_bkg_color": "#fafaf9",
         "full_bkg_gradient": "",
-        "text_color": "#5d5e5d"
+        "text_color": "#5d5e5d",
+        "product_to_add": ""
       }
     }
   },
