@@ -125,7 +125,6 @@
         },
         "product_tab_zymyec": {
           "type": "product_tab",
-          "disabled": true,
           "settings": {
             "title": "Materials",
             "content": "<p>{{ product.metafields.custom.pdp_materials | metafield_tag }}</p>",
@@ -134,7 +133,6 @@
         },
         "product_tab_QRJWpQ": {
           "type": "product_tab",
-          "disabled": true,
           "settings": {
             "title": "Size",
             "content": "<p>{{ product.metafields.custom.pdp_size | metafield_tag }}</p>",
@@ -143,7 +141,6 @@
         },
         "product_tab_CPPT6F": {
           "type": "product_tab",
-          "disabled": true,
           "settings": {
             "title": "Shipping + Returns",
             "content": "<p>{{ product.metafields.custom.pdp_shipping | metafield_tag }}</p>",
