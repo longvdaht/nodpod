@@ -110,7 +110,7 @@
           "type": "question",
           "settings": {
             "title": "I have an eye condition. Is your mask safe to use?",
-            "answer": "<p>Nodpod is not aware of any studies that have evaluated patients with conditions related to ocular hypertension, like glaucoma or other eye conditions, using weighted sleep masks.  Therefore, we recommend that you consult with your physician before using Nodpod.</p>",
+            "answer": "<p>Nodpod is not aware of any studies that have evaluated patients with conditions related to ocular hypertension, like glaucoma or other eye conditions, using weighted sleep masks. &nbsp;Therefore, we recommend that you consult with your physician before using Nodpod.</p>",
             "expandAnswer": false
           }
         },
@@ -133,7 +133,7 @@
         "question_kbjRn3": {
           "type": "question",
           "settings": {
-            "title": "What are the beads in the nodpod made of? Are they safe?",
+            "title": "What are the beads in the Nodpod made of? Are they safe?",
             "answer": "<p>Yes, very safe. The microbeads are made of 100% Polyethylene (PE) plastic pellets, which is the most common plastic in use today. It's used in medical equipment, food containers, and children's stuffed animals. These beads are nontoxic, BPA free and hypoallergenic.</p>",
             "expandAnswer": false
           }
