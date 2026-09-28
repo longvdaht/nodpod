@@ -97,6 +97,7 @@
           "type": "icon-with-text",
           "settings": {
             "layout": "vertical",
+            "image_width": 32,
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Group_374.svg",
             "heading_1": "Clinically tested to eliminate acne-causing bacteria by over 99%",
@@ -197,7 +198,6 @@
         "product_tab_CPPT6F",
         "icon_with_text_xLrBXi"
       ],
-      
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
@@ -248,7 +248,7 @@
       "settings": {
         "unique_id": "pdp_product_highlight",
         "show_fsa_badge": false,
-        "image": "shopify://shop_images/silk-mask-1.png",
+        "image": "shopify://shop_images/NOIR_PETAL_LASHES_MASK.png",
         "image_position": "left",
         "mobile_image_position": "top",
         "mobile_gap": 0,
@@ -493,6 +493,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ebeae6",
         "text_alignment": "left",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -628,6 +629,7 @@
         "text_color": "#5d5e5d",
         "full_bkg_color": "#fafaf9",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
@@ -679,6 +681,7 @@
         "text_color": "#5e5d5e",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "large"
       }
     },
