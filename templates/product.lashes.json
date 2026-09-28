@@ -270,6 +270,7 @@
     },
     "custom_liquid_Jhrqjm": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [
         ".gradient {margin-bottom: -10px;}",
         "#promo-mobile {display: none;}",
