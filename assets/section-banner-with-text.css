@@ -1,0 +1,178 @@
+.banner-with-text {
+  color: var(--bwt-text);
+  padding-top: var(--bwt-padding-desktop);
+  padding-bottom: var(--bwt-padding-desktop);
+}
+
+.banner-with-text .banner-with-text__desktop {
+  position: relative;
+  width: 100%;
+}
+
+.banner-with-text .banner-with-text__image {
+  display: block;
+  width: 100%;
+}
+
+.banner-with-text .banner-with-text__image--desktop {
+  width: 100%;
+  height: auto;
+}
+
+.banner-with-text .banner-with-text__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  padding: 5% 10%;
+  pointer-events: none;
+}
+
+/* Desktop horizontal position + matching text alignment */
+.banner-with-text .banner-with-text__overlay--horizontal-left {
+  justify-content: flex-start;
+}
+
+.banner-with-text .banner-with-text__overlay--horizontal-left .banner-with-text__content {
+  text-align: left;
+}
+
+.banner-with-text .banner-with-text__overlay--horizontal-center {
+  justify-content: center;
+}
+
+.banner-with-text .banner-with-text__overlay--horizontal-center .banner-with-text__content {
+  text-align: center;
+}
+
+.banner-with-text .banner-with-text__overlay--horizontal-right {
+  justify-content: flex-end;
+}
+
+.banner-with-text .banner-with-text__overlay--horizontal-right .banner-with-text__content {
+  text-align: right;
+}
+
+/* Desktop vertical position */
+.banner-with-text .banner-with-text__overlay--vertical-top {
+  align-items: flex-start;
+}
+
+.banner-with-text .banner-with-text__overlay--vertical-middle {
+  align-items: center;
+}
+
+.banner-with-text .banner-with-text__overlay--vertical-bottom {
+  align-items: flex-end;
+}
+
+.banner-with-text .banner-with-text__content {
+  width: min(100%, 650px);
+  display: flex;
+  flex-direction: column;
+  gap: 2.4vw;
+  pointer-events: auto;
+}
+
+.banner-with-text .rte > *:first-child {
+  margin-top: 0;
+}
+
+.banner-with-text .rte > *:last-child {
+  margin-bottom: 0;
+}
+
+.banner-with-text .banner-with-text__text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(38px, 3.05vw, 63px);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+
+.banner-with-text .banner-with-text__text p,
+.banner-with-text .banner-with-text__benefits p {
+  margin: 0;
+}
+
+.banner-with-text .banner-with-text__benefits {
+  padding-top: 2.5vw;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(16px, 1.18vw, 24px);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.banner-with-text .banner-with-text__mobile {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .banner-with-text {
+    padding-top: var(--bwt-padding-mobile);
+    padding-bottom: var(--bwt-padding-mobile);
+  }
+
+  .banner-with-text .banner-with-text__desktop {
+    display: none;
+  }
+
+  .banner-with-text .banner-with-text__mobile {
+    display: block;
+  }
+
+  .banner-with-text .banner-with-text__mobile-media {
+    width: 100%;
+    aspect-ratio: 1024 / 866;
+    overflow: hidden;
+  }
+
+  .banner-with-text .banner-with-text__image--mobile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .banner-with-text .banner-with-text__mobile-panel {
+    padding: 10%;
+    background: var(--bwt-bg);
+  }
+
+  .banner-with-text .banner-with-text__mobile-panel .banner-with-text__content {
+    width: 100%;
+    max-width: none;
+    gap: 58px;
+    text-align: left;
+  }
+
+  .banner-with-text .banner-with-text__text {
+    font-size: clamp(38px, 6.2vw, 64px);
+    line-height: 1.2;
+  }
+
+  .banner-with-text .banner-with-text__benefits {
+    padding-top: 22px;
+    font-size: clamp(14px, 2.25vw, 23px);
+    line-height: 1.3;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .banner-with-text .banner-with-text__mobile-panel {
+    padding: 12% 8%;
+  }
+
+  .banner-with-text .banner-with-text__mobile-panel .banner-with-text__content {
+    gap: 28px;
+  }
+
+  .banner-with-text .banner-with-text__text {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .banner-with-text .banner-with-text__benefits {
+    padding-top: 12px;
+    font-size: 10px;
+    line-height: 1.3;
+  }
+}
