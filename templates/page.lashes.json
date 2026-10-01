@@ -62,7 +62,7 @@
       ],
       "name": "Product grid",
       "settings": {
-        "collection": "lashes",
+        "collection": "all-products",
         "launch_group_filter": "Lashes",
         "show_section_title": true,
         "section_title": "The perfect recipe for better rest",
