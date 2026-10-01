@@ -524,12 +524,21 @@
             "answer": "<p>Small glass beads. Each pod has a hollow center that creates space for your lashes while the beads deliver gentle, even pressure around the eyes.</p>",
             "expandAnswer": false
           }
+        },
+        "question_g7tGbG": {
+          "type": "question",
+          "settings": {
+            "title": "Can I wear it with lash extensions?",
+            "answer": "<p>Yes. That is exactly what it was designed for. The hollow centers leave room for extensions so nothing presses on them, which means no crushing, no bending, and no choosing between your lashes and a good night's sleep.</p>",
+            "expandAnswer": false
+          }
         }
       },
       "block_order": [
         "heading_34ny3B",
         "question_rYciYB",
-        "question_KemtyQ"
+        "question_KemtyQ",
+        "question_g7tGbG"
       ],
       "custom_css": [
         "{background: #ebeae6;}",
