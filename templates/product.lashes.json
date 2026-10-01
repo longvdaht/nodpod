@@ -338,6 +338,7 @@
         "liquid_QM79Bm",
         "button_hMxxYQ"
       ],
+      "disabled": true,
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
