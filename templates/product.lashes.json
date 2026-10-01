@@ -509,90 +509,18 @@
             "heading": "Nodpod Silk Lashes"
           }
         },
-        "question_FNT9KU": {
+        "question_rYciYB": {
           "type": "question",
           "settings": {
-            "title": "What exactly is a silver ion?",
-            "answer": "<p>A silver ion is simply a charged particle of silver that we’ve bonded to our silk. You can’t see it or feel it, but it works at the microscopic level to naturally help fight bacteria. Silver has been trusted for centuries in wellness and medicine. This isn’t new science, just a smarter way to pair it with the beauty benefits of silk.</p>",
-            "expandAnswer": false
-          }
-        },
-        "question_8wNnXY": {
-          "type": "question",
-          "settings": {
-            "title": "How long can I go between washes?",
-            "answer": "<p> Because silver ions naturally resist bacteria, your Nodpod Silk can stay fresher up to 3–5 times longer than traditional sleep masks. Of course, things like makeup, hair products, and natural oils still build up, so we recommend washing when it feels right for you<em>.</em></p>",
-            "expandAnswer": false
-          }
-        },
-        "question_Qf8qJX": {
-          "type": "question",
-          "settings": {
-            "title": "How do I care for Mineralized Silk™?",
-            "answer": "<p>For the longevity and preservation of Mineralized Silk™, hand wash in cold water with a pH-neutral detergent. If you prefer machine washing, use the delicate cycle in a silk-only load. Avoid bleach or fabric softeners, and dry flat or hang in the shade out of direct sunlight.</p>",
-            "expandAnswer": false
-          }
-        },
-        "question_rw4gH9": {
-          "type": "question",
-          "settings": {
-            "title": "Will the silver ions last forever?",
-            "answer": "<p>Our Mineralized Silk™ is treated with silver ions, they aren’t woven into the fabric itself. </p><p>That treatment is designed to last for years of normal use. Because the fabric stays fresher 3–5 times longer between washes, most people enjoy the benefits for well over a year or two. </p><p>Over time, with repeated washing, the treatment naturally begins to fade, but you’ll always have the timeless beauty benefits of premium silk, which inherently has skin and hair soothing properties.</p>",
-            "expandAnswer": false
-          }
-        },
-        "question_dpBWTM": {
-          "type": "question",
-          "settings": {
-            "title": "Can I use nodpod for side sleeping?",
-            "answer": "<p>Yes. It works incredibly for side sleeping. Be sure to use the last two pods over your eyes and rest your head on the hollow end.</p>",
-            "expandAnswer": false
-          }
-        },
-        "question_PQpfyW": {
-          "type": "question",
-          "settings": {
-            "title": "Will it stay on all night?",
-            "answer": "<p>The purpose of nodpod is to help you relax and get to sleep, not to stay on all night. Nodpod may slip off while you're sound asleep but will always be by your side if you get to snooze-in.</p>",
-            "expandAnswer": false
-          }
-        },
-        "question_mxnEep": {
-          "type": "question",
-          "settings": {
-            "title": "What are the beads in the Nodpod made of? Are they safe?",
-            "answer": "<p>Yes, very safe. The microbeads are made of 100% Polyethylene (PE) plastic pellets, which is the most common plastic in use today. It's used in medical equipment, food containers, and children's stuffed animals. These beads are nontoxic, BPA free and hypoallergenic.</p>",
-            "expandAnswer": false
-          }
-        },
-        "question_kK7Dx9": {
-          "type": "question",
-          "settings": {
-            "title": "How should I use my Nodpod?",
-            "answer": "<p>Nodpod was designed to be worn freely in any horizontal sleeping position. It's designed to get you to sleep, not to stay on all night. For seated and upright use we've designed a pull-through slit to fasten Nodpod in place.</p>",
-            "expandAnswer": false
-          }
-        },
-        "question_dgiarY": {
-          "type": "question",
-          "settings": {
-            "title": "Does 3-minute magic mean I'll be asleep in 3 minutes?",
-            "answer": "<p>Most people describe a feeling of relaxation, which is attributed to the science of Deep Touch Pressure within minutes. Not everyone experiences the same feeling as quickly. If you are not fully satisfied with your Nodpod we would be happy to refund you.</p>",
+            "title": "Will this feel the same as my regular Nodpod?",
+            "answer": "<p>Close, with one difference you will notice right away. The pods have hollow centers, so the weight rests around your eyes and temples instead of directly over your lids. You still get our signature gentle pressure. Your lashes just stay out of it.</p>",
             "expandAnswer": false
           }
         }
       },
       "block_order": [
         "heading_34ny3B",
-        "question_FNT9KU",
-        "question_8wNnXY",
-        "question_Qf8qJX",
-        "question_rw4gH9",
-        "question_dpBWTM",
-        "question_PQpfyW",
-        "question_mxnEep",
-        "question_kK7Dx9",
-        "question_dgiarY"
+        "question_rYciYB"
       ],
       "custom_css": [
         "{background: #ebeae6;}",
