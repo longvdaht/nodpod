@@ -532,13 +532,22 @@
             "answer": "<p>Yes. That is exactly what it was designed for. The hollow centers leave room for extensions so nothing presses on them, which means no crushing, no bending, and no choosing between your lashes and a good night's sleep.</p>",
             "expandAnswer": false
           }
+        },
+        "question_X4JgYA": {
+          "type": "question",
+          "settings": {
+            "title": "Will it work if I don't have extensions?",
+            "answer": "<p>Yes. Natural lashes, lifts, and falsies all benefit from the open center. If you prefer to feel nothing on your lashes or eyes at all, this is the Nodpod for you.</p>",
+            "expandAnswer": false
+          }
         }
       },
       "block_order": [
         "heading_34ny3B",
         "question_rYciYB",
         "question_KemtyQ",
-        "question_g7tGbG"
+        "question_g7tGbG",
+        "question_X4JgYA"
       ],
       "custom_css": [
         "{background: #ebeae6;}",
