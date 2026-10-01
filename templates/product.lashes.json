@@ -516,11 +516,20 @@
             "answer": "<p>Close, with one difference you will notice right away. The pods have hollow centers, so the weight rests around your eyes and temples instead of directly over your lids. You still get our signature gentle pressure. Your lashes just stay out of it.</p>",
             "expandAnswer": false
           }
+        },
+        "question_KemtyQ": {
+          "type": "question",
+          "settings": {
+            "title": "What's inside the mask?",
+            "answer": "<p>Small glass beads. Each pod has a hollow center that creates space for your lashes while the beads deliver gentle, even pressure around the eyes.</p>",
+            "expandAnswer": false
+          }
         }
       },
       "block_order": [
         "heading_34ny3B",
-        "question_rYciYB"
+        "question_rYciYB",
+        "question_KemtyQ"
       ],
       "custom_css": [
         "{background: #ebeae6;}",
