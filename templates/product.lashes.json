@@ -286,6 +286,7 @@
     },
     "np_customer_reviews_XGJH6h": {
       "type": "np-customer-reviews",
+      "disabled": true,
       "custom_css": [
         ".section-subheading,.section-main-heading,.section-main-text {text-align: center;}",
         " {padding: 60px 20px 60px 20px; background: #ecebe7;}",
