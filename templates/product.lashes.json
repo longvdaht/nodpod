@@ -95,6 +95,7 @@
         },
         "icon_with_text_dhMfjM": {
           "type": "icon-with-text",
+          "disabled": true,
           "settings": {
             "layout": "vertical",
             "image_width": 32,
@@ -111,6 +112,7 @@
         },
         "divider_H9xhmp": {
           "type": "divider",
+          "disabled": true,
           "settings": {
             "space": 8,
             "color": "#d9d9d9"
