@@ -14,7 +14,6 @@
       "blocks": {
         "full_banner_WPTyWP": {
           "type": "full_banner",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/silk_lashes_banner_Desktop_copy4.png",
             "image_mobile": "shopify://shop_images/silk_lashes_banner_Mobile_copy.png",
