@@ -15,6 +15,8 @@
         "image_hero": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/lashes_collection_Web_Banners-11_copy2.png",
+            "imageMobile": "shopify://shop_images/lashes_collection_Web_Banners-12.png",
             "imgClickable": false
           }
         }
@@ -60,7 +62,7 @@
       ],
       "name": "Product grid",
       "settings": {
-        "collection": "all",
+        "collection": "lashes",
         "launch_group_filter": "Lashes",
         "show_section_title": true,
         "section_title": "The perfect recipe for better rest",
@@ -240,6 +242,7 @@
       "settings": {
         "unique_id": "lashes_founders_note",
         "show_fsa_badge": false,
+        "image": "shopify://shop_images/Ellipse_45.png",
         "image_position": "right",
         "mobile_image_position": "bottom",
         "mobile_gap": 0,
