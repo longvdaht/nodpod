@@ -42,12 +42,22 @@
             "secondary_link_text": "SHOP NOW",
             "secondary_link_url": "shopify://collections/all"
           }
+        },
+        "announcement_NNTMrj": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "link": "",
+            "secondary_link_text": "",
+            "secondary_link_url": ""
+          }
         }
       },
       "block_order": [
         "announcement_XBqghR",
         "announcement_zpMpYW",
-        "announcement-bar-0"
+        "announcement-bar-0",
+        "announcement_NNTMrj"
       ],
       "custom_css": [
         "@media (min-width: 767px) {.announcement-bar__message {line-height: 1.6; }}"
