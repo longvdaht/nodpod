@@ -45,6 +45,7 @@
         },
         "announcement_NNTMrj": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "Welcome to our store",
             "link": "",
