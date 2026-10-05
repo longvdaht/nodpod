@@ -98,6 +98,7 @@
         },
         "full_banner_jUB9Wq": {
           "type": "full_banner",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Resort_Web_Banners.png",
             "image_mobile": "shopify://shop_images/Resort_Web_Banners_mobile.png",
