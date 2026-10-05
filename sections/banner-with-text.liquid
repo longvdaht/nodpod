@@ -1,0 +1,215 @@
+{% comment %}
+  Banner with text
+  Desktop: full-width image with editable text blocks overlaid.
+  Mobile: separate image followed by a configurable text panel.
+{% endcomment %}
+
+{%- liquid
+  assign horizontal_position = section.settings.horizontal_position
+  assign vertical_position = section.settings.vertical_position
+-%}
+
+{{ 'section-banner-with-text.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="BannerWithText-{{ section.id }}"
+  class="banner-with-text"
+  style="
+    --bwt-bg: {{ section.settings.background_color }};
+    --bwt-text: {{ section.settings.text_color }};
+    --bwt-padding-desktop: {{ section.settings.padding_vertical }}px;
+    --bwt-padding-mobile: {{ section.settings.padding_vertical | times: 0.5 }}px;
+  "
+>
+  <div class="banner-with-text__desktop">
+    {%- if section.settings.desktop_image != blank -%}
+      {{
+        section.settings.desktop_image
+        | image_url: width: 3000
+        | image_tag:
+          class: 'banner-with-text__image banner-with-text__image--desktop',
+          widths: '1200, 1600, 2000, 2400, 3000',
+          sizes: '100vw',
+          loading: 'lazy'
+      }}
+    {%- endif -%}
+
+    <div class="banner-with-text__overlay banner-with-text__overlay--horizontal-{{ horizontal_position }} banner-with-text__overlay--vertical-{{ vertical_position }}">
+      <div class="banner-with-text__content">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'text' -%}
+              <div
+                class="banner-with-text__block banner-with-text__text rte"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.text }}
+              </div>
+
+            {%- when 'benefits' -%}
+              <div
+                class="banner-with-text__block banner-with-text__benefits rte"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.text }}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="banner-with-text__mobile">
+    <div class="banner-with-text__mobile-media">
+      {%- if section.settings.mobile_image != blank -%}
+        {{
+          section.settings.mobile_image
+          | image_url: width: 1600
+          | image_tag:
+            class: 'banner-with-text__image banner-with-text__image--mobile',
+            widths: '600, 800, 1024, 1200, 1600',
+            sizes: '100vw',
+            loading: 'lazy'
+        }}
+      {%- elsif section.settings.desktop_image != blank -%}
+        {{
+          section.settings.desktop_image
+          | image_url: width: 1600
+          | image_tag:
+            class: 'banner-with-text__image banner-with-text__image--mobile',
+            widths: '600, 800, 1024, 1200, 1600',
+            sizes: '100vw',
+            loading: 'lazy'
+        }}
+      {%- endif -%}
+    </div>
+
+    <div class="banner-with-text__mobile-panel">
+      <div class="banner-with-text__content">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'text' -%}
+              <div
+                class="banner-with-text__block banner-with-text__text rte"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.text }}
+              </div>
+
+            {%- when 'benefits' -%}
+              <div
+                class="banner-with-text__block banner-with-text__benefits rte"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.text }}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner with text",
+  "tag": "section",
+  "class": "section-banner-with-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop image",
+      "info": "Recommended: 2400 × 1000px (2.4:1), JPG/WEBP. Current reference layout is approximately 2048 × 853px."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "Recommended: 1024 × 866px (1.18:1), JPG/WEBP. Use the image portion only; mobile text is displayed separately below."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top & bottom",
+      "default": 50,
+      "info": "Mobile uses 50% of this value."
+    },
+    {
+      "type": "header",
+      "content": "Text position"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_position",
+      "label": "Horizontal position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "vertical_position",
+      "label": "Vertical position",
+      "default": "middle",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "middle", "label": "Middle" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Mobile text background",
+      "default": "#aaaaaa"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "name": "Benefits",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner with text"
+    }
+  ]
+}
+{% endschema %}
