@@ -1,0 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16788576269eec43eb": {
+      "type": "apps",
+      "settings": {}
+    },
+    "byob-empty-state-hint": {
+      "type": "byob-empty-state-hint",
+      "settings": {}
+    }
+  },
+  "order": [
+    "16788576269eec43eb",
+    "byob-empty-state-hint"
+  ]
+}

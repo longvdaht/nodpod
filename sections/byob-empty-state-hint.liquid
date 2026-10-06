@@ -1,0 +1,39 @@
+<style>
+#byob-empty-state-hint {
+  padding-top: 90px;
+  font-size: 16px;
+  text-align: center;
+}
+</style>
+
+<div id="byob-empty-state-hint" class="page-width">
+⚠️ Please add the app blocks <a href="https://support.ilovebyob.com/article/220-how-can-i-install-byob-3-mins" target="_blank" style="text-decoration: underline;">
+following this guide</a>. Otherwise, the bundle page cannot be rendered. <br><br>
+
+{% if request.design_mode %}
+<a href="https://app.ilovebyob.com/static/shopify_app/images/Install_BYOB_app_blocks.png" target="_blank" title="Click image to open it in another tab">
+  <img style="max-width:100%; width: auto; height: auto;" 
+       src="https://app.ilovebyob.com/static/shopify_app/images/Install_BYOB_app_blocks.png"
+       loading="lazy"
+       decoding="async"
+       fetchpriority="low"
+       width="800"
+       height="600"
+       alt="Instructions for installing BYOB app blocks">
+</a>
+{% endif %}
+</div>
+{% schema %}
+  {
+    "name": "BYOB Empty State Hint",
+    "settings": [{
+         "type": "paragraph",
+         "content": "Remove this section if you've intsalled the BYOB app blocks"
+    }],
+   "presets": [
+    {
+      "name": "BYOB Empty State Hint"
+    }
+  ]
+  }
+{% endschema %}
