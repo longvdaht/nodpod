@@ -9,6 +9,16 @@
  */
 {
   "sections": {
+    "custom_liquid_fpDriA": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n/* ==========================================================================\n   BYOB – Product card (matches Figma node 15252:13170)\n   ========================================================================== */\n\n/* Card -------------------------------------------------------------------- */\n.grid-product {\n  display: flex !important;\n  flex-direction: column !important;\n  align-items: stretch !important;\n  text-align: left !important;\n  background: #FAFAF9 !important;\n  border: 0 !important;\n  border-radius: 8px !important;\n  padding: 12px !important;\n  gap: 0 !important;\n  box-shadow: none !important;\n}\n\n/* Re-order children to match design:\n   image → rating → name → price → options → button */\n.grid-product > * { order: 6; }\n.grid-product > .byob-product-image-container { order: 1; }\n.grid-product > byob-reviews                  { order: 2; }\n.grid-product > .grid-product-text            { order: 3; }\n.grid-product > .lb-price-wrapper             { order: 4; }\n.grid-product > .byob-gpo-wrapper             { order: 5; }\n.grid-product > .byob-quantity-wrapper        { order: 6; }\n.grid-product > .btn-add-to-bundle            { order: 7; }\n\n/* Not in design */\n.grid-product .byob-product-sku,\n.grid-product .byob-product-vendor {\n  display: none !important;\n}\n\n/* Image box --------------------------------------------------------------- */\n.grid-product .byob-product-image-container {\n  position: relative;\n  width: 100% !important;\n  aspect-ratio: 1 / 1;\n  margin: 0 0 9px !important;\n  border: 1.4px solid #EBEAE6 !important;\n  border-radius: 14px !important;\n  overflow: hidden;\n  background: #FFFFFF;\n}\n\n.grid-product .byob-product-image {\n  width: 100% !important;\n  height: 100% !important;\n  max-width: none !important;\n  margin: 0 !important;\n  object-fit: cover;\n}\n\n/* Rating row (stars + \"992 REVIEWS\") -------------------------------------- */\n.grid-product byob-reviews {\n  display: flex;\n  align-items: center;\n  gap: 3px;\n  margin: 0 0 12px !important;\n  font-family: poppins, sans-serif !important;\n  font-weight: 500 !important;\n  font-size: 9px !important;\n  line-height: 8px !important;\n  letter-spacing: 0.36px !important;\n  text-transform: uppercase !important;\n  color: #636666 !important;\n}\n\n.grid-product byob-reviews svg,\n.grid-product byob-reviews [class*=\"star\"] {\n  width: 8px !important;\n  height: 8px !important;\n  color: #636666 !important;\n  fill: #636666 !important;\n}\n\n/* Product name ------------------------------------------------------------ */\n.grid-product .grid-product-text {\n  display: block;\n  margin: 0 0 12px !important;\n  font-family: larken, serif !important;\n  font-weight: 400 !important;\n  font-style: normal !important;\n  font-size: 18px !important;\n  line-height: 20px !important;\n  letter-spacing: 0 !important;\n  text-transform: none !important;\n  text-decoration: none !important;\n  color: #5D5E5D !important;\n}\n\n/* Price ------------------------------------------------------------------- */\n.grid-product .lb-price-wrapper,\n.grid-product .lb-price-wrapper * {\n  font-family: larken, serif !important;\n  font-weight: 400 !important;\n  font-size: 14px !important;\n  line-height: 12px !important;\n  letter-spacing: 0 !important;\n  color: #404040 !important;\n}\n\n.grid-product .lb-price-wrapper {\n  margin: 0 0 12px !important;\n  text-align: left !important;\n}\n\n/* Compare-at price, if shown */\n.grid-product .lb-price-wrapper s,\n.grid-product .lb-price-wrapper del {\n  margin-right: 6px;\n  opacity: 0.6;\n}\n\n/* Variant options (colour) ------------------------------------------------ */\n.grid-product .byob-gpo-wrapper {\n  margin: 0 0 12px !important;\n}\n\n.grid-product .byob-gpo-wrapper,\n.grid-product .byob-gpo-wrapper select,\n.grid-product .byob-gpo-wrapper label {\n  font-family: poppins, sans-serif !important;\n  font-size: 12px !important;\n  color: #5D5E5D !important;\n}\n\n.grid-product .byob-gpo-wrapper select {\n  width: 100%;\n  height: 32px;\n  padding: 0 10px;\n  background-color: #FFFFFF;\n  border: 1px solid #EBEAE6 !important;\n  border-radius: 0 !important;\n}\n\n/* Add to Bundle button (outline) ------------------------------------------ */\n.grid-product .btn-add-to-bundle {\n  display: flex !important;\n  align-items: center !important;\n  justify-content: center !important;\n  width: 100% !important;\n  height: 37px !important;\n  min-height: 37px !important;\n  margin: auto 0 0 !important; /* pins button to card bottom */\n  padding: 0 16px !important;\n  background: transparent !important;\n  border: 1px solid #636666 !important;\n  border-radius: 0 !important;\n  box-shadow: none !important;\n  cursor: pointer;\n  transition: background-color 0.2s ease, color 0.2s ease;\n}\n\n.grid-product .btn-add-to-bundle::before,\n.grid-product .btn-add-to-bundle::after {\n  display: none !important;\n}\n\n.grid-product .btn-add-to-bundle,\n.grid-product .btn-add-to-bundle .AddToBundleText {\n  font-family: larken, serif !important;\n  font-style: italic !important;\n  font-weight: 400 !important;\n  font-size: 18px !important;\n  line-height: 1 !important;\n  letter-spacing: 0.18px !important;\n  text-transform: none !important;\n  color: #636666 !important;\n}\n\n/* Hover – not in Figma, inverted outline as a sensible default */\n.grid-product .btn-add-to-bundle:hover {\n  background: #636666 !important;\n}\n.grid-product .btn-add-to-bundle:hover .AddToBundleText {\n  color: #FFFFFF !important;\n}\n\n.grid-product .btn-add-to-bundle:disabled,\n.grid-product .btn-add-to-bundle.disabled {\n  opacity: 0.4;\n  cursor: not-allowed;\n}\n\n/* Mobile ------------------------------------------------------------------ */\n@media (max-width: 749px) {\n  .grid-product { padding: 8px !important; }\n  .grid-product .grid-product-text { font-size: 16px !important; line-height: 18px !important; }\n  .grid-product .btn-add-to-bundle,\n  .grid-product .btn-add-to-bundle .AddToBundleText { font-size: 16px !important; }\n}\n\n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "16788576269eec43eb": {
       "type": "apps",
       "settings": {
@@ -91,12 +101,12 @@
             "show_step_builder": "none",
             "byob_section_wrapper": true,
             "tab_color": "rgba(0,0,0,0)",
-            "tab_text_color": "#585B5B",
-            "tick_icon_color": "#585B5B",
+            "tab_text_color": "#585b5b",
+            "tick_icon_color": "#585b5b",
             "card_background": "#fff",
-            "product_name_color": "#585B5B",
-            "button_color": "#F9F9F8",
-            "button_text_color": "#585B5B",
+            "product_name_color": "#585b5b",
+            "button_color": "#f9f9f8",
+            "button_text_color": "#585b5b",
             "add_a_bounding_box": true,
             "disable_product_link": true,
             "enable_quickview": true,
@@ -203,6 +213,7 @@
     }
   },
   "order": [
+    "custom_liquid_fpDriA",
     "16788576269eec43eb",
     "byob-empty-state-hint",
     "gs_hero_pJmaJU",
