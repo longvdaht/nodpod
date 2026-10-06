@@ -133,7 +133,7 @@
             "enable_quantity_input": false,
             "show_product_compare_at_price": false,
             "show_product_price": true,
-            "show_product_reviews": false,
+            "show_product_reviews": true,
             "show_currency_code": false,
             "show_product_type": false,
             "show_product_vendor": false,
