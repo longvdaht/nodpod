@@ -14,7 +14,6 @@
       "blocks": {
         "full_banner_jUB9Wq": {
           "type": "full_banner",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Prime_Day_20_Web_Banners_Desktop_copy.png",
             "image_mobile": "shopify://shop_images/Prime_Day_20_Web_Banners_Mobile_copy.png",
