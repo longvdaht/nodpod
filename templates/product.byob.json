@@ -136,6 +136,35 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "1791272184c9b78a94": {
+      "type": "apps",
+      "blocks": {
+        "byob_byob_quickview_block_FXVwQP": {
+          "type": "shopify://apps/byob/blocks/byob-quickview-block/cbcdb3c1-93e1-4702-8f46-0cad28865e89",
+          "settings": {
+            "icon_background_color": "#454545",
+            "button_background_color": "#202223",
+            "icon_size": 25,
+            "show_icon_text": false,
+            "background_color": "#fff",
+            "text_color": "#404040",
+            "product_option_label_length": 75,
+            "swatch_style": "circle",
+            "show_product_price": true,
+            "show_view_more": false,
+            "show_quantity_input": true,
+            "show_product_vendor": false,
+            "show_html_product_description": false
+          }
+        }
+      },
+      "block_order": [
+        "byob_byob_quickview_block_FXVwQP"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -144,6 +173,7 @@
     "1791272026211848dd",
     "1791272082d3105fdb",
     "179127210830d4649b",
-    "17912721389b392d49"
+    "17912721389b392d49",
+    "1791272184c9b78a94"
   ]
 }
