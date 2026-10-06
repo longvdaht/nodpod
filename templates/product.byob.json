@@ -64,7 +64,7 @@
             "button_text_color": "#fff",
             "add_a_bounding_box": true,
             "disable_product_link": true,
-            "enable_quickview": false,
+            "enable_quickview": true,
             "enable_quantity_input": false,
             "show_product_compare_at_price": false,
             "show_product_price": true,
