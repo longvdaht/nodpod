@@ -19,6 +19,41 @@
       "type": "byob-empty-state-hint",
       "settings": {}
     },
+    "gs_hero_pJmaJU": {
+      "type": "gs-hero",
+      "blocks": {
+        "image_eX6DPy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/banner_766f8b2b-0fc1-4aa3-8827-11b2795af754.jpg",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_eX6DPy"
+      ],
+      "name": "Hero banner",
+      "settings": {
+        "block_id": "",
+        "heroHeight": "var(--heroHeight-f)",
+        "cropVideo": false,
+        "subtitle": "",
+        "title": "The Weighted BlanketFor Your Eyes®",
+        "content": "It’s like a hug for your head.",
+        "cta": "",
+        "url": "",
+        "contentPosition": "center",
+        "contentDirection": "column",
+        "textAlignment": "center",
+        "contentPositionMob": "center between",
+        "contentDirectionMob": "column",
+        "textAlignmentMob": "center",
+        "heroMetaH1Bg": "#FFFFFF",
+        "heroMetaH1Color": "#FFFFFF",
+        "heroMetaH1hasBg": false
+      }
+    },
     "1791272026211848dd": {
       "type": "apps",
       "blocks": {
@@ -170,6 +205,7 @@
   "order": [
     "16788576269eec43eb",
     "byob-empty-state-hint",
+    "gs_hero_pJmaJU",
     "1791272026211848dd",
     "1791272082d3105fdb",
     "179127210830d4649b",
