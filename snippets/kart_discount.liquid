@@ -3,7 +3,7 @@
 {% assign app_enabled = shop.metafields.appid_2922505.app_enabled %}
 {% assign is_dev_mode = shop.metafields.appid_2922505.is_dev_mode %}
 {% assign last_updated = shop.metafields.appid_2922505.time_updated %}{% assign threedays_later = last_updated| plus: 259200  %}
-{% if (liquid_date < threedays_later and app_enabled != 'N') and ((is_dev_mode == '0' or is_dev_mode == blank) or (is_dev_mode == '1' and theme.role != 'main')) %}
+{% if liquid_date < threedays_later and app_enabled != 'N' and is_dev_mode == '0' or is_dev_mode == blank or is_dev_mode == '1' and theme.role != 'main' %}
 {% assign af_cart_json = cart | json %}
 {% assign af_customer_id = customer.id %}
 {% assign kd_upsells = shop.metafields.appid_2922505.upsells.value  %} 
@@ -32,7 +32,7 @@
     {% assign _kd_productId = cart_list | split: ','%}
     {% capture cart_prod_collection_list %}
      {% for item in cart.items %}
-         {% assign _product_details = all_products[{{item.product.handle}}] %}
+         {% assign _product_details = all_products[item.product.handle] %}
            {{ item.product_id | strip }} =>
         {% for _collection in _product_details.collections %}
               {{ _collection.id }}
@@ -82,7 +82,7 @@
                    {% assign _upsell_selected_variant = item.variants | split: ',' %} 
                    {% for currentItem in _kd_productId %} 
                       {%- if currentItem == item.product_id and _kd_path == 'product' -%} {% continue %} {% endif %}
-                          {% assign _upsell_product_details = all_products[{{item.product_handle}}] %} 
+                          {% assign _upsell_product_details = all_products[item.product_handle] %} 
                           {% capture item_product_variant %} 
                               {% for variant in _upsell_product_details.variants %} 
                                 {% assign variantId = variant.id | append: "" %} 
@@ -124,7 +124,7 @@
                           {% assign currentItemId  = currentItem | strip   %}                         
                           {% unless prodIds contains currentItemId %} {% continue %} {% endunless %}
                            {% assign _upsell_selected_variant = item.variants | split: ',' %}
-                           {% assign _upsell_product_details = all_products[{{item.product_handle}}] %}
+                           {% assign _upsell_product_details = all_products[item.product_handle] %}
                            {% capture item_product_variant %} 
                                {% for variant in _upsell_product_details.variants %}
                                  {% assign variantId = variant.id | append: "" %} 
@@ -173,7 +173,7 @@
                          {% assign individualCollection = singleCollection | strip %} 
                          {% if individualCollection == '' %} {% continue %} {% endif %} 
                           {% unless collectionIds contains individualCollection  %} {% continue %} {% endunless %} 
-                            {% assign _upsell_product_details = all_products[{{item.product_handle}}] %}  
+                            {% assign _upsell_product_details = all_products[item.product_handle] %}  
                             {% assign upsellProdId = _upsell_product_details.id | strip %}  
                             {% if upsellProdId == currentItemId and item.check_cart_product == '1'  %} {% continue %} {% endif %}
                                  {% capture item_product_variant %} 
@@ -281,4 +281,32 @@ window.kd_upsell = _kd;
     var newTotalHtml = `{{cart.total_price|minus :10 |money}}`.replace('"', '\"');
     document.querySelector(subtotalSelector).innerHTML = "<del class='af_del_overwrite'>"+ subTotalHtml + "</del> " + newTotalHtml;
   }
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if (liquid_date < threedays_later and app_enabled != 'N') and ((is_dev_mode
+    == '0' or is_dev_mode == blank) or (is_dev_mode == '1' and theme.role != 'main'))
+    %}"
+  to: "{% if liquid_date < threedays_later and app_enabled != 'N' and is_dev_mode
+    == '0' or is_dev_mode == blank or is_dev_mode == '1' and theme.role != 'main'
+    %}"
+  position: 362..517
+- from: "{% assign _product_details = all_products[{{item.product.handle}}] %}"
+  to: "{% assign _product_details = all_products[item.product.handle] %}"
+  position: 1704..1769
+- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
+    %}"
+  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
+  position: 4711..4783
+- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
+    %}"
+  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
+  position: 8604..8676
+- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
+    %}"
+  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
+  position: 13128..13200
+{%- endcomment -%}

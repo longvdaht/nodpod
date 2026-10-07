@@ -20,7 +20,7 @@
     {% assign _kd_productId = cart_list | split: ','%}
     {% capture cart_prod_collection_list %}
      {% for item in cart.items %}
-         {% assign _product_details = all_products[{{item.product.handle}}] %}
+         {% assign _product_details = all_products[item.product.handle] %}
            {{ item.product_id | strip }} =>
         {% for _collection in _product_details.collections %}
               {{ _collection.id }}
@@ -59,7 +59,7 @@
                     {%- if processFurther == 0 %} {% continue %} {% endif %}             
              
                    {% assign _upsell_selected_variant = item.variants | split: ',' %} 
-                   {% assign _upsell_product_details = all_products[{{item.product_handle}}] %} 
+                   {% assign _upsell_product_details = all_products[item.product_handle] %} 
                    {% capture item_product_variant %} 
                        {% for variant in _upsell_product_details.variants %} 
                          {% assign variantId = variant.id | append: "" %} 
@@ -101,7 +101,7 @@
                            {% assign currentItemId  = currentItem | strip   %}                         
                            {% unless prodIds contains currentItemId %} {% continue %} {% endunless %}
                            {% assign _upsell_selected_variant = item.variants | split: ',' %}
-                           {% assign _upsell_product_details = all_products[{{item.product_handle}}] %}
+                           {% assign _upsell_product_details = all_products[item.product_handle] %}
                            {% capture item_product_variant %} 
                                {% for variant in _upsell_product_details.variants %}
                                  {% assign variantId = variant.id | append: "" %} 
@@ -150,7 +150,7 @@
                          {% assign individualCollection = singleCollection | strip %}  
                          {% if individualCollection == '' %} {% continue %} {% endif %}
                           {% unless collectionIds contains individualCollection  %} {% continue %} {% endunless %} 
-                            {% assign _upsell_product_details = all_products[{{item.product_handle}}] %}  
+                            {% assign _upsell_product_details = all_products[item.product_handle] %}  
                             {% assign upsellProdId = _upsell_product_details.id | strip %}  
                             {% if upsellProdId == currentItemId and item.check_cart_product == '1'  %} {% continue %} {% endif %}
                                  {% capture item_product_variant %} 
@@ -187,4 +187,25 @@
             "_kd_prodPrice" : {{ cart.total_price }}
 		}
 	
-}
+}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% assign _product_details = all_products[{{item.product.handle}}] %}"
+  to: "{% assign _product_details = all_products[item.product.handle] %}"
+  position: 980..1045
+- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
+    %}"
+  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
+  position: 3428..3500
+- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
+    %}"
+  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
+  position: 7217..7289
+- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
+    %}"
+  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
+  position: 11779..11851
+{%- endcomment -%}
