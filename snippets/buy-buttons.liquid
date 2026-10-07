@@ -149,3 +149,10 @@
     <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 </div>
+{% if product.tags contains 'hide_notify_btn' %}
+  <style>
+    .product-form__buttons #BIS_trigger {
+      display: none;
+    }
+  </style>
+{% endif %}
