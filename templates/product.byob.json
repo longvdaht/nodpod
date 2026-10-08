@@ -247,7 +247,7 @@
         "byob_byob_reviews_block_VcwJaC": {
           "type": "shopify://apps/byob/blocks/byob-reviews-block/cbcdb3c1-93e1-4702-8f46-0cad28865e89",
           "settings": {
-            "review_app": "Judge.me",
+            "review_app": "Others",
             "star_color": "#5D5E5D"
           }
         }
