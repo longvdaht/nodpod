@@ -127,7 +127,7 @@
           "settings": {
             "items_per_row": 2,
             "items_per_row_mobile": 2,
-            "open_all_tabs": false,
+            "open_all_tabs": true,
             "show_step_builder": "none",
             "byob_section_wrapper": true,
             "tab_color": "rgba(0,0,0,0)",
