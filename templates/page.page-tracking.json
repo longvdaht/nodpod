@@ -15,9 +15,25 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "1791447582880b14f6": {
+      "type": "apps",
+      "blocks": {
+        "track_by_loop_wonder_block_LHjGLt": {
+          "type": "shopify://apps/track-by-loop/blocks/wonderBlock/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "track_by_loop_wonder_block_LHjGLt"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "1791447582880b14f6"
   ]
 }
