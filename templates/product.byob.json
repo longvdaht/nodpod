@@ -79,7 +79,7 @@
         "heroHeight": "var(--heroHeight-f)",
         "cropVideo": false,
         "subtitle": "",
-        "title": "The Weighted BlanketFor Your Eyes®",
+        "title": "The Weighted Blanket For Your Eyes®",
         "content": "It’s like a hug for your head.",
         "cta": "",
         "url": "",
@@ -248,7 +248,7 @@
           "type": "shopify://apps/byob/blocks/byob-reviews-block/cbcdb3c1-93e1-4702-8f46-0cad28865e89",
           "settings": {
             "review_app": "Others",
-            "star_color": "#5D5E5D"
+            "star_color": "#5d5e5d"
           }
         }
       },
