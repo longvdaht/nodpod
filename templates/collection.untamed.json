@@ -24,8 +24,6 @@
         "image_YH3QfJ": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Out_West_Collection_Banner.png",
-            "imageMobile": "shopify://shop_images/Out_West_Collection_Banners.png",
             "imgClickable": true
           }
         }
@@ -54,6 +52,7 @@
         "color_scheme": "scheme-1",
         "heroMetaH1Bg": "#ffffff",
         "heroMetaH1Color": "#ffffff",
+        "background_color": "",
         "heroMetaH1hasBg": false,
         "heroHeight": "uncropped",
         "cropVideo": false,
@@ -223,7 +222,8 @@
         "textAlignment": "center",
         "section_bg": "#fffbf7",
         "headingBg": "#ffffff",
-        "headingColor": "#6c6463"
+        "headingColor": "#6c6463",
+        "text_color": ""
       }
     },
     "np_image_with_text_EHebky": {
@@ -254,6 +254,7 @@
         "heading_NQ3mgk",
         "image_crEe7a"
       ],
+      "disabled": true,
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
@@ -331,6 +332,7 @@
         "text_color": "#6c6463",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "medium"
       }
     }
