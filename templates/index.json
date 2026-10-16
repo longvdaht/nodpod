@@ -12,12 +12,12 @@
     "np_home_slider_KD4iFg": {
       "type": "np-home-slider",
       "blocks": {
-        "full_banner_jUB9Wq": {
+        "full_banner_KxK6m6": {
           "type": "full_banner",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Prime_Day_20_Web_Banners_Desktop_copy.png",
-            "image_mobile": "shopify://shop_images/Prime_Day_20_Web_Banners_Mobile_copy.png",
+            "image": "shopify://shop_images/Untamed_Banners-01.png",
+            "image_mobile": "shopify://shop_images/Untamed_Banners-02.png",
             "overlay_position": "middle_center",
             "overlay_max_width": 45,
             "overlay_position_mobile": "same_as_desktop",
@@ -31,7 +31,7 @@
             "font_size": 2,
             "font_size_mobile": 1.6,
             "button_text": "",
-            "url": "shopify://collections/all",
+            "url": "shopify://collections/untamed-collection",
             "button_text_color": "#ffffff",
             "button_bkg_color": "rgba(0,0,0,0)",
             "button_font_size": 2,
@@ -184,7 +184,7 @@
         }
       },
       "block_order": [
-        "full_banner_jUB9Wq",
+        "full_banner_KxK6m6",
         "full_banner_WPTyWP",
         "full_banner_zRD388",
         "full_banner_MPT4DU",
