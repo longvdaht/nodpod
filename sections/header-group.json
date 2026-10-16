@@ -16,7 +16,6 @@
       "blocks": {
         "announcement_JNhFjT": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
             "text": "10% of Untamed sales goes to the World Wildlife Fund this October",
             "link": "",
