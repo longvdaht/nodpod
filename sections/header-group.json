@@ -14,24 +14,14 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_XBqghR": {
+        "announcement_JNhFjT": {
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "text": "Treat yourself to better sleep this Prime Day with 20% off Nodpod!",
-            "link": "shopify://collections",
+            "text": "10% of Untamed sales goes to the World Wildlife Fund this October",
+            "link": "",
             "secondary_link_text": "",
             "secondary_link_url": ""
-          }
-        },
-        "announcement_zpMpYW": {
-          "type": "announcement",
-          "disabled": true,
-          "settings": {
-            "text": "WE MADE ROOM - SILK LASHES ARE HERE!",
-            "link": "",
-            "secondary_link_text": "SHOP NOW",
-            "secondary_link_url": "shopify://collections/lashes"
           }
         },
         "announcement-bar-0": {
@@ -42,23 +32,11 @@
             "secondary_link_text": "SHOP NOW",
             "secondary_link_url": "shopify://collections/all"
           }
-        },
-        "announcement_NNTMrj": {
-          "type": "announcement",
-          "disabled": true,
-          "settings": {
-            "text": "Welcome to our store",
-            "link": "",
-            "secondary_link_text": "",
-            "secondary_link_url": ""
-          }
         }
       },
       "block_order": [
-        "announcement_XBqghR",
-        "announcement_zpMpYW",
-        "announcement-bar-0",
-        "announcement_NNTMrj"
+        "announcement_JNhFjT",
+        "announcement-bar-0"
       ],
       "custom_css": [
         "@media (min-width: 767px) {.announcement-bar__message {line-height: 1.6; }}"
@@ -96,10 +74,10 @@
         "megamenu_Rthka4": {
           "type": "megamenu",
           "settings": {
-            "linkTitle": "Shop",
+            "linkTitle": "Collections",
             "linkedMenu": "header-v2-collections",
             "megamenu_image_1_link": "",
-            "megamenu_image_1_link_heading": "Collections",
+            "megamenu_image_1_link_heading": "",
             "megamenu_image_1_link_text": "Shop Now",
             "link_1_text_color": "#ffffff",
             "megamenu_image_2_link": "",
