@@ -24,6 +24,8 @@
         "image_YH3QfJ": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/collection_banner_untamed.png",
+            "imageMobile": "shopify://shop_images/Untamed_Banners-04.png",
             "imgClickable": true
           }
         }
