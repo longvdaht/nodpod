@@ -14,7 +14,6 @@
       "blocks": {
         "full_banner_KxK6m6": {
           "type": "full_banner",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Untamed_Banners-01.png",
             "image_mobile": "shopify://shop_images/Untamed_Banners-02.png",
