@@ -36,7 +36,7 @@
 {% if shop.metafields.appid_2922505.upsell_enabled.value == "Y" and kd_features_json.upsell == "Y" %}
      {% capture _kd_upsell_final %}
        {% for item in kd_upsells %}           
-           {% unless forloop.index < 50  %} {% continue %} {% endunless %}
+           {% if forloop.index >= 50 %} {% break %} {% endif %}
            {%- if isUniqueUpsell contains item.product_id and forloop.first == true -%} 
                {% continue %}
            {% else %} 
@@ -187,25 +187,4 @@
             "_kd_prodPrice" : {{ cart.total_price }}
 		}
 	
-}{%- comment -%}
-
-This file has been rewritten to preserve the original behavior.
-
----
-Changes:
-- from: "{% assign _product_details = all_products[{{item.product.handle}}] %}"
-  to: "{% assign _product_details = all_products[item.product.handle] %}"
-  position: 980..1045
-- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
-    %}"
-  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
-  position: 3428..3500
-- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
-    %}"
-  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
-  position: 7217..7289
-- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
-    %}"
-  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
-  position: 11779..11851
-{%- endcomment -%}
+}
