@@ -15,8 +15,6 @@
         "image_hero": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/collection_banner_untamed.png",
-            "imageMobile": "shopify://shop_images/Untamed_Banners-04.png",
             "imgClickable": false
           }
         }
@@ -63,7 +61,7 @@
       "name": "Product grid",
       "settings": {
         "collection": "all",
-        "launch_group_filter": "Untamed",
+        "launch_group_filter": "Fall Edit",
         "show_section_title": true,
         "section_title": "Luxury You Can Feel",
         "section_title_tag": "h1",
