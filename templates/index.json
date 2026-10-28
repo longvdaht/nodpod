@@ -155,8 +155,8 @@
         "split_banner_a9AaYd": {
           "type": "split_banner",
           "settings": {
-            "image": "shopify://shop_images/silk1.png",
-            "image2": "shopify://shop_images/silk2.png",
+            "image": "shopify://shop_images/Teddy_Collection_Banner_26.png",
+            "image2": "shopify://shop_images/Teddy_Collection_Banner_Mobile_26_1.png",
             "text_position": "left",
             "overlay_position": "middle_center",
             "overlay_max_width": 45,
@@ -912,7 +912,7 @@
       "type": "apps",
       "blocks": {
         "tolstoy_shoppable_video_quiz_carousel_block_BKCt99": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "7v70dzosw9ko9"
           }
