@@ -154,10 +154,11 @@
         },
         "full_banner_Q8gfAD": {
           "type": "full_banner",
+          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/hero-banner-1_c631af27-081d-4a69-ade7-469314a10bfe.png",
-            "image_mobile": "shopify://shop_images/full-banner-mobile.png",
-            "overlay_position": "bottom_left",
+            "image": "shopify://shop_images/fall_edit_Banner_13.png",
+            "image_mobile": "shopify://shop_images/fall_edit_mobileBanner-11.png",
+            "overlay_position": "bottom_center",
             "overlay_max_width": 45,
             "overlay_position_mobile": "same_as_desktop",
             "overlay_max_width_mobile": 90,
@@ -165,7 +166,7 @@
             "sub_text_color": "#ffffff",
             "sub_font_size": 1.5,
             "sub_font_size_mobile": 1.2,
-            "title": "<p>Chill More. Stress Less.<br><em>Sleep Better.</em></p>",
+            "title": "",
             "text_color": "#ffffff",
             "font_size": 6,
             "font_size_mobile": 4,
