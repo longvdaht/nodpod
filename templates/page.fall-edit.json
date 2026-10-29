@@ -16,6 +16,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/fall_edit_Banner_13.png",
+            "imageMobile": "shopify://shop_images/fall_edit_mobileBanner-11.png",
             "imgClickable": false
           }
         }
