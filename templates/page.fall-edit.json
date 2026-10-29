@@ -15,6 +15,7 @@
         "image_hero": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/fall_edit_Banner_13.png",
             "imgClickable": false
           }
         }
