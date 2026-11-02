@@ -1,0 +1,479 @@
+{% comment %}
+  Section: np-bundle-builder
+  Wraps the Presidio Plus "Mix and Match" app block and adds the Nodpod
+  merchandising around it:
+    - Banner blocks with a selectable position: top of the products column,
+      inside the product grid (after card N) or under the sidebar
+    - Ratings / subtitles / badges on the Presidio product cards
+    - Quick-view popup (opened from a card's image/title)
+    - Summary box labels + cart-drawer refresh after "Add bundle to cart"
+
+  Layout is CSS grid on .np-bundle; the Presidio wrappers are set to
+  `display: contents` so its content column and sidebar become grid items next
+  to our banner areas. Presidio's own CSS/JS is not copied into the theme.
+{% endcomment %}
+
+{{ 'np-bundle-builder.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'np-bundle-builder.js' | asset_url }}" defer="defer"></script>
+
+{% style %}
+  #shopify-section-{{ section.id }} .np-bundle {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    --np-qv-btn-bg: {{ section.settings.qv_button_bg }};
+    --np-qv-btn-text: {{ section.settings.qv_button_text }};
+  }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .np-bundle {
+      padding-top: {{ section.settings.padding_top | times: 0.6 | round }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round }}px;
+    }
+  }
+{% endstyle %}
+
+<div
+  class="np-bundle page-width"
+  data-np-bundle
+  data-label-items="{{ section.settings.label_items | escape }}"
+  data-label-subtotal="{{ section.settings.label_subtotal | escape }}"
+  data-label-discount="{{ section.settings.label_discount | escape }}"
+  data-label-total="{{ section.settings.label_total | escape }}"
+  data-sidebar-title="{{ section.settings.sidebar_title | escape }}"
+  data-sidebar-subtitle="{{ section.settings.sidebar_subtitle | escape }}"
+  data-open-cart="{{ section.settings.open_cart_after_add }}"
+  data-quick-view="{{ section.settings.enable_quick_view }}"
+>
+  <div class="np-bundle__top">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'banner' and block.settings.position == 'top' -%}
+        {% render 'np-bundle-banner', block: block, loading: 'eager' %}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="np-bundle__app">
+    {%- for block in section.blocks -%}
+      {%- if block.type == '@app' -%}
+        {% render block %}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <span class="np-bundle__divider" aria-hidden="true"></span>
+
+  <div class="np-bundle__side">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'banner' and block.settings.position == 'sidebar' -%}
+        {% render 'np-bundle-banner', block: block %}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- comment -%} Grid banners are cloned into Presidio's product grid by JS. {%- endcomment -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'banner' and block.settings.position == 'grid' -%}
+      <template data-np-grid-banner data-after="{{ block.settings.grid_after }}" data-id="{{ block.id }}">
+        {% render 'np-bundle-banner', block: block, extra_class: 'np-bundle-banner--grid' %}
+      </template>
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%}
+    Per-product data the Presidio cards don't have (rating, subtitle, badge)
+    plus what the quick view needs. Keyed by product GID to match the cards'
+    data-pre-product-id attribute.
+  {%- endcomment -%}
+  <script type="application/json" data-np-bundle-meta>
+    {
+      {%- for p in section.settings.meta_products -%}
+        {%- liquid
+          assign rating = p.metafields.reviews.rating.value.rating | default: ''
+          assign rating_count = p.metafields.reviews.rating_count.value | default: p.metafields.reviews.rating_count | default: ''
+          assign subtitle = p.metafields.descriptors.subtitle.value | default: p.metafields.descriptors.subtitle | default: ''
+          assign badge = ''
+          if section.settings.new_badge_tag != blank and p.tags contains section.settings.new_badge_tag
+            assign badge = section.settings.new_badge_label
+          endif
+
+          assign color_option_position = 0
+          for option in p.options_with_values
+            assign option_name = option.name | downcase
+            if option_name contains 'color' or option_name contains 'colour'
+              assign color_option_position = option.position
+              break
+            endif
+          endfor
+        -%}
+        "gid://shopify/Product/{{ p.id }}": {
+          "title": {{ p.title | json }},
+          "url": {{ p.url | json }},
+          "rating": {{ rating | json }},
+          "count": {{ rating_count | json }},
+          "subtitle": {{ subtitle | strip_html | json }},
+          "badge": {{ badge | json }},
+          "description": {{ p.description | json }},
+          "optionName": {{ p.options.first | json }},
+          "images": [
+            {%- assign sep = '' -%}
+            {%- for media in p.media -%}
+              {%- if media.media_type == 'image' -%}
+                {{- sep -}}{{ media | image_url: width: 1200 | json }}
+                {%- assign sep = ',' -%}
+              {%- endif -%}
+            {%- endfor -%}
+          ],
+          "variants": [
+            {%- for v in p.variants -%}
+              {%- liquid
+                assign c1 = v.metafields.custom.variant_color.value | default: v.metafields.custom.variant_color
+                assign c2 = v.metafields.custom.variant_secondary_color.value | default: v.metafields.custom.variant_secondary_color
+                assign multicolor = v.metafields.custom.variant_multicolor.value | default: v.metafields.custom.variant_multicolor
+                assign swatch_file = v.metafields.custom.variant_swatch_image.value
+                assign collection_name = v.metafields.custom.collection_name.value | default: v.metafields.custom.collection_name | default: ''
+
+                assign native_swatch = ''
+                if color_option_position > 0
+                  assign color_index = color_option_position | minus: 1
+                  assign color_value = v.options[color_index]
+                  for option in p.options_with_values
+                    if option.position == color_option_position
+                      for value in option.values
+                        if value == color_value
+                          if value.swatch.image
+                            assign native_swatch = value.swatch.image | image_url: width: 100 | prepend: 'url(' | append: ') center / cover'
+                          elsif value.swatch.color
+                            assign native_swatch = value.swatch.color.rgb | prepend: 'rgb(' | append: ')'
+                          endif
+                          break
+                        endif
+                      endfor
+                      break
+                    endif
+                  endfor
+                endif
+              -%}
+              {%- capture swatch_bg -%}
+                {%- if swatch_file -%}
+                  url({{ swatch_file | image_url: width: 100 }}) center / cover
+                {%- elsif native_swatch != blank -%}
+                  {{ native_swatch }}
+                {%- elsif c1 and c2 -%}
+                  linear-gradient(180deg, {{ c1 }} 0%, {{ c1 }} 54%, {{ c2 }} 54%)
+                {%- elsif multicolor == true -%}
+                  linear-gradient(45deg, #a59ab9 0%, #f1b3b8 20%, #e9dfd5 40%, #8ea58e 60%, #59575b 80%, #020303 100%)
+                {%- elsif c1 -%}
+                  {{ c1 }}
+                {%- endif -%}
+              {%- endcapture -%}
+              {%- assign variant_files = v.metafields.custom.variant_images.value | default: v.metafields.custom.variant_images -%}
+              {
+                "id": {{ v.id | json }},
+                "title": {{ v.title | json }},
+                "available": {{ v.available | json }},
+                "collection": {{ collection_name | json }},
+                "swatch": {{ swatch_bg | strip | json }},
+                "image": {% if v.featured_image %}{{ v.featured_image | image_url: width: 1200 | json }}{% else %}null{% endif %},
+                "images": [
+                  {%- if variant_files != blank -%}
+                    {%- for f in variant_files -%}
+                      {{ f | image_url: width: 1200 | json }}{% unless forloop.last %},{% endunless %}
+                    {%- endfor -%}
+                  {%- endif -%}
+                ]
+              }{% unless forloop.last %},{% endunless %}
+            {%- endfor -%}
+          ]
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    }
+  </script>
+
+  {%- if section.settings.enable_quick_view -%}
+    <dialog class="np-qv" data-np-qv aria-labelledby="NpQvTitle-{{ section.id }}">
+      <div class="np-qv__inner">
+        <div class="np-qv__media">
+          <button type="button" class="np-qv__close" data-np-qv-close aria-label="{{ 'accessibility.close' | t }}">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M2 2l18 18M20 2L2 20" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <div class="np-qv__slides" data-np-qv-slides></div>
+          <button type="button" class="np-qv__nav np-qv__nav--prev" data-np-qv-prev aria-label="Previous image">
+            <svg width="14" height="26" viewBox="0 0 14 26" fill="none" aria-hidden="true"><path d="M13 1L1 13l12 12" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <button type="button" class="np-qv__nav np-qv__nav--next" data-np-qv-next aria-label="Next image">
+            <svg width="14" height="26" viewBox="0 0 14 26" fill="none" aria-hidden="true"><path d="M1 1l12 12L1 25" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+
+        <div class="np-qv__info">
+          <h2 class="np-qv__title" id="NpQvTitle-{{ section.id }}" data-np-qv-title></h2>
+          <div class="np-qv__rating" data-np-qv-rating></div>
+          <p class="np-qv__label" data-np-qv-label></p>
+          <div class="np-qv__swatches" role="radiogroup" aria-label="Color" data-np-qv-swatches></div>
+          <button type="button" class="np-qv__add" data-np-qv-add>{{ section.settings.qv_button_label }}</button>
+          <p class="np-qv__note" data-np-qv-note hidden></p>
+          <details class="np-qv__details" open>
+            <summary>
+              <span>{{ section.settings.qv_details_label }}</span>
+              <span class="np-qv__details-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="np-qv__desc rte" data-np-qv-desc></div>
+          </details>
+        </div>
+      </div>
+    </dialog>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "NP Bundle builder",
+  "tag": "section",
+  "class": "section np-bundle-section",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "default": "top",
+          "options": [
+            { "value": "top", "label": "Top of products column" },
+            { "value": "grid", "label": "Inside product grid" },
+            { "value": "sidebar", "label": "Under sidebar" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "grid_after",
+          "label": "Show after product card #",
+          "info": "Only for \"Inside product grid\". The banner spans the full row.",
+          "min": 1,
+          "max": 24,
+          "step": 1,
+          "default": 4
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "ratio",
+          "label": "Image ratio",
+          "default": "16-9",
+          "options": [
+            { "value": "16-9", "label": "Landscape (16:9)" },
+            { "value": "2-1", "label": "Wide (2:1)" },
+            { "value": "4-3", "label": "Standard (4:3)" },
+            { "value": "1-1", "label": "Square" }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Without a label, the whole banner becomes the link."
+        },
+        {
+          "type": "range",
+          "id": "overlay",
+          "label": "Image overlay opacity",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "default": 15
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading size",
+          "default": "large",
+          "options": [
+            { "value": "large", "label": "Large" },
+            { "value": "medium", "label": "Medium" }
+          ]
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Sidebar"
+    },
+    {
+      "type": "text",
+      "id": "sidebar_title",
+      "label": "Title override",
+      "info": "Leave blank to use the bundle title from Presidio Plus.",
+      "default": "Build Your Bedtime Ritual"
+    },
+    {
+      "type": "text",
+      "id": "sidebar_subtitle",
+      "label": "Subtitle override",
+      "info": "Leave blank to use the Presidio Plus text (e.g. \"Select at least 2 items…\").",
+      "default": "More items, more savings."
+    },
+    {
+      "type": "text",
+      "id": "label_items",
+      "label": "Items label",
+      "default": "Items:"
+    },
+    {
+      "type": "text",
+      "id": "label_subtotal",
+      "label": "Original price label",
+      "default": "Original Price:"
+    },
+    {
+      "type": "text",
+      "id": "label_discount",
+      "label": "Discount label",
+      "default": "Discount:"
+    },
+    {
+      "type": "text",
+      "id": "label_total",
+      "label": "Total label",
+      "default": "Total:"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_cart_after_add",
+      "label": "Open cart drawer after adding the bundle",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Product cards"
+    },
+    {
+      "type": "product_list",
+      "id": "meta_products",
+      "label": "Bundle products",
+      "info": "Pick the same products used in the Presidio bundle. Used for star rating, review count, subtitle (descriptors.subtitle), badge and the quick view popup.",
+      "limit": 20
+    },
+    {
+      "type": "text",
+      "id": "new_badge_tag",
+      "label": "Badge product tag",
+      "info": "Products with this tag get the badge below (e.g. \"badge-new\"). Leave blank to hide."
+    },
+    {
+      "type": "text",
+      "id": "new_badge_label",
+      "label": "Badge label",
+      "default": "New"
+    },
+    {
+      "type": "header",
+      "content": "Quick view popup"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_view",
+      "label": "Open quick view when clicking a card image/title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "qv_button_label",
+      "label": "Button label",
+      "default": "Add to bundle"
+    },
+    {
+      "type": "color",
+      "id": "qv_button_bg",
+      "label": "Button background",
+      "default": "#f2b6c0"
+    },
+    {
+      "type": "color",
+      "id": "qv_button_text",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "qv_details_label",
+      "label": "Details label",
+      "default": "Details"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "NP Bundle builder",
+      "blocks": [
+        {
+          "type": "banner",
+          "settings": {
+            "position": "top",
+            "heading": "The Weighted Blanket\nFor Your Eyes®",
+            "text": "It's like a hug for your head."
+          }
+        },
+        {
+          "type": "banner",
+          "settings": {
+            "position": "sidebar",
+            "heading": "Not sure where to start?",
+            "link_label": "Take quiz",
+            "heading_size": "medium",
+            "overlay": 20
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

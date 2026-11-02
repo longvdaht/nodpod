@@ -1,0 +1,1218 @@
+/* ==========================================================================
+   NP Bundle builder — Presidio Plus "Mix & Match" restyle (Figma: Frame 304)
+   Presidio renders in light DOM, so it is styled from here; nothing from the
+   app is copied into the theme. Everything is scoped to .np-bundle.
+   Styles below don't rely on Presidio's "custom styles" variables, so they
+   work whether the app's product card / sidebar custom styles are on or off.
+   ========================================================================== */
+
+.np-bundle {
+  --np-text: #3d3d3d;
+  --np-text-soft: #6b6b6b;
+  --np-line: #e6e6e6;
+  --np-card-bg: #f7f7f7;
+  --np-tile-bg: #fff;
+  --np-btn-dark: #5b5b5b;
+  --np-btn-dark-hover: #3d3d3d;
+  --np-pill: #8cb596;
+  --np-serif: var(--font-heading-family);
+  --np-sans: var(--font-body-family);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'top'
+    'content'
+    'side'
+    'aside';
+  row-gap: 20px;
+  color: var(--np-text);
+}
+
+@media screen and (min-width: 750px) {
+  .np-bundle {
+    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+    grid-template-rows: auto auto auto 1fr;
+    grid-template-areas:
+      'top     divider aside'
+      'content .       aside'
+      'content .       side'
+      'content .       .';
+    column-gap: 28px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .np-bundle {
+    column-gap: 52px;
+    max-width: 1040px;
+  }
+}
+
+/* Flatten the Presidio wrappers so its content column + sidebar become grid
+   items next to our banner areas (no DOM moving needed). */
+.np-bundle__app,
+.np-bundle__app > .shopify-block,
+.np-bundle--ready pre-mix-and-match,
+.np-bundle--ready pre-mix-and-match > #pre-root,
+.np-bundle pre-mix-and-match .pre-bundle-collection,
+.np-bundle pre-mix-and-match .pre-bundle-container {
+  display: contents !important;
+}
+
+.np-bundle pre-mix-and-match {
+  --pre-bundle-grid-gap: 14px;
+  --pre-bundle-grid-gap-vertical: 16px;
+  --pre-sidebar-bg: transparent;
+  --pre-sidebar-fg: var(--np-tile-bg);
+  --pre-sidebar-text: var(--np-text);
+  --pre-text: var(--np-text);
+  --pre-text-light: var(--np-text-soft);
+  --pre-border: var(--np-line);
+  --pre-font-family-body: var(--np-sans);
+  --pre-radius: 8px;
+  --pre-inner: 20px;
+  --pre-outer: 0px;
+  --pre-text-success: var(--np-text);
+}
+
+.np-bundle [data-np-bundle-meta] {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Banner areas + banner block
+   -------------------------------------------------------------------------- */
+
+.np-bundle__top {
+  grid-area: top;
+}
+
+.np-bundle__side {
+  grid-area: side;
+}
+
+.np-bundle__top,
+.np-bundle__side {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+
+.np-bundle__top:empty,
+.np-bundle__side:empty {
+  display: none;
+}
+
+.np-bundle-banner {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  background: #d9d6d2;
+}
+
+.np-bundle-banner--2-1 {
+  aspect-ratio: 2 / 1;
+}
+
+.np-bundle-banner--4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.np-bundle-banner--1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+/* Inside Presidio's product grid: span the whole row */
+.np-bundle-banner--grid {
+  grid-column: 1 / -1;
+}
+
+.np-bundle-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: #000;
+  opacity: var(--np-banner-overlay, 0.15);
+}
+
+.np-bundle-banner__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.np-bundle-banner__content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.np-bundle-banner__heading {
+  margin: 0;
+  font-family: var(--np-serif);
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.np-bundle-banner__heading--medium {
+  font-size: 22px;
+}
+
+.np-bundle-banner__text {
+  margin: 12px 0 0;
+  font-family: var(--np-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.np-bundle-banner__link {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--np-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #fff;
+}
+
+.np-bundle-banner__link:hover {
+  color: #fff;
+  opacity: 0.85;
+}
+
+@media screen and (min-width: 990px) {
+  .np-bundle-banner__heading {
+    font-size: 32px;
+  }
+
+  .np-bundle-banner__heading--medium {
+    font-size: 28px;
+  }
+
+  .np-bundle-banner__text {
+    font-size: 13px;
+  }
+}
+
+.np-bundle__divider {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .np-bundle__divider {
+    display: block;
+    grid-area: divider;
+    align-self: start;
+    width: 1px;
+    height: 150px;
+    background: var(--np-text);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Content column (tabs + product grid)
+   Columns per row come from the app setting (Product grid > Products per row).
+   -------------------------------------------------------------------------- */
+
+.np-bundle .pre-bundle-content {
+  grid-area: content;
+  margin-inline: 0;
+  min-width: 0;
+  overflow: visible;
+}
+
+.np-bundle .pre-bundle-products-grid {
+  padding-inline: 0;
+}
+
+/* Tabs: minimal underline style */
+.np-bundle .pre-bundle-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  width: auto;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  white-space: normal;
+}
+
+.np-bundle .pre-bundle-tab-indicator {
+  display: none;
+}
+
+.np-bundle .pre-bundle-tab {
+  padding: 0 0 4px;
+  margin: 0;
+  font-family: var(--np-sans);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--np-text-soft);
+}
+
+.np-bundle .pre-bundle-tab::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.25s cubic-bezier(0.225, 0.64, 0.365, 1);
+}
+
+.np-bundle .pre-bundle-tab:hover::after,
+.np-bundle .pre-bundle-tab--active::after {
+  transform: scaleX(1);
+}
+
+.np-bundle .pre-bundle-tab--active {
+  color: var(--np-text);
+}
+
+.np-bundle .pre-bundle-tabs ~ .pre-bundle-products {
+  margin-block-start: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Product card
+   -------------------------------------------------------------------------- */
+
+.np-bundle .pre-bundle-content .pre-product-card {
+  --pre-btn-bg: transparent;
+  --pre-btn-text: var(--np-text);
+  --pre-btn-border: var(--np-text);
+  --pre-btn-bg-hover: var(--np-text);
+  --pre-btn-text-hover: #fff;
+  --pre-btn-border-hover: var(--np-text);
+  --pre-product-card-radius: 8px;
+
+  padding: 10px 10px 12px;
+  background: var(--np-card-bg);
+  border-radius: 4px;
+  text-align: left;
+}
+
+.np-bundle .pre-bundle-content .pre-product-card__media {
+  background: #fff;
+  border: 1px solid var(--np-line);
+  border-radius: 8px;
+}
+
+.np-bundle .pre-bundle-content .pre-product-card__image {
+  object-fit: contain;
+}
+
+/* Badges (Presidio sale badge + our "New" badge) */
+.np-bundle .pre-bundle-content .pre-product-card__badge {
+  padding: 10px;
+}
+
+.np-bundle .pre-bundle-content .pre-badge-box,
+.np-card-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #6b6b6b;
+  color: #fff;
+  font-family: var(--np-sans);
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.np-card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.np-bundle .pre-bundle-content .pre-product-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 8px 0 0;
+  line-height: 1.3;
+  text-align: left;
+}
+
+/* Presidio's heading is flex with a direction from --pre-product-card-heading-
+   direction, which can be `row` when the app inherits theme styles: force a
+   vertical stack (rating, title, variant, price, subtitle). */
+.np-bundle .pre-bundle-content .pre-product-card__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  font-size: 15px;
+}
+
+.np-bundle .pre-bundle-content .pre-product-card__heading > * {
+  min-width: 0;
+  width: 100%;
+}
+
+.np-bundle .pre-bundle-content .pre-product-card__heading .pre-product-card__price::before {
+  display: none;
+}
+
+/* Stars (cards + quick view) */
+.np-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.np-stars {
+  --np-star-fill: calc(var(--np-rating, 5) / 5 * 100%);
+  font-size: 9px;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, var(--np-text) var(--np-star-fill), #cfcfcf var(--np-star-fill));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.np-rating-count {
+  font-family: var(--np-sans);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--np-text-soft);
+}
+
+.np-bundle .pre-bundle-content .pre-product-card__title {
+  font-family: var(--np-serif);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--np-text);
+}
+
+.np-bundle .pre-bundle-content .pre-product-card__variant-title {
+  font-family: var(--np-sans);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--np-text-soft);
+}
+
+.np-bundle .pre-bundle-content .pre-product-card__price {
+  padding: 2px 0 0;
+  font-family: var(--np-serif);
+  font-size: 13px;
+  color: var(--np-text);
+}
+
+.np-card-subtitle {
+  margin: 2px 0 0;
+  font-family: var(--np-serif);
+  font-style: italic;
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--np-text-soft);
+}
+
+.np-bundle .pre-bundle-content .pre-product-card-btn-outer {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* Explicit colours: works with or without Presidio's .pre-button--default
+   (i.e. whatever is in the app's "Add button class" field). */
+.np-bundle .pre-bundle-content .pre-add-to-bundle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 1px solid var(--np-text);
+  border-radius: 0;
+  background: transparent;
+  color: var(--np-text);
+  font-family: var(--np-serif);
+  font-style: italic;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .np-bundle .pre-bundle-content .pre-add-to-bundle-btn:not(:disabled):hover {
+    background: var(--np-text);
+    color: #fff;
+  }
+}
+
+.np-bundle .pre-bundle-content .pre-add-to-bundle-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Variant dropdown (only when "show variants as cards" is off) */
+.np-bundle .pre-bundle-content .pre-select-popout-toggle,
+.np-bundle .pre-bundle-content .pre-variant-selector {
+  font-size: 12px;
+  border-color: var(--np-line);
+  background: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar
+   -------------------------------------------------------------------------- */
+
+.np-bundle .pre-bundle-aside {
+  grid-area: aside;
+  min-width: 0;
+  background: transparent;
+}
+
+.np-bundle .pre-bundle-widget {
+  padding: 0;
+  background: transparent;
+  color: var(--np-text);
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  /* Side banners sit under the sidebar, so it can't be sticky. */
+  .np-bundle .pre-bundle-widget {
+    position: static;
+  }
+}
+
+.np-bundle .pre-bundle-widget .pre-bundle-title {
+  margin: 0;
+  font-family: var(--np-serif);
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: var(--np-text);
+}
+
+.np-bundle .pre-bundle-widget .pre-bundle-subtitle {
+  margin: 10px 0 28px;
+  font-family: var(--np-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--np-text);
+}
+
+@media screen and (min-width: 990px) {
+  .np-bundle .pre-bundle-widget .pre-bundle-title {
+    font-size: 40px;
+  }
+
+  .np-bundle .pre-bundle-widget .pre-bundle-subtitle {
+    font-size: 13px;
+  }
+}
+
+/* Selected-product tiles */
+.np-bundle .pre-bundle-placeholders {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  margin: 0 0 40px;
+  padding: 0;
+}
+
+.np-bundle .pre-bundle-placeholder,
+.np-bundle .pre-bundle-placeholders:has(> :nth-child(3)) .pre-bundle-placeholder {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 1;
+}
+
+.np-bundle .pre-bundle-placeholder__line,
+.np-bundle .pre-bundle-placeholder__dot {
+  display: none;
+}
+
+.np-bundle .pre-bundle-placeholder__inner {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--np-tile-bg);
+  border: 1px solid var(--np-line);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 4%);
+}
+
+.np-bundle .pre-bundle-placeholder__empty {
+  justify-content: center;
+  padding: 8px;
+}
+
+.np-bundle .pre-bundle-placeholder__empty .pre-bundle-placeholder__text {
+  padding: 0;
+  font-family: var(--np-sans);
+  font-size: 11px;
+  color: var(--np-text-soft);
+}
+
+.np-bundle .pre-bundle-placeholder__empty .pre-bundle-placeholder__text strong {
+  font-weight: 400;
+}
+
+.np-bundle .pre-bundle-placeholder__filled,
+.np-bundle .pre-bundle-placeholder__filled .pre-product-inline {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+.np-bundle .pre-bundle-placeholder__filled .pre-product-inline {
+  position: relative;
+  padding: 10px;
+}
+
+.np-bundle .pre-bundle-placeholder__filled .pre-product-inline__image {
+  flex: 1 1 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.np-bundle .pre-bundle-placeholder__filled .pre-product-inline__image a {
+  width: 100%;
+  height: 100%;
+}
+
+.np-bundle .pre-bundle-placeholder__filled .pre-product-inline__image img {
+  object-fit: contain;
+}
+
+.np-bundle .pre-bundle-placeholder__filled .pre-product-inline__content {
+  position: static;
+  flex: 0 0 auto;
+  width: auto;
+}
+
+/* Name/variant/price are kept for screen readers; the tile shows the image. */
+.np-bundle .pre-bundle-placeholder__filled .pre-product-inline__info {
+  position: absolute !important;
+  overflow: hidden;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+}
+
+.np-bundle .pre-bundle-placeholder__filled .pre-product-inline__actions {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  margin: 0;
+}
+
+.np-bundle .pre-product-inline__remove,
+.np-bundle .pre-product-inline__remove svg {
+  width: 24px;
+  height: 24px;
+}
+
+.np-bundle .pre-product-inline__remove {
+  color: var(--np-text-soft);
+}
+
+/* Summary box */
+.np-bundle .pre-bundle-price.np-summary {
+  max-width: 230px;
+  margin: 0 auto 26px;
+  padding: 12px 14px;
+  border: 1px solid #cfcfcf;
+  font-family: var(--np-sans);
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: left;
+  color: var(--np-text);
+}
+
+.np-bundle .np-summary .pre-bundle-price-row {
+  align-items: center;
+  margin: 0 0 5px;
+  padding: 0;
+  border: 0;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.np-bundle .np-summary .pre-bundle-price-row:last-child {
+  margin-bottom: 0;
+}
+
+.np-bundle .np-summary .pre-bundle-price-row--subtotal .money,
+.np-bundle .np-summary .pre-bundle-price-row--total {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.np-bundle .np-summary .pre-bundle-price-row--savings {
+  color: var(--np-text);
+}
+
+/* Show the % pill instead of the amount; amount stays for screen readers */
+.np-bundle .np-summary .np-has-pill .money {
+  position: absolute !important;
+  overflow: hidden;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+}
+
+.np-pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 20px;
+  background: var(--np-pill);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Add bundle to cart */
+.np-bundle .pre-bundle-button-container {
+  max-width: 230px;
+  margin: 0 auto;
+}
+
+.np-bundle .pre-bundle-widget .pre-bundle-button,
+.np-bundle .pre-bundle-widget .pre-bundle-button.pre-bundle-button--incomplete:disabled {
+  --pre-btn-bg: var(--np-btn-dark);
+  --pre-btn-text: #fff;
+  --pre-btn-border: var(--np-btn-dark);
+  --pre-btn-bg-hover: var(--np-btn-dark-hover);
+  --pre-btn-text-hover: #fff;
+  --pre-btn-border-hover: var(--np-btn-dark-hover);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 16px;
+  border: 1px solid var(--np-btn-dark);
+  border-radius: 0;
+  background: var(--np-btn-dark);
+  color: #fff;
+  font-family: var(--np-serif);
+  font-style: italic;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.np-bundle .pre-bundle-widget .pre-bundle-button::after {
+  display: none;
+}
+
+.np-bundle .pre-bundle-widget .pre-bundle-button.pre-loading::after {
+  display: block;
+}
+
+@media (hover: hover) {
+  .np-bundle .pre-bundle-widget .pre-bundle-button:not(:disabled):hover {
+    background: var(--np-btn-dark-hover);
+    border-color: var(--np-btn-dark-hover);
+  }
+}
+
+.np-bundle .pre-bundle-widget .pre-bundle-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.np-bundle .pre-bundle-incomplete-error,
+.np-bundle .pre-bundle-group-section__error {
+  text-align: center;
+}
+
+.np-bundle .pre-bundle-error .pre-errors {
+  padding: 10px 12px;
+  font-size: 12px;
+  text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile: sidebar becomes Presidio's sticky bottom bar
+   -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 749px) {
+  .np-bundle .pre-bundle-aside {
+    margin-inline: -1.5rem;
+    padding: 12px 1.5rem calc(12px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--np-line);
+    background: #fff;
+    box-shadow: 0 -4px 16px rgb(0 0 0 / 6%);
+  }
+
+  .np-bundle .pre-bundle-widget .pre-bundle-title {
+    font-size: 20px;
+  }
+
+  .np-bundle .pre-bundle-widget .pre-bundle-subtitle {
+    display: none;
+  }
+
+  .np-bundle .pre-bundle-placeholders {
+    display: flex;
+    gap: 6px;
+    margin: 10px 0 12px;
+    overflow-x: auto;
+  }
+
+  .np-bundle .pre-bundle-placeholder,
+  .np-bundle .pre-bundle-placeholders:has(> :nth-child(3)) .pre-bundle-placeholder {
+    flex: 0 0 64px;
+    width: 64px;
+  }
+
+  .np-bundle .pre-bundle-placeholder__filled .pre-product-inline {
+    padding: 6px;
+  }
+
+  .np-bundle .pre-bundle-placeholder__empty .pre-bundle-placeholder__text {
+    font-size: 9px;
+  }
+
+  .np-bundle .pre-bundle-price.np-summary,
+  .np-bundle .pre-bundle-button-container {
+    max-width: none;
+  }
+
+  .np-bundle .pre-bundle-price.np-summary {
+    margin-bottom: 10px;
+    padding: 8px 10px;
+  }
+
+  .np-bundle .pre-bundle-content .pre-product-card {
+    padding: 8px 8px 10px;
+  }
+
+  .np-bundle .pre-bundle-content .pre-add-to-bundle-btn {
+    font-size: 14px;
+  }
+
+  .np-bundle .pre-bundle-tabs {
+    padding: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Quick view popup (Figma: POP UP PREVIEW)
+   -------------------------------------------------------------------------- */
+
+html.np-qv-open {
+  overflow: hidden;
+}
+
+.np-qv {
+  width: min(1010px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(100vh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  color: var(--np-text);
+  overflow: hidden;
+}
+
+.np-qv::backdrop {
+  background: rgb(0 0 0 / 35%);
+}
+
+.np-qv__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 750px) {
+  .np-qv__inner {
+    grid-template-columns: minmax(0, 57%) minmax(0, 43%);
+    height: min(575px, calc(100vh - 32px));
+    overflow: hidden;
+  }
+}
+
+.np-qv__media {
+  position: relative;
+  min-height: 320px;
+  background: #fff;
+}
+
+.np-qv__slides {
+  position: absolute;
+  inset: 0;
+}
+
+.np-qv__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 60px;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.np-qv__slide.is-active {
+  opacity: 1;
+}
+
+.np-qv__close,
+.np-qv__nav {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #6b6b6b;
+  cursor: pointer;
+}
+
+.np-qv__close {
+  top: 20px;
+  left: 20px;
+  width: 44px;
+  height: 44px;
+  margin: -11px;
+}
+
+.np-qv__nav {
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translateY(-50%);
+}
+
+.np-qv__nav--prev {
+  left: 24px;
+}
+
+.np-qv__nav--next {
+  right: 24px;
+}
+
+.np-qv__nav[hidden] {
+  display: none;
+}
+
+.np-qv__info {
+  padding: 28px 20px 32px;
+  background: #f7f7f7;
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 750px) {
+  .np-qv__info {
+    padding: 50px 48px 40px;
+  }
+}
+
+.np-qv__title {
+  margin: 0;
+  font-family: var(--np-serif);
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: var(--np-text);
+}
+
+@media screen and (min-width: 990px) {
+  .np-qv__title {
+    font-size: 40px;
+  }
+}
+
+.np-qv__stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  line-height: 1;
+}
+
+.np-qv__stars .np-stars {
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.np-qv__stars .np-rating-count {
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: var(--np-text);
+}
+
+.np-qv__label {
+  margin: 26px 0 0;
+  font-family: var(--np-sans);
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--np-text-soft);
+}
+
+.np-qv__label[hidden] {
+  display: none;
+}
+
+.np-qv__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.np-qv__swatches[hidden] {
+  display: none;
+}
+
+.np-qv__swatch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.np-qv__swatch-chip {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);
+}
+
+.np-qv__swatch.is-active {
+  border-color: var(--np-text-soft);
+}
+
+.np-qv__swatch.is-unavailable {
+  opacity: 0.4;
+}
+
+.np-qv__swatch--text {
+  width: auto;
+  height: auto;
+  padding: 6px 12px;
+  border: 1px solid var(--np-line);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--np-text);
+}
+
+.np-qv__swatch--text.is-active {
+  border-color: var(--np-text);
+}
+
+.np-qv__add {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 22px;
+  padding: 10px 20px;
+  border: 0;
+  background: var(--np-qv-btn-bg, #f2b6c0);
+  color: var(--np-qv-btn-text, #fff);
+  font-family: var(--np-sans);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.np-qv__add:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.np-qv__add:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.np-qv__note {
+  margin: 8px 0 0;
+  font-size: 12px;
+  text-align: center;
+  color: var(--np-text-soft);
+}
+
+.np-qv__note[hidden] {
+  display: none;
+}
+
+.np-qv__details {
+  margin-top: 22px;
+  padding: 0 40px;
+  border: 1px solid #636666;
+}
+
+.np-qv__details[hidden] {
+  display: none;
+}
+
+.np-qv__details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  font-family: var(--np-serif);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1.2;
+  list-style: none;
+  cursor: pointer;
+}
+
+.np-qv__details summary::-webkit-details-marker {
+  display: none;
+}
+
+.np-qv__details-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+
+.np-qv__details-icon::before,
+.np-qv__details-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: translateY(-50%);
+}
+
+.np-qv__details-icon::after {
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.np-qv__details[open] .np-qv__details-icon::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.np-qv__desc {
+  padding-bottom: 20px;
+  font-family: var(--np-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--np-text);
+}
+
+@media screen and (max-width: 749px) {
+  .np-qv__media {
+    min-height: 0;
+    aspect-ratio: 1;
+  }
+
+  .np-qv__slide {
+    padding: 24px 40px;
+  }
+
+  .np-qv__nav--prev {
+    left: 4px;
+  }
+
+  .np-qv__nav--next {
+    right: 4px;
+  }
+
+  .np-qv__label {
+    font-size: 14px;
+  }
+
+  .np-qv__add {
+    font-size: 18px;
+  }
+
+  .np-qv__details {
+    padding: 0 20px;
+  }
+
+  .np-qv__details summary {
+    font-size: 22px;
+  }
+}
+
+/* Presidio's screen-reader-only labels (e.g. "Regular price") — make sure they
+   stay hidden even when the app's shared stylesheet isn't applied. */
+.np-bundle .pre-visually-hidden,
+.np-bundle .pre-visually-hidden--inline {
+  position: absolute !important;
+  overflow: hidden;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+}
