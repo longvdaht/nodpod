@@ -275,6 +275,7 @@
     },
     "custom_liquid_8p9yX7": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [
         "h2 {font-weight: 300;}"
       ],
