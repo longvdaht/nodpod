@@ -90,6 +90,7 @@
         "new_badge_tag": "",
         "new_badge_label": "New",
         "enable_quick_view": true,
+        "show_all_products": true,
         "qv_button_label": "Add to bundle",
         "qv_button_bg": "#f2b6c0",
         "qv_button_text": "#ffffff",

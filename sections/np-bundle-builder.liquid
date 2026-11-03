@@ -31,8 +31,9 @@
   }
 {% endstyle %}
 
+<div class="page-width np-bundle-page">
 <div
-  class="np-bundle page-width"
+  class="np-bundle"
   data-np-bundle
   data-label-items="{{ section.settings.label_items | escape }}"
   data-label-subtotal="{{ section.settings.label_subtotal | escape }}"
@@ -42,6 +43,7 @@
   data-sidebar-subtitle="{{ section.settings.sidebar_subtitle | escape }}"
   data-open-cart="{{ section.settings.open_cart_after_add }}"
   data-quick-view="{{ section.settings.enable_quick_view }}"
+  data-show-all="{{ section.settings.show_all_products }}"
 >
   <div class="np-bundle__top">
     {%- for block in section.blocks -%}
@@ -223,6 +225,7 @@
     </dialog>
   {%- endif -%}
 </div>
+</div>
 
 {% schema %}
 {
@@ -378,6 +381,13 @@
       "label": "Bundle products",
       "info": "Pick the same products used in the Presidio bundle. Used for star rating, review count, subtitle (descriptors.subtitle), badge and the quick view popup.",
       "limit": 20
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_products",
+      "label": "Show all products on one page",
+      "info": "Removes the Presidio pagination (overrides the app's \"Products per page\").",
+      "default": true
     },
     {
       "type": "text",

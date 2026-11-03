@@ -7,9 +7,9 @@
    ========================================================================== */
 
 .np-bundle {
-  --np-text: #3d3d3d;
+  --np-text: #5d5e5d;
   --np-text-soft: #6b6b6b;
-  --np-line: #e6e6e6;
+  --np-line: #ebeae6;
   --np-card-bg: #f7f7f7;
   --np-tile-bg: #fff;
   --np-btn-dark: #5b5b5b;
@@ -42,10 +42,19 @@
   }
 }
 
+/* Width matches the PDP: .page-width (padding 10px 20px !important from
+   assets/custom.css "section .page-width") > .product { max-width: 1700px;
+   margin: auto }, 4rem gap, 55% / 45% columns like .product--medium. */
+.np-bundle {
+  max-width: 1700px;
+  margin-inline: auto;
+}
+
 @media screen and (min-width: 990px) {
   .np-bundle {
-    column-gap: 52px;
-    max-width: 1040px;
+    /* 2 gaps of 2rem around the 1px divider = the PDP's 4rem gap. */
+    grid-template-columns: minmax(0, 55fr) 1px minmax(0, 45fr);
+    column-gap: 2rem;
   }
 }
 
@@ -61,7 +70,7 @@
 }
 
 .np-bundle pre-mix-and-match {
-  --pre-bundle-grid-gap: 14px;
+  --pre-bundle-grid-gap: 16px;
   --pre-bundle-grid-gap-vertical: 16px;
   --pre-sidebar-bg: transparent;
   --pre-sidebar-fg: var(--np-tile-bg);
@@ -309,16 +318,16 @@
   --pre-btn-border-hover: var(--np-text);
   --pre-product-card-radius: 8px;
 
-  padding: 10px 10px 12px;
+  padding: 12px;
   background: var(--np-card-bg);
-  border-radius: 4px;
+  border-radius: 8px;
   text-align: left;
 }
 
 .np-bundle .pre-bundle-content .pre-product-card__media {
   background: #fff;
   border: 1px solid var(--np-line);
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .np-bundle .pre-bundle-content .pre-product-card__image {
@@ -387,13 +396,13 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
   line-height: 1;
 }
 
 .np-stars {
   --np-star-fill: calc(var(--np-rating, 5) / 5 * 100%);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 1px;
   background: linear-gradient(90deg, var(--np-text) var(--np-star-fill), #cfcfcf var(--np-star-fill));
   -webkit-background-clip: text;
@@ -403,7 +412,7 @@
 
 .np-rating-count {
   font-family: var(--np-sans);
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--np-text-soft);
@@ -411,38 +420,48 @@
 
 .np-bundle .pre-bundle-content .pre-product-card__title {
   font-family: var(--np-serif);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.3;
-  color: var(--np-text);
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--np-text) !important;
+  margin-bottom: 12px;
 }
 
 .np-bundle .pre-bundle-content .pre-product-card__variant-title {
   font-family: var(--np-sans);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
   color: var(--np-text-soft);
 }
 
 .np-bundle .pre-bundle-content .pre-product-card__price {
-  padding: 2px 0 0;
+  padding: 12px 0 0;
   font-family: var(--np-serif);
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 12px;
   color: var(--np-text);
 }
 
 .np-card-subtitle {
-  margin: 2px 0 0;
+  margin: 5px 0 0;
   font-family: var(--np-serif);
   font-style: italic;
   font-size: 11px;
-  line-height: 1.3;
+  line-height: 16px;
   color: var(--np-text-soft);
+}
+
+.np-bundle .pre-add-to-bundle-btn-outer,
+.np-bundle .pre-bundle-content .pre-product-card-btn-outer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .np-bundle .pre-bundle-content .pre-product-card-btn-outer {
   margin-top: auto;
-  padding-top: 10px;
+  padding-top: 12px;
 }
 
 /* Explicit colours: works with or without Presidio's .pre-button--default
@@ -452,17 +471,17 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 34px;
+  min-height: 37px;
   padding: 6px 10px;
   border: 1px solid var(--np-text);
   border-radius: 0;
   background: transparent;
-  color: var(--np-text);
+  color: #636666;
   font-family: var(--np-serif);
   font-style: italic;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1;
   letter-spacing: 0;
   text-transform: none;
   box-shadow: none;
@@ -585,7 +604,7 @@
 .np-bundle .pre-bundle-placeholder__empty .pre-bundle-placeholder__text {
   padding: 0;
   font-family: var(--np-sans);
-  font-size: 11px;
+  font-size: 14px;
   color: var(--np-text-soft);
 }
 
@@ -658,9 +677,9 @@
 
 /* Summary box */
 .np-bundle .pre-bundle-price.np-summary {
-  max-width: 230px;
+  max-width: 276px;
   margin: 0 auto 26px;
-  padding: 12px 14px;
+  padding: 12px;
   border: 1px solid #cfcfcf;
   font-family: var(--np-sans);
   font-size: 11px;
@@ -674,18 +693,21 @@
   margin: 0 0 5px;
   padding: 0;
   border: 0;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 400;
+  line-height: 24px;
 }
+
+.np-bundle .np-summary .pre-bundle-price-row .np-summary__count,
+.np-bundle .np-summary .pre-bundle-price-row .money {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
 
 .np-bundle .np-summary .pre-bundle-price-row:last-child {
   margin-bottom: 0;
-}
-
-.np-bundle .np-summary .pre-bundle-price-row--subtotal .money,
-.np-bundle .np-summary .pre-bundle-price-row--total {
-  font-size: 11px;
-  font-weight: 400;
 }
 
 .np-bundle .np-summary .pre-bundle-price-row--savings {
@@ -704,19 +726,21 @@
 
 .np-pill {
   display: inline-block;
-  padding: 1px 8px;
+  padding: 4px 8px;
   border-radius: 20px;
   background: var(--np-pill);
   color: #fff;
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0;
 }
 
 /* Add bundle to cart */
 .np-bundle .pre-bundle-button-container {
   max-width: 230px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .np-bundle .pre-bundle-widget .pre-bundle-button,
@@ -784,33 +808,56 @@
    -------------------------------------------------------------------------- */
 
 @media screen and (max-width: 749px) {
-  .np-bundle .pre-bundle-aside {
-    margin-inline: -1.5rem;
-    padding: 12px 1.5rem calc(12px + env(safe-area-inset-bottom));
+  /* Selector must beat Presidio's `pre-mix-and-match.pre-sidebar-custom-styles
+     .pre-bundle-aside { background: var(--pre-sidebar-bg) }`, otherwise the
+     sticky bar is transparent over the product grid. */
+  .np-bundle pre-mix-and-match .pre-bundle-aside,
+  .np-bundle pre-mix-and-match.pre-sidebar-custom-styles .pre-bundle-aside {
+    --pre-sidebar-bg: #fff;
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    /* = .page-width side padding (20px, assets/custom.css) so the bar
+       reaches both screen edges. */
+    margin-inline: -20px;
+    padding: 16px;
     border-top: 1px solid var(--np-line);
-    background: #fff;
-    box-shadow: 0 -4px 16px rgb(0 0 0 / 6%);
+    background: #fff !important;
+    box-shadow: 0 -6px 20px rgb(0 0 0 / 10%);
+  }
+
+  .np-bundle pre-mix-and-match .pre-bundle-widget {
+    background: #fff !important;
+    text-align: center;
   }
 
   .np-bundle .pre-bundle-widget .pre-bundle-title {
+    margin-bottom: 4px;
     font-size: 20px;
+    text-align: center;
   }
 
   .np-bundle .pre-bundle-widget .pre-bundle-subtitle {
     display: none;
   }
 
-  .np-bundle .pre-bundle-placeholders {
+  .np-bundle .pre-bundle-placeholders,
+  .np-bundle .pre-bundle-placeholders:has(> :nth-child(3)) {
     display: flex;
-    gap: 6px;
-    margin: 10px 0 12px;
+    justify-content: start;
+    gap: 8px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
     overflow-x: auto;
   }
 
   .np-bundle .pre-bundle-placeholder,
   .np-bundle .pre-bundle-placeholders:has(> :nth-child(3)) .pre-bundle-placeholder {
-    flex: 0 0 64px;
-    width: 64px;
+    flex: 0 0 120px;
+    width: 120px;
+    height: 120px;
+    min-height: 0;
   }
 
   .np-bundle .pre-bundle-placeholder__filled .pre-product-inline {
@@ -818,21 +865,18 @@
   }
 
   .np-bundle .pre-bundle-placeholder__empty .pre-bundle-placeholder__text {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .np-bundle .pre-bundle-price.np-summary,
   .np-bundle .pre-bundle-button-container {
-    max-width: none;
+    max-width: 360px;
+    margin-inline: auto;
   }
 
   .np-bundle .pre-bundle-price.np-summary {
     margin-bottom: 10px;
     padding: 8px 10px;
-  }
-
-  .np-bundle .pre-bundle-content .pre-product-card {
-    padding: 8px 8px 10px;
   }
 
   .np-bundle .pre-bundle-content .pre-add-to-bundle-btn {
@@ -841,6 +885,12 @@
 
   .np-bundle .pre-bundle-tabs {
     padding: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .np-rating-count {
+    font-size: 10px;
   }
 }
 

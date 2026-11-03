@@ -216,6 +216,35 @@
     });
   }
 
+  // Presidio renders the selected-product images for a 44px thumbnail
+  // (sizes="44px", srcset up to 132w). Our tiles are ~64-200px, so swap in
+  // larger Shopify CDN renditions of the same file. Only attributes change, so
+  // this doesn't retrigger the childList MutationObserver.
+  var TILE_WIDTHS = [200, 300, 400, 600];
+
+  function cdnWidth(url, width) {
+    if (!url) return url;
+    if (/[?&]width=\d+/.test(url)) return url.replace(/([?&])width=\d+/, '$1width=' + width);
+    return url + (url.indexOf('?') === -1 ? '?' : '&') + 'width=' + width;
+  }
+
+  function upscaleTileImages(widget) {
+    widget.querySelectorAll('.pre-bundle-placeholder__filled .pre-product-inline__image img').forEach(function (img) {
+      var src = img.getAttribute('src');
+      if (!src || img.getAttribute('data-np-src') === src) return;
+      var large = cdnWidth(src, 400);
+      img.setAttribute(
+        'srcset',
+        TILE_WIDTHS.map(function (w) {
+          return cdnWidth(src, w) + ' ' + w + 'w';
+        }).join(', ')
+      );
+      img.setAttribute('sizes', '(min-width: 750px) 200px, 64px');
+      img.setAttribute('src', large);
+      img.setAttribute('data-np-src', large);
+    });
+  }
+
   function discountLabel(config) {
     if (!config || !config.discountValue) return '';
     var value = parseFloat(config.discountValue);
@@ -255,6 +284,8 @@
     }
     var count = widget.querySelectorAll('.pre-bundle-placeholder__filled .pre-product-inline').length;
     setText(itemsRow.querySelector('.np-summary__count'), String(count));
+
+    upscaleTileImages(widget);
 
     if (savingsRow && opts.pill && !savingsRow.querySelector('.np-pill')) {
       savingsRow.appendChild(el('span', 'np-pill', opts.pill));
@@ -569,6 +600,20 @@
 
     if (root.getAttribute('data-quick-view') === 'true') {
       new QuickView(root, app, meta, config);
+    }
+
+    // Show every product on one page (no pagination). Presidio treats a
+    // non-positive products_per_page as "all"; updateStyleSettings() is the
+    // element's own API (used by its admin live preview) and keeps selections.
+    if (root.getAttribute('data-show-all') === 'true' && window.customElements) {
+      customElements.whenDefined('pre-mix-and-match').then(function () {
+        var settings = app.config && app.config.settings;
+        if (!settings || !(settings.products_per_page > 0) || typeof app.updateStyleSettings !== 'function') return;
+        var next = {};
+        for (var key in settings) next[key] = settings[key];
+        next.products_per_page = 0;
+        app.updateStyleSettings(next);
+      });
     }
 
     var scheduled = false;
