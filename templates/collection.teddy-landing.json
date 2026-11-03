@@ -24,8 +24,8 @@
         "image_YH3QfJ": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Teddy_Web_Banners-05_1.png",
-            "imageMobile": "shopify://shop_images/Teddy_Web_Banners-04_92d8c3dd-e4df-425f-b08b-cfd84a204227.png",
+            "image": "shopify://shop_images/Teddy_Collection_Banner_26.png",
+            "imageMobile": "shopify://shop_images/Teddy_Collection_Banner_Mobile_26_1.png",
             "imgClickable": true
           }
         }
@@ -54,6 +54,7 @@
         "color_scheme": "scheme-1",
         "heroMetaH1Bg": "#ffffff",
         "heroMetaH1Color": "#ffffff",
+        "background_color": "",
         "heroMetaH1hasBg": false,
         "heroHeight": "uncropped",
         "cropVideo": false,
@@ -141,6 +142,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "pdp_product_highlight",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/image_80_3.png",
         "image_position": "right",
         "mobile_image_position": "top",
@@ -221,7 +223,8 @@
         "textAlignment": "center",
         "section_bg": "#fffbf7",
         "headingBg": "#ffffff",
-        "headingColor": "#6c6463"
+        "headingColor": "#6c6463",
+        "text_color": ""
       }
     },
     "np_image_with_text_EHebky": {
@@ -255,6 +258,7 @@
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
+        "show_fsa_badge": false,
         "image": "shopify://shop_images/Ellipse_45.png",
         "image_position": "right",
         "mobile_image_position": "bottom",
@@ -328,6 +332,7 @@
         "text_color": "#6c6463",
         "full_bkg_color": "#ffffff",
         "text_alignment": "center",
+        "text_alignment_mobile": "center",
         "heading_size": "medium"
       }
     }

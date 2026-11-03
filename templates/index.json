@@ -12,6 +12,34 @@
     "np_home_slider_KD4iFg": {
       "type": "np-home-slider",
       "blocks": {
+        "full_banner_mVUjGw": {
+          "type": "full_banner",
+          "settings": {
+            "image": "shopify://shop_images/Teddy_Collection_Banner_26.png",
+            "image_mobile": "shopify://shop_images/Teddy_Collection_Banner_Mobile_26_1.png",
+            "overlay_position": "bottom_center",
+            "overlay_max_width": 45,
+            "overlay_position_mobile": "same_as_desktop",
+            "overlay_max_width_mobile": 90,
+            "subheading": "",
+            "sub_text_color": "#7d640b",
+            "sub_font_size": 1.5,
+            "sub_font_size_mobile": 1.2,
+            "title": "",
+            "text_color": "#7d640b",
+            "font_size": 2,
+            "font_size_mobile": 1.6,
+            "button_text": "Shop Now",
+            "url": "shopify://collections/the-teddy-collection",
+            "button_text_color": "#7d640b",
+            "button_bkg_color": "rgba(0,0,0,0)",
+            "button_font_size": 2,
+            "button_stroke": 1,
+            "button_border_color": "#7d640b",
+            "button_font_size_mobile": 1.6,
+            "enable_shadows": false
+          }
+        },
         "full_banner_KxK6m6": {
           "type": "full_banner",
           "settings": {
@@ -126,10 +154,11 @@
         },
         "full_banner_Q8gfAD": {
           "type": "full_banner",
+          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/hero-banner-1_c631af27-081d-4a69-ade7-469314a10bfe.png",
-            "image_mobile": "shopify://shop_images/full-banner-mobile.png",
-            "overlay_position": "bottom_left",
+            "image": "shopify://shop_images/fall_edit_Banner_13.png",
+            "image_mobile": "shopify://shop_images/fall_edit_mobileBanner-11.png",
+            "overlay_position": "bottom_center",
             "overlay_max_width": 45,
             "overlay_position_mobile": "same_as_desktop",
             "overlay_max_width_mobile": 90,
@@ -137,7 +166,7 @@
             "sub_text_color": "#ffffff",
             "sub_font_size": 1.5,
             "sub_font_size_mobile": 1.2,
-            "title": "<p>Chill More. Stress Less.<br><em>Sleep Better.</em></p>",
+            "title": "",
             "text_color": "#ffffff",
             "font_size": 6,
             "font_size_mobile": 4,
@@ -151,44 +180,15 @@
             "button_font_size_mobile": 2.3,
             "enable_shadows": true
           }
-        },
-        "split_banner_a9AaYd": {
-          "type": "split_banner",
-          "settings": {
-            "image": "shopify://shop_images/silk1.png",
-            "image2": "shopify://shop_images/silk2.png",
-            "text_position": "left",
-            "overlay_position": "middle_center",
-            "overlay_max_width": 45,
-            "overlay_position_mobile": "same_as_desktop",
-            "overlay_max_width_mobile": 90,
-            "subheading": "<p>NOW AVAILABLE</p>",
-            "sub_text_color": "#5d5e5d",
-            "sub_font_size": 2,
-            "sub_font_size_mobile": 2,
-            "title": "<p>The Mineralized&nbsp;<br/>Silk<strong>™</strong> Collection</p>",
-            "text_color": "#5d5e5d",
-            "font_size": 6,
-            "font_size_mobile": 4.3,
-            "button_text": "Shop Now",
-            "url": "shopify://collections/mineralized-silk",
-            "button_text_color": "#5d5e5d",
-            "button_bkg_color": "",
-            "button_stroke": 1,
-            "button_font_size": 2.5,
-            "button_border_color": "#5d5e5d",
-            "button_font_size_mobile": 2.2,
-            "enable_shadows": false
-          }
         }
       },
       "block_order": [
+        "full_banner_mVUjGw",
         "full_banner_KxK6m6",
         "full_banner_WPTyWP",
         "full_banner_zRD388",
         "full_banner_MPT4DU",
-        "full_banner_Q8gfAD",
-        "split_banner_a9AaYd"
+        "full_banner_Q8gfAD"
       ],
       "custom_css": [
         "@media (min-width: 990px) {.swiper-slide {height: calc(var(--np-height-desktop) - 82px) !important; }}",
@@ -377,6 +377,7 @@
         "text_dMRVnR",
         "button_8Yad3B"
       ],
+      "disabled": true,
       "name": "NP Image With Text",
       "settings": {
         "unique_id": "",
@@ -912,7 +913,7 @@
       "type": "apps",
       "blocks": {
         "tolstoy_shoppable_video_quiz_carousel_block_BKCt99": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "7v70dzosw9ko9"
           }

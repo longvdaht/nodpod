@@ -488,6 +488,9 @@
                     </button>
                   {%- endif -%}
                 {%- else -%}
+                  {%- assign swatch_limit = 5 -%}
+                  {%- assign swatch_count = 0 -%}
+                  {%- assign other_swatch_count = 0 -%}
                   {%- for v in card_product.variants -%}
                     {%- liquid
                       assign rr1 = v.metafields.release.ready.value
@@ -520,10 +523,22 @@
                       endif
                     -%}
                     {%- if variant_visible -%}
+                      {%- assign swatch_count = swatch_count | plus: 1 -%}
                       {%- assign is_initial = false -%}
                       {%- if initial_variant and initial_variant.id == v.id -%}
                         {% assign is_initial = true %}
                       {%- endif -%}
+                      {%- comment -%}
+                        The initial swatch is always shown (moved first via CSS order), so other swatches get limit - 1 slots.
+                        Overflow swatches stay in the DOM (hidden) so variant data remains available.
+                      {%- endcomment -%}
+                      {%- assign is_overflow = false -%}
+                      {%- unless is_initial -%}
+                        {%- assign other_swatch_count = other_swatch_count | plus: 1 -%}
+                        {%- if other_swatch_count >= swatch_limit -%}
+                          {%- assign is_overflow = true -%}
+                        {%- endif -%}
+                      {%- endunless -%}
                       {%- assign color_label = v.option1 | default: v.title -%}
                       {%- assign c1 = v.metafields.custom.variant_color.value
                         | default: v.metafields.custom.variant_color
@@ -574,7 +589,7 @@
 
                       <button
                         type="button"
-                        class="np-swatch {% if multicolor %}np-swatch--multi{% endif %}{% if v.available %}{% else %} is-disabled{% endif %}{% if is_initial %} is-active{% endif %}{% if size_letter != blank %} np-swatch--labeled{% endif %}"
+                        class="np-swatch {% if multicolor %}np-swatch--multi{% endif %}{% if v.available %}{% else %} is-disabled{% endif %}{% if is_initial %} is-active np-swatch--initial{% endif %}{% if size_letter != blank %} np-swatch--labeled{% endif %}{% if is_overflow %} np-swatch--overflow{% endif %}"
                         role="radio"
                         aria-checked="{% if is_initial %}true{% else %}false{% endif %}"
                         aria-label="{{ tippy_label | escape }}"
@@ -596,6 +611,9 @@
                       </button>
                     {%- endif -%}
                   {%- endfor -%}
+                  {%- if swatch_count > swatch_limit -%}
+                    <a href="{{ card_product.url }}" class="np-swatch-more">{{ 'products.product.more_swatches' | t }}</a>
+                  {%- endif -%}
                 {%- endif -%}
               </div>
             </div>
@@ -980,6 +998,21 @@
       margin-right: 4px;
     }
    .np-swatch.is-active { outline-color: var(--np-outline, currentColor); }
+   .np-swatch--initial { order: -1; }
+   .np-swatch--overflow { display: none !important; }
+   .np-swatch-more {
+      display: inline-flex;
+      align-items: center;
+      height: 20px;
+      font-size: 1.3rem;
+      line-height: 1;
+      color: rgb(var(--color-foreground));
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      white-space: nowrap;
+      position: relative;
+      z-index: 3;
+    }
    .np-swatch.is-disabled { opacity: .45; cursor: not-allowed; }
    .np-swatch__chip { width: 100%; height: 100%; border-radius: 999px; border: 0 !important; background: #ccc; }
    .np-swatch--multi .np-swatch__chip { background: repeating-linear-gradient(45deg,#222 0 8px,#fff 8px 16px,#666 16px 24px); }
