@@ -18,6 +18,8 @@
   the real data.
 
   Debug: `localStorage.npDebugCart = 1` + reload → logs prefixed "[np-cart-fix]".
+  A blocked clear is always logged (once per page): it means fix #1 no longer
+  works, most likely because UpCart changed its code.
 {% endcomment %}
 <script>
   (function () {
@@ -30,6 +32,13 @@
     } catch (e) {}
     function log() {
       if (debug) console.info.apply(console, ['[np-cart-fix]'].concat([].slice.call(arguments)));
+    }
+
+    var loggedBlocked = false;
+    function logBlocked() {
+      if (loggedBlocked) return log('blocked UpCart cart/clear.js again');
+      loggedBlocked = true;
+      console.warn('[np-cart-fix] blocked UpCart cart/clear.js — cart contains Presidio bundle lines (see snippets/np-upcart-presidio-fix.liquid)');
     }
 
     // 1. Ignore UpCart's Stay.ai bundle-child marking.
@@ -92,7 +101,7 @@
         })
         .then(function (cart) {
           if (!hasBundleLines(cart)) return originalFetch.apply(self, args);
-          log('blocked UpCart cart/clear.js — cart contains Presidio bundle lines');
+          logBlocked();
           return new Response(JSON.stringify(cart), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },
