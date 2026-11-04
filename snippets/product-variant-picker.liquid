@@ -248,8 +248,30 @@
             updateArrows();
           }
 
+          // A hidden swatch must not stay selected: when the chosen collection doesn't
+          // contain the current color, select its first available color instead.
+          function selectInGroup(group) {
+            if (group === 'all') return;
+            const checked = root.querySelector('.pdp-color__input:checked');
+            if (checked && checked.closest('[data-swatch-group]')?.dataset.swatchGroup === group) return;
+
+            const inputs = Array.from(
+              root.querySelectorAll(`[data-swatch-group="${group}"] .pdp-color__input`)
+            );
+            const nextInput = inputs.find((input) => !input.classList.contains('sold-out')) || inputs[0];
+            if (!nextInput) return;
+
+            nextInput.checked = true;
+            nextInput.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+
+          function selectTab(group, focus) {
+            activate(group, focus);
+            selectInGroup(host.dataset.swatchTab);
+          }
+
           tabs.forEach((tab, index) => {
-            tab.addEventListener('click', () => activate(tab.dataset.swatchTab));
+            tab.addEventListener('click', () => selectTab(tab.dataset.swatchTab));
             tab.addEventListener('keydown', (e) => {
               let target = null;
               if (e.key === 'ArrowRight') target = tabs[(index + 1) % tabs.length];
@@ -258,7 +280,7 @@
               else if (e.key === 'End') target = tabs[tabs.length - 1];
               if (!target) return;
               e.preventDefault();
-              activate(target.dataset.swatchTab, true);
+              selectTab(target.dataset.swatchTab, true);
             });
           });
 
