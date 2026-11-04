@@ -74,3 +74,249 @@
     gap: 2.4rem;
   }
 }
+
+/* ===== PDP collection tabs (grouped swatches V3) ===== */
+/* fieldsets default to min-width: min-content, which would let the rail widen the column */
+.product-form__input--swatch:has(.np-swatch-tabs) {
+  min-width: 0;
+}
+
+/* contain: inline-size stops the rail's scroll width from sizing any ancestor
+   (fieldset, flex/grid columns), which pushed the whole page wider on mobile */
+.np-swatch-tabs {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  contain: inline-size;
+}
+
+.np-swatch-tabs__rail-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.np-swatch-tabs__rail {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  gap: 0.8rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  /* room for badges that sit on the tile's top edge */
+  padding: 1.2rem 0 0 0;
+}
+
+.np-swatch-tabs__rail:after {
+  content: '';
+  background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+  height: 100%;
+  position: absolute;
+  width: 7.4rem;
+  right: 0;
+}
+
+.np-swatch-tabs__rail::-webkit-scrollbar {
+  display: none;
+}
+
+.np-swatch-tab {
+  position: relative;
+  flex: 0 0 11.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0.8rem 0.8rem 1.2rem;
+  background: #fff;
+  border: 1px solid rgba(103, 104, 107, 0.2);
+  border-radius: 0.6rem;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  text-align: left;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.np-swatch-tab:hover {
+  border-color: #bdbdbd;
+}
+
+.np-swatch-tab.is-active {
+  border: 1px solid var(--Dark-grey, #67686B);
+}
+
+.np-swatch-tab:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 0.2rem;
+}
+
+.np-swatch-tab__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 10/7;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  background: #f3f3f3;
+}
+
+.np-swatch-tab__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.np-swatch-tab__name {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #67686B;
+}
+
+.collection-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.np-swatch-tab__count {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #67686B;
+}
+
+.np-swatch-tab__badge {
+  position: absolute;
+  top: -.8rem;
+  right: -.2rem;
+  z-index: 1;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background: var(--np-badge-bg, #e36b6b);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.np-swatch-tabs__arrow {
+  display: none;
+}
+
+.np-swatch-tabs__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 2rem;
+  padding: 0;
+}
+
+.np-swatch-tabs__item {
+  position: relative;
+  display: inline-flex;
+}
+
+.np-swatch-tabs__item[hidden] {
+  display: none !important;
+}
+
+.np-swatch-tabs__grid .pdp-color__label {
+  width: 4.6rem;
+  height: 4.6rem;
+  margin: 0 !important;
+}
+
+.np-swatch-tabs__grid .pdp-color__chip {
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid #DCDCDC;
+}
+
+@media screen and (min-width: 750px) {
+  .np-swatch-tab {
+    flex-basis: 12.8rem;
+  }
+
+  .np-swatch-tab__media {
+    aspect-ratio: 11/8;
+  }
+
+  .np-swatch-tabs__grid {
+    gap: 0;
+    margin-top: 2.4rem;
+  }
+
+  .np-swatch-tabs__grid .pdp-color__label {
+    width: 5.2rem;
+    height: 5.2rem;
+  }
+
+  .np-swatch-tabs__grid .pdp-color__chip {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .np-swatch-tabs__rail:after {
+    width: 7.8rem;
+  }
+}
+
+@media (hover: hover) and (min-width: 750px) {
+  .np-swatch-tabs--overflow .np-swatch-tabs__arrow {
+    position: absolute;
+    top: calc(50% + 0.4rem);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    padding: 0;
+    background: #fff;
+    border: 0.1rem solid #e3e3e3;
+    border-radius: 50%;
+    box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.08);
+    color: rgb(var(--color-foreground));
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  .np-swatch-tabs--overflow .np-swatch-tabs__arrow:disabled {
+    display: none;
+  }
+
+  .np-swatch-tabs__arrow--prev {
+    left: -1.2rem;
+  }
+
+  .np-swatch-tabs__arrow--next {
+    right: -1.2rem;
+  }
+
+  .np-swatch-tabs__arrow .svg-wrapper {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .np-swatch-tabs__arrow--prev .svg-wrapper {
+    transform: rotate(90deg);
+  }
+
+  .np-swatch-tabs__arrow--next .svg-wrapper {
+    transform: rotate(-90deg);
+  }
+}

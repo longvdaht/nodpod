@@ -66,8 +66,11 @@
       assign should_group_swatches = true
       assign swatch_group_entries = ''
       assign swatch_group_order = ''
+      assign swatch_group_images = ''
     endif
   endif
+
+  assign swatch_group_layout = block.settings.swatch_group_layout | default: 'tabs'
 -%}
 
 {%- for value in option.values -%}
@@ -248,6 +251,14 @@
             {%- assign group_order_array = swatch_group_order | split: '%%%' -%}
             {%- assign current_group_index = group_order_array.size | plus: 1 -%}
             {%- assign swatch_group_order = swatch_group_order | append: group_token | append: group_label | append: '%%%' -%}
+
+            {%- comment -%} Fallback tile image: first visible variant image of the collection {%- endcomment -%}
+            {%- assign group_image = vref.featured_image | default: product.featured_image -%}
+            {%- assign group_image_url = '' -%}
+            {%- if group_image -%}
+              {%- assign group_image_url = group_image | image_url: width: 300 -%}
+            {%- endif -%}
+            {%- assign swatch_group_images = swatch_group_images | append: group_handle | append: '|||' | append: group_image_url | append: '%%%' -%}
           {%- else -%}
             {%- assign group_order_array = swatch_group_order | split: '%%%' -%}
             {%- for g in group_order_array -%}
@@ -327,8 +338,178 @@
   {%- endif -%}
 {%- endfor -%}
 
-{%- comment -%} Render grouped swatches by collection {%- endcomment -%}
-{%- if should_group_swatches and swatch_group_order != '' -%}
+{%- comment -%}
+  Render grouped swatches as collection tabs (V3).
+  Tile image / badge come from the `swatch_collection` metaobject, matched by
+  its `collection_name` field against the variant metafield custom.collection_name
+  (case-insensitive). An entry named "All" provides the image for the All tile.
+{%- endcomment -%}
+{%- if should_group_swatches and swatch_group_order != '' and swatch_group_layout == 'tabs' -%}
+  {%- assign group_entries = swatch_group_order | split: '%%%' -%}
+  {%- assign swatch_markup_entries = swatch_group_entries | split: '%%%' -%}
+  {%- assign group_image_entries = swatch_group_images | split: '%%%' -%}
+  {%- assign swatch_collections = shop.metaobjects.swatch_collection.values -%}
+  {%- assign grid_id = 'np-swatch-grid-' | append: section.id | append: '-' | append: option.position -%}
+
+  {%- assign all_meta = null -%}
+  {%- for meta in swatch_collections -%}
+    {%- assign meta_name = meta.collection_name.value | strip | downcase -%}
+    {%- if meta_name == 'all' -%}
+      {%- assign all_meta = meta -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <div class="np-swatch-tabs" data-swatch-layout="tabs" data-default-tab="all">
+    <div class="np-swatch-tabs__rail-wrap">
+      <button
+        type="button"
+        class="np-swatch-tabs__arrow np-swatch-tabs__arrow--prev"
+        data-swatch-rail-prev
+        aria-label="Previous collections"
+        tabindex="-1"
+      >
+        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+      </button>
+
+      <div class="np-swatch-tabs__rail" role="tablist" aria-label="{{ option.name | escape }} collections">
+        {%- assign all_image_url = '' -%}
+        {%- if all_meta.image.value -%}
+          {%- assign all_image_url = all_meta.image.value | image_url: width: 300 -%}
+        {%- elsif product.featured_image -%}
+          {%- assign all_image_url = product.featured_image | image_url: width: 300 -%}
+        {%- endif -%}
+        {%- assign all_count = 0 -%}
+        {%- for entry in swatch_markup_entries -%}
+          {%- unless entry == '' -%}
+            {%- assign all_count = all_count | plus: 1 -%}
+          {%- endunless -%}
+        {%- endfor -%}
+
+        <button
+          type="button"
+          role="tab"
+          id="np-swatch-tab-{{ section.id }}-{{ option.position }}-all"
+          class="np-swatch-tab is-active"
+          data-swatch-tab="all"
+          aria-selected="true"
+          aria-controls="{{ grid_id }}"
+        >
+          {%- if all_meta.badge_text.value != blank -%}
+            <span class="np-swatch-tab__badge"{% if all_meta.badge_color.value != blank %} style="--np-badge-bg: {{ all_meta.badge_color.value }};"{% endif %}>
+              {{- all_meta.badge_text.value -}}
+            </span>
+          {%- endif -%}
+          <span class="np-swatch-tab__media">
+            {%- if all_image_url != '' -%}
+              <img src="{{ all_image_url }}" alt="" width="300" height="225" loading="lazy">
+            {%- endif -%}
+          </span>
+          <span class="collection-info">
+            <span class="np-swatch-tab__name">{{ all_meta.tile_label.value | default: 'All' }}</span>
+            <span class="np-swatch-tab__count">
+              {{- all_count }} {% if all_count == 1 %}color{% else %}colors{% endif -%}
+            </span>
+          </span>
+        </button>
+
+        {%- for group_entry in group_entries -%}
+          {%- unless group_entry == '' -%}
+            {%- assign handle_part = group_entry | split: ']' | first -%}
+            {%- assign group_handle = handle_part | remove: '[' | strip | default: 'other' -%}
+            {%- assign group_label = group_entry | split: ']' | last | strip -%}
+            {%- assign group_label_key = group_label | downcase -%}
+
+            {%- assign group_meta = null -%}
+            {%- for meta in swatch_collections -%}
+              {%- assign meta_name = meta.collection_name.value | strip | downcase -%}
+              {%- if meta_name == group_label_key -%}
+                {%- assign group_meta = meta -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- assign group_count = 0 -%}
+            {%- for entry in swatch_markup_entries -%}
+              {%- assign entry_handle = entry | split: '|||' | first -%}
+              {%- if entry != '' and entry_handle == group_handle -%}
+                {%- assign group_count = group_count | plus: 1 -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- assign group_image_url = '' -%}
+            {%- if group_meta.image.value -%}
+              {%- assign group_image_url = group_meta.image.value | image_url: width: 300 -%}
+            {%- else -%}
+              {%- for image_entry in group_image_entries -%}
+                {%- assign image_parts = image_entry | split: '|||' -%}
+                {%- if image_parts.first == group_handle -%}
+                  {%- assign group_image_url = image_parts[1] | default: '' -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+
+            {%- assign tile_label = group_label | remove: ' Collection' | remove: ' collection' | strip -%}
+            {%- if group_meta.tile_label.value != blank -%}
+              {%- assign tile_label = group_meta.tile_label.value -%}
+            {%- endif -%}
+
+            <button
+              type="button"
+              role="tab"
+              id="np-swatch-tab-{{ section.id }}-{{ option.position }}-{{ group_handle }}"
+              class="np-swatch-tab"
+              data-swatch-tab="{{ group_handle }}"
+              aria-selected="false"
+              aria-controls="{{ grid_id }}"
+              tabindex="-1"
+            >
+              {%- if group_meta.badge_text.value != blank -%}
+                <span class="np-swatch-tab__badge"{% if group_meta.badge_color.value != blank %} style="--np-badge-bg: {{ group_meta.badge_color.value }};"{% endif %}>
+                  {{- group_meta.badge_text.value -}}
+                </span>
+              {%- endif -%}
+              <span class="np-swatch-tab__media">
+                {%- if group_image_url != '' -%}
+                  <img src="{{ group_image_url }}" alt="" width="300" height="225" loading="lazy">
+                {%- endif -%}
+              </span>
+              <span class="collection-info">
+                <span class="np-swatch-tab__name">{{ tile_label }}</span>
+                <span class="np-swatch-tab__count">
+                  {{- group_count }} {% if group_count == 1 %}color{% else %}colors{% endif -%}
+                </span>
+              </span>
+            </button>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+
+      <button
+        type="button"
+        class="np-swatch-tabs__arrow np-swatch-tabs__arrow--next"
+        data-swatch-rail-next
+        aria-label="Next collections"
+        tabindex="-1"
+      >
+        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+      </button>
+    </div>
+
+    <div class="np-swatch-tabs__grid" id="{{ grid_id }}" role="tabpanel">
+      {%- for entry in swatch_markup_entries -%}
+        {%- unless entry == '' -%}
+          {%- assign entry_parts = entry | split: '|||' -%}
+          <span class="np-swatch-tabs__item" data-swatch-group="{{ entry_parts | first }}">
+            {{- entry_parts | last -}}
+          </span>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- elsif should_group_swatches and swatch_group_order != '' -%}
+  {%- comment -%} Legacy layout: one labelled row per collection {%- endcomment -%}
   <div class="swatch-groups" data-swatch-layout="rows">
     {%- assign group_entries = swatch_group_order | split: '%%%' -%}
     {%- assign swatch_markup_entries = swatch_group_entries | split: '%%%' -%}

@@ -1480,18 +1480,20 @@
   /* ====== PDP OPTION HEADINGS (SIZE:, COLOR:) ====== */
   .product-form__input .form__label {
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #6f6f6f;
+    letter-spacing: 0;
+    color: #67686B;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 100%;
     margin-bottom: 0 !important;
   }
   .product-form__input legend.form__label [data-selected-value] {
-    margin-left: 5px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #6f6f6f;
-    font-weight: 300;
+    margin-left: 8px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #67686B;
+    font-weight: 400;
+    line-height: 1.3;
     font-size: 14px;
   }
 
@@ -1730,6 +1732,22 @@
     border-radius: inherit;
     background-image: linear-gradient(-45deg, transparent 47%, #414141 47%, #414141 53%, transparent 53%);
     pointer-events: none;
+  }
+
+  /* Color chips: light "\" stroke edge to edge instead of the dark slash */
+  .pdp-color__input.disabled + .pdp-color__label .pdp-color__chip::after,
+  .pdp-color__input:disabled + .pdp-color__label .pdp-color__chip::after,
+  .pdp-color__input.visually-disabled + .pdp-color__label .pdp-color__chip::after,
+  .pdp-color__label[aria-disabled='true'] .pdp-color__chip::after,
+  .pdp-color__input.sold-out + .pdp-color__label .pdp-color__chip::after {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: #cdcdcd;
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
   .pdp-color__label.sold-out,
@@ -2305,6 +2323,23 @@
             }
           ],
           "default": "circle"
+        },
+        {
+          "type": "select",
+          "id": "swatch_group_layout",
+          "label": "Grouped swatch layout",
+          "info": "Used when the product metafield custom.enable_swatch_grouping is on. Tile images and badges come from the Swatch Collection metaobject.",
+          "options": [
+            {
+              "value": "tabs",
+              "label": "Collection tabs"
+            },
+            {
+              "value": "rows",
+              "label": "Rows (legacy)"
+            }
+          ],
+          "default": "tabs"
         }
       ]
     },

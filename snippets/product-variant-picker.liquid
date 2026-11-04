@@ -32,6 +32,7 @@
 -%}
   {%- assign swatch_grouping_enabled = true -%}
 {%- endif -%}
+{%- assign swatch_group_layout = block.settings.swatch_group_layout | default: 'tabs' -%}
 
 {%- unless product.has_only_default_variant -%}
   <variant-selects
@@ -61,14 +62,14 @@
       -%}
       {%- if picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
-          {%- unless swatch_grouping_enabled -%}
+          {%- if swatch_grouping_enabled == false or swatch_group_layout == 'tabs' -%}
             <legend class="form__label">
               {{ option.name }}:
               <span data-selected-value>
                 {{- option.selected_value -}}
               </span>
             </legend>
-          {%- endunless -%}
+          {%- endif -%}
           {% render 'product-variant-options',
             product: product,
             option: option,
@@ -196,7 +197,87 @@
 
         const form = document.getElementById('{{ product_form_id }}');
         const idInput = form && form.querySelector('input[name="id"]');
-        const hasGroupedSwatches = picker.querySelector('.swatch-groups');
+        const hasGroupedSwatches = picker.querySelector('.swatch-groups, .np-swatch-tabs');
+
+        // Collection tabs: filter the swatch grid by collection.
+        // product-info swaps <variant-selects> after every selection, so the
+        // active tab is kept on the closest product-info and restored here.
+        function initSwatchTabs(root) {
+          const host = picker.closest('product-info') || picker;
+          const rail = root.querySelector('.np-swatch-tabs__rail');
+          const tabs = Array.from(root.querySelectorAll('[data-swatch-tab]'));
+          const items = root.querySelectorAll('[data-swatch-group]');
+          const prev = root.querySelector('[data-swatch-rail-prev]');
+          const next = root.querySelector('[data-swatch-rail-next]');
+
+          function updateArrows() {
+            if (!rail || !prev || !next) return;
+            const max = rail.scrollWidth - rail.clientWidth;
+            root.classList.toggle('np-swatch-tabs--overflow', max > 1);
+            prev.disabled = rail.scrollLeft <= 1;
+            next.disabled = rail.scrollLeft >= max - 1;
+          }
+
+          function revealTab(tab) {
+            if (!rail || !tab) return;
+            const left = tab.offsetLeft - rail.offsetLeft;
+            const right = left + tab.offsetWidth;
+            if (left < rail.scrollLeft) {
+              rail.scrollLeft = left;
+            } else if (right > rail.scrollLeft + rail.clientWidth) {
+              rail.scrollLeft = right - rail.clientWidth;
+            }
+          }
+
+          function activate(group, focus) {
+            if (!tabs.some((tab) => tab.dataset.swatchTab === group)) group = 'all';
+            tabs.forEach((tab) => {
+              const isActive = tab.dataset.swatchTab === group;
+              tab.classList.toggle('is-active', isActive);
+              tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+              tab.tabIndex = isActive ? 0 : -1;
+              if (isActive) {
+                revealTab(tab);
+                if (focus) tab.focus({ preventScroll: true });
+              }
+            });
+            items.forEach((item) => {
+              item.hidden = group !== 'all' && item.dataset.swatchGroup !== group;
+            });
+            host.dataset.swatchTab = group;
+            updateArrows();
+          }
+
+          tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => activate(tab.dataset.swatchTab));
+            tab.addEventListener('keydown', (e) => {
+              let target = null;
+              if (e.key === 'ArrowRight') target = tabs[(index + 1) % tabs.length];
+              else if (e.key === 'ArrowLeft') target = tabs[(index - 1 + tabs.length) % tabs.length];
+              else if (e.key === 'Home') target = tabs[0];
+              else if (e.key === 'End') target = tabs[tabs.length - 1];
+              if (!target) return;
+              e.preventDefault();
+              activate(target.dataset.swatchTab, true);
+            });
+          });
+
+          if (rail && prev && next) {
+            const step = () => Math.max(rail.clientWidth * 0.8, 120);
+            prev.addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: 'smooth' }));
+            next.addEventListener('click', () => rail.scrollBy({ left: step(), behavior: 'smooth' }));
+            rail.addEventListener('scroll', () => requestAnimationFrame(updateArrows), { passive: true });
+            if (host._npSwatchResize) window.removeEventListener('resize', host._npSwatchResize);
+            host._npSwatchResize = () => requestAnimationFrame(updateArrows);
+            window.addEventListener('resize', host._npSwatchResize);
+          }
+
+          activate(host.dataset.swatchTab || root.dataset.defaultTab || 'all');
+        }
+
+        const swatchTabs = picker.querySelector('.np-swatch-tabs');
+        if (swatchTabs) initSwatchTabs(swatchTabs);
+
         // Helper: Update collection label with selected color
         function updateCollectionLabel(swatch) {
           if (!swatch || !swatch.dataset.collectionIndex) return;
@@ -325,7 +406,7 @@
           
           // Auto-select first available swatch if none selected
           if (!checkedSwatch) {
-            const firstGroup = picker.querySelector('.swatch-group__row');
+            const firstGroup = picker.querySelector('.swatch-group__row, .np-swatch-tabs__grid');
             if (firstGroup) {
               const firstAvailableSwatch = firstGroup.querySelector('input.pdp-color__input:not(.sold-out)') 
                 || firstGroup.querySelector('input.pdp-color__input');
