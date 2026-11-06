@@ -18,16 +18,16 @@
             "product": "{{product}}"
           }
         },
-        "fsa_hsa_badge_m6UwLD": {
-          "type": "fsa_hsa_badge",
-          "settings": {}
-        },
         "title": {
           "type": "title",
           "settings": {}
         },
         "price": {
           "type": "price",
+          "settings": {}
+        },
+        "fsa_hsa_badge_m6UwLD": {
+          "type": "fsa_hsa_badge",
           "settings": {}
         },
         "custom_liquid_wQ4TRW": {
@@ -79,7 +79,7 @@
           }
         },
         "tolstoy_shoppable_video_quiz_carousel_block_taALbX": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "zov1vnwhvpkbp"
           }
@@ -186,9 +186,9 @@
       },
       "block_order": [
         "yotpo_product_reviews_star_rating_DhKeUU",
-        "fsa_hsa_badge_m6UwLD",
         "title",
         "price",
+        "fsa_hsa_badge_m6UwLD",
         "custom_liquid_wQ4TRW",
         "divider_cLMHCN",
         "variant_picker",
