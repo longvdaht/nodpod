@@ -18,16 +18,16 @@
             "product": "nodpod-silk"
           }
         },
-        "fsa_hsa_badge_AqY76k": {
-          "type": "fsa_hsa_badge",
-          "settings": {}
-        },
         "title": {
           "type": "title",
           "settings": {}
         },
         "price": {
           "type": "price",
+          "settings": {}
+        },
+        "fsa_hsa_badge_AqY76k": {
+          "type": "fsa_hsa_badge",
           "settings": {}
         },
         "custom_liquid_wQ4TRW": {
@@ -72,7 +72,7 @@
           }
         },
         "tolstoy_shoppable_video_quiz_carousel_block_XJa69R": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "zov1vnwhvpkbp"
           }
@@ -111,6 +111,7 @@
           "type": "icon-with-text",
           "settings": {
             "layout": "vertical",
+            "image_width": 32,
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Group_374.svg",
             "heading_1": "Clinically tested to eliminate acne-causing bacteria by over 99%",
@@ -185,9 +186,9 @@
       },
       "block_order": [
         "yotpo_product_reviews_star_rating_DhKeUU",
-        "fsa_hsa_badge_AqY76k",
         "title",
         "price",
+        "fsa_hsa_badge_AqY76k",
         "custom_liquid_wQ4TRW",
         "divider_cLMHCN",
         "variant_picker",
@@ -207,7 +208,6 @@
         "product_tab_CPPT6F",
         "icon_with_text_xLrBXi"
       ],
-      
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
