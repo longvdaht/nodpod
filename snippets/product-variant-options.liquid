@@ -46,16 +46,15 @@
         assign variant_option_value = variant.option3
       endif
       
-      unless visible_values contains variant_option_value
-        if visible_values != ''
-          assign visible_values = visible_values | append: ','
-        endif
-        assign visible_values = visible_values | append: variant_option_value
+      # Wrap in separators so 'Pear' doesn't match inside 'Pearl'
+      assign value_token = '|' | append: variant_option_value | append: '|'
+      unless visible_values contains value_token
+        assign visible_values = visible_values | append: value_token
       endunless
     endif
   endfor
-  
-  assign visible_values_array = visible_values | split: ','
+
+  assign visible_values_array = visible_values | split: '|'
   
   # Initialize swatch grouping
   assign swatch_grouping_enabled = swatch_grouping_enabled | default: false
