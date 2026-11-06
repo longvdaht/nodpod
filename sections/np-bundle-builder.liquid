@@ -44,6 +44,8 @@
   data-open-cart="{{ section.settings.open_cart_after_add }}"
   data-quick-view="{{ section.settings.enable_quick_view }}"
   data-show-all="{{ section.settings.show_all_products }}"
+  data-view-more-step="{{ section.settings.view_more_step }}"
+  data-view-more-label="{{ section.settings.view_more_label | escape }}"
 >
   <div class="np-bundle__top">
     {%- for block in section.blocks -%}
@@ -388,6 +390,22 @@
       "label": "Show all products on one page",
       "info": "Removes the Presidio pagination (overrides the app's \"Products per page\").",
       "default": true
+    },
+    {
+      "type": "range",
+      "id": "view_more_step",
+      "label": "Products per \"View more\"",
+      "info": "Shows this many products, then a \"View more\" button reveals the next batch. 0 = show everything at once. Replaces Presidio's pagination.",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "view_more_label",
+      "label": "\"View more\" button label",
+      "default": "View More"
     },
     {
       "type": "text",

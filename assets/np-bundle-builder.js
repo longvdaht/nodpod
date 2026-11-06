@@ -245,6 +245,54 @@
     });
   }
 
+  // "View More": Presidio renders every product (products_per_page forced to
+  // 0 below); we show `step` cards and reveal `step` more per click. The count
+  // resets when the active tab or the number of cards changes. Only classes
+  // change on cards, so the childList MutationObserver isn't retriggered.
+  function applyViewMore(app, state) {
+    if (!state.step) return;
+    var grid = app.querySelector('.pre-bundle-products-grid');
+    if (!grid) return;
+
+    var cards = Array.prototype.filter.call(grid.children, function (child) {
+      return child.classList.contains('pre-product-card');
+    });
+    var activeTab = app.querySelector('.pre-bundle-tab--active');
+    var key = (activeTab ? activeTab.getAttribute('data-pre-group-id') || activeTab.textContent : 'all') + ':' + cards.length;
+    if (key !== state.key) {
+      state.key = key;
+      state.visible = state.step;
+    }
+
+    cards.forEach(function (card, i) {
+      card.classList.toggle('np-is-hidden', i >= state.visible);
+    });
+    // Grid banners anchored to a hidden card stay hidden too.
+    grid.querySelectorAll('[data-np-banner]').forEach(function (banner) {
+      var prev = banner.previousElementSibling;
+      banner.classList.toggle('np-is-hidden', !!(prev && prev.classList.contains('np-is-hidden')));
+    });
+
+    var wrap = app.querySelector('.np-view-more');
+    if (!wrap) {
+      wrap = el('div', 'np-view-more');
+      var btn = el('button', 'np-view-more__btn', state.label);
+      btn.type = 'button';
+      btn.addEventListener('click', function () {
+        var firstNew = state.visible;
+        state.visible += state.step;
+        applyViewMore(app, state);
+        var currentGrid = app.querySelector('.pre-bundle-products-grid');
+        var next = currentGrid && currentGrid.querySelectorAll('.pre-product-card')[firstNew];
+        var focusTarget = next && next.querySelector('a, button');
+        if (focusTarget) focusTarget.focus({ preventScroll: true });
+      });
+      wrap.appendChild(btn);
+    }
+    if (grid.nextElementSibling !== wrap) grid.after(wrap);
+    wrap.hidden = cards.length <= state.visible;
+  }
+
   function discountLabel(config) {
     if (!config || !config.discountValue) return '';
     var value = parseFloat(config.discountValue);
@@ -605,7 +653,14 @@
     // Show every product on one page (no pagination). Presidio treats a
     // non-positive products_per_page as "all"; updateStyleSettings() is the
     // element's own API (used by its admin live preview) and keeps selections.
-    if (root.getAttribute('data-show-all') === 'true' && window.customElements) {
+    var viewMore = {
+      step: parseInt(root.getAttribute('data-view-more-step'), 10) || 0,
+      label: root.getAttribute('data-view-more-label') || 'View More',
+      visible: 0,
+      key: null,
+    };
+
+    if ((root.getAttribute('data-show-all') === 'true' || viewMore.step > 0) && window.customElements) {
       customElements.whenDefined('pre-mix-and-match').then(function () {
         var settings = app.config && app.config.settings;
         if (!settings || !(settings.products_per_page > 0) || typeof app.updateStyleSettings !== 'function') return;
@@ -621,6 +676,7 @@
       scheduled = false;
       decorateCards(app, meta);
       placeGridBanners(app, gridBanners);
+      applyViewMore(app, viewMore);
       decorateSidebar(app, opts);
       root.classList.toggle('np-bundle--ready', !!app.querySelector('.pre-bundle-container'));
     };

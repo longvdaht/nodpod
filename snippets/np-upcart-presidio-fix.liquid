@@ -20,10 +20,20 @@
   Debug: `localStorage.npDebugCart = 1` + reload → logs prefixed "[np-cart-fix]".
   A blocked clear is always logged (once per page): it means fix #1 no longer
   works, most likely because UpCart changed its code.
+
+  Testing without the fix (e.g. to check an UpCart/Presidio setting):
+  `localStorage.npDisableCartFix = 1` + reload disables it in that browser
+  only; `localStorage.removeItem('npDisableCartFix')` turns it back on.
 {% endcomment %}
 <script>
   (function () {
     if (window.__npUpcartPresidioFix) return;
+    try {
+      if (window.localStorage.getItem('npDisableCartFix')) {
+        console.warn('[np-cart-fix] disabled via localStorage.npDisableCartFix (testing only)');
+        return;
+      }
+    } catch (e) {}
     window.__npUpcartPresidioFix = true;
 
     var debug = false;

@@ -76,7 +76,7 @@
       ],
       "settings": {
         "sidebar_title": "Build Your Bedtime Ritual",
-        "sidebar_subtitle": "More items, more savings.",
+        "sidebar_subtitle": "Bundle 2 or more items for 10% off your order",
         "label_items": "Items:",
         "label_subtotal": "Original Price:",
         "label_discount": "Discount:",
@@ -91,6 +91,8 @@
         "new_badge_label": "New",
         "enable_quick_view": true,
         "show_all_products": true,
+        "view_more_step": 12,
+        "view_more_label": "View More",
         "qv_button_label": "Add to bundle",
         "qv_button_bg": "#f2b6c0",
         "qv_button_text": "#ffffff",

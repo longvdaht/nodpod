@@ -252,12 +252,15 @@
   padding-inline: 0;
 }
 
-/* Tabs: minimal underline style */
+/* Tabs (group filters): centered, underline style with hover feedback */
 .np-bundle .pre-bundle-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 20px;
-  width: auto;
+  justify-content: center;
+  gap: 10px 28px;
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
   padding: 0;
   border-radius: 0;
   background: transparent;
@@ -269,15 +272,23 @@
 }
 
 .np-bundle .pre-bundle-tab {
-  padding: 0 0 4px;
+  padding: 6px 0;
   margin: 0;
   font-family: var(--np-sans);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--np-text-soft);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+@media screen and (min-width: 990px) {
+  .np-bundle .pre-bundle-tab {
+    font-size: 14px;
+  }
 }
 
 .np-bundle .pre-bundle-tab::after {
@@ -289,16 +300,76 @@
   height: 1px;
   background-color: currentColor;
   transform: scaleX(0);
+  transform-origin: center;
   transition: transform 0.25s cubic-bezier(0.225, 0.64, 0.365, 1);
 }
 
-.np-bundle .pre-bundle-tab:hover::after,
-.np-bundle .pre-bundle-tab--active::after {
-  transform: scaleX(1);
+@media (hover: hover) {
+  .np-bundle .pre-bundle-tab:hover {
+    color: var(--np-text);
+  }
+
+  .np-bundle .pre-bundle-tab:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.np-bundle .pre-bundle-tab:focus-visible {
+  outline: 1px solid var(--np-text);
+  outline-offset: 3px;
 }
 
 .np-bundle .pre-bundle-tab--active {
   color: var(--np-text);
+  font-weight: 500;
+}
+
+.np-bundle .pre-bundle-tab--active::after {
+  height: 2px;
+  transform: scaleX(1);
+}
+
+/* "View More" (replaces Presidio pagination) */
+.np-bundle .np-is-hidden {
+  display: none !important;
+}
+
+.np-view-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.np-view-more[hidden] {
+  display: none;
+}
+
+.np-view-more__btn {
+  min-width: 200px;
+  min-height: 42px;
+  padding: 8px 28px;
+  border: 1px solid var(--np-text);
+  border-radius: 0;
+  background: transparent;
+  color: var(--np-text);
+  font-family: var(--np-serif);
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .np-view-more__btn:hover {
+    background: var(--np-text);
+    color: #fff;
+  }
+}
+
+.np-view-more__btn:focus-visible {
+  outline: 1px solid var(--np-text);
+  outline-offset: 3px;
 }
 
 .np-bundle .pre-bundle-tabs ~ .pre-bundle-products {
