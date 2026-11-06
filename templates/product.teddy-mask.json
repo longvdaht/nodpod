@@ -26,6 +26,10 @@
           "type": "price",
           "settings": {}
         },
+        "fsa_hsa_badge_eNQnne": {
+          "type": "fsa_hsa_badge",
+          "settings": {}
+        },
         "custom_liquid_wQ4TRW": {
           "type": "custom_liquid",
           "settings": {
@@ -176,6 +180,7 @@
         "yotpo_product_reviews_star_rating_DhKeUU",
         "title",
         "price",
+        "fsa_hsa_badge_eNQnne",
         "custom_liquid_wQ4TRW",
         "divider_cLMHCN",
         "variant_picker",
