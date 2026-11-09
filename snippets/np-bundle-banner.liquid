@@ -1,0 +1,69 @@
+{% comment %}
+  Renders one banner block of the np-bundle-builder section.
+  Accepts:
+  - block: {Object} banner block
+  - loading: {String} 'eager' | 'lazy' (default lazy)
+  - extra_class: {String} optional extra class
+{% endcomment %}
+
+{%- liquid
+  assign s = block.settings
+  assign img_loading = loading | default: 'lazy'
+  assign whole_link = false
+  if s.link != blank and s.link_label == blank
+    assign whole_link = true
+  endif
+  assign wrapper_tag = 'div'
+  if whole_link
+    assign wrapper_tag = 'a'
+  endif
+-%}
+
+<{{ wrapper_tag }}
+  class="np-bundle-banner np-bundle-banner--{{ s.ratio }} {{ extra_class }}"
+  style="--np-banner-overlay: {{ s.overlay | divided_by: 100.0 }};"
+  {% if whole_link %}
+    href="{{ s.link }}"
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  {%- if s.image != blank -%}
+    {{
+      s.image
+      | image_url: width: 1400
+      | image_tag:
+        class: 'np-bundle-banner__img',
+        loading: img_loading,
+        sizes: '(min-width: 990px) 520px, 100vw',
+        widths: '400, 600, 800, 1000, 1200, 1400',
+        alt: s.image.alt
+    }}
+  {%- else -%}
+    {{ 'lifestyle-1' | placeholder_svg_tag: 'np-bundle-banner__img placeholder-svg' }}
+  {%- endif -%}
+
+  {%- if s.heading != blank or s.text != blank or s.link_label != blank -%}
+    <div class="np-bundle-banner__content">
+      {%- if s.heading != blank -%}
+        <h2 class="np-bundle-banner__heading np-bundle-banner__heading--{{ s.heading_size }}">
+          {{- s.heading | escape | newline_to_br -}}
+        </h2>
+      {%- endif -%}
+      {%- if s.text != blank -%}
+        <p class="np-bundle-banner__text">{{ s.text }}</p>
+      {%- endif -%}
+      {%- if s.link_label != blank -%}
+        <a
+          class="np-bundle-banner__link"
+          {% if s.link != blank %}
+            href="{{ s.link }}"
+          {% else %}
+            role="link" aria-disabled="true"
+          {% endif %}
+        >
+          {{- s.link_label -}}
+        </a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</{{ wrapper_tag }}>

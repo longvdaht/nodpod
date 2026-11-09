@@ -1,0 +1,125 @@
+{% comment %}
+  UpCart x Presidio Plus compatibility fix. Rendered in <head> BEFORE
+  {{ content_for_header }} so it runs before any app script.
+
+  Problem: Presidio adds `_bundle_id` to bundle cart lines. UpCart's Stay.ai
+  integration marks every line with `_bundle_id` (and no `_bundle_parent`) as
+  `item.__appIntegrated = { app: "stay.ai", bundleRole: "child" }` and hides
+  it. When every line is hidden, UpCart thinks its cart is empty while hidden
+  items exist and calls /cart/clear.js (then retries in a loop).
+
+  Fix:
+  1. Ignore UpCart's Stay.ai "child" marking, so Presidio lines are shown as
+     normal lines. The store does NOT use Stay.ai (checked 2026-11-02) — if it
+     is ever installed, remove/narrow this.
+  2. Safety net: block UpCart's automatic cart/clear.js?upcart=1 while the
+     cart contains Presidio bundle lines.
+  Cart responses are not modified, so Presidio, other apps and checkout see
+  the real data.
+
+  Debug: `localStorage.npDebugCart = 1` + reload → logs prefixed "[np-cart-fix]".
+  A blocked clear is always logged (once per page): it means fix #1 no longer
+  works, most likely because UpCart changed its code.
+
+  Testing without the fix (e.g. to check an UpCart/Presidio setting):
+  `localStorage.npDisableCartFix = 1` + reload disables it in that browser
+  only; `localStorage.removeItem('npDisableCartFix')` turns it back on.
+{% endcomment %}
+<script>
+  (function () {
+    if (window.__npUpcartPresidioFix) return;
+    try {
+      if (window.localStorage.getItem('npDisableCartFix')) {
+        console.warn('[np-cart-fix] disabled via localStorage.npDisableCartFix (testing only)');
+        return;
+      }
+    } catch (e) {}
+    window.__npUpcartPresidioFix = true;
+
+    var debug = false;
+    try {
+      debug = !!window.localStorage.getItem('npDebugCart');
+    } catch (e) {}
+    function log() {
+      if (debug) console.info.apply(console, ['[np-cart-fix]'].concat([].slice.call(arguments)));
+    }
+
+    var loggedBlocked = false;
+    function logBlocked() {
+      if (loggedBlocked) return log('blocked UpCart cart/clear.js again');
+      loggedBlocked = true;
+      console.warn('[np-cart-fix] blocked UpCart cart/clear.js — cart contains Presidio bundle lines (see snippets/np-upcart-presidio-fix.liquid)');
+    }
+
+    // 1. Ignore UpCart's Stay.ai bundle-child marking.
+    try {
+      Object.defineProperty(Object.prototype, '__appIntegrated', {
+        configurable: true,
+        enumerable: false,
+        get: function () {
+          return undefined;
+        },
+        set: function (value) {
+          if (value && value.app === 'stay.ai' && value.bundleRole !== 'parent') {
+            log('ignored Stay.ai child marking for', this && this.title);
+            return;
+          }
+          Object.defineProperty(this, '__appIntegrated', {
+            value: value,
+            writable: true,
+            enumerable: true,
+            configurable: true,
+          });
+        },
+      });
+    } catch (e) {}
+
+    // 2. Safety net against UpCart's automatic cart/clear.js.
+    if (typeof window.fetch !== 'function') return;
+    var originalFetch = window.fetch;
+
+    function urlOf(input) {
+      if (typeof input === 'string') return input;
+      if (input && typeof input.url === 'string') return input.url;
+      return String(input || '');
+    }
+
+    function hasBundleLines(cart) {
+      return !!(
+        cart &&
+        Array.isArray(cart.items) &&
+        cart.items.some(function (line) {
+          var p = line.properties || {};
+          return p._bundle_id || p.bundle_id || p._bundle_unique_id;
+        })
+      );
+    }
+
+    window.fetch = function (input) {
+      var url = urlOf(input);
+      var self = this;
+      var args = arguments;
+
+      if (!/\/cart\/clear(\.js)?(\?|$)/.test(url) || !/[?&]upcart=1(&|$)/.test(url)) {
+        return originalFetch.apply(self, args);
+      }
+
+      return originalFetch
+        .call(window, window.location.origin + '/cart.js', { headers: { 'Cache-Control': 'no-cache' } })
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (cart) {
+          if (!hasBundleLines(cart)) return originalFetch.apply(self, args);
+          logBlocked();
+          return new Response(JSON.stringify(cart), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+          });
+        })
+        .catch(function () {
+          return originalFetch.apply(self, args);
+        });
+    };
+  })();
+</script>
