@@ -57,7 +57,7 @@
 {% if shop.metafields.appid_2922505.upsell_enabled.value == "Y" and kd_features_json.upsell == "Y" %}
      {% capture _kd_upsell_final %}
        {% for item in kd_upsells %}           
-           {% unless forloop.index < 50  %} {% continue %} {% endunless %}
+           {% if forloop.index >= 50 %} {% break %} {% endif %}
            {%- if isUniqueUpsell contains item.product_id and forloop.first == true -%} 
                {% continue %}
            {% else %} 
@@ -258,7 +258,8 @@ _kd.productId = _kd_productId;
 _kd.prodPrice = _kd_prodPrice;
 _kd.inCart = _kd_inCart;  
 _kd.collection = _kd_collection;
-_kd.upsell_all = '{{ shop.metafields.appid_2922505.upsells }}';
+{%- capture _kd_upsell_all -%}{{ shop.metafields.appid_2922505.upsells }}{%- endcapture -%}
+_kd.upsell_all = {{ _kd_upsell_all | json }};
 _kd.upsell_show = {{ _kd_upsell_final | json }};
 _kd.is_upsell = 1;
 if(_kd.upsell_show.length < 3 ){
@@ -281,32 +282,4 @@ window.kd_upsell = _kd;
     var newTotalHtml = `{{cart.total_price|minus :10 |money}}`.replace('"', '\"');
     document.querySelector(subtotalSelector).innerHTML = "<del class='af_del_overwrite'>"+ subTotalHtml + "</del> " + newTotalHtml;
   }
-</script>{%- comment -%}
-
-This file has been rewritten to preserve the original behavior.
-
----
-Changes:
-- from: "{% if (liquid_date < threedays_later and app_enabled != 'N') and ((is_dev_mode
-    == '0' or is_dev_mode == blank) or (is_dev_mode == '1' and theme.role != 'main'))
-    %}"
-  to: "{% if liquid_date < threedays_later and app_enabled != 'N' and is_dev_mode
-    == '0' or is_dev_mode == blank or is_dev_mode == '1' and theme.role != 'main'
-    %}"
-  position: 362..517
-- from: "{% assign _product_details = all_products[{{item.product.handle}}] %}"
-  to: "{% assign _product_details = all_products[item.product.handle] %}"
-  position: 1704..1769
-- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
-    %}"
-  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
-  position: 4711..4783
-- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
-    %}"
-  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
-  position: 8604..8676
-- from: "{% assign _upsell_product_details = all_products[{{item.product_handle}}]
-    %}"
-  to: "{% assign _upsell_product_details = all_products[item.product_handle] %}"
-  position: 13128..13200
-{%- endcomment -%}
+</script>

@@ -286,7 +286,7 @@
       ],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "{% render 'pdp-videos.liquid' %}",
+        "custom_liquid": "{% render 'pdp-videos' %}",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0

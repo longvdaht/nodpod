@@ -1,84 +1,83 @@
+{%- comment -%}
+  Better Sleep Bundle builder: one mask (Core OR Silk) + one BODY.
+
+  Component products are read from product references on the bundle product:
+    custom.bundle_core_product, custom.bundle_silk_product, custom.bundle_body_product
+  The handles below are only a fallback until those metafields are filled in.
+  Variant IDs, prices, colors and images always come from the live product data,
+  so a replaced or deleted variant can never be added by mistake.
+{%- endcomment -%}
 {%- liquid
-  assign core_product = all_products.nodpod
-  assign silk_product = all_products['nodpod-silk']
-  assign body_product = all_products['nodpod-body']
+  assign core_product = product.metafields.custom.bundle_core_product.value | default: all_products['nodpod']
+  assign silk_product = product.metafields.custom.bundle_silk_product.value | default: all_products['nodpod-silk']
+  assign body_product = product.metafields.custom.bundle_body_product.value | default: all_products['nodpod-body']
+
+  assign bundle_groups = 'mask,silk,body' | split: ','
 -%}
 
+{%- comment -%} One pass per group builds both the swatch markup and the variant image map {%- endcomment -%}
 {%- capture bundle_variant_images -%}
-{
-  "mask": {
-    {%- for v in core_product.variants -%}
+  {
+  {%- for group in bundle_groups -%}
+    {%- case group -%}
+      {%- when 'mask' -%}{%- assign group_product = core_product -%}
+      {%- when 'silk' -%}{%- assign group_product = silk_product -%}
+      {%- else -%}{%- assign group_product = body_product -%}
+    {%- endcase -%}
+
+    {%- capture group_swatches -%}
+      {%- for v in group_product.variants -%}
+        {%- assign hex = v.metafields.custom.variant_color | default: '#D1D1D1' -%}
+        <button
+          type="button"
+          class="color-swatch-pdp bundle-swatches pdp-color__label{% unless v.available %} is-disabled{% endunless %}"
+          data-tippy-content="{{ v.title | escape }}"
+          data-variant-id="{{ v.id }}"
+          data-price="{{ v.price }}"
+          data-img="{{ v.featured_image | img_url: '300x300' }}"
+          data-color="{{ hex }}"
+          aria-label="{{ v.title | escape }}"
+          {% unless v.available %}
+            aria-disabled="true" data-disabled="true"
+          {% else %}
+            aria-disabled="false"
+          {% endunless %}
+        >
+          <span class="pdp-color__chip" style="background: {{ hex }};"></span>
+        </button>
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    {%- case group -%}
+      {%- when 'mask' -%}{%- assign mask_swatches = group_swatches -%}
+      {%- when 'silk' -%}{%- assign silk_swatches = group_swatches -%}
+      {%- else -%}{%- assign body_swatches = group_swatches -%}
+    {%- endcase -%}
+
+    "{{ group }}": {
+    {%- for v in group_product.variants -%}
       "{{ v.id }}": [
-        {%- assign imgs = v.metafields.custom.variant_images -%}
-        {%- if imgs != blank -%}
-          {%- assign files = imgs.value | default: imgs -%}
-          {%- for f in files -%}
-            {%- assign full  = f | image_url: width: 2048 -%}
-            {%- assign thumb = f | image_url: width: 416  -%}
-            {%- assign alt   = f.alt | default: v.title -%}
-            {%- assign ratio = f.aspect_ratio | default: 1.0 -%}
-            {"full": {{ full | json }}, "thumb": {{ thumb | json }}, "alt": {{ alt | json }}, "ratio": {{ ratio }}}
-            {%- unless forloop.last -%},{%- endunless -%}
-          {%- endfor -%}
-        {%- else -%}
-          {%- if v.featured_image -%}
-            {"full": {{ v.featured_image | img_url: '2048x' | json }}, "thumb": {{ v.featured_image | img_url: '416x' | json }}, "alt": {{ v.title | json }}, "ratio": {{ v.featured_image.aspect_ratio | default: 1.0 }}}
-          {%- else -%}
-            {"full": {{ core_product.featured_image | img_url: '2048x' | json }}, "thumb": {{ core_product.featured_image | img_url: '416x' | json }}, "alt": {{ core_product.title | json }}, "ratio": {{ core_product.featured_image.aspect_ratio | default: 1.0 }}}
-          {%- endif -%}
-        {%- endif -%}
+      {%- assign imgs = v.metafields.custom.variant_images -%}
+      {%- if imgs != blank -%}
+        {%- assign files = imgs.value | default: imgs -%}
+        {%- for f in files -%}
+          {%- assign full  = f | image_url: width: 2048 -%}
+          {%- assign thumb = f | image_url: width: 416  -%}
+          {%- assign alt   = f.alt | default: v.title -%}
+          {%- assign ratio = f.aspect_ratio | default: 1.0 -%}
+          {"full": {{ full | json }}, "thumb": {{ thumb | json }}, "alt": {{ alt | json }}, "ratio": {{ ratio }}}
+          {%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      {%- elsif v.featured_image -%}
+        {"full": {{ v.featured_image | img_url: '2048x' | json }}, "thumb": {{ v.featured_image | img_url: '416x' | json }}, "alt": {{ v.title | json }}, "ratio": {{ v.featured_image.aspect_ratio | default: 1.0 }}}
+      {%- else -%}
+        {"full": {{ group_product.featured_image | img_url: '2048x' | json }}, "thumb": {{ group_product.featured_image | img_url: '416x' | json }}, "alt": {{ group_product.title | json }}, "ratio": {{ group_product.featured_image.aspect_ratio | default: 1.0 }}}
+      {%- endif -%}
       ]{%- unless forloop.last -%},{%- endunless -%}
     {%- endfor -%}
-  },
-  "silk": {
-    {%- for v in silk_product.variants -%}
-      "{{ v.id }}": [
-        {%- assign imgs = v.metafields.custom.variant_images -%}
-        {%- if imgs != blank -%}
-          {%- assign files = imgs.value | default: imgs -%}
-          {%- for f in files -%}
-            {%- assign full  = f | image_url: width: 2048 -%}
-            {%- assign thumb = f | image_url: width: 416  -%}
-            {%- assign alt   = f.alt | default: v.title -%}
-            {%- assign ratio = f.aspect_ratio | default: 1.0 -%}
-            {"full": {{ full | json }}, "thumb": {{ thumb | json }}, "alt": {{ alt | json }}, "ratio": {{ ratio }}}
-            {%- unless forloop.last -%},{%- endunless -%}
-          {%- endfor -%}
-        {%- else -%}
-          {%- if v.featured_image -%}
-            {"full": {{ v.featured_image | img_url: '2048x' | json }}, "thumb": {{ v.featured_image | img_url: '416x' | json }}, "alt": {{ v.title | json }}, "ratio": {{ v.featured_image.aspect_ratio | default: 1.0 }}}
-          {%- else -%}
-            {"full": {{ silk_product.featured_image | img_url: '2048x' | json }}, "thumb": {{ silk_product.featured_image | img_url: '416x' | json }}, "alt": {{ silk_product.title | json }}, "ratio": {{ silk_product.featured_image.aspect_ratio | default: 1.0 }}}
-          {%- endif -%}
-        {%- endif -%}
-      ]{%- unless forloop.last -%},{%- endunless -%}
-    {%- endfor -%}
-  },
-  "body": {
-    {%- for v in body_product.variants -%}
-      "{{ v.id }}": [
-        {%- assign imgs = v.metafields.custom.variant_images -%}
-        {%- if imgs != blank -%}
-          {%- assign files = imgs.value | default: imgs -%}
-          {%- for f in files -%}
-            {%- assign full  = f | image_url: width: 2048 -%}
-            {%- assign thumb = f | image_url: width: 416  -%}
-            {%- assign alt   = f.alt | default: v.title -%}
-            {%- assign ratio = f.aspect_ratio | default: 1.0 -%}
-            {"full": {{ full | json }}, "thumb": {{ thumb | json }}, "alt": {{ alt | json }}, "ratio": {{ ratio }}}
-            {%- unless forloop.last -%},{%- endunless -%}
-          {%- endfor -%}
-        {%- else -%}
-          {%- if v.featured_image -%}
-            {"full": {{ v.featured_image | img_url: '2048x' | json }}, "thumb": {{ v.featured_image | img_url: '416x' | json }}, "alt": {{ v.title | json }}, "ratio": {{ v.featured_image.aspect_ratio | default: 1.0 }}}
-          {%- else -%}
-            {"full": {{ body_product.featured_image | img_url: '2048x' | json }}, "thumb": {{ body_product.featured_image | img_url: '416x' | json }}, "alt": {{ body_product.title | json }}, "ratio": {{ body_product.featured_image.aspect_ratio | default: 1.0 }}}
-          {%- endif -%}
-        {%- endif -%}
-      ]{%- unless forloop.last -%},{%- endunless -%}
-    {%- endfor -%}
+    }{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
   }
-}
 {%- endcapture -%}
 
 <script type="application/json" id="BundleVariantImages">
@@ -126,30 +125,7 @@
         </p>
 
         <div class="swatch-group" data-product="mask">
-          {% for v in core_product.variants %}
-            {% liquid
-              assign hex = v.metafields.custom.variant_color | default: '#D1D1D1'
-            %}
-            <button
-              type="button"
-              class="color-swatch-pdp bundle-swatches pdp-color__label{% unless v.available %} is-disabled{% endunless %}"
-              data-collection="Core Collection"
-              data-tippy-content="{{ v.title }}"
-              data-images="{{ v.metafields.custom.variant_images.value | json }}"
-              data-variant-id="{{ v.id }}"
-              data-price="{{ v.price }}"
-              data-img="{{ v.featured_image | img_url: '300x300' }}"
-              data-color="{{ hex }}"
-              aria-label="{{ v.title }}"
-              {% unless v.available %}
-                aria-disabled="true" data-disabled="true"
-              {% else %}
-                aria-disabled="false"
-              {% endunless %}
-            >
-              <span class="pdp-color__chip" style="background: {{ hex }};"></span>
-            </button>
-          {% endfor %}
+          {{ mask_swatches }}
         </div>
       </div>
     </div>
@@ -179,30 +155,7 @@
         </div>
 
         <div class="swatch-group" data-product="silk">
-          {% for v in silk_product.variants %}
-            {% liquid
-              assign hex = v.metafields.custom.variant_color | default: '#D1D1D1'
-            %}
-            <button
-              type="button"
-              class="color-swatch-pdp bundle-swatches pdp-color__label{% unless v.available %} is-disabled{% endunless %}"
-              data-collection="Core Collection"
-              data-tippy-content="{{ v.title }}"
-              data-images="{{ v.metafields.custom.variant_images.value | json }}"
-              data-variant-id="{{ v.id }}"
-              data-price="{{ v.price }}"
-              data-img="{{ v.featured_image | img_url: '300x300' }}"
-              data-color="{{ hex }}"
-              aria-label="{{ v.title }}"
-              {% unless v.available %}
-                aria-disabled="true" data-disabled="true"
-              {% else %}
-                aria-disabled="false"
-              {% endunless %}
-            >
-              <span class="pdp-color__chip" style="background: {{ hex }};"></span>
-            </button>
-          {% endfor %}
+          {{ silk_swatches }}
         </div>
       </div>
     </div>
@@ -231,31 +184,7 @@
           </p>
 
           <div class="swatch-group" data-product="body">
-            {% for v in body_product.variants %}
-              {% assign col = v.metafields.custom.collection_name.value | default: 'Collection' %}
-              {% liquid
-                assign hex = v.metafields.custom.variant_color | default: '#D1D1D1'
-              %}
-              <button
-                type="button"
-                class="color-swatch-pdp bundle-swatches pdp-color__label{% unless v.available %} is-disabled{% endunless %}"
-                data-collection="Core Collection"
-                data-tippy-content="{{ v.title }}"
-                data-images="{{ v.metafields.custom.variant_images.value | json }}"
-                data-variant-id="{{ v.id }}"
-                data-price="{{ v.price }}"
-                data-img="{{ v.featured_image | img_url: '300x300' }}"
-                data-color="{{ hex }}"
-                aria-label="{{ v.title }}"
-                {% unless v.available %}
-                  aria-disabled="true" data-disabled="true"
-                {% else %}
-                  aria-disabled="false"
-                {% endunless %}
-              >
-                <span class="pdp-color__chip" style="background: {{ hex }};"></span>
-              </button>
-            {% endfor %}
+            {{ body_swatches }}
           </div>
         </div>
       </div>
@@ -410,7 +339,6 @@
       justify-content: center;
     }
     .modal.is-open,
-    .modal.is-open,
     .modal[aria-hidden="false"] { 
       display: block !important; 
       display: flex; 
@@ -491,7 +419,7 @@
       x-cell.faq-nav-column { display: none; }
       section.faq { padding-top: 0; }
       .main-title-block { padding: 0 !important; text-align: center; }
-      #shopify-section-template--17202522718378__main .itsapp:first-child { display: block !important; }
+      [id^="shopify-section-template--"][id$="__main"] .itsapp:first-child { display: block !important; }
       .product-page { padding: 10px 0 0 0; }
       .swiper { padding: 0 6vw 0 3vw; }
     }
@@ -742,38 +670,10 @@
       true
     );
 
-    /* Prefer JSON map; fallback to button's data-images (JSON/CSV) */
+    /* The JSON map has an entry for every variant (falls back to featured image in Liquid) */
     function getImages(btn) {
       const group = btn.closest('.swatch-group')?.dataset.product;
-      const vid = btn.getAttribute('data-variant-id');
-
-      // 1) Map lookup (best)
-      const mapped = imagesFromMap(group, vid);
-      if (mapped.length) return mapped;
-
-      // 2) Fallback: parse data-images
-      const raw = btn.dataset.images || '[]';
-      try {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) {
-          return parsed.map((it) =>
-            typeof it === 'string'
-              ? { full: it, thumb: it, alt: '', ratio: 1 }
-              : {
-                  full: it.full || it.url || it.src || '',
-                  thumb: it.thumb || it.url || it.src || it.full || '',
-                  alt: it.alt || '',
-                  ratio: +it.ratio || 1,
-                }
-          );
-        }
-      } catch {}
-
-      return raw
-        .split(',')
-        .map((s) => s.trim())
-        .filter(Boolean)
-        .map((u) => ({ full: u, thumb: u, alt: '', ratio: 1 }));
+      return imagesFromMap(group, btn.getAttribute('data-variant-id'));
     }
 
     function getSelectedBtn(group) {
@@ -884,22 +784,16 @@
     document.getElementById('bundle-add-btn').addEventListener('click', (e) => {
       e.preventDefault();
 
-      // Collect chosen items
-      const items = [];
-      const silkSel = document.querySelector('.swatch-group[data-product="silk"] .color-swatch-pdp.selected');
-      const maskSel = document.querySelector('.swatch-group[data-product="mask"] .color-swatch-pdp.selected');
-      const bodySel = document.querySelector('.swatch-group[data-product="body"] .color-swatch-pdp.selected');
+      // Variant IDs come from the rendered product data, never from hardcoded values
+      const maskSel = getSelectedMaskBtn();
+      const bodySel = getSelectedBodyBtn();
 
-      if (silkSel) items.push({ id: parseInt(silkSel.dataset.variantId, 10), quantity: 1 });
-      else if (maskSel) items.push({ id: parseInt(maskSel.dataset.variantId, 10), quantity: 1 });
-
-      if (bodySel) items.push({ id: parseInt(bodySel.dataset.variantId, 10), quantity: 1 });
-
-      if (items.length !== 2) {
+      if (!maskSel || !bodySel) {
         alert('Select one mask (Core OR Silk) and one BODY.');
         return;
       }
 
+      const items = [maskSel, bodySel].map((btn) => ({ id: parseInt(btn.dataset.variantId, 10), quantity: 1 }));
       const bundleKey = 'bundle-' + Date.now();
 
       function addSequentially(queue, done) {
