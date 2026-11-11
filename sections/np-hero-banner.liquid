@@ -153,7 +153,7 @@
     #hero-{{ section.id }}{
       --heroHeight-s: 45vh; --heroHeight-m: 60vh; --heroHeight-l: 75vh; --heroHeight-f: 100vh;
     }
-
+    .template-mid-century-merry .hero-media:after {content: '';}
     /* Media */
     #hero-{{ section.id }}{ position:relative;
       {%- if section.settings.background_color != blank %} background-color: {{ section.settings.background_color }};{% endif -%}
@@ -172,6 +172,10 @@
       display:flex; flex-direction:column; gap:10px;
       max-inline-size: var(--overlay-max, 90vw);
       padding:min(5vw,48px);
+    }
+
+    .template-mid-century-merry #hero-{{ section.id }} .hero-meta {
+      gap: 2.4rem;
     }
 
     /* Our Story hero: fixed 7.5rem heading overflows on narrower desktop
@@ -530,7 +534,7 @@
       "id": "overlay_max_width",
       "label": "Overlay max width (vw) – desktop",
       "min": 10,
-      "max": 95,
+      "max": 100,
       "step": 1,
       "default": 60
     },

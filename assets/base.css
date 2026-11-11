@@ -2931,6 +2931,13 @@ details-disclosure > details {
   word-break: break-word;
 }
 
+.np-launch-category .badge {
+  font-size: 1rem;
+  letter-spacing: 0;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
 .gradient {
   background: rgb(var(--color-background));
   background: var(--gradient-background);

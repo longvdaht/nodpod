@@ -15,8 +15,8 @@
         "image_hero": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/resort_collection_banner_2_8dabda16-fccc-40f4-bc11-eff5eb0d563b.png",
-            "imageMobile": "shopify://shop_images/Resort_web_b_anner_1_4dc93888-b3e9-49a2-8b67-64e519def973.png",
+            "image": "shopify://shop_images/MCM_Banners_4.png",
+            "imageMobile": "shopify://shop_images/MCM_Banners-08.png",
             "imgClickable": false
           }
         }
@@ -25,12 +25,134 @@
         "image_hero"
       ],
       "custom_css": [
-        "h2 {margin-bottom: 12px; line-height: 1; font-family: \"recoleta\", \"sans-serif\"; font-size: 76px; font-weight: 300;}",
-        ".button {margin-top: 10px; background: white; color: #c5b9ab; font-family: \"Poppins\"; font-weight: 600; letter-spacing: 0.05em;}",
-        ".hero-meta {padding: min(5vw, 24px);}",
-        "@media (max-width: 750px) {h2 {font-size: 5rem; padding-top: 40px; }}"
+        ".hero-media:after {background: linear-gradient( 244.5deg, rgba(0, 0, 0, 0.18) 33.85%, rgba(0, 0, 0, 0.6) 95.06% ); position: absolute; top: 0; width: 100%; height: 100%;}"
       ],
       "name": "Hero banner",
+      "settings": {
+        "block_id": "",
+        "overlay_position": "bottom_left",
+        "overlay_max_width": 100,
+        "overlay_position_mobile": "bottom",
+        "overlay_align_mobile": "left",
+        "subtitle": "LIMITED-EDITION",
+        "title": "Mid Century Merry",
+        "content": "Our best-loved weighted sleep essentials, dressed up for the holidays in limited-edition Mid Century Merry packaging",
+        "cta": "",
+        "url": "",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#ffffff",
+        "background_color": "",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "var(--heroHeight-l)",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": true,
+        "mobile_full_height_max_px": 500
+      }
+    },
+    "cat_cotton": {
+      "type": "np-launch-category",
+      "settings": {
+        "collection": "all-products",
+        "launch_group_filter": "Mid Century Merry",
+        "max_cards": 24,
+        "hide_sold_out": true,
+        "ignore_release_ready": true,
+        "show_tile": true,
+        "tile_image": "shopify://shop_images/MCM_Promo_Cards-08.png",
+        "tile_title": "Cotton Weighted Sleep Masks",
+        "tile_button_label": "Shop All",
+        "tile_link": "",
+        "tile_text_color": "#ffffff",
+        "tile_bg_color": "#8e2a2a",
+        "tile_overlay": 30,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_rating": true,
+        "quick_add": "standard",
+        "mobile_atc_label": "Add",
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "cat_silk": {
+      "type": "np-launch-category",
+      "settings": {
+        "collection": "all-products",
+        "launch_group_filter": "Mid Century Merry",
+        "max_cards": 24,
+        "hide_sold_out": true,
+        "ignore_release_ready": true,
+        "show_tile": true,
+        "tile_image": "shopify://shop_images/MCM_Promo_Cards-09.png",
+        "tile_title": "Silk™ Weighted Sleep Masks",
+        "tile_button_label": "Shop All",
+        "tile_link": "",
+        "tile_text_color": "#ffffff",
+        "tile_bg_color": "#5f7c7a",
+        "tile_overlay": 30,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_rating": true,
+        "quick_add": "standard",
+        "mobile_atc_label": "Add",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 6,
+        "padding_bottom_mobile": 6
+      }
+    },
+    "cat_body": {
+      "type": "np-launch-category",
+      "settings": {
+        "collection": "all-products",
+        "launch_group_filter": "Mid Century Merry",
+        "max_cards": 24,
+        "hide_sold_out": true,
+        "ignore_release_ready": true,
+        "show_tile": true,
+        "tile_image": "shopify://shop_images/MCM_Promo_Cards-10.png",
+        "tile_title": "Body Weighted Blankets",
+        "tile_button_label": "Shop All",
+        "tile_link": "",
+        "tile_text_color": "#ffffff",
+        "tile_bg_color": "#b9a99a",
+        "tile_overlay": 30,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_rating": true,
+        "quick_add": "standard",
+        "mobile_atc_label": "Add",
+        "padding_top": 0,
+        "padding_bottom": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "closing_banner": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_closing": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MCM_Banners_1.png",
+            "imageMobile": "shopify://shop_images/MCM_Banners-05_1.png",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_closing"
+      ],
+      "name": "Closing banner",
       "settings": {
         "block_id": "",
         "overlay_position": "middle_center",
@@ -47,40 +169,10 @@
         "heroMetaH1Color": "#ffffff",
         "background_color": "",
         "heroMetaH1hasBg": false,
-        "heroHeight": "uncropped",
+        "heroHeight": "var(--heroHeight-l)",
         "cropVideo": false,
-        "enable_mobile_full_height_cap": true,
+        "enable_mobile_full_height_cap": false,
         "mobile_full_height_max_px": 500
-      }
-    },
-    "product_grid": {
-      "type": "np-product-grid",
-      "custom_css": [
-        ".title {font-family: var(--font-heading-family); font-size: 50px; letter-spacing: 0.02em; font-weight: 300; margin-bottom: 36px;}",
-        ".grid {justify-content: center;}",
-        "@media screen and (max-width: 767px) {.title {font-size: 28px; margin-bottom: 20px; }}"
-      ],
-      "name": "Product grid",
-      "settings": {
-        "collection": "all",
-        "launch_group_filter": "Resort Collection",
-        "show_section_title": true,
-        "section_title": "Luxury You Can Feel",
-        "section_title_tag": "h1",
-        "section_title_align": "center",
-        "enable_scroll_animation": false,
-        "products_to_show": 16,
-        "columns_desktop": 3,
-        "columns_mobile": "1",
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "quick_add": "standard",
-        "padding_top": 40,
-        "padding_bottom": 40
       }
     },
     "image_with_text": {
@@ -212,7 +304,10 @@
   },
   "order": [
     "hero",
-    "product_grid",
+    "cat_cotton",
+    "cat_silk",
+    "cat_body",
+    "closing_banner",
     "image_with_text",
     "guarantees"
   ]

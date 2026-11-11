@@ -40,9 +40,23 @@ button::after {
     top: 5px;
 }
 
+.np-launch-category .card__badge {
+    left: 8px !important;
+    top: 8px;
+}
+
 .badge {
     padding: 10px 15px !important;
     text-transform: uppercase !important;
+}
+
+.np-launch-category .badge {
+    padding: 0 8px !important;
+    text-transform: uppercase !important;
+    min-height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 a#storeify-sl-btn-trigger-popup {
@@ -75,6 +89,156 @@ a#storeify-sl-btn-trigger-popup {
     line-height: 1.5;
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+
+.template-mid-century-merry .section-subheading {
+    font-size: 1.5rem;
+    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.template-mid-century-merry .hero-meta h2 {
+    font-weight: 300;
+    font-size: 4rem;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.template-mid-century-merry .hero-meta .section-main-text {
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+    max-width: 46.4rem;
+}
+
+.np-launch-category {
+    --grid-mobile-vertical-spacing: 6px;
+    --grid-mobile-horizontal-spacing: 6px;
+}
+
+.np-launch-category .grid {
+    margin: 0;
+}
+
+.np-launch-category .card-wrapper {
+    padding: 0;
+}
+
+.np-launch-category .card.card--card.card--media {
+   padding: .8rem .8rem 1.6rem .8rem; 
+}
+
+.np-launch-category .card--card,
+.np-launch-category .card--standard .card__inner {
+    border: 1px solid #ECEAE6;
+    background: #F9F9F8;
+    padding: 0;
+}
+
+.np-launch-category .product-card-wrapper .card__inner.ratio {
+    border: 0;
+    border-radius: 8px;
+}
+
+.np-launch-category .card__content {
+    padding: 1.6rem 0 0 0;
+}
+
+.np-launch-category .card__information {
+    padding: 0;
+}
+
+.np-launch-category .card__heading a {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.np-launch-category .card__heading {
+    margin-bottom: 1.2rem;
+}
+
+.np-launch-category .card-information {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.np-launch-category .card-subtitle h3 {
+    font-weight: 400;
+    font-size: 1.5rem !important;
+    line-height: 1.4;
+    letter-spacing: 0;
+    margin-bottom: 1.2rem;
+}
+
+.np-launch-category .card-subtitle {
+    margin-top: 0 !important;
+}
+
+.np-launch-category .card .price {
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+    margin-bottom: 1.2rem;
+}
+
+/* Add-to-cart button: page-only overrides of the shared card-product styles */
+.np-launch-category .quick-add__submit.button.button--full-width.button--secondary {
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    height: 4.8rem;
+}
+
+/* Yotpo rating: stars and "(1,272)" on one line, as in the design.
+   The shared rule only targets .collection #product-grid, so repeat it here. */
+.np-launch-category .yotpo-widget-instance {
+    margin-bottom: 0.8rem;
+}
+
+.np-launch-category .yotpo-sr-bottom-line-summary {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.6rem;
+}
+
+.np-launch-category svg.star-container.yotpo-sr-star-full,
+.np-launch-category svg.star-container {
+    width: 13px !important;
+}
+
+/* Yotpo sets inline styles on these spans, so every override needs !important */
+.np-launch-category span.yotpo-sr-bottom-line-text,
+.np-launch-category p.yotpo-sr-bottom-line-text {
+    margin: 0 !important;
+    padding-top: 0 !important;
+    font-family: var(--font-body-family) !important;
+    font-size: 1.4rem !important;
+    line-height: 1 !important;
+    color: rgba(var(--color-foreground), 0.6) !important;
+}
+
+/* One card per variant: the single hidden swatch only feeds the card JS */
+.np-launch-category .np-card-variants--single {
+    display: none;
+}
+
+/* Short add-to-cart label on mobile (section setting "Add to cart label on mobile").
+   Done in CSS so product-form.js rewriting the span text doesn't drop it. */
+@media screen and (max-width: 749px) {
+    .np-launch-category .quick-add__submit:not([disabled]) .np-atc-text {
+        font-size: 0;
+    }
+
+    .np-launch-category .quick-add__submit:not([disabled]) .np-atc-text::after {
+        content: attr(data-mobile-label);
+        font-size: 1.8rem;
+    }
 }
 
 .section-main-heading {
@@ -143,6 +307,39 @@ a#storeify-sl-btn-trigger-popup {
 
 .tippy-box {
     background: #5d5e5d !important;
+}
+
+@media (min-width: 750px) {
+    .template-mid-century-merry .hero-meta h2 {
+        font-size: 6rem;
+    }
+
+    .np-launch-category {
+        --grid-desktop-horizontal-spacing: 30px;
+        --grid-desktop-vertical-spacing: 30px;
+    }
+
+    .np-launch-category .collection.page-width {
+        max-width: 144rem;
+    }
+
+    .np-launch-category .card__heading a {
+        font-size: 2.2rem;
+    }
+
+    .np-launch-category .card-subtitle h3 {
+        font-size: 1.7rem !important;
+    }
+    
+    .np-launch-category .card.card--card.card--media {
+        padding: 1.2rem 1.2rem 1.6rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .template-mid-century-merry .hero-meta h2 {
+        font-size: 8rem;
+    }
 }
 
 @media(max-width:777px) {
