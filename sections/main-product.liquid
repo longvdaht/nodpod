@@ -1330,13 +1330,17 @@
         const addToCartBtn = document.querySelector('.product-form__submit, [name="add"]');
         if (!addToCartBtn) return;
 
+        // Only update the label <span>. Setting the button's textContent would wipe the
+        // .loading__spinner that product-form.js needs, which locked ATC until a refresh.
+        const label = addToCartBtn.querySelector('span');
+
         if (variantAvailable) {
           addToCartBtn.disabled = false;
-          addToCartBtn.textContent = 'Add to Cart';
+          if (label) label.textContent = 'Add to Cart';
           addToCartBtn.classList.remove('sold-out');
         } else {
           addToCartBtn.disabled = true;
-          addToCartBtn.textContent = 'Sold Out';
+          if (label) label.textContent = 'Sold Out';
           addToCartBtn.classList.add('sold-out');
         }
       }
