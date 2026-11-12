@@ -86,7 +86,7 @@
         "collection": "silk-sleep-masks",
         "launch_group_filter": "Mid Century Merry",
         "max_cards": 24,
-        "hide_sold_out": true,
+        "hide_sold_out": false,
         "ignore_release_ready": true,
         "show_tile": true,
         "tile_image": "shopify://shop_images/MCM_Promo_Cards-09.png",
