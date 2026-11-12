@@ -25,7 +25,8 @@
         "image_hero"
       ],
       "custom_css": [
-        ".hero-media:after {background: linear-gradient( 244.5deg, rgba(0, 0, 0, 0.18) 33.85%, rgba(0, 0, 0, 0.6) 95.06% ); position: absolute; top: 0; width: 100%; height: 100%;}"
+        ".hero-media:after {background: linear-gradient( 244.5deg, rgba(0, 0, 0, 0.18) 33.85%, rgba(0, 0, 0, 0.6) 95.06% ); position: absolute; top: 0; width: 100%; height: 100%;}",
+        "@media (max-width: 777px) {.hero-media picture, .hero-media img {height: auto !important; object-fit: contain;}}"
       ],
       "name": "Hero banner",
       "settings": {
@@ -44,25 +45,25 @@
         "heroMetaH1Color": "#ffffff",
         "background_color": "",
         "heroMetaH1hasBg": false,
-        "heroHeight": "var(--heroHeight-l)",
+        "heroHeight": "uncropped",
         "cropVideo": false,
-        "enable_mobile_full_height_cap": true,
+        "enable_mobile_full_height_cap": false,
         "mobile_full_height_max_px": 500
       }
     },
     "cat_cotton": {
       "type": "np-launch-category",
       "settings": {
-        "collection": "all-products",
+        "collection": "cotton-sleep-masks",
         "launch_group_filter": "Mid Century Merry",
         "max_cards": 24,
-        "hide_sold_out": true,
+        "hide_sold_out": false,
         "ignore_release_ready": true,
         "show_tile": true,
         "tile_image": "shopify://shop_images/MCM_Promo_Cards-08.png",
         "tile_title": "Cotton Weighted Sleep Masks",
         "tile_button_label": "Shop All",
-        "tile_link": "",
+        "tile_link": "shopify://products/nodpod",
         "tile_text_color": "#ffffff",
         "tile_bg_color": "#8e2a2a",
         "tile_overlay": 30,
@@ -82,7 +83,7 @@
     "cat_silk": {
       "type": "np-launch-category",
       "settings": {
-        "collection": "all-products",
+        "collection": "silk-sleep-masks",
         "launch_group_filter": "Mid Century Merry",
         "max_cards": 24,
         "hide_sold_out": true,
@@ -91,14 +92,14 @@
         "tile_image": "shopify://shop_images/MCM_Promo_Cards-09.png",
         "tile_title": "Silk™ Weighted Sleep Masks",
         "tile_button_label": "Shop All",
-        "tile_link": "",
+        "tile_link": "shopify://products/nodpod-silk",
         "tile_text_color": "#ffffff",
         "tile_bg_color": "#5f7c7a",
         "tile_overlay": 30,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
-        "show_secondary_image": true,
+        "show_secondary_image": false,
         "show_rating": true,
         "quick_add": "standard",
         "mobile_atc_label": "Add",
@@ -111,16 +112,16 @@
     "cat_body": {
       "type": "np-launch-category",
       "settings": {
-        "collection": "all-products",
+        "collection": "bodys",
         "launch_group_filter": "Mid Century Merry",
         "max_cards": 24,
-        "hide_sold_out": true,
+        "hide_sold_out": false,
         "ignore_release_ready": true,
         "show_tile": true,
         "tile_image": "shopify://shop_images/MCM_Promo_Cards-10.png",
         "tile_title": "Body Weighted Blankets",
         "tile_button_label": "Shop All",
-        "tile_link": "",
+        "tile_link": "shopify://products/nodpod-body",
         "tile_text_color": "#ffffff",
         "tile_bg_color": "#b9a99a",
         "tile_overlay": 30,
@@ -169,11 +170,14 @@
         "heroMetaH1Color": "#ffffff",
         "background_color": "",
         "heroMetaH1hasBg": false,
-        "heroHeight": "var(--heroHeight-l)",
+        "heroHeight": "uncropped",
         "cropVideo": false,
         "enable_mobile_full_height_cap": false,
         "mobile_full_height_max_px": 500
-      }
+      },
+      "custom_css": [
+        "@media (max-width: 777px) {.hero-media picture, .hero-media img {height: auto !important; object-fit: contain;}}"
+      ]
     },
     "image_with_text": {
       "type": "np-image-with-text",

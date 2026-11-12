@@ -150,13 +150,20 @@
                   endfor
                   unless v_in_launch
                     assign variant_visible = false
+                    assign skip_reason = 'launch_group is "' | append: v_launch_joined | append: '"'
                   endunless
                 endif
 
                 if section.settings.hide_sold_out and v.available == false
                   assign variant_visible = false
+                  assign skip_reason = 'sold out ("Hide sold-out variants" is on)'
                 endif
               -%}
+              {%- comment -%} Staff-only HTML comment (view source / inspect) explaining hidden variants. {%- endcomment -%}
+              {%- if staff_view and variant_visible == false -%}
+                <!-- np-launch-category: hidden {{ product.title | escape }} / {{ v.title | escape }} (ID {{ v.id }}): {{ skip_reason | escape }} -->
+              {%- endif -%}
+              {%- assign skip_reason = '' -%}
               {%- if variant_visible -%}
                 {%- assign rendered_count = rendered_count | plus: 1 -%}
                 {%- assign lazy_load = true -%}

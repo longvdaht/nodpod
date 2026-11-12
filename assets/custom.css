@@ -105,6 +105,16 @@ a#storeify-sl-btn-trigger-popup {
     letter-spacing: -0.03em;
 }
 
+/* Hero overrides for this page only (moved out of the shared np-hero-banner section).
+   The section sets .hero-meta gap with an id selector, hence !important. */
+.template-mid-century-merry .np-hero .hero-media:after {
+    content: '';
+}
+
+.template-mid-century-merry .np-hero .hero-meta {
+    gap: 2.4rem !important;
+}
+
 .template-mid-century-merry .hero-meta .section-main-text {
     text-align: left;
     font-weight: 500;
