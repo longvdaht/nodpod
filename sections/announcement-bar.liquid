@@ -43,7 +43,22 @@
     font-weight: 600;
     padding: 1rem 0;
   }
-  
+  {%- assign ab_bg = section.settings.custom_bg_color -%}
+  {%- assign ab_fg = section.settings.custom_text_color -%}
+  {%- if ab_bg != blank and ab_bg.alpha != 0.0 %}
+  #shopify-section-{{ section.id }} .utility-bar {
+    --color-background: {{ ab_bg.red }}, {{ ab_bg.green }}, {{ ab_bg.blue }};
+    --gradient-background: {{ ab_bg }};
+    background: {{ ab_bg }};
+  }
+  {%- endif %}
+  {%- if ab_fg != blank and ab_fg.alpha != 0.0 %}
+  #shopify-section-{{ section.id }} .utility-bar {
+    --color-foreground: {{ ab_fg.red }}, {{ ab_fg.green }}, {{ ab_fg.blue }};
+    --color-link: {{ ab_fg.red }}, {{ ab_fg.green }}, {{ ab_fg.blue }};
+    color: {{ ab_fg }};
+  }
+  {%- endif %}
 </style>
 
 <div
@@ -246,6 +261,18 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-4"
+    },
+    {
+      "type": "color",
+      "id": "custom_bg_color",
+      "label": "Background color",
+      "info": "Overrides the color scheme. Leave empty to use the scheme."
+    },
+    {
+      "type": "color",
+      "id": "custom_text_color",
+      "label": "Text color",
+      "info": "Overrides the color scheme. Leave empty to use the scheme."
     },
     {
       "type": "checkbox",

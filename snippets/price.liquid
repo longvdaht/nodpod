@@ -5,6 +5,7 @@
   - product: {Object} Product Liquid object (optional)
   - placeholder: {Boolean} Renders a placeholder price (optional)
   - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
+  - variant: {Object} Renders this specific variant's price. Takes priority over use_variant (optional)
   - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
   - price_class: {String} Adds a price class to the price element (optional)
   - show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
@@ -13,7 +14,9 @@
   {% render 'price', product: product %}
 {% endcomment %}
 {%- liquid
-  if use_variant
+  if variant
+    assign target = variant
+  elsif use_variant
     assign target = product.selected_or_first_available_variant
   elsif placeholder
     assign target = null

@@ -11,6 +11,55 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
+    "np_announcement_marquee": {
+      "type": "np-announcement-marquee",
+      "blocks": {
+        "mq_shipping": {
+          "type": "text",
+          "settings": {
+            "text": "Free shipping on orders over $75",
+            "link": ""
+          }
+        },
+        "mq_logo": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Mid_Century_Merry.png",
+            "svg_asset": "np-mcm-logo.svg",
+            "alt": "Mid Century Merry",
+            "link": ""
+          }
+        },
+        "mq_packaging": {
+          "type": "text",
+          "settings": {
+            "text": "Limited-edition holiday packaging",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "mq_shipping",
+        "mq_logo",
+        "mq_packaging"
+      ],
+      "settings": {
+        "page_templates": "mid-century-merry",
+        "hide_default_bar": true,
+        "bg_color": "#a93a33",
+        "text_color": "#ffffff",
+        "padding_y": 11,
+        "item_gap": 24,
+        "image_height": 24,
+        "image_height_mobile": 24,
+        "separator_style": "image",
+        "separator_text": "✦",
+        "separator_image": "shopify://shop_images/Icon.png",
+        "separator_size": 14,
+        "speed": 40,
+        "pause_on_hover": true
+      }
+    },
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
@@ -128,6 +177,7 @@
     }
   },
   "order": [
+    "np_announcement_marquee",
     "announcement-bar",
     "header"
   ]
