@@ -14,7 +14,6 @@
       "blocks": {
         "full_banner_MPT4DU": {
           "type": "full_banner",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/MCM_Banners_1_eef95d6b-0048-4033-b265-4d641f16c1e4.png",
             "image_mobile": "shopify://shop_images/MCM_Banners-05_1_ace32daf-46f7-4859-a803-d628de2d9b0b.png",
@@ -32,8 +31,8 @@
             "font_size_mobile": 1.6,
             "button_text": "Shop Now",
             "url": "https://nodpod.com/pages/the-cafe-collection",
-            "button_text_color": "#6D6C6C",
-            "button_bkg_color": "#FFFFFF",
+            "button_text_color": "#6d6c6c",
+            "button_bkg_color": "#ffffff",
             "button_font_size": 2,
             "button_stroke": 1,
             "button_border_color": "#ffffff",
