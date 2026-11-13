@@ -36,7 +36,7 @@
             "button_font_size": 2,
             "button_stroke": 1,
             "button_border_color": "#ffffff",
-            "button_font_size_mobile": 1.6,
+            "button_font_size_mobile": 1.1,
             "enable_shadows": false
           }
         },
