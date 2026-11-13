@@ -30,7 +30,7 @@
             "font_size": 2,
             "font_size_mobile": 1.6,
             "button_text": "Shop Now",
-            "url": "https://nodpod.com/pages/the-cafe-collection",
+            "url": "shopify://pages/mid-century-merry",
             "button_text_color": "#6d6c6c",
             "button_bkg_color": "#ffffff",
             "button_font_size": 2,
