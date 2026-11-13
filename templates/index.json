@@ -31,7 +31,7 @@
             "font_size_mobile": 1.6,
             "button_text": "Shop Now",
             "url": "shopify://pages/mid-century-merry",
-            "button_text_color": "#6d6c6c",
+            "button_text_color": "#555555",
             "button_bkg_color": "#ffffff",
             "button_font_size": 2,
             "button_stroke": 1,
