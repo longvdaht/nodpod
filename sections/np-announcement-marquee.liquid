@@ -1,0 +1,356 @@
+{% comment %}
+  Scrolling announcement bar for launch / collab pages.
+
+  Lives in the header group but renders ONLY on page templates whose suffix is listed
+  in "Show on page templates" (e.g. "mid-century-merry" for page.mid-century-merry.json).
+  On those pages it can hide the regular announcement bar. Every other page is untouched.
+
+  Blocks: text (optional link) and image (uploaded image, or an SVG from theme assets,
+  which is inlined so it takes the bar's text color).
+{% endcomment %}
+
+{%- liquid
+  assign marquee_active = false
+  if template.name == 'page' and template.suffix != blank
+    assign target_list = section.settings.page_templates | split: ','
+    for target in target_list
+      assign target_clean = target | strip
+      if target_clean != blank and target_clean == template.suffix
+        assign marquee_active = true
+        break
+      endif
+    endfor
+  endif
+-%}
+
+{%- if marquee_active and section.blocks.size > 0 -%}
+  {%- style -%}
+    {%- if section.settings.hide_default_bar -%}
+      .announcement-bar-section { display: none !important; }
+    {%- endif -%}
+    #np-marquee-{{ section.id }} {
+      --np-mq-bg: {{ section.settings.bg_color }};
+      --np-mq-fg: {{ section.settings.text_color }};
+      --np-mq-gap: {{ section.settings.item_gap }}px;
+      --np-mq-pad: {{ section.settings.padding_y }}px;
+      --np-mq-img-h: {{ section.settings.image_height }}px;
+      --np-mq-img-h-mob: {{ section.settings.image_height_mobile }}px;
+      --np-mq-sep: {{ section.settings.separator_size }}px;
+    }
+  {%- endstyle -%}
+
+  {%- capture separator -%}
+    <span class="np-marquee__sep" aria-hidden="true">
+      {%- case section.settings.separator_style -%}
+        {%- when 'image' -%}
+          {%- if section.settings.separator_image != blank -%}
+            {{ section.settings.separator_image | image_url: width: 60 | image_tag: alt: '', loading: 'eager' }}
+          {%- endif -%}
+        {%- when 'text' -%}
+          {{ section.settings.separator_text | escape }}
+        {%- else -%}
+          {{ 'np-marquee-star.svg' | inline_asset_content }}
+      {%- endcase -%}
+    </span>
+  {%- endcapture -%}
+
+  <div
+    id="np-marquee-{{ section.id }}"
+    class="np-marquee{% if section.settings.pause_on_hover %} np-marquee--pause-hover{% endif %}"
+    role="region"
+    aria-label="{{ 'sections.header.announcement' | t }}"
+    data-speed="{{ section.settings.speed }}"
+  >
+    <div class="np-marquee__track">
+      <ul class="np-marquee__group">
+        {%- for block in section.blocks -%}
+          <li class="np-marquee__item" {{ block.shopify_attributes }}>
+            {%- case block.type -%}
+              {%- when 'text' -%}
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" class="np-marquee__text np-marquee__link">
+                    {{- block.settings.text | escape -}}
+                  </a>
+                {%- else -%}
+                  <span class="np-marquee__text">{{ block.settings.text | escape }}</span>
+                {%- endif -%}
+              {%- when 'image' -%}
+                {%- capture img_markup -%}
+                  {%- if block.settings.image != blank -%}
+                    {{
+                      block.settings.image
+                      | image_url: height: 80
+                      | image_tag: alt: block.settings.alt, loading: 'eager', class: 'np-marquee__img'
+                    }}
+                  {%- elsif block.settings.svg_asset != blank -%}
+                    <span class="np-marquee__svg" role="img" aria-label="{{ block.settings.alt | escape }}">
+                      {{- block.settings.svg_asset | strip | inline_asset_content -}}
+                    </span>
+                  {%- endif -%}
+                {%- endcapture -%}
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" class="np-marquee__link">{{ img_markup }}</a>
+                {%- else -%}
+                  {{ img_markup }}
+                {%- endif -%}
+            {%- endcase -%}
+          </li>
+          <li class="np-marquee__item np-marquee__item--sep" aria-hidden="true">{{ separator }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+
+  <style>
+    .np-marquee {
+      overflow: hidden;
+      background: var(--np-mq-bg);
+      color: var(--np-mq-fg);
+      padding-block: var(--np-mq-pad);
+    }
+    .np-marquee__track {
+      display: flex;
+      width: max-content;
+      will-change: transform;
+    }
+    .np-marquee.is-running .np-marquee__track {
+      animation: np-marquee-scroll var(--np-mq-duration, 30s) linear infinite;
+    }
+    .np-marquee--pause-hover:hover .np-marquee__track,
+    .np-marquee--pause-hover:focus-within .np-marquee__track {
+      animation-play-state: paused;
+    }
+    @keyframes np-marquee-scroll {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(calc(-1 * var(--np-mq-distance, 50%)), 0, 0); }
+    }
+    .np-marquee__group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: var(--np-mq-gap);
+      margin: 0;
+      padding: 0 calc(var(--np-mq-gap) / 2);
+      list-style: none;
+    }
+    .np-marquee__item {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .np-marquee__text {
+      font-family: var(--font-body-family);
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: inherit;
+    }
+    .np-marquee__link { color: inherit; text-decoration: none; }
+    .np-marquee__link:hover .np-marquee__text,
+    a.np-marquee__text:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .np-marquee__img,
+    .np-marquee__svg svg {
+      display: block;
+      height: var(--np-mq-img-h);
+      width: auto;
+    }
+    .np-marquee__sep { display: flex; align-items: center; font-size: var(--np-mq-sep); line-height: 1; }
+    .np-marquee__sep svg,
+    .np-marquee__sep img { display: block; width: var(--np-mq-sep); height: var(--np-mq-sep); }
+
+    @media screen and (max-width: 749px) {
+      .np-marquee__img,
+      .np-marquee__svg svg { height: var(--np-mq-img-h-mob); }
+    }
+
+    /* No motion requested (or JS not run yet): show one static, centered line. */
+    .np-marquee:not(.is-running) .np-marquee__track { margin-inline: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      .np-marquee .np-marquee__track { animation: none !important; transform: none !important; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var root = document.getElementById('np-marquee-{{ section.id }}');
+      if (!root) return;
+      var track = root.querySelector('.np-marquee__track');
+      var original = track.querySelector('.np-marquee__group');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      function build() {
+        // Reset to the single original group, then clone enough copies to cover
+        // the viewport twice, so the loop never shows a gap.
+        track.querySelectorAll('.np-marquee__group[data-clone]').forEach(function (n) { n.remove(); });
+        root.classList.remove('is-running');
+        if (reduce.matches) return;
+
+        var groupWidth = original.getBoundingClientRect().width;
+        if (!groupWidth) return;
+        var copies = Math.ceil(root.clientWidth / groupWidth) + 1;
+        for (var i = 0; i < copies; i++) {
+          var clone = original.cloneNode(true);
+          clone.setAttribute('data-clone', '');
+          clone.setAttribute('aria-hidden', 'true');
+          clone.querySelectorAll('a').forEach(function (a) { a.setAttribute('tabindex', '-1'); });
+          track.appendChild(clone);
+        }
+
+        var speed = parseFloat(root.dataset.speed) || 50; // px per second
+        root.style.setProperty('--np-mq-distance', groupWidth + 'px');
+        root.style.setProperty('--np-mq-duration', (groupWidth / speed).toFixed(2) + 's');
+        root.classList.add('is-running');
+      }
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(build, 200);
+      });
+      if (reduce.addEventListener) reduce.addEventListener('change', build);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(build);
+      } else {
+        build();
+      }
+      build();
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "NP Announcement Marquee",
+  "class": "np-announcement-marquee-section",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows only on the page templates listed below and hides the regular announcement bar there. All other pages keep the regular bar."
+    },
+    {
+      "type": "text",
+      "id": "page_templates",
+      "label": "Show on page templates",
+      "default": "mid-century-merry",
+      "info": "Template suffix, comma-separated. For page.mid-century-merry.json enter mid-century-merry."
+    },
+    { "type": "checkbox", "id": "hide_default_bar", "label": "Hide the regular announcement bar on these pages", "default": true },
+
+    { "type": "header", "content": "Style" },
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#9B2335" },
+    { "type": "color", "id": "text_color", "label": "Text and icon color", "default": "#FFFFFF" },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Top and bottom padding",
+      "default": 9
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Space between items",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Image height (desktop)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "image_height_mobile",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Image height (mobile)",
+      "default": 15
+    },
+
+    { "type": "header", "content": "Separator" },
+    {
+      "type": "select",
+      "id": "separator_style",
+      "label": "Separator",
+      "default": "star",
+      "options": [
+        { "value": "star", "label": "Star icon" },
+        { "value": "text", "label": "Text" },
+        { "value": "image", "label": "Image" }
+      ]
+    },
+    { "type": "text", "id": "separator_text", "label": "Separator text", "default": "✦" },
+    { "type": "image_picker", "id": "separator_image", "label": "Separator image" },
+    {
+      "type": "range",
+      "id": "separator_size",
+      "min": 6,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Separator size",
+      "default": 12
+    },
+
+    { "type": "header", "content": "Motion" },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Scroll speed (pixels per second)",
+      "default": 40
+    },
+    { "type": "checkbox", "id": "pause_on_hover", "label": "Pause on hover", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Free shipping on orders over $75" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "text",
+          "id": "svg_asset",
+          "label": "Or SVG from theme assets",
+          "info": "Used when no image is selected. The SVG takes the bar's text color, e.g. np-mcm-logo.svg"
+        },
+        { "type": "text", "id": "alt", "label": "Alt text", "default": "Mid Century Merry" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NP Announcement Marquee",
+      "blocks": [{ "type": "text" }]
+    }
+  ]
+}
+{% endschema %}
