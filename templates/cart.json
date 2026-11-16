@@ -23,7 +23,7 @@
         "text_PYdcdb": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Orders begin processing immediately and cannot be modified once placed. Please review your shipping address.</strong></p>"
+            "text": "<p>Orders begin processing immediately and cannot be modified once placed. Please review your shipping address.</p>"
           }
         }
       },
