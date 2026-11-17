@@ -150,15 +150,15 @@
       # then the variant's own featured media, then the product image.
       assign v_images = card_variant.metafields.custom.variant_images.value
       assign card_media = v_images.first | default: card_variant.featured_media | default: card_product.featured_media
-      # Only hover to a second shot of the same variant, never another colourway.
-      # Fallbacks matter: the shared hover CSS fades image 1 out, so a card with a
-      # single <img> goes blank on hover.
-      #   1. 2nd custom.variant_images entry
-      #   2. the variant's own Shopify image, when image 1 came from variant_images
+      # Hover image, matching the homepage cards where possible. Fallbacks matter:
+      # the shared hover CSS fades image 1 out, so a card with a single <img> goes
+      # blank on hover.
+      #   1. 2nd custom.variant_images entry (a second shot of this colourway)
+      #   2. the product's 2nd media, the same hover image the homepage card uses
       #   3. image 1 again (hover shows no change rather than an empty card)
       assign card_media_2 = v_images[1]
-      if card_media_2 == blank and v_images.first != blank and card_variant.featured_media != blank
-        assign card_media_2 = card_variant.featured_media
+      if card_media_2 == blank
+        assign card_media_2 = card_product.media[1]
       endif
       if card_media_2 == blank
         assign card_media_2 = card_media
