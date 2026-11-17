@@ -157,8 +157,15 @@
       #   2. a product image whose alt text contains the variant name (e.g. "Candy Stripe")
       #   3. the product image right after the variant's own image, unless that image
       #      belongs to another variant
-      #   4. image 1 again (hover shows no change rather than an empty card)
-      assign card_media_2 = v_images[1]
+      #   4. the product's 2nd image, as on the homepage cards (same for every
+      #      colour of the product, but better than no hover)
+      #   5. image 1 again (hover shows no change rather than an empty card)
+      # Note: list metafield values don't support [index] access in Liquid
+      # (v_images[1] is always nil), so take the 2nd entry with a for/offset loop.
+      assign card_media_2 = nil
+      for v_img in v_images offset: 1 limit: 1
+        assign card_media_2 = v_img
+      endfor
       assign v_main_id = card_variant.featured_media.id
 
       if card_media_2 == blank and card_product.has_only_default_variant == false
@@ -188,6 +195,10 @@
             assign card_media_2 = next_media
           endif
         endif
+      endif
+
+      if card_media_2 == blank
+        assign card_media_2 = card_product.media[1]
       endif
 
       if card_media_2 == blank
