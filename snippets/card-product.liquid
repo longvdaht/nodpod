@@ -150,16 +150,46 @@
       # then the variant's own featured media, then the product image.
       assign v_images = card_variant.metafields.custom.variant_images.value
       assign card_media = v_images.first | default: card_variant.featured_media | default: card_product.featured_media
-      # Hover image, matching the homepage cards where possible. Fallbacks matter:
-      # the shared hover CSS fades image 1 out, so a card with a single <img> goes
-      # blank on hover.
-      #   1. 2nd custom.variant_images entry (a second shot of this colourway)
-      #   2. the product's 2nd media, the same hover image the homepage card uses
-      #   3. image 1 again (hover shows no change rather than an empty card)
+      # Hover image: a second shot of THIS colourway, so cards of the same product
+      # don't all hover to the same picture. Fallbacks matter: the shared hover CSS
+      # fades image 1 out, so a card with a single <img> goes blank on hover.
+      #   1. 2nd custom.variant_images entry
+      #   2. a product image whose alt text contains the variant name (e.g. "Candy Stripe")
+      #   3. the product image right after the variant's own image, unless that image
+      #      belongs to another variant
+      #   4. image 1 again (hover shows no change rather than an empty card)
       assign card_media_2 = v_images[1]
-      if card_media_2 == blank
-        assign card_media_2 = card_product.media[1]
+      assign v_main_id = card_variant.featured_media.id
+
+      if card_media_2 == blank and card_product.has_only_default_variant == false
+        assign v_name = card_variant.title | downcase | strip
+        for m in card_product.media
+          if m.media_type == 'image' and m.id != v_main_id
+            assign m_alt = m.alt | downcase
+            if m_alt != blank and m_alt contains v_name
+              assign card_media_2 = m
+              break
+            endif
+          endif
+        endfor
       endif
+
+      if card_media_2 == blank and card_variant.featured_media
+        # position is 1-based, media[] is 0-based, so this is the NEXT image.
+        assign next_media = card_product.media[card_variant.featured_media.position]
+        if next_media and next_media.media_type == 'image'
+          for ov in card_product.variants
+            if ov.featured_media.id == next_media.id
+              assign next_media = nil
+              break
+            endif
+          endfor
+          if next_media
+            assign card_media_2 = next_media
+          endif
+        endif
+      endif
+
       if card_media_2 == blank
         assign card_media_2 = card_media
       endif
