@@ -22,6 +22,7 @@
       "blocks": {
         "gifted_gift_messages_gift_section_cart_47j6Ck": {
           "type": "shopify://apps/gifted-gift-messages/blocks/gift_section_cart/395339ae-e28c-4b59-9ac5-270b36d75b12",
+          "disabled": true,
           "settings": {
             "text": "This is a Gift Order",
             "form_background_color": "#ffffff",
