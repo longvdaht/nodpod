@@ -110,7 +110,7 @@
           "type": "question",
           "settings": {
             "title": "I have an eye condition. Is your mask safe to use?",
-            "answer": "<p>Nodpod is not aware of any studies that have evaluated patients with conditions related to ocular hypertension, like glaucoma or other eye conditions, using weighted sleep masks. &nbsp;Therefore, we recommend that you consult with your physician before using Nodpod.</p>",
+            "answer": "<p>Nodpod is not aware of any studies that have evaluated patients with conditions related to ocular hypertension, like glaucoma or other eye conditions, using weighted sleep masks. Please talk with your physician before using Nodpod.<br/><br/>WARNING: Do not use if you have glaucoma, ocular hypertension, recent eye surgery or other eye conditions without your physician's approval.</p>",
             "expandAnswer": false
           }
         },
