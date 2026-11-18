@@ -354,7 +354,7 @@
           "type": "question",
           "settings": {
             "title": "What if I don't have an HSA/FSA card handy at checkout?",
-            "answer": "<p>You can still complete your purchase with a regular payment method and submit for reimbursement separately, though using Truemed at checkout is faster and doesn't require you to file a claim yourself.</p>",
+            "answer": "<p>FAQTableIf eligible, you can still complete your purchase with a regular payment method and submit for reimbursement separately, though using Truemed at checkout is faster and doesn't require you to file a claim yourself.<br/><br/>Note: Reimbursement is subject to your plan's approval; Nodpod does not guarantee reimbursement.</p>",
             "expandAnswer": false
           }
         },
