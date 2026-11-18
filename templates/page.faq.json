@@ -338,7 +338,7 @@
           "type": "question",
           "settings": {
             "title": "How does it work?",
-            "answer": "<p>At checkout, select the Truemed HSA/FSA payment option. You'll answer a few quick health-related questions, and Truemed's clinical team will confirm eligibility. If approved, you can pay directly with your HSA/FSA card — no separate reimbursement claim needed.</p><p><em>Note: If you have a Shop account, you'll need to check out as a guest for the Truemed option to appear.</em></p>",
+            "answer": "<p>At checkout, select the Truemed HSA/FSA payment option. You'll answer a few quick health-related questions, and Truemed's clinical team will confirm eligibility. If approved, you can pay directly with your HSA/FSA card — no separate reimbursement claim needed.<br/><br/>Note: If you have a Shop account, you'll need to check out as a guest for the Truemed option to appear, and approval is not guaranteed.</p>",
             "expandAnswer": false
           }
         },
