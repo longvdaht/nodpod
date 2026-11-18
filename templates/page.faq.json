@@ -390,7 +390,7 @@
           "type": "question",
           "settings": {
             "title": "Lost & Stolen Package Policy",
-            "answer": "<p>We want you to receive your order safely. If your package is confirmed lost in transit by the carrier, we'll replace it at no cost to you. For packages marked as delivered but reported missing or stolen, coverage depends on whether shipping protection was purchased at checkout:</p><ul><li><strong>With shipping protection:</strong> We'll replace your order at no additional cost.</li><li><strong>Without shipping protection:</strong> We're unable to guarantee a free replacement, but we're happy to offer a discounted replacement.</li></ul><p>We recommend adding shipping protection at checkout for peace of mind on every order.</p>",
+            "answer": "<p>We want you to receive your order safely. If your tracking hasn't updated in 7 days, contact us and we'll open a trace with the carrier. If your package is lost in transit, we'll send you a replacement or give you a full refund, whichever you prefer. If your original package does show up later, please keep it and enjoy it on us.<br/><br/>If your tracking says your package was delivered but you can't find it, please check around your delivery area and with neighbors, just in case. Packages are sometimes marked delivered before they actually arrive. Still no Nodpod after 48 hours? Contact us or reply to any Nodpod Customer Support email, and we'll help make it right with a replacement or refund.<br/><br/>For extra peace of mind, you can choose to add shipping protection at checkout for $1.00 per item plus tax. It's optional, and it's never added to your cart automatically.</p>",
             "expandAnswer": false
           }
         },
