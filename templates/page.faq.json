@@ -275,7 +275,7 @@
           "type": "question",
           "settings": {
             "title": "Can my small child use my Nodpod BODY?",
-            "answer": "<p>No, we do not recommend using Nodpod BODY as the concentrated weighted could pose a suffocation hazard.</p>",
+            "answer": "<p>No, small children cannot use Nodpod BODY. WARNING: Suffocation hazard. Do not use on or near children under 12, infants, or anyone unable to remove it unaided.</p>",
             "expandAnswer": false
           }
         },
