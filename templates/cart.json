@@ -17,6 +17,29 @@
         "padding_bottom": 36
       }
     },
+    "179503054116a6c15b": {
+      "type": "apps",
+      "blocks": {
+        "gifted_gift_messages_gift_section_cart_47j6Ck": {
+          "type": "shopify://apps/gifted-gift-messages/blocks/gift_section_cart/395339ae-e28c-4b59-9ac5-270b36d75b12",
+          "settings": {
+            "text": "This is a Gift Order",
+            "form_background_color": "#ffffff",
+            "form_color": "#000000",
+            "form_accent_color": "#000000",
+            "delivery_instructions": "Almost there! You can enter the delivery instructions at checkout.",
+            "form_template": "minimal",
+            "show_quantity": "true"
+          }
+        }
+      },
+      "block_order": [
+        "gifted_gift_messages_gift_section_cart_47j6Ck"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "rich_text_NGFcyP": {
       "type": "rich-text",
       "blocks": {
@@ -65,6 +88,7 @@
   },
   "order": [
     "cart-items",
+    "179503054116a6c15b",
     "rich_text_NGFcyP",
     "cart-footer"
   ]
