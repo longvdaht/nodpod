@@ -73,6 +73,22 @@
             "show_gift_card_recipient": false
           }
         },
+        "gifted_gift_messages_gifted_button_de76mK": {
+          "type": "shopify://apps/gifted-gift-messages/blocks/gifted_button/395339ae-e28c-4b59-9ac5-270b36d75b12",
+          "settings": {
+            "text": "Gift this item",
+            "button_color": "#636466",
+            "background_color": "#000000",
+            "form_background_color": "#ffffff",
+            "form_color": "#000000",
+            "form_accent_color": "#000000",
+            "form_icon_color": "#000000",
+            "delivery_instructions": "Almost there! You can enter the delivery instructions at checkout.",
+            "occasions": "Birthday, Anniversary, Wedding, Baby Shower, Graduation, Thank You, Just Because, Holidays",
+            "display_as_link": true,
+            "form_template": "minimal"
+          }
+        },
         "text_i43CGF": {
           "type": "text",
           "settings": {
@@ -91,6 +107,7 @@
           "type": "icon-with-text",
           "settings": {
             "layout": "vertical",
+            "image_width": 32,
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Group_374.svg",
             "heading_1": "Clinically tested to eliminate acne-causing bacteria by over 99%",
@@ -110,7 +127,7 @@
           }
         },
         "tolstoy_shoppable_video_quiz_carousel_block_XJa69R": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "disabled": true,
           "settings": {
             "publishId": "d2y6nubutjzus"
@@ -180,6 +197,7 @@
         "variant_picker",
         "divider_7FnXyt",
         "buy_buttons",
+        "gifted_gift_messages_gifted_button_de76mK",
         "text_i43CGF",
         "divider_qRaJAm",
         "icon_with_text_dhMfjM",
