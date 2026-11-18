@@ -380,7 +380,7 @@
           "type": "question",
           "settings": {
             "title": "Shipping Policy",
-            "answer": "<p>Nodpod products can be shipped to anywhere that has a physical address within the USA. We ship to PO Boxes.</p><p>There is a 2-5 business day process time for all orders. While we strive to ship an order within 3 working days, we can’t directly control the delivery times beyond our end.</p><p>As a general rule, assume that your shipment will take 6–8 working days. APO addresses will be shipped via USPS and cannot be rush shipped.</p><p>Orders that do not qualify for free shipping are $6.99 flat rate. Free shipping threshold applies to subtotal. (cart amount after discounts and before tax)</p><p>Any free shipping promotions only qualify for addresses within the contiguous United States.</p>",
+            "answer": "<p>Nodpod products can be shipped to anywhere that has a physical address within the USA. We ship to PO Boxes.</p><p>As a general rule, assume that your shipment will take 10–12 business days. APO addresses will be shipped via USPS and cannot be rush shipped.</p><p>Orders that do not qualify for free shipping are $6.99 flat rate. Free shipping threshold of $75+<strong> </strong>applies to the subtotal. (cart amount after discounts and before tax).</p><p>Any free shipping promotions only qualify for addresses within the contiguous United States.</p>",
             "expandAnswer": false
           }
         },
