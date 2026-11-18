@@ -346,7 +346,7 @@
           "type": "question",
           "settings": {
             "title": "Do I need a doctor's note?",
-            "answer": "<p>No separate visit is required. Truemed's LMN process happens online in minutes as part of checkout.</p>",
+            "answer": "<p>No separate visit is required. Truemed's LMN process happens online as part of checkout.</p>",
             "expandAnswer": false
           }
         },
