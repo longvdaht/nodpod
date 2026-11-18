@@ -134,7 +134,7 @@
           "type": "question",
           "settings": {
             "title": "What are the beads in the Nodpod made of? Are they safe?",
-            "answer": "<p>Yes, very safe. The microbeads are made of 100% Polyethylene (PE) plastic pellets, which is the most common plastic in use today. It's used in medical equipment, food containers, and children's stuffed animals. These beads are nontoxic, BPA free and hypoallergenic.</p>",
+            "answer": "<p>Yes. The microbeads are made of 100% Polyethylene (PE) plastic pellets, which is the most common plastic in use today. It's used in medical equipment and food containers. These beads are nontoxic, BPA free and hypoallergenic.<br/><br/>WARNING: Choking hazard. Beads can come out if a pod is damaged. Inspect your Nodpod regularly and stop using it if the fabric or stitching shows any damage.</p>",
             "expandAnswer": false
           }
         },
