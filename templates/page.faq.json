@@ -150,7 +150,7 @@
           "type": "question",
           "settings": {
             "title": "Who can use Nodpod?",
-            "answer": "<p>We recommend the Nodpod for those 12 and older who are able to independently and correctly place and remove the Nodpod themselves. Never use the Nodpod, or any weighted product, on or near an infant or impaired person.</p>",
+            "answer": "<p>Nodpod is for people 12 and older who are able to independently and correctly place and remove the Nodpod themselves.<br/><br/>WARNING: Suffocation hazard. Not for children under 12. Never use the Nodpod, or any weighted product, on or near an infant or impaired person.</p>",
             "expandAnswer": false
           }
         },
