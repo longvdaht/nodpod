@@ -330,7 +330,7 @@
           "type": "question",
           "settings": {
             "title": "Can I use my HSA or FSA to pay for Nodpod products?",
-            "answer": "<p>Yes. Nodpod products may qualify for HSA/FSA reimbursement when purchased with a Letter of Medical Necessity (LMN) through our partner, Truemed. Truemed determines eligibility at checkout in real time.</p>",
+            "answer": "<p>Nodpod products may qualify for HSA/FSA reimbursement when purchased with a Letter of Medical Necessity (LMN) through our partner, Truemed, which reviews eligibility at checkout. Eligibility depends on your individual medical circumstances, your plan and IRS rules, so please confirm with your plan administrator. Nodpod can't guarantee that your purchase will qualify or be reimbursed.</p>",
             "expandAnswer": false
           }
         },
