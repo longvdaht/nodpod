@@ -175,27 +175,11 @@
           "type": "question",
           "settings": {
             "title": "How do I use Nodpod upright?",
-            "answer": "<p>Nodpod has hollow end tabs by design. One end has a slit, one without. Feed the end without the slit through the slit and adjust for head size. </p>",
+            "answer": "<p>Nodpod has hollow end tabs by design. One end has a slit, one without. Feed the end without the slit through the slit and adjust for head size.&nbsp;</p>",
             "expandAnswer": false
           }
         },
         "question_PLUHGY": {
-          "type": "question",
-          "settings": {
-            "title": "How should I use my Nodpod?",
-            "answer": "<p>Nodpod was designed to be worn freely in any horizontal sleeping position. It's designed to get you to sleep, not to stay on all night. For seated and upright use we've designed a pull-through slit to fasten Nodpod in place.</p>",
-            "expandAnswer": false
-          }
-        },
-        "question_CMjEin": {
-          "type": "question",
-          "settings": {
-            "title": "How do I use Nodpod upright?",
-            "answer": "<p>Nodpod has hollow end tabs by design. One end has a slit, one without. Feed the end without the slit through the slit and adjust for head size. </p>",
-            "expandAnswer": false
-          }
-        },
-        "question_FMTMfE": {
           "type": "question",
           "settings": {
             "title": "How should I use my Nodpod?",
@@ -460,8 +444,6 @@
         "question_mmdUA4",
         "question_reH6jg",
         "question_PLUHGY",
-        "question_CMjEin",
-        "question_FMTMfE",
         "question_EWKy4c",
         "heading_b4t9HF",
         "question_W6qzPK",
