@@ -235,8 +235,8 @@
 }
 
 .np-swatch-tabs__grid .pdp-color__label {
-  width: 4.6rem;
-  height: 4.6rem;
+  width: 4.4rem;
+  height: 4.4rem;
   margin: 0 !important;
 }
 
@@ -261,13 +261,13 @@
   }
 
   .np-swatch-tabs__grid .pdp-color__label {
-    width: 5.2rem;
-    height: 5.2rem;
+    width: 4.8rem;
+    height: 4.8rem;
   }
 
   .np-swatch-tabs__grid .pdp-color__chip {
-    width: 4rem;
-    height: 4rem;
+    width: 3.6rem;
+    height: 3.6rem;
   }
 
   .np-swatch-tabs__rail:after {

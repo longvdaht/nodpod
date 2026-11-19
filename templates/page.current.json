@@ -1,0 +1,314 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_hero": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MCM_Banners_4.png",
+            "imageMobile": "shopify://shop_images/MCM_Banners-08.png",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_hero"
+      ],
+      "custom_css": [
+        ".hero-media:after {background: linear-gradient( 244.5deg, rgba(0, 0, 0, 0.18) 33.85%, rgba(0, 0, 0, 0.6) 95.06% ); position: absolute; top: 0; width: 100%; height: 100%;}"
+      ],
+      "name": "Hero banner",
+      "settings": {
+        "block_id": "",
+        "overlay_position": "bottom_left",
+        "overlay_max_width": 100,
+        "overlay_position_mobile": "bottom",
+        "overlay_align_mobile": "left",
+        "subtitle": "LIMITED-EDITION",
+        "title": "Mid Century Merry",
+        "content": "Our best-loved weighted sleep essentials, dressed up for the holidays in limited-edition Mid Century Merry packaging",
+        "cta": "",
+        "url": "",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#ffffff",
+        "background_color": "",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "var(--heroHeight-l)",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": true,
+        "mobile_full_height_max_px": 500
+      }
+    },
+    "cat_cotton": {
+      "type": "np-launch-category",
+      "settings": {
+        "collection": "cotton-sleep-masks",
+        "launch_group_filter": "Mid Century Merry",
+        "max_cards": 24,
+        "hide_sold_out": false,
+        "ignore_release_ready": true,
+        "show_tile": true,
+        "tile_image": "shopify://shop_images/MCM_Promo_Cards-08.png",
+        "tile_title": "Cotton Weighted Sleep Masks",
+        "tile_button_label": "Shop All",
+        "tile_link": "shopify://products/nodpod",
+        "tile_text_color": "#ffffff",
+        "tile_bg_color": "#8e2a2a",
+        "tile_overlay": 30,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_rating": true,
+        "quick_add": "standard",
+        "mobile_atc_label": "Add",
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "cat_silk": {
+      "type": "np-launch-category",
+      "settings": {
+        "collection": "silk-sleep-masks",
+        "launch_group_filter": "Mid Century Merry",
+        "max_cards": 24,
+        "hide_sold_out": true,
+        "ignore_release_ready": true,
+        "show_tile": true,
+        "tile_image": "shopify://shop_images/MCM_Promo_Cards-09.png",
+        "tile_title": "Silk™ Weighted Sleep Masks",
+        "tile_button_label": "Shop All",
+        "tile_link": "shopify://products/nodpod-silk",
+        "tile_text_color": "#ffffff",
+        "tile_bg_color": "#5f7c7a",
+        "tile_overlay": 30,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "mobile_atc_label": "Add",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 6,
+        "padding_bottom_mobile": 6
+      }
+    },
+    "cat_body": {
+      "type": "np-launch-category",
+      "settings": {
+        "collection": "bodys",
+        "launch_group_filter": "Mid Century Merry",
+        "max_cards": 24,
+        "hide_sold_out": false,
+        "ignore_release_ready": true,
+        "show_tile": true,
+        "tile_image": "shopify://shop_images/MCM_Promo_Cards-10.png",
+        "tile_title": "Body Weighted Blankets",
+        "tile_button_label": "Shop All",
+        "tile_link": "shopify://products/nodpod-body",
+        "tile_text_color": "#ffffff",
+        "tile_bg_color": "#b9a99a",
+        "tile_overlay": 30,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_rating": true,
+        "quick_add": "standard",
+        "mobile_atc_label": "Add",
+        "padding_top": 0,
+        "padding_bottom": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "closing_banner": {
+      "type": "np-hero-banner",
+      "blocks": {
+        "image_closing": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MCM_Banners_1.png",
+            "imageMobile": "shopify://shop_images/MCM_Banners-05_1.png",
+            "imgClickable": false
+          }
+        }
+      },
+      "block_order": [
+        "image_closing"
+      ],
+      "name": "Closing banner",
+      "settings": {
+        "block_id": "",
+        "overlay_position": "middle_center",
+        "overlay_max_width": 60,
+        "overlay_position_mobile": "middle",
+        "overlay_align_mobile": "same_as_desktop",
+        "subtitle": "",
+        "title": "",
+        "content": "",
+        "cta": "",
+        "url": "",
+        "color_scheme": "scheme-1",
+        "heroMetaH1Bg": "#ffffff",
+        "heroMetaH1Color": "#ffffff",
+        "background_color": "",
+        "heroMetaH1hasBg": false,
+        "heroHeight": "var(--heroHeight-l)",
+        "cropVideo": false,
+        "enable_mobile_full_height_cap": false,
+        "mobile_full_height_max_px": 500
+      }
+    },
+    "image_with_text": {
+      "type": "np-image-with-text",
+      "blocks": {
+        "subheading_1": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "BECAUSE REST SHOULD FEEL LUXURIOUS"
+          }
+        },
+        "heading_1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Cloud-soft texture. Soothing weight. Comfort, redefined in its most elegant form."
+          }
+        },
+        "button_1": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP THE COLLECTION",
+            "button_link": "",
+            "button_type": "full",
+            "buttonBg": "#c5b9ab",
+            "buttonOutline": "#5e5d5e",
+            "buttonColor": "#ffffff",
+            "linkColor": "#5e5d5e"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_1",
+        "heading_1",
+        "button_1"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section-main-button {margin-top: 2rem;}",
+        "@media screen and (max-width: 767px) {.section-main-button, .section-subheading {margin-top: 4rem; } .section-main-heading {text-align: center; }}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "unique_id": "resort_silk_highlight",
+        "show_fsa_badge": false,
+        "image": "shopify://shop_images/image_80_3.png",
+        "image_position": "right",
+        "mobile_image_position": "top",
+        "mobile_gap": 0,
+        "paddingTop": 60,
+        "paddingRight": 20,
+        "paddingBottom": 60,
+        "paddingLeft": 20,
+        "marginTop": 0,
+        "marginBottom": 0,
+        "show_partial_bkg": false,
+        "partial_bkg_color": "#fafaf9",
+        "partial_bkg_gradient": "",
+        "partial_bkg_position": "bottom",
+        "full_bkg_color": "#ffffff",
+        "full_bkg_gradient": "",
+        "text_color": "#6c6463",
+        "product_to_add": ""
+      }
+    },
+    "guarantees": {
+      "type": "np-guarantees",
+      "blocks": {
+        "logo_image_1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_226_22271045-ebfc-43c3-8a7a-10b12e19e895.svg",
+            "heading": "Cloud-Soft Minky",
+            "content": "<p>Velvety, plush fabric for cozy full-body comfort.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_234_1.svg",
+            "heading": "Even Weight",
+            "content": "<p>Weighted pods evenly distribute from shoulders to toes.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_3": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_237.svg",
+            "heading": "Weighted Comfort",
+            "content": "<p>Sized for relaxation, naps, and winding down.</p>",
+            "link": ""
+          }
+        },
+        "logo_image_4": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Group_235_9c214367-48ff-4bc6-8848-2c3197a1a38f.svg",
+            "heading": "Effortless Aesthetic",
+            "content": "<p>Minimal, elegant design that blends into your space.</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_1",
+        "logo_image_2",
+        "logo_image_3",
+        "logo_image_4"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h3.gs-title {font-family: var(--font-heading-family); font-size: 48px; font-weight: 300; letter-spacing: 0.02em; margin-top: 10px;}",
+        ".np-guarantees__grid h2 {font-size: 32px; font-family: var(--font-heading-family); font-weight: 300;}",
+        ".np-guarantees__grid p {font-size: 18px; font-family: \"Poppins\"; font-weight: 400;}",
+        "@media screen and (max-width: 767px) {h3.gs-title {font-size: 28px; } .np-guarantees__grid h2 {font-size: 20px; } .np-guarantees__grid p {font-size: 14px; }}"
+      ],
+      "name": "The Details",
+      "settings": {
+        "heading": "The Details",
+        "headingAlignment": "center",
+        "textAlignment": "center",
+        "section_bg": "#fffbf7",
+        "headingBg": "#ffffff",
+        "headingColor": "#6c6463",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "cat_cotton",
+    "cat_silk",
+    "cat_body",
+    "closing_banner",
+    "image_with_text",
+    "guarantees"
+  ]
+}
