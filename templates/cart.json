@@ -85,12 +85,36 @@
         "padding_top": 20,
         "padding_bottom": 40
       }
+    },
+    "1795130626c789c816": {
+      "type": "apps",
+      "blocks": {
+        "gifted_gift_messages_gift_section_cart_KEdkCA": {
+          "type": "shopify://apps/gifted-gift-messages/blocks/gift_section_cart/395339ae-e28c-4b59-9ac5-270b36d75b12",
+          "settings": {
+            "text": "This is a Gift Order",
+            "form_background_color": "#ffffff",
+            "form_color": "#000000",
+            "form_accent_color": "#000000",
+            "delivery_instructions": "",
+            "form_template": "minimal",
+            "show_quantity": "false"
+          }
+        }
+      },
+      "block_order": [
+        "gifted_gift_messages_gift_section_cart_KEdkCA"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "cart-items",
     "179503054116a6c15b",
     "rich_text_NGFcyP",
-    "cart-footer"
+    "cart-footer",
+    "1795130626c789c816"
   ]
 }
