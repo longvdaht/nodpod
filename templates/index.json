@@ -12,6 +12,35 @@
     "np_home_slider_KD4iFg": {
       "type": "np-home-slider",
       "blocks": {
+        "full_banner_zRD388": {
+          "type": "full_banner",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/NP_Web_Banner_Black_Friday_Desktop.png",
+            "image_mobile": "shopify://shop_images/NP_Web_Banner_Black_Friday_Mobile.png",
+            "overlay_position": "middle_center",
+            "overlay_max_width": 45,
+            "overlay_position_mobile": "same_as_desktop",
+            "overlay_max_width_mobile": 90,
+            "subheading": "",
+            "sub_text_color": "#ffffff",
+            "sub_font_size": 1.5,
+            "sub_font_size_mobile": 1.2,
+            "title": "",
+            "text_color": "#ffffff",
+            "font_size": 2,
+            "font_size_mobile": 1.6,
+            "button_text": "",
+            "url": "shopify://collections",
+            "button_text_color": "#ffffff",
+            "button_bkg_color": "rgba(0,0,0,0)",
+            "button_font_size": 2,
+            "button_stroke": 1,
+            "button_border_color": "#ffffff",
+            "button_font_size_mobile": 1.6,
+            "enable_shadows": false
+          }
+        },
         "full_banner_MPT4DU": {
           "type": "full_banner",
           "settings": {
@@ -151,44 +180,15 @@
             "button_font_size_mobile": 1.6,
             "enable_shadows": false
           }
-        },
-        "full_banner_zRD388": {
-          "type": "full_banner",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/NP_Web_Banner_Black_Friday_Desktop.png",
-            "image_mobile": "shopify://shop_images/NP_Web_Banner_Black_Friday_Mobile.png",
-            "overlay_position": "middle_center",
-            "overlay_max_width": 45,
-            "overlay_position_mobile": "same_as_desktop",
-            "overlay_max_width_mobile": 90,
-            "subheading": "",
-            "sub_text_color": "#ffffff",
-            "sub_font_size": 1.5,
-            "sub_font_size_mobile": 1.2,
-            "title": "",
-            "text_color": "#ffffff",
-            "font_size": 2,
-            "font_size_mobile": 1.6,
-            "button_text": "",
-            "url": "shopify://collections",
-            "button_text_color": "#ffffff",
-            "button_bkg_color": "rgba(0,0,0,0)",
-            "button_font_size": 2,
-            "button_stroke": 1,
-            "button_border_color": "#ffffff",
-            "button_font_size_mobile": 1.6,
-            "enable_shadows": false
-          }
         }
       },
       "block_order": [
+        "full_banner_zRD388",
         "full_banner_MPT4DU",
         "full_banner_Q8gfAD",
         "full_banner_mVUjGw",
         "full_banner_KxK6m6",
-        "full_banner_WPTyWP",
-        "full_banner_zRD388"
+        "full_banner_WPTyWP"
       ],
       "custom_css": [
         "@media (min-width: 990px) {.swiper-slide {height: calc(var(--np-height-desktop) - 82px) !important; }}",
