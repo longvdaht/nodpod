@@ -43,8 +43,8 @@
         "full_banner_Q8gfAD": {
           "type": "full_banner",
           "settings": {
-            "image": "shopify://shop_images/fall_edit_Banner_13.png",
-            "image_mobile": "shopify://shop_images/fall_edit_mobileBanner-11.png",
+            "image": "shopify://shop_images/NP_Web_Banner_Fall_Edit_Desktop_1.png",
+            "image_mobile": "shopify://shop_images/NP_Web_Banner_Fall_Edit_Mobile.png",
             "overlay_position": "bottom_center",
             "overlay_max_width": 45,
             "overlay_position_mobile": "same_as_desktop",
@@ -71,8 +71,8 @@
         "full_banner_mVUjGw": {
           "type": "full_banner",
           "settings": {
-            "image": "shopify://shop_images/Teddy_Collection_Banner_26.png",
-            "image_mobile": "shopify://shop_images/Teddy_Collection_Banner_Mobile_26_1.png",
+            "image": "shopify://shop_images/NP_Web_Banner_Teddy_Desktop.png",
+            "image_mobile": "shopify://shop_images/NP_Web_Banner_Teddy_Mobile.png",
             "overlay_position": "bottom_center",
             "overlay_max_width": 45,
             "overlay_position_mobile": "same_as_desktop",
@@ -85,7 +85,7 @@
             "text_color": "#7d640b",
             "font_size": 2,
             "font_size_mobile": 1.6,
-            "button_text": "Shop Now",
+            "button_text": "",
             "url": "shopify://collections/the-teddy-collection",
             "button_text_color": "#7d640b",
             "button_bkg_color": "rgba(0,0,0,0)",
@@ -154,9 +154,10 @@
         },
         "full_banner_zRD388": {
           "type": "full_banner",
+          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Out_West_Web_Banners_Desktop_copy.png",
-            "image_mobile": "shopify://shop_images/Out_West_Web_Banners_Mobile_copy.png",
+            "image": "shopify://shop_images/NP_Web_Banner_Black_Friday_Desktop.png",
+            "image_mobile": "shopify://shop_images/NP_Web_Banner_Black_Friday_Mobile.png",
             "overlay_position": "middle_center",
             "overlay_max_width": 45,
             "overlay_position_mobile": "same_as_desktop",
@@ -170,7 +171,7 @@
             "font_size": 2,
             "font_size_mobile": 1.6,
             "button_text": "",
-            "url": "shopify://pages/the-out-west-collection",
+            "url": "shopify://collections",
             "button_text_color": "#ffffff",
             "button_bkg_color": "rgba(0,0,0,0)",
             "button_font_size": 2,
