@@ -75,7 +75,6 @@
         },
         "gifted_gift_messages_gifted_button_DQMp7Q": {
           "type": "shopify://apps/gifted-gift-messages/blocks/gifted_button/395339ae-e28c-4b59-9ac5-270b36d75b12",
-          "disabled": true,
           "settings": {
             "text": "Gift this item",
             "button_color": "#636466",
