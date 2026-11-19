@@ -81,6 +81,22 @@
             "form_template": "minimal"
           }
         },
+        "gifted_gift_messages_gifted_button_3QgiLg": {
+          "type": "shopify://apps/gifted-gift-messages/blocks/gifted_button/395339ae-e28c-4b59-9ac5-270b36d75b12",
+          "settings": {
+            "text": "Gift this item",
+            "button_color": "#636466",
+            "background_color": "#636466",
+            "form_background_color": "#ffffff",
+            "form_color": "#636466",
+            "form_accent_color": "#636466",
+            "form_icon_color": "#636466",
+            "delivery_instructions": "Almost there! You can enter the delivery instructions at checkout.",
+            "occasions": "Birthday, Anniversary, Wedding, Baby Shower, Graduation, Thank You, Just Because, Holidays",
+            "display_as_link": true,
+            "form_template": "minimal"
+          }
+        },
         "text_i43CGF": {
           "type": "text",
           "disabled": true,
@@ -192,6 +208,7 @@
         "divider_7FnXyt",
         "buy_buttons",
         "gifted_gift_messages_gifted_button_fM8LgJ",
+        "gifted_gift_messages_gifted_button_3QgiLg",
         "text_i43CGF",
         "divider_qRaJAm",
         "icon_with_text_dhMfjM",
