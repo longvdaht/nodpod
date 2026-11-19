@@ -44,8 +44,8 @@
         "full_banner_MPT4DU": {
           "type": "full_banner",
           "settings": {
-            "image": "shopify://shop_images/MCM_Banners_1_eef95d6b-0048-4033-b265-4d641f16c1e4.png",
-            "image_mobile": "shopify://shop_images/MCM_Banners-05_1_ace32daf-46f7-4859-a803-d628de2d9b0b.png",
+            "image": "shopify://shop_images/Banner_Resized.png",
+            "image_mobile": "shopify://shop_images/NP_Web_Banner_MCM_Mobile.png",
             "overlay_position": "bottom_center",
             "overlay_max_width": 45,
             "overlay_position_mobile": "same_as_desktop",
