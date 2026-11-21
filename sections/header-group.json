@@ -67,10 +67,10 @@
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "text": "10% of Untamed sales goes to the World Wildlife Fund this October",
+            "text": "30% OFF SITEWIDE, NO CODE NEEDED",
             "link": "",
-            "secondary_link_text": "",
-            "secondary_link_url": ""
+            "secondary_link_text": "SHOP NOW",
+            "secondary_link_url": "shopify://collections/all"
           }
         },
         "announcement-bar-0": {
