@@ -67,7 +67,7 @@
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "text": "30% OFF SITEWIDE, NO CODE NEEDED",
+            "text": "30% OFF SITE WIDE, NO CODE NEEDED",
             "link": "",
             "secondary_link_text": "SHOP NOW",
             "secondary_link_url": "shopify://collections/all"

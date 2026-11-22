@@ -14,7 +14,6 @@
       "blocks": {
         "full_banner_zRD388": {
           "type": "full_banner",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/NP_Web_Banner_Black_Friday_Desktop.png",
             "image_mobile": "shopify://shop_images/NP_Web_Banner_Black_Friday_Mobile.png",
