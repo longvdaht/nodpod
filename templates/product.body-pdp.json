@@ -482,7 +482,7 @@
           "type": "question",
           "settings": {
             "title": "Is Nodpod BODY TSA approved?",
-            "answer": "<p>Yes!</p>",
+            "answer": "<p>Due to the weighted microbead filling inside Nodpod BODY, airport security screening experiences may vary by airport and country. While many travelers successfully fly with Nodpod BODY, some domestic and international security agencies may require additional inspection or, in rare cases, may prohibit weighted items from carry-on baggage at their discretion. For the smoothest travel experience, we strongly recommend packing your Nodpod BODY in checked luggage whenever possible. Please note that security screening policies are determined by individual airports and governing agencies and may change without notice.</p>",
             "expandAnswer": false
           }
         },
