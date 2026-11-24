@@ -573,19 +573,11 @@
             "expandAnswer": false
           }
         },
-        "question_LFQAad": {
-          "type": "question",
-          "settings": {
-            "title": "Do your materials contain dangerous chemicals?",
-            "answer": "<p>All of Nodpod's materials meet and exceed the most stringent state and federal agencies' guidelines for safe materials.</p>",
-            "expandAnswer": false
-          }
-        },
         "question_TCLaBP": {
           "type": "question",
           "settings": {
             "title": "Does 3-minute magic mean I'll be asleep in 3 minutes?",
-            "answer": "<p>Most people describe a feeling of relaxation, which is attributed to the science of Deep Touch Pressure within minutes. Not everyone experiences the same feeling as quickly. If you are not fully satisfied with your Nodpod we would be happy to refund you.</p>",
+            "answer": "<p>No. “3-minute magic” isn’t a promise that you’ll fall asleep in 3 minutes. Everyone unwinds at their own pace. We suggest giving yourself at least three minutes with Nodpod as you settle in, so its gentle pressure can help you relax.<br/><br/>If you’re not satisfied with your Nodpod, orders from nodpod.com can be returned within 30 days of delivery for a refund. See our Return Policy for details.</p>",
             "expandAnswer": false
           }
         }
@@ -606,7 +598,6 @@
         "question_4xdw49",
         "question_gAgXnA",
         "question_6Xa46g",
-        "question_LFQAad",
         "question_TCLaBP"
       ],
       "custom_css": [
