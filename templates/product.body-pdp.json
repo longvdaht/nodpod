@@ -509,6 +509,14 @@
             "answer": "<p>No. “3-minute magic” isn’t a promise that you’ll fall asleep in 3 minutes. Everyone unwinds at their own pace. We suggest giving yourself at least three minutes with Nodpod BODY as you settle in, so its gentle pressure can help you relax.<br/><br/>If you’re not satisfied with your Nodpod BODY, orders from nodpod.com can be returned within 30 days of delivery for a refund. See our Return Policy for details.</p>",
             "expandAnswer": false
           }
+        },
+        "question_wNzC6z": {
+          "type": "question",
+          "settings": {
+            "title": "Can my small child use my Nodpod BODY?",
+            "answer": "<p>No, small children cannot use Nodpod BODY. WARNING: Suffocation hazard. Do not use on or near children under 12, infants, or anyone unable to remove it unaided.</p>",
+            "expandAnswer": false
+          }
         }
       },
       "block_order": [
@@ -521,7 +529,8 @@
         "question_t8KEFt",
         "question_pHWbAj",
         "question_LiGA6x",
-        "question_JAx63J"
+        "question_JAx63J",
+        "question_wNzC6z"
       ],
       "custom_css": [
         "{background: #ebeae6;}",
