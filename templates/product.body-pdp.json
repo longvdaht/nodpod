@@ -517,6 +517,14 @@
             "answer": "<p>No, small children cannot use Nodpod BODY. WARNING: Suffocation hazard. Do not use on or near children under 12, infants, or anyone unable to remove it unaided.</p>",
             "expandAnswer": false
           }
+        },
+        "question_HKpNe8": {
+          "type": "question",
+          "settings": {
+            "title": "Can I freeze my Nodpod BODY?",
+            "answer": "<p>For extra cooling relief, yes, you can put your Nodpod BODY in the freezer.</p>",
+            "expandAnswer": false
+          }
         }
       },
       "block_order": [
@@ -530,7 +538,8 @@
         "question_pHWbAj",
         "question_LiGA6x",
         "question_JAx63J",
-        "question_wNzC6z"
+        "question_wNzC6z",
+        "question_HKpNe8"
       ],
       "custom_css": [
         "{background: #ebeae6;}",
