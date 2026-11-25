@@ -65,9 +65,8 @@
       "blocks": {
         "announcement_JNhFjT": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
-            "text": "30% OFF SITE WIDE, NO CODE REQUIRED",
+            "text": "30% off sitewide, auto-applied in cart",
             "link": "",
             "secondary_link_text": "SHOP NOW",
             "secondary_link_url": "shopify://collections/all"
